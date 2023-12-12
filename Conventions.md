@@ -3,9 +3,9 @@
 # ------------------- #
 
 ### Component Function Names: PascalCase
-### Regular Function Names: KebabCase
+### Regular Function Names: camelCase
 
-### API Functions should be in separate files
+### Frontend API Functions should be in separate files
 ## API Function(functions in API folder) Conventions
 # <Http-method><data-type>
   for example:

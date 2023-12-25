@@ -5,8 +5,35 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    colors: {
+      'primary': 
+      {
+        100: '#EBF9FA',
+        200: '#BCE2E5' 
+      },
+      'secondary': '#0A3F67',
+      'accent': '#2D867F'
+    },
+    extend: {
+      backgroundImage: {
+        'flashcraftBg' : 'url(./src/Assets/Background/flashcraftBg.jpg)'
+      },
+      backfaceVisibility: {
+        visible: 'visible',
+        hidden: 'hidden',
+      }
+    },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.transform-style-preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 }
 

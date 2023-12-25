@@ -1,0 +1,19 @@
+#innerCard {
+
+    transition: transform 1s;
+    transform-style: preserve-3d;
+ }
+
+#front, #back{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+#back{
+    transform: rotateY(180deg);    
+}
+
+
+
+
+

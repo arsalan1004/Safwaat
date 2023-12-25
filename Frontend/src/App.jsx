@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import FlashCraft from './Components/FlashCraft/FlashCraft'
+
 
 import './App.css'
 
@@ -7,8 +9,9 @@ function App() {
 
   return (
     <>
-      <div className='border-2 w-[90%] mx-auto my-20'>
-        <p className='text-3xl'>SAFWAAT TEMPLATE</p>
+      <div>
+        {/* <p className='text-3xl'>SAFWAAT TEMPLATE</p> */}
+        <FlashCraft />
       </div>
     </>
   )

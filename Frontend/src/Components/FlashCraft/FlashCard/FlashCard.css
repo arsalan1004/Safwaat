@@ -1,19 +1,34 @@
-#innerCard {
+/* FlashCard.css */
 
+#innerCard {
     transition: transform 1s;
     transform-style: preserve-3d;
- }
-
-#front, #back{
+  }
+  
+  #front,
+  #back {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+  }
+  
+  #back {
+    transform: rotateY(180deg);
+  }
+  
+  .flipped #innerCard {
+    transform: rotateY(180deg);
+  }
+
+  /* .blurred {
+    backdrop-filter: blur(4px); 
+  } */
+  
+  
+
+  .card{
+    overflow: hidden;
+    transform: translateZ(calc(-20px * var(--i))) translateY(calc(-10px * var(--i))) rotate(calc(-3deg * var(--i)));
+    filter: drop-shadow(2px 2px 20px rgba(0,0,0,0.5));
+    cursor: pointer;
+    user-select: none;
 }
-
-#back{
-    transform: rotateY(180deg);    
-}
-
-
-
-
-

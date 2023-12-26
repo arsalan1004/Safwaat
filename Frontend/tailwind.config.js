@@ -12,7 +12,13 @@ export default {
         200: '#BCE2E5' 
       },
       'secondary': '#0A3F67',
-      'accent': '#2D867F'
+      'accent': '#2D867F',
+      'correct': '#0ACF1E',
+      'wrong': '#E01111'
+    },
+    fontFamily: {
+      Montserrat: ['Montserrat'],
+      Itim: ['Itim']
     },
     extend: {
       backgroundImage: {

@@ -2,16 +2,15 @@ const formatData = (learningUnits, userProgress) => {
   try {
     const result = learningUnits.map((unit, index) => {
       if (userProgress[index]) {
-        unit.progress = userProgress[index];
         return {
-          _id: unit._id,
-          unitNumber: unit.unitNumber,
+          _id: unit?._id,
+          unitNumber: unit?.unitNumber,
           progress: userProgress[index],
         };
       } else {
         return {
-          _id: unit._id,
-          unitNumber: unit.unitNumber,
+          _id: unit?._id,
+          unitNumber: unit?.unitNumber,
           progress: null,
         };
       }

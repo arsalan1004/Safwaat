@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const learningUnitSchema = mongoose.Schema(
   {
     unitNumber: Number,
-    slides: Array,
     numOfQuestions: Number,
     perStarXp: Number,
+    slides: Object,
   },
   { timestamps: true, collection: "LearningUnit" }
 );

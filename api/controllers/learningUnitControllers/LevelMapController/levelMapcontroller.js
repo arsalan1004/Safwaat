@@ -5,7 +5,7 @@ const { levelMap } = require("./LevelMapData/index.js");
 
 const levelMapController = async (req, res) => {
   try {
-    const levelMapData = await levelMap(req.params.userId);
+    const levelMapData = await levelMap(req?.params?.userId);
 
     if (levelMapData) {
       res.status(200).json(levelMapData);

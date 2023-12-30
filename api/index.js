@@ -6,6 +6,9 @@ const morgan = require("morgan");
 const {
   levelMapRoute,
 } = require("./routes/learningUnitRoutes/LevelMapRoute/levelMapRoute");
+const {
+  slideRoute,
+} = require("./routes/learningUnitRoutes/SlideRoute/slideRoute");
 
 // REGISTERING AND REQUIRING ENV VARIABLES
 require("dotenv").config();
@@ -18,14 +21,8 @@ const app = express();
 require("../config/db");
 
 // REGISTERING MIDDLEWARES
-app.use(
-  "/api/levelMap",
-  (req, res, next) => {
-    req.userId = req.params.userId;
-    next();
-  },
-  levelMapRoute
-);
+app.use("/api/levelMap", levelMapRoute);
+app.use("/api/slides", slideRoute);
 
 // CREATING SERVER
 const server = http.createServer(app);

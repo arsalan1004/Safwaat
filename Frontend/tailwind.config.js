@@ -5,22 +5,23 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      'primary': 
-      {
-        100: '#EBF9FA',
-        200: '#BCE2E5' 
-      },
-      'secondary': '#0A3F67',
-      'accent': '#2D867F',
-      'correct': '#0ACF1E',
-      'wrong': '#E01111'
-    },
     fontFamily: {
       Montserrat: ['Montserrat'],
-      Itim: ['Itim']
+      Itim: ['Itim'],
+      Poppins: ['Poppins']
     },
     extend: {
+      colors: {
+        'primary': 
+        {
+          100: '#EBF9FA',
+          200: '#BCE2E5' 
+        },
+        'secondary': '#0A3F67',
+        'accent': '#2D867F',
+        'correct': '#0ACF1E',
+        'wrong': '#E01111'
+      },
       backgroundImage: {
         'flashcraftBg' : 'url(./src/Assets/Background/flashcraftBg.jpg)'
       },

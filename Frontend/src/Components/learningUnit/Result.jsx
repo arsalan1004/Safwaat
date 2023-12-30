@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import threeStars from '../../assets/icons/threeStars.png';
+import twoStars from '../../assets/icons/twoStars.png';
+import oneStar from '../../assets/icons/oneStar.png';
+import zeroStars from '../../assets/icons/zeroStars.png';
+
 import Button from '../../UI/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -19,15 +23,15 @@ const Result = () => {
       subTitle = "Awesome Performance";
       break;
     case 2:
-      image = threeStars;
+      image = twoStars;
       subTitle = "Great Performance"
       break;
     case 1:
-      image = threeStars;
+      image = oneStar;
       subTitle = "Good Performance"
       break;
     default:
-      image = threeStars;
+      image = zeroStars;
       subTitle = "Better luck next time"
       break;
   }

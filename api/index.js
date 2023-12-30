@@ -17,6 +17,10 @@ const port = process.env.PORT;
 // CREATING EXPRESS APP
 const app = express();
 
+// APP SETTINGS
+app.use(express.json());
+app.use(morgan("tiny"));
+
 // CONENCTING TO DATABASE
 require("../config/db");
 

@@ -1,13 +1,21 @@
 /* Google Font Imports here */
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre&family=Itim&family=Poppins&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-
 /* Compound Tailwind Classes here */
-
+@layer components { 
+  .mcq-shadow-outer {
+    
+    @apply shadow-[4px_5px_4px_rgba(2,46,79,0.2)] ;
+  }
+  .mcq-shadow-inner {
+    @apply shadow-[inset_4px_5px_4px_rgba(2,20,33,0.5)] ;
+  }
+}
 
 /*:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

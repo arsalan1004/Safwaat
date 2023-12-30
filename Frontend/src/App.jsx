@@ -1,15 +1,24 @@
 import { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './App.css'
+import LearningUnit from './Components/learningUnit/LearningUnit'
+import Result from './Components/learningUnit/Result'
+import ExitLessonModal from './Components/learningUnit/ExitLessonModal'
+import AudioSlide from './Components/learningUnit/slideMiddle/audio/AudioSlide'
+import TheorySlideComparative from './Components/learningUnit/slideMiddle/theory/TheorySlideComparative'
+const router = createBrowserRouter([
+  { path: '/:lid', element: <LearningUnit /> },
+  { path: '/result', element: <Result /> },
+  // { path: '/', element: <TheorySlideComparative /> }
+])
 
 function App() {
-  // const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <div className='border-2 w-[90%] mx-auto my-20'>
-        <p className='text-3xl'>SAFWAAT TEMPLATE</p>
-      </div>
+      <RouterProvider router={router} />
+      {/* <p>Hello</p> */}
     </>
   )
 }

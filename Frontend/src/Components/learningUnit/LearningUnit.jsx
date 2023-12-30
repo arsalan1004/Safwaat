@@ -8,6 +8,7 @@ import { unitInfoActions } from '../../Store/unitInfo';
 import { audioSlideActions } from '../../Store/audioSlideSlice';
 import Spinner from '../../UI/Spinner';
 import { theoryImageSlideActions } from '../../Store/theoryImageSlideSlice';
+import { theoryComparativeSlideActions } from '../../Store/theoryComparativeSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -49,6 +50,10 @@ const LearningUnit = (props) => {
           dispatch(slideControlActions.setSlideType("theoryImage"))
           dispatch(theoryImageSlideActions.setTheoryImageSlideData(response.content))
           break;
+          case "theoryComparative":
+            dispatch(slideControlActions.setSlideType("theoryComparative"))
+            dispatch(theoryComparativeSlideActions.setTheoryComparativeSlideData(response.content))
+            break;  
         default:
           break;
       }

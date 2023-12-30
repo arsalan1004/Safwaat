@@ -8,6 +8,7 @@ import ExitLessonModal from './ExitLessonModal';
 import AudioSlide from './slideMiddle/audio/AudioSlide';
 import TheorySlideComparative from './slideMiddle/theory/TheorySlideComparative';
 import TheorySlideImageText from './slideMiddle/theory/TheorySlideImageText';
+import TheoryComparativeSlideSlice from '../../Store/theoryComparativeSlideSlice';
 
 const Slide = (props) => {
   const {isMotivation, slideType} = useSelector(state => state.slideControl);
@@ -24,6 +25,10 @@ const Slide = (props) => {
       case "theoryImage":
         slideContent = <TheorySlideImageText />
         break;
+      case "theoryComparative":
+        slideContent = <TheorySlideComparative />
+        break;
+
       default:
         break;
     }

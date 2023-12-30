@@ -3,6 +3,7 @@ import mcqSlideReducer from "./mcqSlide";
 import unitInfoReducer from "./unitInfo";
 import audioSlideReducer from './audioSlideSlice'
 import theoryImageSlideReducer from './theoryImageSlideSlice'
+import theoryComparativeSlideReducer from './theoryComparativeSlideSlice'
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -12,7 +13,8 @@ const store = configureStore({
     audioSlideSlice: audioSlideReducer,
     slideControl : slideControlReducer,
     unitInfoSlice: unitInfoReducer,
-    theoryImageSlideSlice: theoryImageSlideReducer
+    theoryImageSlideSlice: theoryImageSlideReducer,
+    theoryComparativeSlideSlice: theoryComparativeSlideReducer
   }
 });
 

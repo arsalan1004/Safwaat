@@ -65,10 +65,10 @@ const SlideBottomControl = (props) => {
     case "audio":
       ({selectedOption, correctAnswer} = useSelector(state => state.audioSlideSlice))
       break;
-    case "theoryImage":
-      // Written for all 
+    default:
+      // Written for all Thepry Slide
       useSelector(state => state.mcqSlideSlice);
-  
+
       break;
   }
   // switch(slideType) {

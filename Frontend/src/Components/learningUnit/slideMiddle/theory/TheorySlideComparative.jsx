@@ -16,7 +16,7 @@ const TheorySlideComparative = () => {
       <div className=' text-3xl flex justify-center items-center font-itim text-secondary mb-8'>
         <h1>حمس vs جهر</h1>
       </div>
-      <div className='flex flex-col justify-between items-center gap-8 w-[80%] mx-auto'>
+      <div className='flex flex-col justify-between items-center gap-8 w-[70%] mx-auto'>
         <div className='flex justify-between'>
           <TextCell content={content[0]} type={"filled"} />
           <TextCell content={content[1]} type={"filled"} />

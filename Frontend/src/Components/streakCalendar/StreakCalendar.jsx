@@ -14,8 +14,9 @@ const StreakCalendar = () => {
     
     const [calendarData, setCalendarData] = useState(() => ({}))
     const [calendarContents, setCalendarContents] = useState([])
-    const [range, setRange] = useState(() => ({}))
-    const [currentDate, setCurrentDate] = useState(() => ({}));
+    const [range, setRange] = useState(() => ({start: 3, end: 4}))
+    const [streakCount, setStreakCount] = useState(2)
+    const [currentDate, setCurrentDate] = useState(() => ({day: "", month: "", year: ""}));
     const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   
     function getNumberOfDaysInMonth(year, month) {
@@ -75,8 +76,9 @@ const StreakCalendar = () => {
   
     useEffect(() => {
       const getStreakRangeHandler = async () => {
-        const response = await getStreakRange(calendarData.month, calendarData.year);
-        setRange(response);
+        const {start, end, streakCount} = await getStreakRange(calendarData.month, calendarData.year);
+        setRange(prevRange => ({...prevRange,start,end}));
+        setStreakCount(streakCount);
         
       }
       getStreakRangeHandler();
@@ -224,7 +226,8 @@ const StreakCalendar = () => {
   
   
   
-  
+   
+
     return (
       <> 
       {
@@ -235,7 +238,7 @@ const StreakCalendar = () => {
               <h3 className='text-[32px] font-semibold font-poppins tracking-wider text-[#2D867F] mb-12'>Streak Board</h3>
               <img className='w-[59px] mb-7' src={streakFire} alt='streak-fire' />
               <p className='text-2xl font-medium font-poppins text-[#2D867F] mb-6'>Streak Count</p>
-              <div className='w-full border-solid border-[3px] border-[#2D867F] font-abhaya text-[#2D867F] text-3xl font-bold'>{(range.end + calendarData.startingWD) - (range.start  + calendarData.startingWD)  + 1}</div>
+              <div className='w-full border-solid border-[3px] border-[#2D867F] font-abhaya text-[#2D867F] text-3xl font-bold'>{streakCount}</div>
             </div>
             <div className='w-[70%] border-solid border-[3px] border-[#2D867F] rounded-[15px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] p-8'>
               <div className='flex justify-between items-center mb-3'>

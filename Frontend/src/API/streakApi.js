@@ -10,7 +10,7 @@ const getStreakRange = async (month, year) => {
     console.log(error)
   }
   // setTimeout(() => {}, 3000)
-  return ({start: 3, end: 13, streakCount: 5});
+  return ({start: 3, end: 13, streakCount: 13-3});
 }
 export {getStreakRange}
 

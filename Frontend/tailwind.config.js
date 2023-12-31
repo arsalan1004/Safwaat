@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'abhaya': ['Abhaya Libre'],
+        'poppins': ['Poppins']
+      }
+    },
   },
   plugins: [],
 }

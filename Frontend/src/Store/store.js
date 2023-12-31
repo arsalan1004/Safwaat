@@ -4,6 +4,7 @@ import unitInfoReducer from "./unitInfo";
 import audioSlideReducer from './audioSlideSlice'
 import theoryImageSlideReducer from './theoryImageSlideSlice'
 import theoryComparativeSlideReducer from './theoryComparativeSlideSlice'
+import modelSlideReducer from './modelSlideSlice'
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -14,7 +15,8 @@ const store = configureStore({
     slideControl : slideControlReducer,
     unitInfoSlice: unitInfoReducer,
     theoryImageSlideSlice: theoryImageSlideReducer,
-    theoryComparativeSlideSlice: theoryComparativeSlideReducer
+    theoryComparativeSlideSlice: theoryComparativeSlideReducer,
+    modelSlideSlice: modelSlideReducer
   }
 });
 

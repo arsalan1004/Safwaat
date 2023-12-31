@@ -9,6 +9,7 @@ import { audioSlideActions } from '../../Store/audioSlideSlice';
 import Spinner from '../../UI/Spinner';
 import { theoryImageSlideActions } from '../../Store/theoryImageSlideSlice';
 import { theoryComparativeSlideActions } from '../../Store/theoryComparativeSlideSlice';
+import { modelSlideActions } from '../../Store/modelSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -28,6 +29,8 @@ const LearningUnit = (props) => {
     dispatch(unitInfoActions.setSlideIdArray(response.slideIdArray))
     setIsLoading(false);
   }
+
+  
 
   const slideChangeHandler = async () => {
     if(slideIdArray) {
@@ -54,6 +57,11 @@ const LearningUnit = (props) => {
             dispatch(slideControlActions.setSlideType("theoryComparative"))
             dispatch(theoryComparativeSlideActions.setTheoryComparativeSlideData(response.content))
             break;  
+          case "model":
+            dispatch(slideControlActions.setSlideType("model"))
+            dispatch(modelSlideActions.setModelData(response.content))
+            break;  
+
         default:
           break;
       }
@@ -75,7 +83,7 @@ const LearningUnit = (props) => {
   }, [currentSlide, slideIdArray])
 
   return (
-    !isLoading ? <Slide /> : <Spinner />
+    !isLoading ? <Slide /> : <Spinner style={"primary"}/>
   )
 }
 

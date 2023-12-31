@@ -251,13 +251,11 @@ const SlideBottomControl = (props) => {
         break;
       case "audio": dispatch(audioSlideActions.setSelected(-2));
         break;
-      case "theoryImage": 
+      default:
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
         navigate(`/${currentSlide + 1}`)
         return;
-      default:
-        break;
     }
     dispatch(slideControlActions.setIsChecked(true));
     dispatchWrong();
@@ -279,7 +277,7 @@ return (
           (
           (!isChecked)
           ?
-          (<Button 
+          (isTheorySlide() == false && <Button 
             contentType={"text"}
             styleType={"outline-accent"}
             content={"Skip"}
@@ -301,12 +299,12 @@ return (
           </div>)
           )
         }
-        <div className={`${isMotivation ? 'flex flex-col w-[100%]' : ""}`}>
+        <div className={`${(isMotivation || isTheorySlide() == true) ? 'flex flex-col w-[100%]' : ""}`}>
           <Button 
             contentType={"text"}
             styleType= {((isChecked == false && isMotivation == false) || isTheorySlide() == true) 
                         ?  "solid-accent"  : 
-                        (isCorrect == true && isMotivation == false ? "solid-correct" : (isMotivation == true ? "solid-correct-motivation" : "solid-wrong")) }
+                        (isCorrect == true && isMotivation == false ? "solid-correct" : (isMotivation == true  ? "solid-correct-motivation" : "solid-wrong")) }
             // styleType= {(isChecked == false && isMotivation == false) 
             //             ?  "solid-accent"  : 
             //             (isCorrect == true || isMotivation == true ? "solid-correct" 

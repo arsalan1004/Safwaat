@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ProgressBar from './slideTop/ProgressBar';
 import McqSlide from './slideMiddle/mcq/McqSlide';
-import SlideBottomControl from './slideBottom/SlideBottomControl';
-import Motivation from './Motivation';
-import { useSelector } from 'react-redux';
-import ExitLessonModal from './ExitLessonModal';
 import AudioSlide from './slideMiddle/audio/AudioSlide';
+import Motivation from './Motivation';
+import ExitLessonModal from './ExitLessonModal';
 import TheorySlideComparative from './slideMiddle/theory/TheorySlideComparative';
 import TheorySlideImageText from './slideMiddle/theory/TheorySlideImageText';
-import TheoryComparativeSlideSlice from '../../Store/theoryComparativeSlideSlice';
+import ModelWindow from './slideMiddle/model/ModelWindow';
+import SlideBottomControl from './slideBottom/SlideBottomControl';
 
 const Slide = (props) => {
   const {isMotivation, slideType} = useSelector(state => state.slideControl);
@@ -28,14 +28,16 @@ const Slide = (props) => {
       case "theoryComparative":
         slideContent = <TheorySlideComparative />
         break;
-
+      case "model":
+        slideContent = <ModelWindow />
+        break;
       default:
         break;
     }
 
   const slideBgStyles = {
-    primaryStyle: 'h-screen bg-primary',
-    secondaryStyle: 'h-screen bg-[#051A22]'
+    primaryStyle: 'h-screen bg-primary transition-colors',
+    secondaryStyle: 'h-screen bg-[#051A22] transition-colors'
   }
 
 

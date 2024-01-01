@@ -1,7 +1,7 @@
 import React from 'react'
-import OutlineButton from '../../../UI/Button/OutlineButton'
-import DeleteButton from '../../../UI/Button/DeleteButton'
-import InvertedButton from '../../../UI/Button/InvertedButton'
+import OutlineButton from '../../../../UI/Button/OutlineButton'
+import DeleteButton from '../../../../UI/Button/DeleteButton'
+import InvertedButton from '../../../../UI/Button/InvertedButton'
 
 function FlashSetBox() {
   return (

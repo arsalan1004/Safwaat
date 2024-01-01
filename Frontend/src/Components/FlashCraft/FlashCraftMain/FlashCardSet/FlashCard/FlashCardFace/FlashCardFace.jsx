@@ -1,5 +1,5 @@
 import React from 'react'
-import flipIcon from '../../../../../Assets/flip.svg'
+import flipIcon from '../../../../../../Assets/flip.svg'
 import '../FlashCard.css';
 
 function FlashCardFace(props) {

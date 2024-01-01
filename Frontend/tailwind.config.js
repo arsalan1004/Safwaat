@@ -8,9 +8,15 @@ export default {
     fontFamily: {
       Montserrat: ['Montserrat'],
       Itim: ['Itim'],
-      Poppins: ['Poppins']
+      Poppins: ['Poppins'],
+      Inter: ['Inter']
     },
     extend: {
+      boxShadow: {
+        'inset': 'inset 0 4px 4px rgba(0, 0, 0, 0.3)',
+        '3d': '2px 3px 5px rgba(0, 0, 0, 0.5)'
+      },
+
       colors: {
         'primary': 
         {

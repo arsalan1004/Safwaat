@@ -1,7 +1,7 @@
 import React from 'react'
-import FilledButton from '../../../../UI/Button/FilledButton'
-import OutlineButton from '../../../../UI/Button/OutlineButton'
-import thumbsUp from '../../../../Assets/Icons/thumbsUp.png'
+import FilledButton from '../../../../../UI/Button/FilledButton'
+import OutlineButton from '../../../../../UI/Button/OutlineButton'
+import thumbsUp from '../../../../../Assets/Icons/thumbsUp.png'
 
 function Summary(props) {
   return (

@@ -4,8 +4,8 @@ import React, {useState} from 'react';
 import FlashCard from './FlashCard/FlashCard';
 import Summary from './Summary/Summary';
 import './FlashCardSet.css';
-import applause from '../../../Assets/Gifs/Applause.gif'
-import congratulation from '../../../Assets/Gifs/Congratulation.gif'
+import applause from '../../../../Assets/Gifs/Applause.gif'
+import congratulation from '../../../../Assets/Gifs/Congratulation.gif'
 
 const FlashCardSet = () => {
   const data = [
@@ -59,7 +59,7 @@ const FlashCardSet = () => {
                 
                 :
 
-          <div className="h-screen bg-flashcraftBg bg-no-repeat bg-cover bg-center pt-[1%] overflow-hidden">
+          <div className="h-screen w-screen bg-flashcraftBg bg-no-repeat bg-cover bg-center pt-[1%] overflow-hidden">
 
             <div className="relative w-3/5 h-[87%] mx-auto my-0 rounded-[40px] perspective-1000" id='swiper'>
               {data.map((obj, index) => (

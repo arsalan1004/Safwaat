@@ -1,16 +1,27 @@
-import React from 'react'
+import React from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+
 import OutlineButton from '../../../../UI/Button/OutlineButton'
 import DeleteButton from '../../../../UI/Button/DeleteButton'
 import InvertedButton from '../../../../UI/Button/InvertedButton'
 
 function FlashSetBox() {
+
+  const navigate = useNavigate();
+
+  function navigateHandler () {
+      navigate('1')
+  }
+
   return (
     <div className='flex-center'>
 
         <div className='w-5/6 min-h-15 bg-white rounded-3xl px-7 py-5 border-2 border-solid border-gray-200'>
          
           <div className='flex justify-between items-center'>
-            <h1 className='text-xl font-bold font-Poppins text-secondary w-4/5'>Makharij Exploration</h1>
+            <Link to='1' >
+              <h1 className='text-xl font-bold font-Poppins text-secondary w-4/5'>Makharij Exploration</h1>
+            </Link>
             <span className='font-Poppins font-semibold text-slate-600 text-lg ml-8 italic'>Basics</span>
           </div>
     
@@ -21,7 +32,9 @@ function FlashSetBox() {
           <div className='mt-8 flex items-center justify-between' >
 
             <div className='w-32 h-12'>
-              <InvertedButton />
+              <InvertedButton clickHandler={navigateHandler}>
+                Practice
+              </InvertedButton>
             </div>
             
             <DeleteButton />

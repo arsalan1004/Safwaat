@@ -1,4 +1,6 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom';
+
 import FlashCardSet from './FlashCardSet/FlashCardSet'
 import FlashSetBox from './FlashSetBox/FlashSetBox'
 import SlidingIconButton from '../../../UI/Button/SlidingIconButton'
@@ -6,6 +8,13 @@ import SetCreation from './SetCreation/SetCreation'
 
 
 function FlashCraftMain() {
+
+  const navigate = useNavigate();
+
+  function navigateHandler () {
+    navigate('SetCreation')
+  }
+
   return (
     <div className='w-screen min-h-screen flex-column bg-primary-100'>
    
@@ -14,7 +23,9 @@ function FlashCraftMain() {
             <h1 className='font-Poppins text-2xl font-bold tracking-wide text-primary-100 text-center ml-6'>
               FlashCraft
             </h1>
-            <SlidingIconButton />
+            <SlidingIconButton clickHandler={navigateHandler}>
+                Create New Set
+            </SlidingIconButton>
         </div>
 
       {/* Main Area */}
@@ -59,7 +70,6 @@ function FlashCraftMain() {
         {/* <FlashCardSet /> */}
     </div>
 
-    // <SetCreation />
   )
 }
 

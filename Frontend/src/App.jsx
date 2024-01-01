@@ -1,18 +1,14 @@
-import { useState } from 'react'
-import FlashCraft from './Components/FlashCraft/FlashCraft'
-
+import React from 'react';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'; 
 
 import './App.css'
+import router from './Routes/router';
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        {/* <p className='text-3xl'>SAFWAAT TEMPLATE</p> */}
-        <FlashCraft />
-      </div>
+      <RouterProvider  router={router} />
     </>
   )
 }

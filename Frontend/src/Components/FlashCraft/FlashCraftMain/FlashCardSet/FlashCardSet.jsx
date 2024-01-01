@@ -64,7 +64,7 @@ const FlashCardSet = () => {
             <div className="relative w-3/5 h-[87%] mx-auto my-0 rounded-[40px] perspective-1000" id='swiper'>
               {data.map((obj, index) => (
                 <FlashCard key={index} front={obj.front} back={obj.back} 
-                    zIndex={data.length - index} number={index}  onDismiss={handleCardDismiss}/>
+                    zIndex={data.length - index} number={index} onDismiss={handleCardDismiss}/>
               ))}
             </div>
       

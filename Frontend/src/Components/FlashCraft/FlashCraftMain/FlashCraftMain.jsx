@@ -7,7 +7,7 @@ import SlidingIconButton from '../../../UI/Button/SlidingIconButton'
 import SetCreation from './SetCreation/SetCreation'
 
 
-function FlashCraftMain() {
+function FlashCraftMain({setsData}) {
 
   const navigate = useNavigate();
 
@@ -15,39 +15,23 @@ function FlashCraftMain() {
     navigate('SetCreation')
   }
 
+  const data = setsData;
 
-  const data = [
-    {
-      id: 1,
-      title: 'Makharij Exploration',
-      category: 'Basics',
-      cardsQty: 3
-    },
-    {
-      id: 2,
-      title: 'Makharij Exploration 2',
-      category: 'Basics',
-      cardsQty: 6
-    },
-    {
-      id: 3,
-      title: 'Makharij Exploration 3',
-      category: 'Basics',
-      cardsQty: 2
-    },
-    {
-      id: 4,
-      title: 'Makharij Exploration 4',
-      category: 'Basics',
-      cardsQty: 9
-    },
-    {
-      id: 5,
-      title: 'Makharij Exploration 5',
-      category: 'Basics',
-      cardsQty: 6
-    }
-  ] 
+
+  // const data = [
+  //   {
+  //     id: 1,
+  //     title: 'Makharij Exploration',
+  //     category: 'Basics',
+  //     cardsQty: 3
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'Makharij Exploration 2',
+  //     category: 'Basics',
+  //     cardsQty: 6
+  //   }
+  // ] 
 
   const [value, setValue] = useState('');
   const [filteredItems, setFilteredItems] = useState([...data]);
@@ -138,7 +122,7 @@ function FlashCraftMain() {
                   <div 
                       onClick={() => show(item.title)} 
                       className='cursor-pointer text-start my-1'
-                      key={item.id}
+                      key={item.flashCardSetId}
                       >
                       {item.title}
 
@@ -153,7 +137,7 @@ function FlashCraftMain() {
           <div className='w-full h-full mt-9 grid grid-cols-2 gap-4'>
             {
               filteredItems.map( (obj) => {
-                return <FlashSetBox key={obj.id} obj={obj} />
+                return <FlashSetBox key={obj.flashCardSetId} obj={obj} />
               } )
             }
             

@@ -10,7 +10,9 @@ function InputField(props) {
                     placeholder:opacity-50 placeholder:text-small
                     border-secondary border-solid border-2 bg-transparent w-full text-secondary font-Inter text-sm outline-none
                     hover:shadow-[3px_3px_8px_rgba(0,0,0,0.2)] ' 
-                    type="text" 
+                    type="text"
+                    ref={props.refer}
+            
                     placeholder={props.placeholder}
             />
         </div>

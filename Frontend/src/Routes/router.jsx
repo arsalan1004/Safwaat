@@ -2,9 +2,9 @@ import React from "react";
 import {createBrowserRouter} from 'react-router-dom';
 
 
-import FlashCraft from "../Components/FlashCraft/FlashCraft";
+import FlashCraft, {loader as setsLoader} from "../Components/FlashCraft/FlashCraft";
 import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/SetCreation";
-import FlashCardSet from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
+import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
 
 
 const router = createBrowserRouter([
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true, 
-                element: <FlashCraft />
-                // loader: setsLoader
+                element: <FlashCraft />,
+                loader: setsLoader
             },
             {
                 path: 'SetCreation',
@@ -22,7 +22,9 @@ const router = createBrowserRouter([
             },
             {
                 path: ':id',
-                element: <FlashCardSet />
+                element: <FlashCardSet />,
+                loader: cardsLoader
+
             }
         ]
     }

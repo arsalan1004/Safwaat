@@ -1,6 +1,9 @@
 // FlashCraft.jsx
 
 import React, {useState} from 'react';
+import { useLoaderData, useParams } from "react-router-dom";
+
+
 import FlashCard from './FlashCard/FlashCard';
 import Summary from './Summary/Summary';
 import './FlashCardSet.css';
@@ -8,21 +11,29 @@ import applause from '../../../../Assets/Gifs/Applause.gif'
 import congratulation from '../../../../Assets/Gifs/Congratulation.gif'
 
 const FlashCardSet = () => {
-  const data = [
-    {
-      front: 'How to apply Tafkheem ?',
-      back: 'Elevate the posterior tongue to the roof of the upper soft palate',
-    },
-    {
-      front: 'How to apply Tafkheem 2 ?',
-      back: 'Elevate the posterior tongue to the roof of the upper soft palate2',
-    },
-    {
-      front: 'How to apply Tafkheem 3?',
-      back: 'Elevate the posterior tongue to the roof of the upper soft palate3',
-    },
+  const params = useParams();
+
+  const data = (useLoaderData()).flashCards;
+
+
+  console.log('cardsData: ', data);
+  
+
+  // const data = [
+  //   {
+  //     front: 'How to apply Tafkheem ?',
+  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate',
+  //   },
+  //   {
+  //     front: 'How to apply Tafkheem 2 ?',
+  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate2',
+  //   },
+  //   {
+  //     front: 'How to apply Tafkheem 3?',
+  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate3',
+  //   },
     
-  ];
+  // ];
 
 
   const [LearntCards, setLearntCards] = useState([]);
@@ -51,7 +62,13 @@ const FlashCardSet = () => {
 
                 :
 
-                <Summary img={applause} text1={'You are doing great!'} text2={'Keep focusing on the tough terms.'} noLearnt={LearntCards.length} noStillLearning={stillLearningCards.length} buttonText={'Keep Reviewing'} status={'still'}/> 
+                <Summary img={applause} text1={'You are doing great!'} text2={'Keep focusing on the tough terms.'} noLearnt={LearntCards.length} noStillLearning={stillLearningCards.length} 
+                  buttonText={'Keep Reviewing'}
+                  status={'still'}
+                  stillLearning={data.filter((_, index) => stillLearningCards.includes(index))}
+                  id={params.id}
+        
+                 /> 
 
 
               )
@@ -63,7 +80,7 @@ const FlashCardSet = () => {
 
             <div className="relative w-3/5 h-[87%] mx-auto my-0 rounded-[40px] perspective-1000" id='swiper'>
               {data.map((obj, index) => (
-                <FlashCard key={index} front={obj.front} back={obj.back} 
+                <FlashCard key={index} front={obj.term} back={obj.definition} 
                     zIndex={data.length - index} number={index} onDismiss={handleCardDismiss}/>
               ))}
             </div>
@@ -86,3 +103,12 @@ const FlashCardSet = () => {
 };
 
 export default FlashCardSet;
+
+
+export async function loader({ params }) {
+
+  const response = await fetch("http://localhost:8000/" + params.id);
+
+  console.log(response);
+return response;
+}

@@ -4,6 +4,7 @@ const API_URL = '';
 
 const getStreakRange = async (month, year) => {
   console.log(month, year);
+  console.log("Hello");
   try {
     const response = await axios.get(API_URL);
   } catch (error) {
@@ -12,5 +13,6 @@ const getStreakRange = async (month, year) => {
   // setTimeout(() => {}, 3000)
   return ({start: 3, end: 13, streakCount: 13-3});
 }
+
 export {getStreakRange}
 

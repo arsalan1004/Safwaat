@@ -44,7 +44,7 @@ const StreakCalendar = () => {
       // const year = date.getFullYear();
       // const numberOfDays = getNumberOfDaysInMonth(year, month);
       // const startingWeekDay = getStartingWeekdayOfMonth(year, month);
-     
+      console.log(`DATA: ${month} `);
       setCalendarData(() => ({
         currentDayNumeric: currentDate.day,
         onCurrentDay: onCurrentDay,
@@ -60,10 +60,7 @@ const StreakCalendar = () => {
   
   
   
-  
-  
-  
-    useEffect(() => {
+    const handleCurrentData = () => {
       const date = new Date();
    
       setCurrentDate(() => ({
@@ -71,28 +68,33 @@ const StreakCalendar = () => {
         month: date.getMonth(),
         year: date.getFullYear()
       }))
-     
-    }, [])
+    }
+  
+  
+    useEffect(() => {
+      handleCurrentData();
+    }, []);
+
   
     useEffect(() => {
       const getStreakRangeHandler = async () => {
         const {start, end, streakCount} = await getStreakRange(calendarData.month, calendarData.year);
         setRange(prevRange => ({...prevRange,start,end}));
         setStreakCount(streakCount);
-        
       }
       getStreakRangeHandler();
-  
     }, [currentDate])
   
+
     useEffect(() => {
       calendaDataConstructor(currentDate.month, currentDate.year, true);
     }, [range])
   
     useEffect(() => {
       
-  
+      const {daysCount, startingWD, currentDayNumeric, onCurrentDay} = calendarData;
       const isCurrentDay = (loopDay) => {
+        // console.log(`LoopDay: ${loopDay}`)
         return `${(onCurrentDay && newCurrentDayNumeric == loopDay) ? `bg-[#044577]` : `bg-[#2D867F]`}`
       }
   
@@ -109,7 +111,7 @@ const StreakCalendar = () => {
   
       console.log(calendarData)
   
-      const {daysCount, startingWD, currentDayNumeric, onCurrentDay} = calendarData;
+      
   
       let calendarContentData = [];
       let temp = <li></li>;
@@ -120,13 +122,13 @@ const StreakCalendar = () => {
       let newCurrentDayNumeric = currentDayNumeric + startingWD
   
       for(let i = 0; i < (daysCount + startingWD); ++i) {
-        console.log(daysCount, startingWD)
+        // console.log(daysCount, startingWD)
         if(i < startingWD) {
           temp = <li key={i}>{""}</li> 
         }
         else if (i >= startingWD) {
             if(i >= newRangeStart - 1 && i < newRangeEnd) {
-            console.log(`RangeStart: ${newRangeStart}, RangeEnd: ${newRangeEnd}`)
+            // console.log(`RangeStart: ${newRangeStart}, RangeEnd: ${newRangeEnd}`)
   
             if(i == newRangeEnd - 1 && ((i) % 7 == 0) || i == newRangeStart - 1 && ((i+1) % 7 == 0)) {
               /* Checks for Range Edge starting and Ending together: 
@@ -144,7 +146,7 @@ const StreakCalendar = () => {
               temp = listItemConstructor('right',i-startingWD + 1,i)
             }
             else {
-              console.log(onCurrentDay, currentDayNumeric, i)
+              // console.log(onCurrentDay, currentDayNumeric, i)
               temp = listItemConstructor('',i-startingWD + 1,i)
               // temp = <li className={`${(onCurrentDay && newCurrentDayNumeric == i) ? `bg-[#044577]` : `bg-green-800`} h-[100%] flex justify-center items-center`}>{i-startingWD + 1}</li>
             }
@@ -191,8 +193,12 @@ const StreakCalendar = () => {
       console.log("previousMonthHandler")
       console.log(calendarData)
   
-    
-      const onCurrentDay = (currentDate.month == (calendarData.monthNumeric - 1 == -1 ? 11 : calendarData.monthNumeric - 1)) && (currentDate.year == calendarData.year - 1);
+      console.log(`currentDate.month: ${currentDate.month}`);
+      console.log(`calendarData.monthNumeric: ${calendarData.monthNumeric - 1}`);
+      console.log(`currentDate.year: ${currentDate.year}`);
+      console.log(`calendarData.year: ${calendarData.year}`);
+
+      const onCurrentDay = (currentDate.month == (calendarData.monthNumeric - 1 == -1 ? 11 : calendarData.monthNumeric - 1)) && (currentDate.year == calendarData.year);
       // console.log(date.getMonth(), calendarData.monthNumeric - 1 == -1 ? 11 : calendarData.monthNumeric - 1, date.getFullYear(), calendarData.year)
       if((calendarData.monthNumeric - 1) < 0) {
         // Entered Previous Year
@@ -208,12 +214,19 @@ const StreakCalendar = () => {
       console.log(calendarData)
   
       const date = new Date();
-  
-      const onCurrentDay = (currentDate.month == calendarData.monthNumeric + 1) && (currentDate.year == calendarData.year);
-  
+      const month = date.getMonth();
+      const year = date.getFullYear()
+      console.log(`currentDate.month: ${month}`);
+      console.log(`calendarData.monthNumeric: ${calendarData.monthNumeric + 1}`);
+      console.log(`currentDate.year: ${year}`);
+      console.log(`calendarData.year: ${calendarData.year}`);
+     
+
+      const onCurrentDay = (currentDate.month == (calendarData.monthNumeric + 1 == 12 ? 0 : calendarData.monthNumeric + 1)) && (currentDate.year == calendarData.year + 1);
+      console.log(onCurrentDay)
   
       // console.log(date.getMonth(), calendarData.monthNumeric + 1, date.getFullYear(),calendarData.year)
-        if((currentDate.month >= (calendarData.monthNumeric + 1 == 12 ? 0 : calendarData.monthNumeric + 1)) && (currentDate.year >= (calendarData.year))) {
+        // if((currentDate.month >= (calendarData.monthNumeric + 1 == 12 ? 0 : calendarData.monthNumeric + 1)) && (currentDate.year >= (calendarData.year))) {
           if((calendarData.monthNumeric + 1) < 12) {
               // Entered Next Month
             calendaDataConstructor(calendarData.monthNumeric + 1, calendarData.year, onCurrentDay);
@@ -221,7 +234,7 @@ const StreakCalendar = () => {
               // Entered New Year
               calendaDataConstructor(0, calendarData.year + 1, onCurrentDay);
           }
-       }
+      //  }
     }
   
   

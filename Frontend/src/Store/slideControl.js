@@ -2,7 +2,7 @@ import React from 'react';
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-  slideType: "audio",
+  slideType: "dnd",
   isChecked: false,
   isCorrect: true,
   isMotivation: false,

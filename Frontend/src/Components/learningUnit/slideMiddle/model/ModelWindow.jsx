@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 const ModelWindow = () => {
   // const [isPlaying, setIsPlaying] = useState(false)
   const {heading, audioUrl} = useSelector(state => state.modelSlideSlice);
-
+  console.log(heading, audioUrl)
   const [isLooping, setIsLooping] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 

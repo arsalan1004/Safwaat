@@ -13,7 +13,7 @@ import congratulation from '../../../../Assets/Gifs/Congratulation.gif'
 const FlashCardSet = () => {
   const params = useParams();
 
-  const data = (useLoaderData()).flashCards;
+  const data = (useLoaderData()).flashCards; //data returned in a an obj containing an array
 
 
   console.log('cardsData: ', data);

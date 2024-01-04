@@ -9,6 +9,9 @@ const {
 const {
   slideRoute,
 } = require("./routes/learningUnitRoutes/SlideRoute/slideRoute");
+const {
+  completeUnitRoute,
+} = require("./routes/learningUnitRoutes/CompleteUnitRoute/completeUnitRoute");
 
 // REGISTERING AND REQUIRING ENV VARIABLES
 require("dotenv").config();
@@ -27,6 +30,7 @@ require("../config/db");
 // REGISTERING MIDDLEWARES
 app.use("/api/levelMap", levelMapRoute);
 app.use("/api/slides", slideRoute);
+app.use("/api/completeUnit", completeUnitRoute);
 
 // CREATING SERVER
 const server = http.createServer(app);

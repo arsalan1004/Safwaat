@@ -6,6 +6,7 @@ const userProgressSchema = mongoose.Schema(
     learningUnitId: String,
     unitNum: Number,
     starsEarned: Number,
+    xpCount: Number,
   },
   { timestamps: true, collection: "UserProgress" }
 );

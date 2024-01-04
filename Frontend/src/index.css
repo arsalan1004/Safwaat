@@ -15,6 +15,12 @@
   .mcq-shadow-inner {
     @apply shadow-[inset_4px_5px_4px_rgba(2,20,33,0.5)] ;
   }
+  .drop-box-shadow {
+    @apply shadow-[8px_8px_8px_2px_rgba(2,20,33,0.2)] ;
+  }
+  .drop-option-shadow {
+    @apply shadow-[2px_4px_3px_0px_rgba(2,20,33,0.2)] ;
+  }
 }
 
 /*:root {

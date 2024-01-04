@@ -25,13 +25,14 @@
       "content": {
         "boxOneHeading": "Hams",
         "boxTwoHeading": "Jahr",
-        "options": ["A", "B", "C", "D"],
+        "options": ["ق", "ث", "ض", "ش", "ح", "ع", "ف", "م", "ط", "ب", "ر", "ى"],
         "correctAnswers": {
-          "A": "box1", 
-          "B": "box2", 
-          "C": "box1", 
-          "D": "box2"
-        
+          "ع": "box1", "ى": "box1",
+          "ر": "box1", "م": "box1",
+          "ب": "box1", "ض": "box1",
+          "ط": "box2", "ق": "box2",
+          "ث": "box2", "ف": "box2",
+          "ش": "box2", "ح": "box2"
         }
       }
     },

@@ -29,12 +29,14 @@ const dndSlideSlice = createSlice({
   initialState: initialState,
   reducers: {
     setDndData(state,action) {
+      
       state.options = action.payload.options,
       state.originalOptions = action.payload.options,
       state.boxOneHeading = action.payload.boxOneHeading,
       state.boxTwoHeading = action.payload.boxTwoHeading,
       state.correctAnswers = action.payload.correctAnswers
-      state.styleDict = action.payload.correctAnswers
+      
+     
     },
     setBoxOneList(state, action) {
       state.boxOneList = action.payload;
@@ -59,21 +61,37 @@ const dndSlideSlice = createSlice({
       console.log("result Called");
       // box -> wrong -> break -> dndIsCorrect: false
       let temp = true;
-
+      let tempStyleDict = {};
       // for(i = 0; i< boxOneList.length; ++i) {
-      //   if(state.correctAnswers[option] != 'box1') {
+      //   if(state.correctAnswers[i] != 'box1') {
       //     temp = false;
+      //     tempStyleDict
       //     break;
       //   }
+      //   tempStyleDict =
       // }
 
 
       state.boxOneList.forEach((option) => {
         if(state.correctAnswers[option] != 'box1') {
           temp = false;
+          tempStyleDict[`${option}`] = 'wrong'
+        }
+        else {
+          
+          tempStyleDict[`${option}`] = 'correct'
         }
       })
-      
+      state.boxTwoList.forEach((option) => {
+        if(state.correctAnswers[option] != 'box2') {
+          temp = false;
+          tempStyleDict[`${option}`] = 'wrong'
+        }
+        else {
+          tempStyleDict[`${option}`] = 'correct'
+        }
+      })
+      state.styleDict = tempStyleDict;
       state.dndIsCorrect = temp;
       console.log(`dndIsCorrect IN reducer : ${state.dndIsCorrect}`);
     }

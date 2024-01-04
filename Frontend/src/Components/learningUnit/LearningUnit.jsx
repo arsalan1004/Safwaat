@@ -96,8 +96,8 @@ const LearningUnit = (props) => {
   }, [currentSlide, slideIdArray])
 
   return (
-    // !isLoading ? <Slide /> : <Spinner style={"primary"}/>
-    <Slide /> // This
+    !isLoading ? <Slide /> : <Spinner style={"primary"}/>
+ 
   )
 }
 

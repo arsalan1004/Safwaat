@@ -8,7 +8,10 @@ const DraggableOption = ({ text, type ,index, marginx=8, marginy=8}) => {
 
   return (
 
-      <div key={index} ref={drag}>
+      <div key={index} 
+        ref={drag}
+        className='text-secondary border-2 border-secondary rounded-[10px] text-xl'
+      >
         {text}
       </div>
     );

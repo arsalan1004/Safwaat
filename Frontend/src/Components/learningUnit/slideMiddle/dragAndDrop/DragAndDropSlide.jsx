@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDrop } from 'react-dnd';
 import DropBox from './DropBox';
 import DraggableBadge from './DragableBadge';
-import { useDispatch, useSelector } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { dndSlideActions } from '../../../../Store/dndSlideSlice';
 const DragAndDropSlide = () => {
   const dispatch = useDispatch();
-
+  const [selectedSource, setSelectedSource] = useState('option');
 
   // const [boxOneList, setBoxOneList] = useState([]);
   // const [boxTwoList, setBoxTwoList] = useState([]);
@@ -19,23 +19,45 @@ const DragAndDropSlide = () => {
   //   'Hyderabad': 'Box2'
   // }
 
+  const setSelectedSourceHandler = (source) => {
+    console.log("setSelectedHandler Run")
+    setSelectedSource(source)
+  }
+
   const {options, boxOneHeading, boxTwoHeading, boxOneList, boxTwoList} = useSelector(state => state.dndSlideSlice)
   // const [, cityDrop] = useDrop({
   //   accept: 'city',
   //   drop: (item) => handleList(item, 'City'),
   // });
-  const handleBox1List = (item, target, source) => {
+  const handleBox1List = (item, target, isFull) => {
+    console.log(`selectedSource: ${selectedSource}`)
+    if(isFull == true) {
+      console.log("isFull Returned")
+      return};
     const newOption = item[0];
 
-    console.log("Handler called on drop")
+    console.log("handleBox1List called on drop")
     console.log(`item: ${item}`)
-    console.log(`target: ${target}`)
-    console.log(`Source: ${source}`)
+  
     if (target === 'option') {
       const boxOneNewOptions = [...boxOneList, newOption];
-
+      
+      if(selectedSource == 'option') {
       dispatch(dndSlideActions.setBoxOneList([...(new Set(boxOneNewOptions))]));
-      dispatch(dndSlideActions.setOptions(options.filter((option) => option != newOption)))
+
+        dispatch(dndSlideActions.setOptions(options.filter((option) => option != newOption)))
+      }
+      else if(selectedSource == 'boxTwo') {
+        dispatch(dndSlideActions.setBoxOneList([...(new Set(boxOneNewOptions))]));
+
+        dispatch(dndSlideActions.setBoxTwoList(boxTwoList.filter((option) => option != newOption)))
+      }
+
+
+
+      
+
+      
       // if(options.length - 1 == 0) {
       //   dispatch(dndSlideActions.calculateResult());
       // }
@@ -47,7 +69,7 @@ const DragAndDropSlide = () => {
   };
 
   useEffect(() => {
-    console.log("OPTION USE EFFECT RUN")
+    // console.log("OPTION USE EFFECT RUN")
     if(options.length == 0) {
       console.log("OPTION USE EFFECT IF CONDITION TRUE")
       dispatch(dndSlideActions.calculateResult());
@@ -55,18 +77,26 @@ const DragAndDropSlide = () => {
   }, [options])
 
 
-  const handleBox2List = (item, target,  source) => {
+  const handleBox2List = (item, target, isFull) => {
+    console.log(`selectedSource: ${selectedSource}`)
+    if(isFull == true) return;
     const newOption = item[0];
-
-    console.log("Handler called on drop")
+    console.log("handleBox2List called on drop")
     console.log(`item: ${item}`)
-    console.log(`target: ${target}`)
-    if (target === 'option') {
-      console.log("City If run");
-      const boxTwoNewOptions = [...boxTwoList, newOption];
 
-      dispatch(dndSlideActions.setBoxTwoList([...(new Set(boxTwoNewOptions))]));
-      dispatch(dndSlideActions.setOptions(options.filter((option) => option != newOption)))
+    if (target === 'option') {
+  
+      const boxTwoNewOptions = [...boxTwoList, newOption];
+      if(selectedSource == 'option') {
+        dispatch(dndSlideActions.setBoxTwoList([...(new Set(boxTwoNewOptions))]));
+        dispatch(dndSlideActions.setOptions(options.filter((option) => option != newOption)))
+      }
+      else if (selectedSource == 'boxOne') {
+        dispatch(dndSlideActions.setBoxTwoList([...(new Set(boxTwoNewOptions))]));
+        dispatch(dndSlideActions.setBoxOneList(boxOneList.filter((option) => option != newOption)))
+      }
+
+      
       console.log(`In BoxTWOLIST ${options.length}`);
       // if(options.length - 1 == 0) {
       //   dispatch(dndSlideActions.calculateResult());
@@ -104,44 +134,43 @@ const DragAndDropSlide = () => {
 
   return (
   
-    <div className="container">
-    <div className="flex gap-3 m-5">
-      <DropBox
-        title = {boxOneHeading}
-        listHandler={handleBox1List}
-        list = {boxOneList}
-      />
-      <DropBox
-        title = {boxTwoHeading}
-        listHandler={handleBox2List}
-        list={boxTwoList}
-      />
-      {/* <div ref={cityDrop} className="h-[40vh] w-[40vw] border-2 border-accent">  
-        <p className="text-blue text-center font-extrabold">City</p>
-        <div className="m-6">
-          <h2 className=''>City List:</h2>
-          {
-            cityList.map((item, index) => (
-              <DraggableBadge 
-                marginx={9} marginy={6} text={item} 
-                type='city' index={index}   
-              />
-          ))
-          }
-        </div>
-      </div> */}
-    </div>
-    <div className='border-2 border-correct'> 
+    <div className="flex flex-col items-center gap-6 mt-5">
+    <h1 className='flex justify-center items-center font-itim text-2xl text-secondary'>Drag Options to the Correct Box</h1>
+    <div className='w-[70%] mx-auto gap-4 grid grid-rows-[repeat(2,1fr)] grid-cols-[repeat(6,1fr)] mt-5'> 
       { 
         options.map((item,index)=> (
           <DraggableBadge 
             marginx={9} text={item} 
-            type='option' index={index+39} 
+            type='option' index={index+39}
+            selectHandler = {() => setSelectedSourceHandler("option")} 
+            style={'default'}
           />
         ))
-      }
+      } 
     </div>
-    <div className='btn btn-warning m-5' 
+
+
+
+      <div className='flex justify-between w-[70%] mx-auto'>
+        <DropBox
+          title = {boxOneHeading}
+          listHandler={handleBox1List}
+          list = {boxOneList}
+          sourceId = {"boxOne"}
+          selectedHandler = {setSelectedSourceHandler}
+          boxLength = {boxOneList.length}
+        />
+        <DropBox
+          title = {boxTwoHeading}
+          listHandler={handleBox2List}
+          list={boxTwoList}
+          sourceId = {"boxTwo"}
+          selectedHandler = {setSelectedSourceHandler}
+          boxLength = {boxTwoList.length}
+        />
+      </div>
+
+    <div className='' 
             onClick={resetHandler}
           > Reset
       </div>

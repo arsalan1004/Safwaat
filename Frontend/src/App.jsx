@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import './App.css'
-import StreakCalendar from './Components/streakCalendar/StreakCalendar'
 
+import StreakCalendar from './Components/streakCalendar/streakCalendar'
 function App() {
   // const [count, setCount] = useState(0)
 

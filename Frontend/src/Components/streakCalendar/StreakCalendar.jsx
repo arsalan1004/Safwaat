@@ -7,6 +7,9 @@ import previousArrow from '../../assets/icons/previousArrow.svg';
 
 const StreakCalendar = () => {
 
+  
+
+
 
   const INITIAL_DATE_STATE = {
   }
@@ -14,9 +17,10 @@ const StreakCalendar = () => {
     
     const [calendarData, setCalendarData] = useState(() => ({}))
     const [calendarContents, setCalendarContents] = useState([])
-    const [range, setRange] = useState(() => ({start: 3, end: 4}))
+    const [range, setRange] = useState({start: null, end: null})
     const [streakCount, setStreakCount] = useState(2)
     const [currentDate, setCurrentDate] = useState(() => ({day: "", month: "", year: ""}));
+    const [isLoading, setIsLoading] = useState(false);
     const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   
     function getNumberOfDaysInMonth(year, month) {
@@ -25,8 +29,7 @@ const StreakCalendar = () => {
   
       console.log("hrer");
       console.log(`month: ${month}`)
-      console.log(`date: ${date}, date.getDate(): ${date.getDate()}, date.getDate() + 1: ${date.getDate() + 1}`)
-  
+      console.log(`date: ${date}, date.getDate(): ${date.getDate()}, date.getDate() + 1: ${date.getDate() + 1}`) 
       return date.getDate();
       // return (date.getDate() + 1 == 32 ? 30 : date.getDate() + 1);
     }
@@ -36,8 +39,27 @@ const StreakCalendar = () => {
   
       return date.getDay();
     }
-  
-    const calendaDataConstructor = (monthIndex, year, onCurrentDay) => {
+    const getStreakRangeHandler = async (month, year) => {
+      console.log("getStreakRangeHandler")
+      console.log(month)
+      console.log(year)
+      const data = await getStreakRange(month, year);
+      let start = data.start;
+      let end = data.end;
+      let streakCount = data.streakCount;
+      console.log(`start: ${start}`)
+      console.log(`end: ${end}`)
+      console.log(`streakCount: ${streakCount}`)
+      setRange({start: start,end: end});
+      setStreakCount(streakCount);
+    }
+    const calendaDataConstructor = async (monthIndex, year, onCurrentDay) => {
+      setIsLoading(true);
+      await getStreakRangeHandler(monthIndex, year);
+      setIsLoading(false);
+
+      console.log("inc calendarData");
+      console.log(monthIndex, year)
       const date = new Date(year, monthIndex);
       const month = date.getMonth();
       // const day = date.getDate()
@@ -72,23 +94,28 @@ const StreakCalendar = () => {
   
   
     useEffect(() => {
-      handleCurrentData();
+      // handleCurrentData();
+      const date = new Date();
+      setCurrentDate(() => ({
+        day:  date.getDate() - 1,
+        month: date.getMonth(),
+        year: date.getFullYear()
+      }))
     }, []);
 
-  
+ 
     useEffect(() => {
-      const getStreakRangeHandler = async () => {
-        const {start, end, streakCount} = await getStreakRange(calendarData.month, calendarData.year);
-        setRange(prevRange => ({...prevRange,start,end}));
-        setStreakCount(streakCount);
-      }
-      getStreakRangeHandler();
+      const date = new Date();
+
+      getStreakRangeHandler(date.getMonth(), date.getFullYear()).then(() => {
+        calendaDataConstructor(date.getMonth(), date.getFullYear(), true);
+      });
     }, [currentDate])
   
 
-    useEffect(() => {
-      calendaDataConstructor(currentDate.month, currentDate.year, true);
-    }, [range])
+    // useEffect(() => {
+      
+    // }, [range])
   
     useEffect(() => {
       
@@ -268,12 +295,11 @@ const StreakCalendar = () => {
                   {weekDays.map((weekDay,index) => <li key={index}>{weekDay}</li>)}
                 </ul>
                 <ul className='text-xl font-medium font-abhaya grid grid-cols-[repeat(7,70px)] grid-rows-[repeat(6,35px)]  items-center justify-center gap-y-4'>
-                  {calendarContents}
+                  {isLoading ? <p>Loading</p> : calendarContents}
                 </ul>
               </div>
             </div>
           </div>
-  
         )
       }
     </>

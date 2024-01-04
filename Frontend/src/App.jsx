@@ -8,9 +8,12 @@ import ExitLessonModal from './Components/learningUnit/ExitLessonModal'
 import AudioSlide from './Components/learningUnit/slideMiddle/audio/AudioSlide'
 import TheorySlideComparative from './Components/learningUnit/slideMiddle/theory/TheorySlideComparative'
 import ModelWindow from './Components/learningUnit/slideMiddle/model/ModelWindow'
+import Drag from './Components/learningUnit/slideMiddle/dragAndDrop/drag'
+import Match from './Components/learningUnit/slideMiddle/matching/match'
 const router = createBrowserRouter([
   { path: '/:lid', element: <LearningUnit /> },
   { path: '/result', element: <Result /> },
+  { path: '/match', element: <Match />}
   // { path: '/', element: <ModelWindow /> }
 ])
 

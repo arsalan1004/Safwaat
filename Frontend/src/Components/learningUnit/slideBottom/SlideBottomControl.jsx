@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
 import { unitInfoActions } from '../../../Store/unitInfo.js';
 import { mcqSlideActions } from '../../../Store/mcqSlide.js';
 import { audioSlideActions } from '../../../Store/audioSlideSlice.js';
+import { dndSlideActions } from '../../../Store/dndSlideSlice.js';
+import { matchingSlideAction } from '../../../Store/matchingSlideSlice.js';
+
 
 
 
@@ -36,7 +39,6 @@ const SlideBottomControl = (props) => {
     if(lessonComplete == true) {
       
       setInterval(() => {navigate('/result')}, 400);
-
       // dispatch(slideControlActions.decrementCurrentSlide());
       // current slide needs to be decremented
     }
@@ -58,12 +60,27 @@ const SlideBottomControl = (props) => {
 // }
   let selectedOption = '';
   let correctAnswer = '';
+  let dndOptionLength = -2;
+  let dndOptionIsCorrect = false;
+  let isMatchComplete = false;
+  let isMatchCorrect = false;
   switch(slideType) {
     case "mcq":
       ({selectedOption, correctAnswer} = useSelector(state => state.mcqSlideSlice))
       break;
     case "audio":
       ({selectedOption, correctAnswer} = useSelector(state => state.audioSlideSlice))
+      break;
+    case "dnd":
+      const {options, dndIsCorrect} = useSelector(state => state.dndSlideSlice);
+      console.log(options)
+      dndOptionIsCorrect = dndIsCorrect;
+      dndOptionLength = options.length;
+      console.log(dndOptionLength);
+      console.log(`DND OPTION IS CORRECT ${dndOptionIsCorrect}`)
+      break;
+    case "match":
+      ({isMatchComplete,isMatchCorrect} = useSelector(state => state.matchingSlideSlice))
       break;
     default:
       // Written for all Thepry Slide
@@ -103,6 +120,7 @@ const SlideBottomControl = (props) => {
   }
 
   const dispatchWrong = () => {
+    console.log("DISPATCHED WRONG")
     dispatch(slideControlActions.setIsCorrect(false));
     dispatch(unitInfoActions.incrementWrongAnswer());
   }
@@ -127,6 +145,11 @@ const SlideBottomControl = (props) => {
     // }
   }
 
+  const dndIsCorrectHandler = () => {
+    console.log(`Calculate result Dispathced From "SLIDE BOTTOM CONTROL`)
+    dispatch(dndSlideActions.calculateResult())
+  }
+
 
 
 
@@ -139,17 +162,38 @@ const SlideBottomControl = (props) => {
     // Perform some logic here
     // 
     if(isTheorySlide() == false) {
-    if(selectedOption == -1) {
-      console.log("Entered Selected Option -1")
-      // Initial Condition When option is unselected, Clicking button then won't run
-      return;
-    }
+      if(selectedOption == -1 ) {
+        console.log("Entered Selected Option -1")
+        // Initial Condition When option is unselected, Clicking button then won't run
+        return;
+      }
+      else if(isChecked == false && dndOptionLength != 0 && slideType == "dnd") {
+        return;
+      }
+      else if(isChecked == false && isMatchComplete == false && slideType == "match") {
+        console.log("returned Check in matching slide")
+        return;
+      }
     
     if(isChecked == false && isMotivation == false) {
         // When User Clicks Check
         dispatch(slideControlActions.setIsChecked(true))
-        if(selectedOption == correctAnswer) dispatchCorrect();
-        else dispatchWrong()
+        if(slideType == "dnd") {
+          // dndIsCorrectHandler();
+          console.log(`dndOptionIsCorrect: ${dndOptionIsCorrect}`)
+          if(dndOptionIsCorrect == true) dispatchCorrect();
+          else dispatchWrong();
+        }
+        else if(slideType == "match") {
+          console.log("Entered Correct/Wrong Dispatch FOR MATCBING")
+          console.log(`isMatchCorrect: ${isMatchCorrect}`)
+          if(isMatchCorrect == true) dispatchCorrect;
+          else dispatchWrong();
+        }
+        else {
+          if(selectedOption == correctAnswer ) dispatchCorrect();
+          else dispatchWrong()
+        }
       // switch(slideType) {
       //   case "mcq": 
       //     {
@@ -251,6 +295,11 @@ const SlideBottomControl = (props) => {
         break;
       case "audio": dispatch(audioSlideActions.setSelected(-2));
         break;
+      case "dnd": dispatch(dndSlideActions.setDndOptionIsCorrect(false));
+        break;
+      case "match": dispatch(matchingSlideAction.setIsMatchingCorrect(false));
+        break;
+
       default:
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
@@ -259,6 +308,7 @@ const SlideBottomControl = (props) => {
     }
     dispatch(slideControlActions.setIsChecked(true));
     dispatchWrong();
+    console.log("DISPATCHED WRONG VIA SKIP");
     // dispatch(slideControlActions.setIsCorrect(false));
     // dispatch(unitInfoActions.incrementWrongAnswer());
   }

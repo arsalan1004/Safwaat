@@ -10,6 +10,8 @@ import Spinner from '../../UI/Spinner';
 import { theoryImageSlideActions } from '../../Store/theoryImageSlideSlice';
 import { theoryComparativeSlideActions } from '../../Store/theoryComparativeSlideSlice';
 import { modelSlideActions } from '../../Store/modelSlideSlice';
+import { dndSlideActions } from '../../Store/dndSlideSlice';
+import { matchingSlideAction } from '../../Store/matchingSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -61,16 +63,27 @@ const LearningUnit = (props) => {
             dispatch(slideControlActions.setSlideType("model"))
             dispatch(modelSlideActions.setModelData(response.content))
             break;  
-
+          case "dnd":
+            dispatch(slideControlActions.setSlideType("dnd"))
+            dispatch(dndSlideActions.setDndData(response.content))
+            break; 
+          case "match":
+             dispatch(slideControlActions.setSlideType("match"))
+             dispatch(matchingSlideAction.setMatchingSlideData(response.content))
+             break;
         default:
           break;
       }
     }
   }
 
+  // Uncomment This only
   useEffect(() => {
     setTimeout(() => getUnitDataHandler(), 1000);
   }, [])
+
+
+
   // useEffect(() => {
   //   slideChangeHandler();
   //   console.log("SlideIDARray useEfffect");
@@ -83,7 +96,8 @@ const LearningUnit = (props) => {
   }, [currentSlide, slideIdArray])
 
   return (
-    !isLoading ? <Slide /> : <Spinner style={"primary"}/>
+    // !isLoading ? <Slide /> : <Spinner style={"primary"}/>
+    <Slide /> // This
   )
 }
 

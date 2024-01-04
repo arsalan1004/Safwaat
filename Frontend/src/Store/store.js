@@ -5,6 +5,8 @@ import audioSlideReducer from './audioSlideSlice'
 import theoryImageSlideReducer from './theoryImageSlideSlice'
 import theoryComparativeSlideReducer from './theoryComparativeSlideSlice'
 import modelSlideReducer from './modelSlideSlice'
+import dndSlideReducer from './dndSlideSlice'
+import matchingSlideReducer from './matchingSlideSlice';
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -16,7 +18,9 @@ const store = configureStore({
     unitInfoSlice: unitInfoReducer,
     theoryImageSlideSlice: theoryImageSlideReducer,
     theoryComparativeSlideSlice: theoryComparativeSlideReducer,
-    modelSlideSlice: modelSlideReducer
+    modelSlideSlice: modelSlideReducer,
+    dndSlideSlice: dndSlideReducer,
+    matchingSlideSlice: matchingSlideReducer
   }
 });
 

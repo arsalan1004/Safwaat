@@ -11,7 +11,7 @@ import ModelWindow from './Components/learningUnit/slideMiddle/model/ModelWindow
 const router = createBrowserRouter([
   { path: '/:lid', element: <LearningUnit /> },
   { path: '/result', element: <Result /> },
-  { path: '/', element: <ModelWindow /> }
+  // { path: '/', element: <ModelWindow /> }
 ])
 
 function App() {

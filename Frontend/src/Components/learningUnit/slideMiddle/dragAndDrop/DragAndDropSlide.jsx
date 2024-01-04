@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDrop } from 'react-dnd';
 import DropBox from './DropBox';
 import DraggableBadge from './DragableBadge';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import reset from '../../../../assets/icons/reset.svg';
 import { dndSlideActions } from '../../../../Store/dndSlideSlice';
 const DragAndDropSlide = () => {
   const dispatch = useDispatch();
+  const {isChecked} = useSelector(state => state.slideControl)
   const [selectedSource, setSelectedSource] = useState('option');
 
   // const [boxOneList, setBoxOneList] = useState([]);
@@ -170,10 +172,12 @@ const DragAndDropSlide = () => {
         />
       </div>
 
-    <div className='' 
-            onClick={resetHandler}
-          > Reset
-      </div>
+      <button className='flex gap-2 justify-center items-center bg-accent px-2 py-2 rounded-[10px] text-primary' 
+              onClick={resetHandler}
+              disabled={isChecked}
+      > 
+        <img src={reset} alt="restart-slide" className='w-[20px] h-[20px]'/> Reset
+      </button>
     </div>  
  
   )

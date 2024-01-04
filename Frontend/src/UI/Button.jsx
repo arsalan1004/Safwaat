@@ -6,10 +6,10 @@ const Button = ({ contentType, styleType, content, handler}) => {
   let style = "";
   // Self end in solid accent to tackle alignment of done(single) button same for motivation slide
   let btnStyles = {
-    'solid-correct': "text-primary bg-correct font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
+    'solid-correct': "button_drop_shadow text-primary bg-correct font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
     'solid-correct-motivation' : "self-end text-primary bg-correct font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
     'solid-accent': "self-end text-primary bg-accent font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
-    'solid-wrong': "text-primary bg-wrong font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
+    'solid-wrong': "button_drop_shadow text-primary bg-wrong font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer",
     'outline-accent': "text-accent border-2 border-accent font-itim text-xl rounded-[40px] py-2 w-40 cursor-pointer"
   }
 

@@ -10,12 +10,12 @@
           "Middle of the tongue and roof of the mouth", 
           "End of the tongue and the hard palate"
       ],
-        "columnTwo": ["A", "B", "C", "D"],
+        "columnTwo": ["ق", "ج", "ك", "غ"],
         "answers": {
-            "Middle of the throat": "A",
-            "End of the Tongue and the soft palate": "B",
-            "Middle of the tongue and roof of the mouth": "C",
-            "End of the tongue and the hard palate": "D"
+            "Middle of the throat": "ق",
+            "End of the Tongue and the soft palate": "ج",
+            "Middle of the tongue and roof of the mouth": "ك",
+            "End of the tongue and the hard palate": "غ"
         }
       }
     },

@@ -7,8 +7,8 @@ import { matchingSlideAction } from '../../../../Store/matchingSlideSlice';
 const Match = () => {
   const dispatch = useDispatch();
   const {columnOne, columnTwo, answers} = useSelector(state => state.matchingSlideSlice)
-
-  console.log(answers);
+  const {isChecked} = useSelector(state => state.slideControl)
+  console.log(isChecked);
 
 
   // const [answer, setAnswer] = useState([
@@ -19,13 +19,9 @@ const Match = () => {
   // ]);
   
   // MAX_TRIES = 4
-  // const [selectedPairs, setSelectedPairs] = useState(0);
+
   const [disableLeft, setDisableLeft] = useState(false);
   const [disableRight, setDisableRight] = useState(true);
-  // const buttonL = useRef(0);
-  // const buttonR = useRef(0);
-  const [answerMsg,setMsg] = useState(null);
-  // const [checkCity,setCity] = useState("");
   const [selectOption,setSelectOption] = useState("");
   const [selectedDisabledOptIndex, setSelectedDisabledOptIndex] = useState(-1);
   const [counter,setCounter] = useState({tries:0,count:0});
@@ -43,30 +39,23 @@ const Match = () => {
     3: false
   })
 
-  // const disableStatus = {
-  //   0: false,
-  //   1: false,
-  //   2: false,
-  //   3: false
-  // }
+  const [checkStyleDict, setCheckStyleDict] = useState(() => ({}))
 
   const newColStyles = {
-    'selected': `bg-secondary text-primary w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw] `,
-    'freezed': `bg-[rgba(4,69,119,0.3)] text-primary w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`
+    'selected': `match-shadow-outer text-primary text-[14px] font-itim border-2 border-secondary rounded-xl px-[2px] bg-secondary`,
+    'freezed': `match-shadow-inner text-primary text-[14px] font-itim border-2 border-slate-700 rounded-xl px-[2px] bg-[rgba(4,69,119,0.3)]`
+  }
+  const checkStyles = {
+    'correct': 'match-shadow-outer text-primary text-[14px] font-itim border-2 border-correct rounded-xl px-[2px] bg-correct',
+    'wrong': 'match-shadow-outer text-primary text-[14px] font-itim border-2 border-wrong rounded-xl px-[2px] bg-wrong'
   }
 
-
+  let style = `match-shadow-outer text-secondary text-[14px] font-itim border-2 border-secondary rounded-xl px-[2px]`;
   const [colOneStyle, setColOneStyle] = useState([
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
+    style, style, style, style
   ]);
   const [colTwoStyle, setColTwoStyle] = useState([
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
-    `w-[20vw] h-auto border-2 border-b-slate-700 rounded-xl my-2 mx-[10vw]`,
+    style, style, style, style
   ]);
 
     useMemo(()=>{
@@ -80,18 +69,26 @@ const Match = () => {
 
 
     function checkPairs(option) {
-        console.log(`option: ${option}`)
+        console.log(`option: ${selectOption}`)
         console.log(`answer: ${answers[selectOption]}`)
+
         if(option == answers[selectOption]) {
+
+          /**
+           * if correct:
+           *  option: style[]
+           */
             if(counter.count + 1 == 4) dispatch(matchingSlideAction.setIsMatchingCorrect(true));
             console.log("CORRECT ANSWER CALLED");
-            setMsg(true);
+         
             setCounter({tries:counter.tries+1,count:counter.count+1});
+            setCheckStyleDict(prevCheckSt => ({...prevCheckSt, [selectOption]: 'correct', [option]: 'correct'}));
           } 
           else {
           console.log("WRONG ANSWER CALLED");
-            setMsg(false);
+  
             setCounter({tries:counter.tries+1,count:counter.count});
+            setCheckStyleDict(prevCheckSt => ({...prevCheckSt, [selectOption]: 'wrong', [option]: 'wrong'}));
         }
         dispatch(matchingSlideAction.setTries(counter.tries+1));
 
@@ -103,7 +100,12 @@ const Match = () => {
     const selectLeftColumnHandler = (option, index) => {
       setSelectedDisabledOptIndex(index)
       console.log("SELECT LEFT COLUMN HANDLER CALLED");
-      colOneStyle[index] = newColStyles.selected;
+      setColOneStyle((prevStyle) => 
+      (prevStyle.map((style, styleIndex) => 
+      (styleIndex != index ? style : newColStyles.selected)
+      )
+      ))
+      // colOneStyle[index] = newColStyles.selected;
       console.log(option);
       setSelectOption(option);
       setDisableStatusOne(dsOne => ({...dsOne, [index]: true}))
@@ -114,55 +116,65 @@ const Match = () => {
     }
     const selectRightColumnHandler = (option, index) => {
       console.log("SELECT RIGHT COLUMN HANDLER CALLED");
-      colOneStyle[selectedDisabledOptIndex] = newColStyles.freezed;
-      colTwoStyle[index] = newColStyles.freezed;
+      setColOneStyle((prevStyle) => 
+        (prevStyle.map((style, styleIndex) => 
+          (styleIndex != selectedDisabledOptIndex ? style : newColStyles.freezed)
+          )
+        ))
+      setColTwoStyle((prevStyle) => 
+        (prevStyle.map((style, styleIndex) => 
+          (styleIndex != index ? style : newColStyles.freezed)
+          )
+        ))
+
+      // colOneStyle[selectedDisabledOptIndex] = newColStyles.freezed;
+      // colTwoStyle[index] = newColStyles.freezed;
       setDisableStatusTwo(dsTwo => ({...dsTwo, [index]: true}))
 
       console.log(option);
       checkPairs(option);
       setDisableLeft(false);
-      // setDisableRight(true);
+      setDisableRight(true);
       setSelectOption(false);
     }
-
+    console.log(checkStyleDict)
   return (
-    <div className="container">
-      {/* <Header></Header> */}
-      <div className="flex my-[15vh]">
-        <div className="flex flex-col ml-7">
-          
-
+    <div className="">
+      <h1 className='font-itim text-2xl text-secondary text-center mb-4'>Match The Following</h1>
+      <div className="w-3/5 mx-auto flex justify-between font-itim">
+        <div className="w-[30%] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
           {columnOne.map((option, index) => (
             <button
               key={index}
-              className={colOneStyle[index]}
+              className={isChecked ? checkStyles[checkStyleDict[option]] : colOneStyle[index]}
               onClick={() => selectLeftColumnHandler(option, index)}
               disabled = {counter == 4 || disabledStatusOne[index] || disableLeft == true}
             >
-              <p className="py-2 font-bold text-5xl text-center">{option}</p>
+              <p className="text-center">{option}</p>
             </button>
           ))}
         </div>
-        <div className="border-x-4 border-black w-[2vw]"></div>
-        <div className="flex flex-col w-[20vw]">
+        
+        <div className="w-[17%] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
           {
             columnTwo.map((option, index) => (
             <button
               key={index}
-              className={colTwoStyle[index]}
+              className={isChecked ? checkStyles[checkStyleDict[option]] :colTwoStyle[index]}
               onClick={() => selectRightColumnHandler(option, index)}
               disabled = {(counter == 4 || selectOption == false || disabledStatusTwo[index] || disableRight == true) ? true : false}
             >
-              <p className="py-2 font-bold text-5xl text-center">{option}</p>
+              <p className="text-center">{option}</p>
             </button>
           ))}
         </div>
       </div>
-      {answerMsg && <p className="py-2 font-bold text-5xl text-center">&#128077;</p>}
-      {!answerMsg && <p className="py-2 font-bold text-5xl text-center">&#128078;</p> }         
-      {counter.tries==4? <p className="font-bold text-5xl text-center">Score:{counter.count}</p>:null}
+           
     </div>
   );
 };
 
 export default Match;
+
+// {answerMsg && <p className="py-2 text-center">&#128077;</p>}
+// {!answerMsg && <p className="py-2   text-center">&#128078;</p> } 

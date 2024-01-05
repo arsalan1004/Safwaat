@@ -23,7 +23,7 @@ export default FlashCraft;
 
 export async function loader () {
   const userId = '655ba0b013679c0e8c33e9cd';
-  const response = await fetch('http://localhost:8000/', 
+  const response = await fetch('http://localhost:8000/api/FlashCraft', 
   {
     method: 'POST',
     body: JSON.stringify({userId}),

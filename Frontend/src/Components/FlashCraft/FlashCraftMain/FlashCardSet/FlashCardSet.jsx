@@ -107,7 +107,7 @@ export default FlashCardSet;
 
 export async function loader({ params }) {
 
-  const response = await fetch("http://localhost:8000/" + params.id);
+  const response = await fetch("http://localhost:8000/api/FlashCraft/" + params.id);
 
   console.log(response);
 return response;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DeleteButton() {
+function DeleteButton(props) {
   return (
     <button className='group relative w-12 h-12 rounded-full bg-gray-900 border-none font-semibold
           flex-center overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.164)] duration-300

@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // REGISTERING ROUTES
-app.use("/", flashCardSetRouter);
+app.use("/api/FlashCraft", flashCardSetRouter);
 app.use("/api/flashcard", flashCardRouter);
 
 // CREATING SERVER

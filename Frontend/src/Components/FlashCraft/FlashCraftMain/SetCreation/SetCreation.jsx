@@ -11,7 +11,7 @@ const SetCreation = () => {
     const navigate = useNavigate();
 
     function navigateHandler () {
-        navigate('/')
+        navigate('/FlashCraft')
       }
 
     const [cardQty, setCardQty] = useState(2);
@@ -55,7 +55,7 @@ const SetCreation = () => {
 
     async function addSetHandler () {
         const userId = '655ba0b013679c0e8c33e9cd';
-        const response = await fetch('http://localhost:8000/SetCreation', 
+        const response = await fetch('http://localhost:8000/api/FlashCraft/SetCreation', 
         {
           method: 'POST',
           body: JSON.stringify({

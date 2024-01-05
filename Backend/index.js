@@ -2,7 +2,9 @@ const http = require("http");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { flashCardSetRouter } = require("./api/routes/FCSetRoute/flashCardSetRoute");
+const {
+  flashCardSetRouter,
+} = require("./api/routes/FCSetRoute/flashCardSetRoute");
 const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
 require("dotenv").config();
 
@@ -16,13 +18,17 @@ require("./config/db");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: "http://localhost:5173"
-}))
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
 // REGISTERING ROUTES
 app.use("/api/FlashCraft", flashCardSetRouter);

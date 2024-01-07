@@ -27,7 +27,7 @@ const AudioSlide = () => {
         playing = {playing}
         setPlayingHandler = {setPlayingHandler}
       >
-        <div className='text-primary bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-1 rounded-[10px]'>
+        <div className='text-primary-100 bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-1 rounded-[10px]'>
           <img src={audioSpeaker} alt='audio-speaker'/>
           <h2>{audioQuestion}</h2>
           {/* <audio>

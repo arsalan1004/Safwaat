@@ -47,7 +47,7 @@ const Result = () => {
   }
 
   return (
-    <div className='h-screen bg-primary flex justify-center items-center'>
+    <div className='h-screen bg-primary-100 flex justify-center items-center'>
       <div className='flex flex-col w-2/5 mx-auto justify-center text-center gap-5'>
         <img src={image} alt={"stars-image"} 
           className='w-[210px] h-[95px] mx-auto'

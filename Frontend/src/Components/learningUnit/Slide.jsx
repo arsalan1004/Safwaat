@@ -29,7 +29,7 @@ const Slide = (props) => {
     }
 
   const slideBgStyles = {
-    primaryStyle: 'h-screen bg-primary',
+    primaryStyle: 'h-screen bg-primary-100',
     secondaryStyle: 'h-screen bg-[#051A22]'
   }
 

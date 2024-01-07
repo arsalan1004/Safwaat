@@ -35,8 +35,8 @@ const SlideBottomControl = (props) => {
   useEffect(() => {
     if(lessonComplete == true) {
       
-      setInterval(() => {navigate('/result')}, 400);
-
+      // setInterval(() => {navigate('/learningUnit/result')}, 400);
+      navigate('/learningUnit/result')
       // dispatch(slideControlActions.decrementCurrentSlide());
       // current slide needs to be decremented
     }
@@ -184,7 +184,7 @@ const SlideBottomControl = (props) => {
       dispatch(slideControlActions.incrementProgressCounter());
       // dispatch(slideControlActions.setIsChecked(false))
       console.log("Entered Motivation")
-      navigate(`/${currentSlide + 1}`)
+      navigate(`/learningUnit/${currentSlide + 1}`)
     }
     else {
      
@@ -199,7 +199,7 @@ const SlideBottomControl = (props) => {
       else if(currentSlide < totalSlides) {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/${currentSlide + 1}`)
+        navigate(`/learningUnit/${currentSlide + 1}`)
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
@@ -220,7 +220,7 @@ const SlideBottomControl = (props) => {
       if(currentSlide < totalSlides) {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/${currentSlide + 1}`)
+        navigate(`/learningUnit/${currentSlide + 1}`)
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
@@ -254,7 +254,7 @@ const SlideBottomControl = (props) => {
       case "theoryImage": 
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/${currentSlide + 1}`)
+        navigate(`/learningUnit/${currentSlide + 1}`)
         return;
       default:
         break;
@@ -287,21 +287,21 @@ return (
           />)
           :
           (isTheorySlide() == false &&
-          <div className='flex justify-center items-center gap-6' style={{transition: "all 0.3s"}}>
+          <div className='font-Itim flex justify-center items-center gap-6' style={{transition: "all 0.3s"}}>
             <img src={isCorrect == true ? correctAnswerImage : wrongAnswerImage } 
               className='w-[50px] h-[50px]'
             />
             {
               isCorrect
               ?
-              <p className='font-itim text-correct'>Welldone</p>
+              <p className='font-Itim text-correct'>Welldone</p>
               :
-              <p className='font-itim text-wrong'>Incorrect</p>
+              <p className='font-Itim text-wrong'>Incorrect</p>
             }
           </div>)
           )
         }
-        <div className={`${isMotivation ? 'flex flex-col w-[100%]' : ""}`}>
+        <div className={`font-Itim ${isMotivation ? 'flex flex-col w-[100%]' : ""}`}>
           <Button 
             contentType={"text"}
             styleType= {((isChecked == false && isMotivation == false) || isTheorySlide() == true) 
@@ -358,9 +358,9 @@ export default SlideBottomControl;
               {
                 isCorrect
                 ?
-                <p className='font-itim text-correct'>Welldone</p>
+                <p className='font-Itim text-correct'>Welldone</p>
                 :
-                <p className='font-itim text-wrong'>Incorrect</p>
+                <p className='font-Itim text-wrong'>Incorrect</p>
               }
             </div>
             )
@@ -430,9 +430,9 @@ export default SlideBottomControl;
 //             {
 //               isCorrect
 //               ?
-//               <p className='font-itim text-correct'>Welldone</p>
+//               <p className='font-Itim text-correct'>Welldone</p>
 //               :
-//               <p className='font-itim text-wrong'>Incorrect</p>
+//               <p className='font-Itim text-wrong'>Incorrect</p>
 //             }
 //           </div>)
 //           )
@@ -770,9 +770,9 @@ return (
             {
               isCorrect
               ?
-              <p className='font-itim text-correct'>Welldone</p>
+              <p className='font-Itim text-correct'>Welldone</p>
               :
-              <p className='font-itim text-wrong'>Incorrect</p>
+              <p className='font-Itim text-wrong'>Incorrect</p>
             }
           </div>)
           )
@@ -834,9 +834,9 @@ export default SlideBottomControl;
               {
                 isCorrect
                 ?
-                <p className='font-itim text-correct'>Welldone</p>
+                <p className='font-Itim text-correct'>Welldone</p>
                 :
-                <p className='font-itim text-wrong'>Incorrect</p>
+                <p className='font-Itim text-wrong'>Incorrect</p>
               }
             </div>
             )
@@ -906,9 +906,9 @@ export default SlideBottomControl;
 //             {
 //               isCorrect
 //               ?
-//               <p className='font-itim text-correct'>Welldone</p>
+//               <p className='font-Itim text-correct'>Welldone</p>
 //               :
-//               <p className='font-itim text-wrong'>Incorrect</p>
+//               <p className='font-Itim text-wrong'>Incorrect</p>
 //             }
 //           </div>)
 //           )

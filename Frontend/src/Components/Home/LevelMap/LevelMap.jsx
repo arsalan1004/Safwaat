@@ -4,8 +4,12 @@ import classes from './LevelMap.module.css';
 import NavOption from '../../../UI/Navigation/NavOption';
 import LevelMapImg from '../../../Assets/LevelMapMd.png';
 // import LessonUnitIcon from '../../../Assets/Ellipse.svg';
-import LessonUnitIcon from '../../../Assets/Ellipse1.svg';
-import StarLevelUnit from '../../../Assets/StarLevelUnit.svg';
+// import LessonUnitIcon from '../../../Assets/Ellipse1.svg';
+import LevelUnit3S from '../../../Assets/LevelUnit3S.svg';
+import LevelUnit2S from '../../../Assets/LevelUnit2S.svg';
+import LevelUnit1S from '../../../Assets/LevelUnit1S.svg';
+import LevelUnit0S from '../../../Assets/LevelUnit0S.svg';
+import LevelUnitLocked from '../../../Assets/LevelUnitLocked.svg';
 import Logo from '../../../Assets/Logo.png';
 import textLogo from '../../../Assets/textLogo.png'
 import HomeIcon from '../../../Assets/Icons/home.png';
@@ -67,14 +71,14 @@ function LevelMap() {
       
       <div className={classes.Center}>
           <img src={LevelMapImg} alt='LevelMapImg' className={classes.LevelMapImg} />
-          <div className="top-[8em] left-[54%]" ><img src={StarLevelUnit} /></div>
-          <div className="top-[6.5em] left-[44%]"><img src={StarLevelUnit} /></div>
-          <div className="top-[7em] left-[38%]"><img src={StarLevelUnit} /></div>
-          <div className="top-[4.6em] left-[7.5%]"><img src={StarLevelUnit} /></div>          
-          <div className="top-[4em] left-[17%]"><img src={StarLevelUnit} /></div>
-          <div className="top-[4.5em] left-[30%]"><img src={StarLevelUnit} /></div>
-          <div className="top-[4.7em] left-[65%]"><img src={StarLevelUnit} /></div>
-          <div className="top-[-5.8em] left-[82.5%]"><img src={StarLevelUnit} /></div>
+          <div className="top-[8em] left-[54%]" ><img src={LevelUnit3S} /></div>
+          <div className="top-[6.5em] left-[44%]"><img src={LevelUnit3S} /></div>
+          <div className="top-[7em] left-[38%]"><img src={LevelUnit2S} /></div>
+          <div className="top-[4.6em] left-[7.5%]"><img src={LevelUnit1S} /></div>          
+          <div className="top-[4em] left-[17%]"><img src={LevelUnit2S} /></div>
+          <div className="top-[4.5em] left-[30%]"><img src={LevelUnit3S} /></div>
+          <div className="top-[4.7em] left-[65%]"><img src={LevelUnit0S} /></div>
+          <div className="top-[-5.8em] left-[82.5%]"><img src={LevelUnitLocked} /></div>
       </div>
       
 

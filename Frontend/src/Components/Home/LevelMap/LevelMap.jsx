@@ -21,8 +21,101 @@ import lobbyIcon from '../../../Assets/Icons/lobby.png';
 import chatSpaceIcon from '../../../Assets/Icons/chatSpace.png';
 import profileIcon from '../../../Assets/Icons/profile.png';
 
+import StreakIconHome from '../../../Assets/Icons/StreakIconHome.png';
 
 function LevelMap() {
+
+  const data = [
+    {
+      learningUnitId: '23',
+      unitNumber: 1,
+      userId : '2323',
+      starsEarned: 3
+      
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 2,
+      userId : '2323',
+      starsEarned: 3
+
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 3,
+      userId : '2323',
+      starsEarned: 2
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 4,
+      userId : '2323',
+      starsEarned: 1
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 5,
+      userId : '2323',
+      starsEarned: 1
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 6,
+      userId : '2323',
+      starsEarned: 2
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 7,
+      userId : '2323',
+      starsEarned: 0
+    },
+    {
+      learningUnitId: '23',
+      unitNumber: 8,
+      userId : '2323',
+      starsEarned: null
+    }
+
+  ];
+
+  const style = [
+    {
+      top: '8em',
+      left: '54%'
+    },
+    {
+      top: '6.5em',
+      left: '44%'
+    },
+    {
+      top: '7em',
+      left: '38%'
+    },
+    {
+      top: '4.6em',
+      left: '7.5%'
+    },
+    {
+      top: '4em',
+      left: '17%'
+    },
+    {
+      top: '4.5em',
+      left: '30%'
+    },
+    {
+      top: '4.7em',
+      left: '65%'
+    },
+    {
+      top: '-5.8em',
+      left: '82.5%'
+    }
+
+  ]
+
+
   return (
     <div className={classes.Main} >
       
@@ -71,22 +164,47 @@ function LevelMap() {
       
       <div className={classes.Center}>
           <img src={LevelMapImg} alt='LevelMapImg' className={classes.LevelMapImg} />
-          <div className="top-[8em] left-[54%]" ><img src={LevelUnit3S} /></div>
+          {
+            // Map to Set Learning Units and Src login to assign stars dynamically
+            style.map(
+              (st, i) => {
+                return <div key={i} className={`top-[${st.top}] left-[${st.left}]`}>
+                          <img src={
+                            data[i].starsEarned != null ? 
+                              data[i].starsEarned == 3 ? LevelUnit3S :
+                                  data[i].starsEarned == 2 ? LevelUnit2S : 
+                                    data[i].starsEarned == 1 ? LevelUnit1S : LevelUnit0S 
+                              : LevelUnitLocked
+
+                          } />
+                      </div>
+              }
+            )
+          }
+          {/* <div className="top-[8em] left-[54%]" ><img src={LevelUnit3S} /></div>
           <div className="top-[6.5em] left-[44%]"><img src={LevelUnit3S} /></div>
           <div className="top-[7em] left-[38%]"><img src={LevelUnit2S} /></div>
           <div className="top-[4.6em] left-[7.5%]"><img src={LevelUnit1S} /></div>          
           <div className="top-[4em] left-[17%]"><img src={LevelUnit2S} /></div>
           <div className="top-[4.5em] left-[30%]"><img src={LevelUnit3S} /></div>
           <div className="top-[4.7em] left-[65%]"><img src={LevelUnit0S} /></div>
-          <div className="top-[-5.8em] left-[82.5%]"><img src={LevelUnitLocked} /></div>
+          <div className="top-[-5.8em] left-[82.5%]"><img src={LevelUnitLocked} /></div> */}
       </div>
       
 
       {/* RightSideBAr */}
       <div className={`${classes.Right} px-5 border-r-2 border-l-slate-300`}>
-        <h3>
-          RightSideBar
-        </h3>
+        
+        <div className='flex'>
+
+          <h1>Streak Board</h1>
+          <div>
+            <span>5</span>
+            <img src={StreakIconHome} alt='Streak Icon' />
+          </div>
+
+        </div>
+
       </div>
 
     </div>

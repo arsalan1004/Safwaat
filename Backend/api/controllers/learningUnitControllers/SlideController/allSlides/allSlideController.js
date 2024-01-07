@@ -5,9 +5,12 @@ const { formatData } = require("./formatData");
 
 const getAllSlides = async (req, res) => {
   try {
-    const learningUnit = await learningUnitModel.findOne({
-      _id: req.params.unitId,
-    });
+    const learningUnit = await learningUnitModel.findOne(
+      {
+        _id: req.params.unitId,
+      },
+      { _id: 0, unitNumber: 0 }
+    );
 
     if (learningUnit) {
       const slideData = await formatData(learningUnit);

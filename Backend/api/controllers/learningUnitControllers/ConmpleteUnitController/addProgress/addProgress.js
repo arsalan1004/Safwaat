@@ -4,7 +4,13 @@ const {
 
 const addProgress = async (userProgress) => {
   try {
-    const newPorg = await userProgressModel.create(userProgress);
+    const { userId, learningUnitId, unitNum, starsEarned } = userProgress;
+    const newPorg = await userProgressModel.create({
+      userId: userId,
+      learningUnitId: learningUnitId,
+      unitNum: unitNum,
+      starsEarned: starsEarned,
+    });
     if (newPorg) {
       return true;
     }

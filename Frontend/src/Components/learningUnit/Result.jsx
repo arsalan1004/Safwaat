@@ -9,6 +9,7 @@ import Button from '../../UI/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { postUnitData } from '../../API/slideApi';
+import ShareButton from './ShareButton';
 // SVG'S for two,one,zero stars Required (Not in figma)
 
 const Result = () => {
@@ -76,6 +77,7 @@ const Result = () => {
             content={"Complete"}
             handler = {lessonCompleteHandler}
           />
+          <ShareButton />
         </div>
       </div>
     </div>

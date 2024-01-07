@@ -44,13 +44,11 @@ const LearningUnit = (props) => {
         case "mcq":
           dispatch(slideControlActions.setSlideType("mcq"))
           dispatch(mcqSlideActions.setMcqData(response.content));
-          // setSlideType(response.slideType);
           break;
         case "audio":
           dispatch(slideControlActions.setSlideType("audio"))
           dispatch(audioSlideActions.setAudioData(response.content))
           break;
-          // TODO
         case "theoryImage":
           dispatch(slideControlActions.setSlideType("theoryImage"))
           dispatch(theoryImageSlideActions.setTheoryImageSlideData(response.content))
@@ -103,28 +101,3 @@ const LearningUnit = (props) => {
 
 export default LearningUnit
 
-
-
-// const slideChangeHandler = async () => {
-//   const response =  await getNextSlideData(currentSlide);
-//   console.log(response);
-//   if(response.id == 1) {
-//     dispatch(unitInfoActions.setPerStarXp(response.perStarXp))
-//     // Adding One to accomodate Motivation Slide
-//     dispatch(unitInfoActions.setTotalNumberOfQuestions(response.numOfQuestions) );
-//     dispatch(slideControlActions.setTotalSlides(response.numOfQuestions) );
-//   }
-//   switch(response.slideType) {
-//     case "mcq":
-//       dispatch(slideControlActions.setSlideType("mcq"))
-//       dispatch(mcqSlideActions.setMcqData(response.content));
-//       // setSlideType(response.slideType);
-//       break;
-//     case "audio":
-//       dispatch(slideControlActions.setSlideType("audio"))
-//       dispatch(audioSlideActions.setAudioData(response.content))
-//       // TODO
-//     default:
-//       break;
-//   }
-// }

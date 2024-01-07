@@ -50,7 +50,7 @@
       "content": {
         "heading": "حمس vs جهر",
         "columnOne": ["When letters with the characteristic of Jahr are pronounced, the flow of breath stops at the articulation point that strengthens the reliance of the letter at its articulation point.", "It includes 19 words. Other than those in Hams."],
-        "columnTwo": ["It includes 19 words.Other than those in Hams.", "It includes 10 words.These are grouped as فحثه شخس سقط"]
+        "columnTwo": ["When letters with the characteristic of Hams are pronounced, there is a flow of breath that weakens the reliance of the letter at its articulation point.", "It includes 10 words.These are grouped as فحثه شخس سقط"]
       }
     },
     {
@@ -73,8 +73,8 @@
       "id": "507f1f77gef86cd799439011",
       "slideType": "mcq",
       "content": {
-        "mcqOptions": ["A", "B", "C", "D"],
-        "mcqQuestion": "Which one is used to pronounce DAD?",
+        "mcqOptions": ["ع", "ب", "ل", "ح"],
+        "mcqQuestion": "Which one has the صفت of Hams??",
         "correctAnswer": 3,
         "selectedOption": -1
       }

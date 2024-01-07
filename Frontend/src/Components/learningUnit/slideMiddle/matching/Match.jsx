@@ -73,11 +73,6 @@ const Match = () => {
         console.log(`answer: ${answers[selectOption]}`)
 
         if(option == answers[selectOption]) {
-
-          /**
-           * if correct:
-           *  option: style[]
-           */
             if(counter.count + 1 == 4) dispatch(matchingSlideAction.setIsMatchingCorrect(true));
             console.log("CORRECT ANSWER CALLED");
          
@@ -86,7 +81,6 @@ const Match = () => {
           } 
           else {
           console.log("WRONG ANSWER CALLED");
-  
             setCounter({tries:counter.tries+1,count:counter.count});
             setCheckStyleDict(prevCheckSt => ({...prevCheckSt, [selectOption]: 'wrong', [option]: 'wrong'}));
         }
@@ -94,9 +88,6 @@ const Match = () => {
 
     }
 
-    // function cityselect(city){
-    //     setCity(city);
-    // }
     const selectLeftColumnHandler = (option, index) => {
       setSelectedDisabledOptIndex(index)
       console.log("SELECT LEFT COLUMN HANDLER CALLED");
@@ -142,27 +133,29 @@ const Match = () => {
     <div className="">
       <h1 className='font-itim text-2xl text-secondary text-center mb-4'>Match The Following</h1>
       <div className="w-3/5 mx-auto flex justify-between font-itim">
-        <div className="w-[30%] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
+        <div className="w-[30%] min-w-[200px] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
           {columnOne.map((option, index) => (
             <button
               key={index}
-              className={isChecked ? checkStyles[checkStyleDict[option]] : colOneStyle[index]}
+              className={isChecked ? checkStyles[checkStyleDict[option]] ?? checkStyles.wrong : colOneStyle[index]}
               onClick={() => selectLeftColumnHandler(option, index)}
               disabled = {counter == 4 || disabledStatusOne[index] || disableLeft == true}
+              style={{transition: 'all 0.4s'}}
             >
               <p className="text-center">{option}</p>
             </button>
           ))}
         </div>
         
-        <div className="w-[17%] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
+        <div className="w-[17%] min-w-[100px] grid grid-cols-[100%] grid-rows-[repeat(4,1fr)] gap-y-4">
           {
             columnTwo.map((option, index) => (
             <button
               key={index}
-              className={isChecked ? checkStyles[checkStyleDict[option]] :colTwoStyle[index]}
+              className={isChecked ? checkStyles[checkStyleDict[option]] ?? checkStyles.wrong :colTwoStyle[index]}
               onClick={() => selectRightColumnHandler(option, index)}
               disabled = {(counter == 4 || selectOption == false || disabledStatusTwo[index] || disableRight == true) ? true : false}
+              style={{transition: 'all 0.4s'}}
             >
               <p className="text-center">{option}</p>
             </button>

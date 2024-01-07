@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import ProgressBar from './slideTop/ProgressBar';
 import McqSlide from './slideMiddle/mcq/McqSlide';
 import AudioSlide from './slideMiddle/audio/AudioSlide';
@@ -9,7 +10,6 @@ import TheorySlideComparative from './slideMiddle/theory/TheorySlideComparative'
 import TheorySlideImageText from './slideMiddle/theory/TheorySlideImageText';
 import ModelWindow from './slideMiddle/model/ModelWindow';
 import SlideBottomControl from './slideBottom/SlideBottomControl';
-import Drag from './slideMiddle/dragAndDrop/drag';
 import DragAndDropSlide from './slideMiddle/dragAndDrop/DragAndDropSlide';
 import Match from './slideMiddle/matching/match';
 
@@ -54,17 +54,11 @@ const Slide = (props) => {
     <div className={slideType == "model" ? slideBgStyles.secondaryStyle : slideBgStyles.primaryStyle}>
       <div className='pt-5 flex flex-col justify-between h-[100%]'>
         <ProgressBar exitModalHandler={setModalAppear}/>
-          
-          {/* <DragAndDropSlide /> */}
-
-          {/* uncomment this */}
+  
           {isMotivation && <Motivation />}
           {!isMotivation && slideContent}
-   
-
-          {/* <TheorySlideComparative /> */}
-          {/* <TheorySlideImageText /> */}
           {modalAppear && <ExitLessonModal exitModalHandler={setModalAppear} />}
+          
         <SlideBottomControl slideType={props.slideType} />
       </div>
     </div>

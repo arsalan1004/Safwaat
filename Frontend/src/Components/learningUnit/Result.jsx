@@ -7,7 +7,6 @@ import zeroStars from '../../assets/icons/zeroStars.png';
 
 import Button from '../../UI/Button';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { postUnitData } from '../../API/slideApi';
 import ShareButton from './ShareButton';
 // SVG'S for two,one,zero stars Required (Not in figma)
@@ -39,15 +38,17 @@ const Result = () => {
 
   const postUnitDataHandler = async () => {
     const completetionData = {
-      // id: userId, // From Login Data stored in redux store
-      unitNumber: unitNumber,
-      Xp: stars * perStarXp,
-      stars: stars
+      // // id: userId, // From Login Data stored in redux store
+      userId: "659008aa4f03360cefe237db",
+      learningUnit: "658fdbe94f03360cefe237cc",
+      unitNum: 1,
+      starsEarned: stars,
+      xpCount: stars * perStarXp,
     }
-    // await postUnitData(completetionData);
+    await postUnitData(completetionData);
   }
   const lessonCompleteHandler = () => {
-    // postUnitDataHandler();
+    postUnitDataHandler();
     navigate("/")
   }
 

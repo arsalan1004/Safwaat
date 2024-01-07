@@ -34,9 +34,12 @@ const getUnitData = async () => {
 
 
 const postUnitData = async (data) => {
+  console.log("In postUnitData Handler");
+  console.log(data);
+
+
 
   // const API_URL = "http://localhost:3600/learningUnitData";
-
   // try {
   //   const response = await axios.get(API_URL);
   //   return response.data;

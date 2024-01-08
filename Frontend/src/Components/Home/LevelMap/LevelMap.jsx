@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import classes from './LevelMap.module.css';
 import NavOption from '../../../UI/Navigation/NavOption';
@@ -22,6 +22,12 @@ import chatSpaceIcon from '../../../Assets/Icons/chatSpace.png';
 import profileIcon from '../../../Assets/Icons/profile.png';
 
 import StreakIconHome from '../../../Assets/Icons/StreakIconHome.png';
+
+import goldLeague from '../../../Assets/Icons/goldLeague.png';
+
+import clouds from '../../../Assets/cloud.png';
+import dolphin from '../../../Assets/Icons/dolphin.png';
+import seaShell from '../../../Assets/Icons/seaShell.png';
 
 function LevelMap() {
 
@@ -116,9 +122,17 @@ function LevelMap() {
   ]
 
 
+  const [isDolphinAnimationActive, setDolphinAnimationActive] = useState(true);
+
+  const dolphinTriggerHandler = () => {
+    console.log('function dolphinTriggerHandler');
+    setDolphinAnimationActive(true);
+  };
+
   return (
     <div className={classes.Main} >
-      
+      <img src={clouds} className={classes.Cloud} />
+
       {/* leftSideBar */}
       <div className={`${classes.Left} px-5 border-r-2 border-r-slate-300`}>
 
@@ -164,11 +178,17 @@ function LevelMap() {
       
       <div className={classes.Center}>
           <img src={LevelMapImg} alt='LevelMapImg' className={classes.LevelMapImg} />
+          <img src={dolphin} 
+          className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''}`}
+          onAnimationEnd={() => setDolphinAnimationActive(false)} 
+          />
+          <img src={seaShell} className='absolute top-[88%] left-[37%] z-20' />
           {
             // Map to Set Learning Units and Src login to assign stars dynamically
             style.map(
               (st, i) => {
-                return <div key={i} className={`top-[${st.top}] left-[${st.left}]`}>
+                return <div key={i} className={`top-[${st.top}] left-[${st.left}]`}
+                onClick={dolphinTriggerHandler}>
                           <img src={
                             data[i].starsEarned != null ? 
                               data[i].starsEarned == 3 ? LevelUnit3S :
@@ -181,29 +201,43 @@ function LevelMap() {
               }
             )
           }
-          {/* <div className="top-[8em] left-[54%]" ><img src={LevelUnit3S} /></div>
-          <div className="top-[6.5em] left-[44%]"><img src={LevelUnit3S} /></div>
-          <div className="top-[7em] left-[38%]"><img src={LevelUnit2S} /></div>
-          <div className="top-[4.6em] left-[7.5%]"><img src={LevelUnit1S} /></div>          
-          <div className="top-[4em] left-[17%]"><img src={LevelUnit2S} /></div>
-          <div className="top-[4.5em] left-[30%]"><img src={LevelUnit3S} /></div>
-          <div className="top-[4.7em] left-[65%]"><img src={LevelUnit0S} /></div>
-          <div className="top-[-5.8em] left-[82.5%]"><img src={LevelUnitLocked} /></div> */}
+
       </div>
       
 
-      {/* RightSideBAr */}
+      {/* RightSideBar */}
       <div className={`${classes.Right} px-5 border-r-2 border-l-slate-300`}>
         
-        <div className='flex'>
+        {/* Div for Streak Leaderbaord */}
+        <div className='flex flex-col  text-secondary mt-10 border-2 border-slate-400 rounded-lg py-4 px-4'>
 
-          <h1>Streak Board</h1>
-          <div>
-            <span>5</span>
-            <img src={StreakIconHome} alt='Streak Icon' />
+          <div className='mb-5 flex'>
+            <h1 className='font-bold  tracking-widest font-Poppins w-4/6'>Streak LeaderBoard</h1>
+            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 text-right'>View Board</span>
+          </div>
+
+          <div className='flex justify-center items-end'>
+            <img src={StreakIconHome} alt='Streak Icon' className='mr-4' />
+            <span className='font-medium italic'>World Ranking 15</span>
           </div>
 
         </div>
+
+        {/* div for Xp leaderboard */}
+        <div className='flex flex-col text-secondary mt-5 border-2 border-slate-400 rounded-lg py-4 px-4'>
+
+          <div className='mb-5 flex justify-start'>
+            <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>Gold League</h1>
+            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 text-right'>View League</span>
+          </div>
+          
+          <div className='flex justify-center items-end'>
+            <img src={goldLeague} alt='Streak Icon' className='h-[32px] mr-4' />
+            <span className='font-medium italic'>Rank 5</span>
+          </div>
+
+        </div>
+
 
       </div>
 

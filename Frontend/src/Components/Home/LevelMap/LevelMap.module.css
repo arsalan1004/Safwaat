@@ -13,6 +13,7 @@
 .Left, .Right{
     background-color: #EBF9FA;
     display: none;
+    z-index: 10;
 }
 
 /* .Left{
@@ -25,7 +26,7 @@
     box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.6);
 } */
 
-
+ 
 
 .Center{
     position: relative;
@@ -55,7 +56,55 @@
 }
 
 
+.Cloud{
+    height: 70px;
+    animation: clouds 17s linear infinite ;
+    animation-delay: 4000;
+    position: absolute;
+    top:1px;
+    left:0;
+    z-index: 5;
+}
 
+.Dolphin{
+    z-index: 10;
+    height: 50px;
+    width: 50px;
+    top: 33em;
+    left: 39%;
+    position: absolute;
+}
+
+.DolphinActive {
+    animation: dolphinSwimActive 2s linear;
+  }
+  
+@keyframes dolphinSwimActive {
+0% {
+    transform: translateY(0px);
+}
+
+50% {
+    transform: translateY(-45px) translateX(-35px) rotate(-40deg);
+}
+
+100% {
+    transform: translateY(0px) translateX(-70px) rotate(-65deg);
+    opacity: 100;
+    }
+}
+
+
+
+@keyframes clouds{
+    0%{
+        transform: translateX(0);
+    }
+
+    100%{
+        transform: translateX(69vw);
+    }
+}
 
 @media screen and (min-width: 680px) {
     .Left{

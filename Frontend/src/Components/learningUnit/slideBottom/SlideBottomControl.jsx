@@ -171,10 +171,10 @@ const SlideBottomControl = (props) => {
         // Initial Condition When option is unselected, Clicking button then won't run
         return;
       }
-      else if(isChecked == false && dndOptionLength != 0 && slideType == "dnd") {
+      else if(isChecked == false && dndOptionLength != 0 && slideType == "dnd" && isMotivation == false) {
         return;
       }
-      else if(isChecked == false && isMatchComplete == false && slideType == "match") {
+      else if(isChecked == false && isMatchComplete == false && slideType == "match" && isMotivation == false) {
         console.log("returned Check in matching slide")
         return;
       }

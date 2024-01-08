@@ -28,7 +28,7 @@ const AudioButton = (props) => {
   }
 
   return (
-    <button onClick={() => playAudioHandler()}>
+    <button onClick={() => playAudioHandler()} className='min-w-[230px]'>
       {props.children}
       <audio ref={audioRef} src={props.src} />
     </button>

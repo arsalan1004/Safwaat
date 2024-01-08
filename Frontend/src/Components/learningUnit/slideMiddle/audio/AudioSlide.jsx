@@ -20,8 +20,8 @@ const AudioSlide = () => {
 
   return (
 
-    <div className='flex flex-col gap-8'>
-      <h1 className='flex text-[30px] justify-center items-center font-itim text-secondary'>Select the wrong Pronunciation</h1>
+    <div className='flex flex-col gap-8  min-w-[550px]'>
+      <h1 className='flex text-[30px] justify-center items-center font-Itim text-secondary'>Select the wrong Pronunciation</h1>
       <AudioButton
         src={questionAudioUrl}
         playing = {playing}
@@ -36,7 +36,7 @@ const AudioSlide = () => {
         </div>
       </AudioButton>
 
-      <div className='w-[50%] mx-auto grid grid-cols-2 grid-rows-2 gap-y-16'>
+      <div className='w-[50%] mx-auto grid grid-cols-2 grid-rows-2 gap-y-16 gap-x-2 min-w-fit'>
         {
           audioOptions.map((option, index) => 
             <AudioOption 
@@ -55,7 +55,7 @@ const AudioSlide = () => {
         <div className='text-secondary w-[30%] mx-auto text-center text-2xl px-6 py-4 border-2 border-secondary rounded-[10px]'>C</div>
         <div className='text-secondary w-[30%] mx-auto text-center text-2xl px-6 py-4 border-2 border-secondary rounded-[10px]'>D</div> */}
       </div>
-      {/* <div className='flex flex-col justify-center items-center font-itim text-secondary mb-3'>
+      {/* <div className='flex flex-col justify-center items-center font-Itim text-secondary mb-3'>
         <h1 className='text-[30px]'>Select the wrong Pronunciation</h1>
         <h2 className='text-2xl'>{mcqQuestion}</h2>
       </div>

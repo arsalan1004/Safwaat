@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
 import { unitInfoActions } from '../../../Store/unitInfo.js';
 import { mcqSlideActions } from '../../../Store/mcqSlide.js';
 import { audioSlideActions } from '../../../Store/audioSlideSlice.js';
+import { dndSlideActions } from '../../../Store/dndSlideSlice.js';
+import { matchingSlideAction } from '../../../Store/matchingSlideSlice.js';
+
 
 
 
@@ -21,6 +24,7 @@ const SlideBottomControl = (props) => {
 
 
   const {isCorrect, isChecked, currentSlide, totalSlides, isMotivation, slideType} = useSelector((state) => state.slideControl);
+  const {unitNumber} =  useSelector((state) => state.unitInfoSlice)
   // let selectorFunction = () => getSelector(slideType);
   // const {selectedOption, correctAnswer} = useSelector(() => selectorFunction())
   // let selectedOption = '';
@@ -35,8 +39,7 @@ const SlideBottomControl = (props) => {
   useEffect(() => {
     if(lessonComplete == true) {
       
-      // setInterval(() => {navigate('/learningUnit/result')}, 400);
-      navigate('/learningUnit/result')
+      setTimeout(() => {navigate(`/learningUnit/${unitNumber}/result`)}, 400);
       // dispatch(slideControlActions.decrementCurrentSlide());
       // current slide needs to be decremented
     }
@@ -58,17 +61,33 @@ const SlideBottomControl = (props) => {
 // }
   let selectedOption = '';
   let correctAnswer = '';
-  switch(slideType) {
+  let dndOptionLength = -2;
+  let dndOptionIsCorrect = false;
+  let isMatchComplete = false;
+  let isMatchCorrect = false;
+  switch(slideType) 
+  {
     case "mcq":
       ({selectedOption, correctAnswer} = useSelector(state => state.mcqSlideSlice))
       break;
     case "audio":
       ({selectedOption, correctAnswer} = useSelector(state => state.audioSlideSlice))
       break;
-    case "theoryImage":
-      // Written for all 
+    case "dnd":
+      const {options, dndIsCorrect} = useSelector(state => state.dndSlideSlice);
+      console.log(options)
+      dndOptionIsCorrect = dndIsCorrect;
+      dndOptionLength = options.length;
+      console.log(dndOptionLength);
+      console.log(`DND OPTION IS CORRECT ${dndOptionIsCorrect}`)
+      break;
+    case "match":
+      ({isMatchComplete,isMatchCorrect} = useSelector(state => state.matchingSlideSlice))
+      break;
+    default:
+      // Written for all Thepry Slide
       useSelector(state => state.mcqSlideSlice);
-  
+
       break;
   }
   // switch(slideType) {
@@ -100,9 +119,12 @@ const SlideBottomControl = (props) => {
   const dispatchCorrect = () => {
     dispatch(slideControlActions.setIsCorrect(true));
     dispatch(unitInfoActions.incrementCorrectAnswer());
+    console.log("DISPATCHED CORRECT")
   }
 
+
   const dispatchWrong = () => {
+    console.log("DISPATCHED WRONG")
     dispatch(slideControlActions.setIsCorrect(false));
     dispatch(unitInfoActions.incrementWrongAnswer());
   }
@@ -127,6 +149,11 @@ const SlideBottomControl = (props) => {
     // }
   }
 
+  const dndIsCorrectHandler = () => {
+    console.log(`Calculate result Dispathced From "SLIDE BOTTOM CONTROL`)
+    dispatch(dndSlideActions.calculateResult())
+  }
+
 
 
 
@@ -139,17 +166,38 @@ const SlideBottomControl = (props) => {
     // Perform some logic here
     // 
     if(isTheorySlide() == false) {
-    if(selectedOption == -1) {
-      console.log("Entered Selected Option -1")
-      // Initial Condition When option is unselected, Clicking button then won't run
-      return;
-    }
+      if(selectedOption == -1 ) {
+        console.log("Entered Selected Option -1")
+        // Initial Condition When option is unselected, Clicking button then won't run
+        return;
+      }
+      else if(isChecked == false && dndOptionLength != 0 && slideType == "dnd") {
+        return;
+      }
+      else if(isChecked == false && isMatchComplete == false && slideType == "match") {
+        console.log("returned Check in matching slide")
+        return;
+      }
     
     if(isChecked == false && isMotivation == false) {
         // When User Clicks Check
         dispatch(slideControlActions.setIsChecked(true))
-        if(selectedOption == correctAnswer) dispatchCorrect();
-        else dispatchWrong()
+        if(slideType == "dnd") {
+          // dndIsCorrectHandler();
+          console.log(`dndOptionIsCorrect: ${dndOptionIsCorrect}`)
+          if(dndOptionIsCorrect == true) dispatchCorrect();
+          else dispatchWrong();
+        }
+        else if(slideType == "match") {
+          console.log("Entered Correct/Wrong Dispatch FOR MATCBING")
+          console.log(`isMatchCorrect: ${isMatchCorrect}`)
+          if(isMatchCorrect == true) dispatchCorrect();
+          else dispatchWrong();
+        }
+        else {
+          if(selectedOption == correctAnswer ) dispatchCorrect();
+          else dispatchWrong()
+        }
       // switch(slideType) {
       //   case "mcq": 
       //     {
@@ -184,7 +232,7 @@ const SlideBottomControl = (props) => {
       dispatch(slideControlActions.incrementProgressCounter());
       // dispatch(slideControlActions.setIsChecked(false))
       console.log("Entered Motivation")
-      navigate(`/learningUnit/${currentSlide + 1}`)
+      navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
     }
     else {
      
@@ -199,7 +247,7 @@ const SlideBottomControl = (props) => {
       else if(currentSlide < totalSlides) {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/learningUnit/${currentSlide + 1}`)
+        navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
@@ -220,7 +268,7 @@ const SlideBottomControl = (props) => {
       if(currentSlide < totalSlides) {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/learningUnit/${currentSlide + 1}`)
+        navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
@@ -251,16 +299,20 @@ const SlideBottomControl = (props) => {
         break;
       case "audio": dispatch(audioSlideActions.setSelected(-2));
         break;
-      case "theoryImage": 
+      case "dnd": dispatch(dndSlideActions.setDndOptionIsCorrect(false));
+        break;
+      case "match": dispatch(matchingSlideAction.setIsMatchingCorrect(false));
+        break;
+
+      default:
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
-        navigate(`/learningUnit/${currentSlide + 1}`)
+        navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
         return;
-      default:
-        break;
     }
     dispatch(slideControlActions.setIsChecked(true));
     dispatchWrong();
+    console.log("DISPATCHED WRONG VIA SKIP");
     // dispatch(slideControlActions.setIsCorrect(false));
     // dispatch(unitInfoActions.incrementWrongAnswer());
   }
@@ -268,7 +320,7 @@ const SlideBottomControl = (props) => {
   
 
 return (
-  <div className={`flex justify-between items-center 
+  <div className={`flex justify-between items-center font-Itim gap-4 min-w-fit
       py-6 border-t-2 border-disabled ${isTheorySlide() == true ? "bg-solid-accent" : (isChecked == false ?  "bg-solid-accent"  : (isCorrect == true ? "bg-[#AAF491]" : "bg-[#F98C8C]")) } 
       px-[100px]`}>
     {
@@ -279,7 +331,7 @@ return (
           (
           (!isChecked)
           ?
-          (<Button 
+          (isTheorySlide() == false && <Button 
             contentType={"text"}
             styleType={"outline-accent"}
             content={"Skip"}
@@ -287,26 +339,26 @@ return (
           />)
           :
           (isTheorySlide() == false &&
-          <div className='font-Itim flex justify-center items-center gap-6' style={{transition: "all 0.3s"}}>
+          <div className='flex justify-center items-center gap-6' style={{transition: "all 0.3s"}}>
             <img src={isCorrect == true ? correctAnswerImage : wrongAnswerImage } 
               className='w-[50px] h-[50px]'
             />
             {
               isCorrect
               ?
-              <p className='font-Itim text-correct'>Welldone</p>
+              <p className='font-itim text-correct'>Welldone</p>
               :
-              <p className='font-Itim text-wrong'>Incorrect</p>
+              <p className='font-itim text-wrong'>Incorrect</p>
             }
           </div>)
           )
         }
-        <div className={`font-Itim ${isMotivation ? 'flex flex-col w-[100%]' : ""}`}>
+        <div className={`${(isMotivation || isTheorySlide() == true) ? 'flex flex-col w-[100%]' : ""}`}>
           <Button 
             contentType={"text"}
             styleType= {((isChecked == false && isMotivation == false) || isTheorySlide() == true) 
                         ?  "solid-accent"  : 
-                        (isCorrect == true && isMotivation == false ? "solid-correct" : (isMotivation == true ? "solid-correct-motivation" : "solid-wrong")) }
+                        (isCorrect == true && isMotivation == false ? "solid-correct" : (isMotivation == true  ? "solid-correct-motivation" : "solid-wrong")) }
             // styleType= {(isChecked == false && isMotivation == false) 
             //             ?  "solid-accent"  : 
             //             (isCorrect == true || isMotivation == true ? "solid-correct" 
@@ -358,9 +410,9 @@ export default SlideBottomControl;
               {
                 isCorrect
                 ?
-                <p className='font-Itim text-correct'>Welldone</p>
+                <p className='font-itim text-correct'>Welldone</p>
                 :
-                <p className='font-Itim text-wrong'>Incorrect</p>
+                <p className='font-itim text-wrong'>Incorrect</p>
               }
             </div>
             )
@@ -430,9 +482,9 @@ export default SlideBottomControl;
 //             {
 //               isCorrect
 //               ?
-//               <p className='font-Itim text-correct'>Welldone</p>
+//               <p className='font-itim text-correct'>Welldone</p>
 //               :
-//               <p className='font-Itim text-wrong'>Incorrect</p>
+//               <p className='font-itim text-wrong'>Incorrect</p>
 //             }
 //           </div>)
 //           )
@@ -770,9 +822,9 @@ return (
             {
               isCorrect
               ?
-              <p className='font-Itim text-correct'>Welldone</p>
+              <p className='font-itim text-correct'>Welldone</p>
               :
-              <p className='font-Itim text-wrong'>Incorrect</p>
+              <p className='font-itim text-wrong'>Incorrect</p>
             }
           </div>)
           )
@@ -834,9 +886,9 @@ export default SlideBottomControl;
               {
                 isCorrect
                 ?
-                <p className='font-Itim text-correct'>Welldone</p>
+                <p className='font-itim text-correct'>Welldone</p>
                 :
-                <p className='font-Itim text-wrong'>Incorrect</p>
+                <p className='font-itim text-wrong'>Incorrect</p>
               }
             </div>
             )
@@ -906,9 +958,9 @@ export default SlideBottomControl;
 //             {
 //               isCorrect
 //               ?
-//               <p className='font-Itim text-correct'>Welldone</p>
+//               <p className='font-itim text-correct'>Welldone</p>
 //               :
-//               <p className='font-Itim text-wrong'>Incorrect</p>
+//               <p className='font-itim text-wrong'>Incorrect</p>
 //             }
 //           </div>)
 //           )

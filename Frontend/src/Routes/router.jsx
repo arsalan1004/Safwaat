@@ -7,7 +7,7 @@ import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/Set
 import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
 import Home from "../Components/Home/Home";
 import LearningUnit from "../Components/learningUnit/LearningUnit";
-import Result from "../Components/learningUnit/Result";
+import Result from "../Components/learningUnit/result/Result";
 
 const router = createBrowserRouter([
     {
@@ -38,10 +38,10 @@ const router = createBrowserRouter([
                 ]
             },
             {
-                path: 'learningUnit',
+                path: 'learningUnit/:id',
                 children: [
                   {
-                    path: ':id',
+                    path: 'slides/:slideId',
                     element: <LearningUnit />
                   },
                   {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
                 ]
             }
         ]
-    }
+     }
 ]);
 
 

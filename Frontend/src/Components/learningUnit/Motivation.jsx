@@ -21,13 +21,13 @@ const Motivation = () => {
   console.log(`Current Slide: ${currentSlide}`)
   return (
     
-    <div className='w-3/5 flex justify-between items-center mx-auto'>
-      <div className='font-poppins text-secondary'>
+    <div className='w-3/5 flex justify-between items-center mx-auto gap-4 min-w-[520px]'>
+      <div className='font-Poppins text-secondary'>
         <p>{conversation}</p>
         <p>Just Few More Slides to Go..!</p>
       </div>
       <img src={motivationCamel} alt="camel-motivating-learning" 
-        className='w-[392px]'
+        className='w-[250px] lg:w-[392px]'
       />
     </div>
   )

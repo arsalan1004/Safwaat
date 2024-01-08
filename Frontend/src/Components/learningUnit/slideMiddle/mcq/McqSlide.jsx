@@ -10,7 +10,7 @@ const McqSlide = (props) => {
   // const selectedOptionStyle = "text-primary-100 border-2 bg-secondary border-secondary mcq-inner-shadow"
   return (
     <div>
-      <div className='flex flex-col justify-center items-center font-itim text-secondary mb-3'>
+      <div className='flex flex-col justify-center items-center font-Itim text-secondary mb-3'>
         <h1 className='text-[30px]'>Choose the Correct Option</h1>
         <h2 className='text-2xl'>{mcqQuestion}</h2>
       </div>

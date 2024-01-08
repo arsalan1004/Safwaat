@@ -8,6 +8,10 @@ import { unitInfoActions } from '../../Store/unitInfo';
 import { audioSlideActions } from '../../Store/audioSlideSlice';
 import Spinner from '../../UI/Spinner';
 import { theoryImageSlideActions } from '../../Store/theoryImageSlideSlice';
+import { theoryComparativeSlideActions } from '../../Store/theoryComparativeSlideSlice';
+import { modelSlideActions } from '../../Store/modelSlideSlice';
+import { dndSlideActions } from '../../Store/dndSlideSlice';
+import { matchingSlideAction } from '../../Store/matchingSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -28,6 +32,8 @@ const LearningUnit = (props) => {
     setIsLoading(false);
   }
 
+  
+
   const slideChangeHandler = async () => {
     if(slideIdArray) {
       console.log("currentSlide: ", currentSlide )
@@ -38,26 +44,44 @@ const LearningUnit = (props) => {
         case "mcq":
           dispatch(slideControlActions.setSlideType("mcq"))
           dispatch(mcqSlideActions.setMcqData(response.content));
-          // setSlideType(response.slideType);
           break;
         case "audio":
           dispatch(slideControlActions.setSlideType("audio"))
           dispatch(audioSlideActions.setAudioData(response.content))
           break;
-          // TODO
         case "theoryImage":
           dispatch(slideControlActions.setSlideType("theoryImage"))
           dispatch(theoryImageSlideActions.setTheoryImageSlideData(response.content))
           break;
+          case "theoryComparative":
+            dispatch(slideControlActions.setSlideType("theoryComparative"))
+            dispatch(theoryComparativeSlideActions.setTheoryComparativeSlideData(response.content))
+            break;  
+          case "model":
+            dispatch(slideControlActions.setSlideType("model"))
+            dispatch(modelSlideActions.setModelData(response.content))
+            break;  
+          case "dnd":
+            dispatch(slideControlActions.setSlideType("dnd"))
+            dispatch(dndSlideActions.setDndData(response.content))
+            break; 
+          case "match":
+             dispatch(slideControlActions.setSlideType("match"))
+             dispatch(matchingSlideAction.setMatchingSlideData(response.content))
+             break;
         default:
           break;
       }
     }
   }
 
+  // Uncomment This only
   useEffect(() => {
     setTimeout(() => getUnitDataHandler(), 1000);
   }, [])
+
+
+
   // useEffect(() => {
   //   slideChangeHandler();
   //   console.log("SlideIDARray useEfffect");
@@ -70,34 +94,10 @@ const LearningUnit = (props) => {
   }, [currentSlide, slideIdArray])
 
   return (
-    !isLoading ? <Slide /> : <Spinner />
+    !isLoading ? <Slide /> : <Spinner style={"primary"}/>
+ 
   )
 }
 
 export default LearningUnit
 
-
-
-// const slideChangeHandler = async () => {
-//   const response =  await getNextSlideData(currentSlide);
-//   console.log(response);
-//   if(response.id == 1) {
-//     dispatch(unitInfoActions.setPerStarXp(response.perStarXp))
-//     // Adding One to accomodate Motivation Slide
-//     dispatch(unitInfoActions.setTotalNumberOfQuestions(response.numOfQuestions) );
-//     dispatch(slideControlActions.setTotalSlides(response.numOfQuestions) );
-//   }
-//   switch(response.slideType) {
-//     case "mcq":
-//       dispatch(slideControlActions.setSlideType("mcq"))
-//       dispatch(mcqSlideActions.setMcqData(response.content));
-//       // setSlideType(response.slideType);
-//       break;
-//     case "audio":
-//       dispatch(slideControlActions.setSlideType("audio"))
-//       dispatch(audioSlideActions.setAudioData(response.content))
-//       // TODO
-//     default:
-//       break;
-//   }
-// }

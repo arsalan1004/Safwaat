@@ -8,10 +8,10 @@ const {
 const getSlide = async (req, res) => {
   try {
     const teachingSlide = await teachingSlideModel.findOne({
-      _id: req.params.slideId,
+      _id: req.body.slideId,
     });
     const practiceSlide = await practiceSlideModel.findOne({
-      _id: req.params.slideId,
+      _id: req.body.slideId,
     });
 
     if (teachingSlide) {

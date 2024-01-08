@@ -43,7 +43,9 @@ const Result = () => {
   const postUnitDataHandler = async () => {
     const completetionData = {
       // // id: userId, // From Login Data stored in redux store
-      userId: "659008aa4f03360cefe237db",
+      // learningUnit Id from levelMap
+      // unitNum from levelMap
+      userId: "659815525ce38b434230fbe0",
       learningUnit: "658fdbe94f03360cefe237cc",
       unitNum: 1,
       starsEarned: stars,
@@ -53,7 +55,7 @@ const Result = () => {
   }
   const lessonCompleteHandler = async () => {
    
-      // postUnitDataHandler();
+      postUnitDataHandler();
       navigate("/")
 
   }
@@ -82,9 +84,9 @@ const Result = () => {
         <img src={image} alt={"stars-image"} 
           className='w-[210px] h-[95px] mx-auto min-w-fit'
         />
-        <h2 className='text-[25px] font-semibold font-poppins tracking-wide text-secondary'>{subTitle}</h2>
-        <p className='text-2xl text-secondary font-poppins'>{stars} Stars</p>
-        <p className='text-2xl text-secondary font-poppins'>{perStarXp * stars} Xp Awarded</p>
+        <h2 className='text-[25px] font-semibold font-Poppins tracking-wide text-secondary'>{subTitle}</h2>
+        <p className='text-2xl text-secondary font-Poppins'>{stars} Stars</p>
+        <p className='text-2xl text-secondary font-Poppins'>{perStarXp * stars} Xp Awarded</p>
         <div className='flex flex-col justify-center items-center font-Itim gap-2'>
           <div className='flex justify-between items-center min-w-max w-[30%] gap-2'>
             <div className='text-correct'>Correct</div>

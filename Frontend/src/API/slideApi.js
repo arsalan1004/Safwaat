@@ -4,11 +4,15 @@ const getNextSlideData = async (slideId) => {
   // if lideId is initially undefined
   if(slideId === undefined) return
   console.log("EnteredNextSLideDATA")
-  const API_URL = "http://localhost:3500/learningUnit";
+  // const API_URL = "http://localhost:3500/learningUnit";
+  const API_URL = "http://localhost:8000/api/slides/singleSlide";
 
   try {
     console.log(`url: ${API_URL + "/" + slideId}`)
-    const response = await axios.get(`${API_URL}/${slideId}`);
+    // const response = await axios.get(`${API_URL}/${slideId}`);
+    const response = await axios.post(API_URL, {
+      slideId: slideId
+    });
     console.log(response);
     return response.data;
 
@@ -19,14 +23,18 @@ const getNextSlideData = async (slideId) => {
 }
 
 const getUnitData = async () => {
-
-  const API_URL = "http://localhost:3600/learningUnitData";
+  // UnitId passed from component as param
   // const API_URL = "http://localhost:3600/learningUnitData";
+  let unitId = "658fdbe94f03360cefe237cc"
+  const API_URL = "http://localhost:8000/api/slides";
 
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.post(API_URL, {
+      unitId: unitId
+    });
     console.log("UnitData response returned")
-    return response.data[0];
+    // return response.data[0];
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -37,15 +45,16 @@ const postUnitData = async (data) => {
   console.log("In postUnitData Handler");
   console.log(data);
 
-  return true;
+  // return true;
 
-  // const API_URL = "http://localhost:3600/learningUnitData";
-  // try {
-  //   const response = await axios.get(API_URL);
-  //   return response.data;
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  const API_URL = "http://localhost:8000/api/completeUnit"
+  try {
+    const response = await axios.post(API_URL, data)
+    console.log(response);
+  } catch (error) {
+    
+  }
+
 }
 
 

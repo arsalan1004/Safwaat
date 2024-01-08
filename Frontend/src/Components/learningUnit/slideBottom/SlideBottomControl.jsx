@@ -181,6 +181,7 @@ const SlideBottomControl = (props) => {
     
     if(isChecked == false && isMotivation == false) {
         // When User Clicks Check
+        console.log("entered @184")
         dispatch(slideControlActions.setIsChecked(true))
         if(slideType == "dnd") {
           // dndIsCorrectHandler();

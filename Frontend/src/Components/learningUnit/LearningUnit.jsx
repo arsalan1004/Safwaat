@@ -24,11 +24,12 @@ const LearningUnit = (props) => {
   const getUnitDataHandler = async () => {
     setIsLoading(true)
     const response = await getUnitData();
-    console.log(response.slideIdArray)
+    // console.log(response.slideIdArray)
+    console.log(response.slides)
     dispatch(unitInfoActions.setPerStarXp(response.perStarXp))
     dispatch(unitInfoActions.setTotalNumberOfQuestions(response.numOfQuestions));
-    dispatch(slideControlActions.setTotalSlides(response.slideIdArray.length));
-    dispatch(unitInfoActions.setSlideIdArray(response.slideIdArray))
+    dispatch(slideControlActions.setTotalSlides(response.slides.length));
+    dispatch(unitInfoActions.setSlideIdArray(response.slides))
     setIsLoading(false);
   }
 

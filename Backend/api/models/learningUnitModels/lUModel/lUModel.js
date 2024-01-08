@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const learningUnitSchema = mongoose.Schema(
   {
     unitNumber: Number,
-    numOfQuestions: Number,
     perStarXp: Number,
     slides: Object,
   },

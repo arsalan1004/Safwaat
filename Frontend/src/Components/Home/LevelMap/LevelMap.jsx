@@ -85,7 +85,7 @@ function LevelMap() {
 
   ];
 
-  const style = [
+  const styling = [
     {
       top: '8em',
       left: '54%'
@@ -121,6 +121,7 @@ function LevelMap() {
 
   ]
 
+  // Logic to manage Dolphin animation
 
   const [isDolphinAnimationActive, setDolphinAnimationActive] = useState(true);
 
@@ -128,6 +129,8 @@ function LevelMap() {
     console.log('function dolphinTriggerHandler');
     setDolphinAnimationActive(true);
   };
+
+  //Return
 
   return (
     <div className={classes.Main} >
@@ -177,19 +180,27 @@ function LevelMap() {
       </div>
       
       <div className={classes.Center}>
+      
+
+
           <img src={LevelMapImg} alt='LevelMapImg' className={classes.LevelMapImg} />
           <img src={dolphin} 
           className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''}`}
           onAnimationEnd={() => setDolphinAnimationActive(false)} 
           />
           <img src={seaShell} className='absolute top-[88%] left-[37%] z-20' />
+
           {
-            // Map to Set Learning Units and Src login to assign stars dynamically
-            style.map(
-              (st, i) => {
-                return <div key={i} className={`top-[${st.top}] left-[${st.left}]`}
-                onClick={dolphinTriggerHandler}>
-                          <img src={
+            styling.map(
+              (st, i) => (
+                
+                <div 
+                  key={i}
+                  className={`top-[${st.top}] left-[${st.left}]`}
+                  onClick={dolphinTriggerHandler}
+                  >
+                    <span className='absolute translate-x-[1.2em] translate-y-[1em] font-bold text-slate-600 '>{data[i].unitNumber}</span>
+                    <img src={
                             data[i].starsEarned != null ? 
                               data[i].starsEarned == 3 ? LevelUnit3S :
                                   data[i].starsEarned == 2 ? LevelUnit2S : 
@@ -197,10 +208,11 @@ function LevelMap() {
                               : LevelUnitLocked
 
                           } />
-                      </div>
-              }
+                </div>
+              )
             )
           }
+          
 
       </div>
       
@@ -209,11 +221,11 @@ function LevelMap() {
       <div className={`${classes.Right} px-5 border-r-2 border-l-slate-300`}>
         
         {/* Div for Streak Leaderbaord */}
-        <div className='flex flex-col  text-secondary mt-10 border-2 border-slate-400 rounded-lg py-4 px-4'>
+        <div className='flex flex-col  text-secondary mt-10 border-2 border-slate-400 rounded-lg py-4 px-3'>
 
           <div className='mb-5 flex'>
             <h1 className='font-bold  tracking-widest font-Poppins w-4/6'>Streak LeaderBoard</h1>
-            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 text-right'>View Board</span>
+            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6'>View League</span>
           </div>
 
           <div className='flex justify-center items-end'>
@@ -224,11 +236,11 @@ function LevelMap() {
         </div>
 
         {/* div for Xp leaderboard */}
-        <div className='flex flex-col text-secondary mt-5 border-2 border-slate-400 rounded-lg py-4 px-4'>
+        <div className='flex flex-col text-secondary mt-5 border-2 border-slate-400 rounded-lg py-4 px-3'>
 
           <div className='mb-5 flex justify-start'>
             <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>Gold League</h1>
-            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 text-right'>View League</span>
+            <span className='font-Inter font-bold text-[#24B6FB] block w-2/6'>View League</span>
           </div>
           
           <div className='flex justify-center items-end'>
@@ -238,7 +250,7 @@ function LevelMap() {
 
         </div>
 
-
+        
       </div>
 
     </div>

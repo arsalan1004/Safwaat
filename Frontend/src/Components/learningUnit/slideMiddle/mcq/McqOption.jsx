@@ -13,12 +13,12 @@ const McqOption = (props) => {
   }
   let style = "";
   const mcqStyles = {
-    defaultStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-itim bg-[#DEF1F2] text-secondary py-1 rounded-[15px] w-[50%] mx-auto border-[#DEF1F2] border-2 cursor-pointer",
-    selectedStyle: "flex justify-center items-center text-xl font-itim py-1 rounded-[15px] w-[50%] mx-auto cursor-pointer text-primary border-2 bg-secondary border-secondary mcq-shadow-inner",
-    correctionStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-itim bg-correct text-primary py-1 rounded-[15px] w-[50%] mx-auto border-correct border-2 cursor-pointer",
-    wrongStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-itim bg-wrong text-primary py-1 rounded-[15px] w-[50%] mx-auto border-wrong border-2 cursor-pointer",
-    selectedWrong: "mcq-shadow-inner flex justify-center items-center text-xl font-itim bg-wrong text-primary py-1 rounded-[15px] w-[50%] mx-auto border-wrong border-2 cursor-pointer",
-    selectedCorrect: "mcq-shadow-inner flex justify-center items-center text-xl font-itim bg-correct text-primary py-1 rounded-[15px] w-[50%] mx-auto border-correct border-2 cursor-pointer"
+    defaultStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-Itim bg-[#DEF1F2] text-secondary py-1 rounded-[15px] w-[50%] mx-auto border-[#DEF1F2] border-2 cursor-pointer",
+    selectedStyle: "flex justify-center items-center text-xl font-Itim py-1 rounded-[15px] w-[50%] mx-auto cursor-pointer text-primary-100 border-2 bg-secondary border-secondary mcq-shadow-inner",
+    correctionStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-Itim bg-correct text-primary-100 py-1 rounded-[15px] w-[50%] mx-auto border-correct border-2 cursor-pointer",
+    // wrongStyle: "mcq-shadow-outer flex justify-center items-center text-xl font-Itim bg-wrong text-primary-100 py-1 rounded-[15px] w-[50%] mx-auto border-wrong border-2 cursor-pointer",
+    selectedWrong: "mcq-shadow-inner flex justify-center items-center text-xl font-Itim bg-wrong text-primary-100 py-1 rounded-[15px] w-[50%] mx-auto border-wrong border-2 cursor-pointer",
+    selectedCorrect: "mcq-shadow-inner flex justify-center items-center text-xl font-Itim bg-correct text-primary-100 py-1 rounded-[15px] w-[50%] mx-auto border-correct border-2 cursor-pointer"
   
   }
 
@@ -33,7 +33,7 @@ const McqOption = (props) => {
       style = mcqStyles.selectedWrong;
     }
     else {
-      style = mcqStyles.wrongStyle;
+      style = mcqStyles.defaultStyle;
     }
   } else {
     style = props.isSelected ? mcqStyles.selectedStyle : mcqStyles.defaultStyle;

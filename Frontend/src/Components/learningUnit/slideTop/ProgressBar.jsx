@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../../../UI/Button'
 import { useSelector } from 'react-redux'
 import cancel from '../../../assets/icons/cancel.svg'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * props: barWidth Percentage
@@ -13,6 +14,7 @@ import cancel from '../../../assets/icons/cancel.svg'
 
 
 const ProgressBar = (props) => {
+  // const navigate = useNavigate();
   const {progressCounter, totalSlides} = useSelector(state => state.slideControl);
   let width = Number((progressCounter - 1) / totalSlides) * 100;
   console.log(totalSlides)
@@ -21,7 +23,8 @@ const ProgressBar = (props) => {
 
 
   const cancelLearningUnitHandler = () => {
-    // Send The Stats Data to 
+    // Navigate back to homepage 
+    // navigate('/');
     props.exitModalHandler(true);
   }
 

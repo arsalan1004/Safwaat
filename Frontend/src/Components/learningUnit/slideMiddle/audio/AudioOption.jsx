@@ -25,7 +25,7 @@ const AudioOption = (props) => {
       style = audioStyles.selectedWrong;
     }
     else {
-      style = audioStyles.wrongStyle;
+      style = audioStyles.defaultStyle;
     }
   } else {
     style = props.isSelected ? audioStyles.selectedStyle : audioStyles.defaultStyle;

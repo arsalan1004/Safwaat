@@ -7,7 +7,7 @@ const {
 
 const slideRoute = require("express").Router();
 
-slideRoute.get("/:unitId", getAllSlides);
+slideRoute.post("/", getAllSlides);
 slideRoute.get("/single/:slideId", getSlide);
 
 module.exports = { slideRoute };

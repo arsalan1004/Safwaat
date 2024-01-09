@@ -1,14 +1,16 @@
-import React from 'react';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'; 
-
+import viteLogo from '/vite.svg'
+import routes from './Routes/routes'
 import './App.css'
-import router from './Routes/router';
+import {
+  RouterProvider,
+} from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
-
   return (
     <>
-      <RouterProvider  router={router} />
+      <ToastContainer containerId='main' autoClose={2000}  pauseOnFocusLoss={true}/>
+      <RouterProvider router={routes} />
     </>
   )
 }

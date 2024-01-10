@@ -9,8 +9,8 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import axios from 'axios'
 const CTable = ({data,label,board,id,fetchData}) => {
   const [changeOccur,setChange] =useState();
-  const [achieveClaim,setachieveClaim] =useState([false,false,false,false,false,false,false,false]);
-  const [dailyClaim,setdailyClaim] =useState([false,false,false,false,false,false,false,false]);
+  const [achieveClaim,setachieveClaim] =useState([...new Array(data.length)].map(() => false));
+  const [dailyClaim,setdailyClaim] =useState([...new Array(data.length)].map(() => false));
 
   const updateachieveClaim = (index) => {
     setachieveClaim((prevachieveClaim) => {
@@ -66,7 +66,7 @@ const CTable = ({data,label,board,id,fetchData}) => {
               </div>
               <div className="achieve-buttonarea flex flex-col items-center rounded-2xl  my-2 mr-2"><img src={coin} alt="" className='h-[100px] w-[100px]'/>
               {isClaimed? null:reward}
-              <Button disabled={(isClaimed || (dailyClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateDailyClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 cursor-not-allowed w-[50%] h-[20%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] w-[50%] h-[20%] pb-[10px] text-center text-white pt-1.5`}>{(dailyClaim[index]  || isClaimed)? `${reward} XP rewarded`:`Claim` }</Button>
+              <Button disabled={(isClaimed || (dailyClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateDailyClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 cursor-not-allowed w-[50%] h-[20%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] w-[50%] pb-[10px] text-center text-white pt-1.5 hover:text-[#246c6d] hover:bg-white border-2 border-[#246c6d]`}>{(dailyClaim[index]  || isClaimed)? `${reward} XP rewarded`:`Claim` }</Button>
               </div>
             </div>
             </>
@@ -83,7 +83,7 @@ const CTable = ({data,label,board,id,fetchData}) => {
               </div>
               <div className="achieve-buttonarea flex flex-col items-center rounded-2xl  my-2 mr-2"><img src={trophy} alt="" className='h-[100px] w-[100px]'/>
               {isClaimed? null:reward}
-              <Button disabled={(isClaimed || (achieveClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateAchieveClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 cursor-not-allowed w-[50%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] w-[50%] pb-[10px] text-center text-white pt-1.5`}>{(achieveClaim[index]  || isClaimed)? `${rewardType} rewarded`:`Claim` }</Button>
+              <Button disabled={(isClaimed || (achieveClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateAchieveClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 cursor-not-allowed w-[50%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] w-[50%] pb-[10px] text-center text-white pt-1.5 hover:text-[#246c6d] hover:bg-white border-2 border-[#246c6d]`}>{(achieveClaim[index]  || isClaimed)? `${rewardType} rewarded`:`Claim` }</Button>
               </div>
             </div>
             </>

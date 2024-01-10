@@ -146,10 +146,10 @@ function LevelMap() {
 
   return (
     <div className={classes.Main} >
-      <img src={clouds} className={classes.Cloud} />
 
-      {/* leftSideBar */}
-      <div className={`${classes.Left} px-5 border-r-2 border-r-slate-300`}>
+      {/* leftSideBar - LEFT */}
+      <div className='px-5 border-r-2 border-r-slate-300 bg-primary-100 hidden z-10
+                  s1:block s1:w-[15%] s2:w-[25%] s3:w-[25%] s4:w-[20%] s5:w-[25%] '>
 
         {/* Header */}
           <div className='flex-center px-2 py-3 mb-4'>
@@ -191,11 +191,13 @@ function LevelMap() {
 
       </div>
       
-      <div className={classes.Center}>
+      {/* CENTER */}
+      <div className='relative w-full h-full flex flex-col box-border
+                      s1:w-[85%] s2:w-[75%] s3:w-[65%] s4:w-[50%] s5:w-[45%] '>
       
 
-
-          <img src={LevelMapImg} alt='LevelMapImg' className={classes.LevelMapImg} />
+          <img src={clouds} alt='clouds' className={classes.Cloud} />
+          <img src={LevelMapImg} alt='LevelMapImg' className='w-full h-full block absolute' />
           <img src={dolphin} 
           className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''}`}
           onAnimationEnd={() => setDolphinAnimationActive(false)} 
@@ -211,6 +213,7 @@ function LevelMap() {
                   key={i}
                   // className={`top-[${st.top}] left-[${st.left}]`}
                   style={styling[i]}
+                  className='cursor-pointer relative w-fit z-10'
                   onClick={dolphinTriggerHandler}
                   >
                     <span className='absolute translate-x-[1.2em] translate-y-[1em] font-bold text-slate-600 '>{data[i].unitNumber}</span>
@@ -230,8 +233,9 @@ function LevelMap() {
       </div>
       
 
-      {/* RightSideBar */}
-      <div className={`${classes.Right} px-5 border-r-2 border-l-slate-300`}>
+      {/* RightSideBar  - RIGHT*/}
+      <div className='px-5 border-r-2 border-l-slate-300 bg-primary-100 hidden z-10
+                  s3:block s3:w-[10%] s4:w-[30%] s5:w-[30%] ' >
 
         {/* Details */}
           <div className='flex justify-start'>
@@ -254,7 +258,7 @@ function LevelMap() {
               }}
               ></div>
               {/* Filled Bar */}
-              <div className={`w-[${xpWidth}] h-[1.6em] bg-[#0DAEE1] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
+              <div className={`w-[${xpWidth}] h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
                flex-center`}
               
               >

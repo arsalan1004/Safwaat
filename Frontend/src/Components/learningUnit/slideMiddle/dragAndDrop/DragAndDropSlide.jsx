@@ -4,7 +4,7 @@ import DraggableBadge from './DragableBadge';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { dndSlideActions } from '../../../../Store/dndSlideSlice';
-import reset from '../../../../assets/icons/reset.svg';
+import reset from '../../../../Assets/Icons/reset.svg';
 
 const DragAndDropSlide = () => {
   const dispatch = useDispatch();

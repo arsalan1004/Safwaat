@@ -1,9 +1,9 @@
 import ReactHowler from 'react-howler'
 import React, {useEffect, useState} from 'react'
-import play from '../../../../assets/icons/play.svg'
-import playing from '../../../../assets/icons/playing.svg'
-import loopImg from '../../../../assets/icons/loop.svg'
-import looping from '../../../../assets/icons/looping.svg'
+import play from '../../../../Assets/Icons/play.svg'
+import playing from '../../../../Assets/Icons/playing.svg'
+import loopImg from '../../../../Assets/Icons/loop.svg'
+import looping from '../../../../Assets/Icons/looping.svg'
 // import audio from '../../../public/audio.mp3'
 
 const ModelAudioControls = ({isLooping, setIsLooping, isPlaying, setIsPlaying, audioUrl}) => {
@@ -137,10 +137,10 @@ export default ModelAudioControls
 
 
 // import React, { useRef, useState, useEffect } from 'react'
-// import play from '../../assets/play.svg'
-// import playing from '../../assets/playing.svg'
-// import loopImg from '../../assets/loop.svg'
-// import looping from '../../assets/looping.svg'
+// import play from '../../Assets/play.svg'
+// import playing from '../../Assets/playing.svg'
+// import loopImg from '../../Assets/loop.svg'
+// import looping from '../../Assets/looping.svg'
 // const ModelAudioControls = () => {
 
 //   const [isPlaying, setIsPlaying] = useState(false);

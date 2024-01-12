@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import threeStars from '../../../assets/icons/threeStars.png';
-import twoStars from '../../../assets/icons/twoStars.png';
-import oneStar from '../../../assets/icons/oneStar.png';
-import zeroStars from '../../../assets/icons/zeroStars.png';
+import threeStars from '../../../Assets/Icons/threeStars.png';
+import twoStars from '../../../Assets/Icons/twoStars.png';
+import oneStar from '../../../Assets/Icons/oneStar.png';
+import zeroStars from '../../../Assets/Icons/zeroStars.png';
 
 import Button from '../../../UI/Button';
 import { useNavigate } from 'react-router-dom';

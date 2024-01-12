@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../../../UI/Button'
 import { useSelector } from 'react-redux'
-import cancel from '../../../assets/icons/cancel.svg'
+import cancel from '../../../Assets/Icons/cancel.svg'
 import { useNavigate } from 'react-router-dom'
 
 /**

@@ -1,5 +1,5 @@
 import React from 'react'
-import rose from '../../../../assets/images/rose.jpg';
+import rose from '../../../../Assets/Images/rose.jpg';
 import { useSelector } from 'react-redux';
 const TheorySlideImageText = () => {
   const {title, imageUrl, content} = useSelector(state => state.theoryImageSlideSlice); 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import sadCamel from '../../../assets/images/sadCamel.png';
+import sadCamel from '../../../Assets/Images/sadCamel.png';
 import styles from './exitLessonModal.module.css'
 import { useNavigate } from 'react-router-dom';
 

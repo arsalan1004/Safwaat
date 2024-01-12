@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import audioSpeaker from '../../../../assets/icons/audioSpeaker.svg'
+import audioSpeaker from '../../../../Assets/Icons/audioSpeaker.svg'
 import AudioOption from './AudioOption';
 import { useSelector } from 'react-redux';
 import AudioButton from './AudioButton';

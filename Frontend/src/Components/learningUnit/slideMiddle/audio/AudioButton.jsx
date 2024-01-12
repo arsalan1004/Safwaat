@@ -1,9 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 const AudioButton = (props) => {
   // const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
-
+  const {isChecked} = useSelector(state => state.slideControl)
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.addEventListener('ended', handleAudioEnded);
@@ -28,7 +29,7 @@ const AudioButton = (props) => {
   }
 
   return (
-    <button onClick={() => playAudioHandler()} className='min-w-[230px]'>
+    <button onClick={() => playAudioHandler()} className='min-w-[230px]' disabled = {isChecked == true ? true : false}>
       {props.children}
       <audio ref={audioRef} src={props.src} />
     </button>

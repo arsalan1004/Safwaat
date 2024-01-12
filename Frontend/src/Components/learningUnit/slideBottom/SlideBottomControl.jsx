@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 
 import Button from '../../../UI/Button';
-import correctAnswerImage from '../../../assets/icons/correctAnswer.svg';
-import wrongAnswerImage from '../../../assets/icons/wrongAnswer.svg';
+import correctAnswerImage from '../../../Assets/Icons/correctAnswer.svg';
+import wrongAnswerImage from '../../../Assets/Icons/wrongAnswer.svg';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { slideControlActions } from '../../../Store/slideControl.js'
@@ -531,8 +531,8 @@ export default SlideBottomControl;
 
 
 import Button from '../../../UI/Button';
-import correctAnswerImage from '../../../assets/icons/correctAnswer.svg';
-import wrongAnswerImage from '../../../assets/icons/wrongAnswer.svg';
+import correctAnswerImage from '../../../Assets/Icons/correctAnswer.svg';
+import wrongAnswerImage from '../../../Assets/Icons/wrongAnswer.svg';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { slideControlActions } from '../../../Store/slideControl.js'

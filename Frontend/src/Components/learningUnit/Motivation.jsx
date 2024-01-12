@@ -1,5 +1,5 @@
 import React from 'react';
-import motivationCamel from '../../assets/images/motivationCamel.png';
+import motivationCamel from '../../Assets/Images/motivationCamel.png';
 import { useSelector } from 'react-redux';
 
 const Motivation = () => {

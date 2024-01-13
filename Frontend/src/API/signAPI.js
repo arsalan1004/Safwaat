@@ -44,27 +44,34 @@ function handleCallbackResponse(response){
 
 const handleSubmit = (e,sign)=>{
   e.preventDefault();
-  const userData = {
-    username: sign.username,
-    password: sign.password,
-    firstName: sign.firstName,
-    lastName: sign.lastName,
-    email: sign.email,
-    gender: sign.gender,
-    dateOfBirth: sign.dateOfBirth,
-  };
-  axios.post("http://localhost:8000/api/signup/google", userData,{withCredentials:true}).then((response) => {
-    console.log(response);
-    if(response.status==201){
-      notifysucc(response.data.username);
-    }else if(response.status==409){
-      notifyerror(response.data.message);
-    }
-    else{
-      notifyerror("Account Creation Failed");
-    }
-  }).catch((error)=>notifyerror(error.response.data.message));
-  console.log("data sent",userData);
+  console.log(`${sign.password} == ${sign.confirmPassword}`)
+  if(sign.password==sign.confirmPassword){
+    const userData = {
+      username: sign.username,
+      password: sign.password,
+      firstName: sign.firstName,
+      lastName: sign.lastName,
+      email: sign.email,
+      gender: sign.gender,
+      dateOfBirth: sign.dateOfBirth,
+    };
+    console.log(`Userdata: `,userData);
+    axios.post("http://localhost:8000/api/signup/", userData,{withCredentials:true}).then((response) => {
+      console.log(response);
+      if(response.status==201){
+        notifysucc(response.data.username);
+      }else if(response.status==409){
+        notifyerror(response.data.message);
+      }
+      else{
+        notifyerror("Account Creation Failed");
+      }
+    }).catch((error)=>notifyerror(error.response.data.message));
+    console.log("data sent",userData);
+  }else{
+    notifyerror("Password Doesnot Match!");
+  }
+  
 };
 
 export {handleCallbackResponse,handleSubmit};

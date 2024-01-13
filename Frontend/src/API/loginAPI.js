@@ -4,7 +4,7 @@ import {toast } from 'react-toastify';
 import { jwtDecode } from "jwt-decode";
 
 const notifysucc = (msg) => {
-    toast.success(`Successful Account Creation as ${msg}`, {
+    toast.success(`Successful login as ${msg}`, {
       position: toast.POSITION.TOP_RIGHT
     });
   };
@@ -14,12 +14,13 @@ const notifysucc = (msg) => {
     });
   };
 
-const handleSubmit = (e)=>{
+const handleSubmit = (e,u,p) =>{
     e.preventDefault();
     const userData = {
-      username: username,
-      password: password
+      username: u,
+      password: p
     };
+    console.log(userData);
     axios.post("http://localhost:8000/api/login", userData,{ withCredentials: true }).then((response) => {
       console.log(response);
       if(response.status==200){
@@ -41,6 +42,7 @@ const handleSubmit = (e)=>{
       firstName : obj.family_name,
       lastName: obj.given_name
     }
+    console.log(userData);
     axios.post("http://localhost:8000/api/login/google", userData,{withCredentials:true}).then((response) => {
     console.log(response);
     if(response.status==200){

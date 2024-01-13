@@ -70,14 +70,18 @@
 
 .type-log {
   font-family: "Inter";
-  font-size: 3.5rem;
+  font-size: 3vw;
   color: white;
   font-weight: 500;
 }
 
 .type-logHead {
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 4vw;
+}
+
+#main::-webkit-scrollbar,#main2::-webkit-scrollbar {
+  display: none;
 }
 
 .dialog {

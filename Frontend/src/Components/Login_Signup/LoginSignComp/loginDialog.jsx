@@ -6,7 +6,7 @@ import InputWL from './input.jsx';
 import ButtonLog from './buttonlog';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUsername, setPassword } from '../../../Store/loginSlice';
+import { setUsername, setPassword,selectUsername } from '../../../Store/loginSlice';
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { toast } from 'react-toastify';
@@ -46,7 +46,7 @@ const LoginDialog = () => {
 
   return (
     <>
-      <div id='main' className="dialog max-[600px]:w-[75vw] mx-[8vw] md:mx-[5vw] h-[79vh] lg:w-[35vw]">
+      <div id='main' className="dialog max-[600px]:w-auto mx-[8vw] md:mx-[5vw] h-[79vh] lg:w-[35vw] max-[600px]:max-w-[95vw] max-[600px]:max-h-[70vh] max-w-[35vw] max-h-[70vh] overflow-scroll">
         <h1 className='head text-[35px] text-center my-[3vh]'>LOGIN</h1>
         <div className="input-section mx-[5vw]">
           <InputWL
@@ -70,13 +70,13 @@ const LoginDialog = () => {
               <input type="checkbox" name="rem-me" id="remember" className='accent-[#106c6f]' />
               <label htmlFor="remember" className='max-[600px]:mr-7 h-[20px] pb-[5px] mx-[0.2rem] text-sm inline-block align-middle'>Remember me</label>
             </div>
-            <p className='text-sm mt-[3px] max-[600px]:ml-5'>Don't have an account?&nbsp;
-            <a className="bg-transparent no-underline text-[#39dee4] font-extrabold hover:no-underline hover:text-white" href=""><Link to='/signup'>Create account</Link></a>
+            <p className='text-sm mt-[3px] max-[600px]:ml-5'>Don't have an account?&nbsp;<br/>
+            <a className="bg-transparent no-underline text-[#39dee4] font-extrabold hover:no-underline hover:text-white" href=""><Link  to='/signup'><p className='w=[100%] text-right'>Create account</p></Link></a>
             </p>
           </div>
         </div>
         <div className="button-section mx-[5vw] my-[5vw] flex flex-col items-center">
-          <ButtonLog className='fillButton' onClick={(e)=>handleSubmit(e)}>Login</ButtonLog>
+          <ButtonLog className='fillButton' onClick={(e)=>handleSubmit(e,username,password)}>Login</ButtonLog>
           <div className='flex'>
             <hr className='w-[4vw] m-5 inline' />
             <span className='my-2'>OR</span>

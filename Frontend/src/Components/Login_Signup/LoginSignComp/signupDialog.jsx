@@ -5,7 +5,7 @@ import InputWL from './input.jsx';
 import ButtonLog from './buttonlog';
 import Checkbox from './checkbox';
 import { Link, useNavigate } from 'react-router-dom';
-import { setdetails,setUsername,setDateOfBirth,setGender,setEmail,setPassword,setRememberMe,setFirstName,setLastName,setAgreeToTerms } from '../../../Store/signSlice';
+import { setConfirmPassword,setdetails,setUsername,setDateOfBirth,setGender,setEmail,setPassword,setRememberMe,setFirstName,setLastName,setAgreeToTerms } from '../../../Store/signSlice';
 import { useSelector,useDispatch } from 'react-redux';
 import axios from 'axios';
 import { GoogleLogin } from '@react-oauth/google';
@@ -47,10 +47,15 @@ const SignDialog = () => {
         break;
       case 'password':
         dispatch(setPassword(value));
+        console.log(value);
+        break;
+      case "cpassword":
+        dispatch(setConfirmPassword(value));
+        console.log(value);
         break;
       case 'gender':
         dispatch(setGender(value));
-        console.log(sign.gender)
+        console.log(sign.gender);
         break;
       case 'dob':
         dispatch(setDateOfBirth(value));
@@ -64,7 +69,7 @@ const SignDialog = () => {
 
   return (
     <>
-        <div className="dialog mx-[8vw] md:mx-[5vw] h-auto pb-7 md:w-[65vw] relative">
+        <div className="dialog mx-[8vw] md:mx-[5vw] h-auto pb-7 md:w-[65vw] max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
         <h1 className='head text-[35px] text-center mt-[3vh]'>Get Started</h1>
             <div className="grid grid-cols-2 gap-4 px-10 pt-10">
                 <InputWL label="First name" id="fname" type='text' placeholder='eg. Abdullah' onChange={handleChange}></InputWL>
@@ -72,7 +77,7 @@ const SignDialog = () => {
                 <InputWL label="Email" id='email'  type='email' placeholder='abc@gmail.com' onChange={handleChange}></InputWL>
                 <InputWL label="Username"  id='username' type='text' placeholder='eg. abdullah_masood' onChange={handleChange}></InputWL>
                 <InputWL label="Password"  id='password' type='password' placeholder='Enter a strong password' onChange={handleChange}></InputWL>
-                <InputWL label="Confirm Password"  id='cpassword' type='password' placeholder='Re-enter your password' ></InputWL>
+                <InputWL label="Confirm Password"  id='cpassword' type='password' placeholder='Re-enter your password' onChange={handleChange}></InputWL>
                 <InputWL label="Gender" id='gender' list="gender" placeholder='Choose your gender' onChange={handleChange}>
                   <datalist id="gender">
                       <option value="Male"/>

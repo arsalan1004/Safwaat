@@ -20,9 +20,9 @@ function LeftSideBar() {
     s1:block s1:w-[15%] s2:w-[25%] s3:w-[25%] s4:w-[20%] s5:w-[25%] '>
 
         {/* Header */}
-        <div className='flex-center px-2 py-3 mb-4'>
-            <img src={Logo} alt="Safwaat Logo" className='mix-blend-multiply mr-6 h-16 w-16' />
-            <img src={textLogo} alt="Text Logo"  className='mix-blend-multiply h-14' />
+        <div className='flex-center mt-4 s3:mx-2 mb-5'>
+            <img src={Logo} alt="Safwaat Logo" className='mix-blend-multiply ml-3 s4:ml-2 s4:mr-1 s5:mr-10 h-[64px] w-[64px]' />
+            <img src={textLogo} alt="Text Logo"  className='mix-blend-multiply h-14 hidden s3:block ' />
             {/* <h1 className='font-semibold text-secondary text-lg tracking-widest font-Poppins'>SAFWAAT</h1> */}
         </div>
 

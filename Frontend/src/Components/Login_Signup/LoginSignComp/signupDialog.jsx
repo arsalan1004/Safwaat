@@ -67,8 +67,8 @@ const SignDialog = () => {
 
 
   return (
-    <>
-        <div className="dialog mx-[8vw] md:mx-[5vw] h-auto pb-7 md:w-[65vw] max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
+
+    <div className="dialog mx-[8vw] h-8/12 md:mx-[5vw] pb-7 md:w-[65vw] max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
         <h1 className='head text-[35px] text-center mt-[3vh]'>Get Started</h1>
             <div className="grid grid-cols-2 gap-4 px-10 pt-10">
                 <InputWL label="First name" id="fname" type='text' placeholder='eg. Abdullah' onChange={handleChange}></InputWL>
@@ -104,7 +104,7 @@ const SignDialog = () => {
             </div>
             <p className='text-center max-h-[80%] my-auto'>Already have an account? <Link to='/' className='text-[#33babe]'>Log In</Link></p>
         </div>
-    </>
+  
   )
 }
 

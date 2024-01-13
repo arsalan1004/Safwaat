@@ -5,13 +5,13 @@ const formatData = (learningUnits, userProgress) => {
         return {
           _id: unit?._id,
           unitNumber: unit?.unitNumber,
-          progress: userProgress[index],
+          starsEarned: userProgress[index].starsEarned,
         };
       } else {
         return {
           _id: unit?._id,
           unitNumber: unit?.unitNumber,
-          progress: null,
+          starsEarned: null,
         };
       }
     });

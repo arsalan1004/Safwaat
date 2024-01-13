@@ -5,7 +5,7 @@ const {
 const getLearningUnitData = async () => {
   try {
     const learningUnits = await learningUnitModel
-      .find({}, { _id: 1, unitNumber: 1 })
+      .find({}, { unitNumber: 1 })
       .sort({ unitNumber: 1 });
 
     if (learningUnits) {

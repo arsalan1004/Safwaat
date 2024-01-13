@@ -1,5 +1,5 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -12,8 +12,7 @@
   backface-visibility: hidden;
 }
 
-
-.contain{
+.contain {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -21,8 +20,8 @@
   place-items: center;
 }
 
-.wrapper{
-  background: url('./assets/Arch1.png') no-repeat center center fixed; 
+.wrapper {
+  background: url("./Assets/Arch1.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -55,53 +54,55 @@
 } */
 
 @font-face {
-  font-family: 'Inter';
-  src: url('/Inter.ttf');
+  font-family: "Inter";
+  src: url("/Inter.ttf");
 }
 
 @font-face {
-  font-family: 'Barlow';
-  src: url('/Barlow-Regular.ttf');
+  font-family: "Barlow";
+  src: url("/Barlow-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'BarlowBold';
-  src: url('/Barlow-Bold.ttf');
+  font-family: "BarlowBold";
+  src: url("/Barlow-Bold.ttf");
 }
 
-.type-log{
-  font-family: 'Inter';
+.type-log {
+  font-family: "Inter";
   font-size: 3.5rem;
   color: white;
   font-weight: 500;
 }
 
-.type-logHead{
+.type-logHead {
   font-weight: 600;
   font-size: 4rem;
 }
 
-.dialog{
-  background: rgba( 255, 255, 255, 0.2 );
+.dialog {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-  backdrop-filter: blur( 8px );
-  -webkit-backdrop-filter: blur( 8px );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   border: 1px solid rgb(255, 255, 255);
 
-  font-family: 'Barlow';
+  font-family: "Barlow";
   color: white;
   font-size: 15px;
 }
 
-.dialog > .input-section{
-  font-family: 'Inter';
+.dialog > .input-section {
+  font-family: "Inter";
   display: flex;
   flex-direction: column;
 }
 
-#username, #password ,.inputWL{
-  background: rgba( 255, 255, 255, 0.2 );
+#username,
+#password,
+.inputWL {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
@@ -109,8 +110,10 @@
   padding: 0.5vw 1.5vh 0.5vw 1.5vh;
 }
 
-#username:focus, #password:focus ,.inputWL:focus{
-  background: rgba( 255, 255, 255, 0.2 );
+#username:focus,
+#password:focus,
+.inputWL:focus {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
@@ -119,52 +122,54 @@
   outline: none;
 }
 
-
 @media only screen and (max-width: 600px) {
-  #username, #password,.inputWL{
-    background: rgba( 255, 255, 255, 0.2 );
+  #username,
+  #password,
+  .inputWL {
+    background: rgba(255, 255, 255, 0.2);
     /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-    backdrop-filter: blur( 2px );
-    -webkit-backdrop-filter: blur( 8px );
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 5px;
     border: 1px solid rgb(255, 255, 255);
     padding: 2vw 1.5vh 2vw 1.5vh;
   }
 }
 
-.fillButton{
+.fillButton {
   background-color: #106c6f;
   padding: 9px 7vw 9px 7vw;
 }
 
-.fillButton:hover , .googleOutline:hover,
-.fillButton:focus , .googleOutline:focus{
+.fillButton:hover,
+.googleOutline:hover,
+.fillButton:focus,
+.googleOutline:focus {
   border-color: white;
   outline: none;
 }
 
-.googlefill:focus,.googlefill:hover{
-  border-color:#106c6f;
+.googlefill:focus,
+.googlefill:hover {
+  border-color: #106c6f;
   outline: none;
-} 
+}
 
-
-.googleOutline{
+.googleOutline {
   border: 1.2px solid;
   border-color: #106c6f;
   background-color: transparent;
   padding: 0px 5vw 0px 5vw;
 }
 
-
-.googlefill{
+.googlefill {
   border: 1.2px solid;
   border-color: #ffffff;
   padding: 0px 4vw 0px 4vw;
-  color:#0A3F67;
+  color: #0a3f67;
 }
 
-.head{
+.head {
   font-weight: 900;
-  font-family: 'BarlowBold';
+  font-family: "BarlowBold";
 }

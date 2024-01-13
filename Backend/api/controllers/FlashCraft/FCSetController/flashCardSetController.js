@@ -1,4 +1,4 @@
-const fCModel = require("../../models/FCModel/flashCardSetModel");
+const fCModel = require("../../../models/FlashCraft/FCModel/flashCardSetModel");
 
 const fCSPostController = async (req, res) => {
   const flashCardData = req.body;

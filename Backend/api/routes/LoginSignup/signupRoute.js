@@ -1,9 +1,9 @@
 const {
   signupController,
-} = require("../../controllers/LoginSignupControllers/signupController");
+} = require("../../controllers/LoginSignup/signupController");
 const {
   googleSignupController,
-} = require("../../controllers/LoginSignupControllers/googleControllers/googleSignupController");
+} = require("../../controllers/LoginSignup/googleControllers/googleSignupController");
 
 const signupRouter = require("express").Router();
 

@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { userModel } = require("../../models/userModel");
-
+const { userModel } = require("../../models/LoginSignup/userModel");
+require("dotenv").config();
 const jwtSecret = process.env.JWT_SECRET;
 
 const signupController = async (req, res) => {

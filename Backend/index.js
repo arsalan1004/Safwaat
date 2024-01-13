@@ -7,10 +7,10 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 
 // REQUIRING ROUTES
+
 const {
   flashCardSetRouter,
-} = require("./api/routes/FCSetRoute/flashCardSetRoute");
-const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
+} = require("./api/routes/FlashCraft/FCSetRoute/flashCardSetRoute");
 const { signupRouter } = require("./api/routes/LoginSignup/signupRoute");
 const { loginRouter } = require("./api/routes/LoginSignup/loginRoute");
 
@@ -58,7 +58,6 @@ app.use(
 // REGISTERING ROUTES
 // FLashCraft routes
 app.use("/api/FlashCraft", flashCardSetRouter);
-app.use("/api/flashcard", flashCardRouter);
 
 // login signup routes
 app.use("/api/signup", signupRouter);

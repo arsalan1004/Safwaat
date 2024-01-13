@@ -1,9 +1,14 @@
 import React from 'react'
 
+import Perk from './Perk';
+
 import LoginButton from '../../../UI/Button/LoginButton'
+import LoginButtonSlide from '../../../UI/Button/LoginButtonSlide/LoginButtonSlide.jsx';
 import XPFlower from '../../../Assets/XPFlower.svg';
 import gem from '../../../Assets/Icons/gem.png';
 import trophy from '../../../Assets/Icons/trophy.png';
+import XP from '../../../Assets/Icons/XP.png';
+import levelUp from '../../../Assets/Icons/levelUp.png'
 
 import StreakIconHome from '../../../Assets/Icons/StreakIconHome.png';
 import goldLeague from '../../../Assets/Icons/goldLeague.png';
@@ -16,14 +21,16 @@ function RightSidebar() {
     const leagueName = 'Gold League';
 
   return (
-    <div className='px-5 border-r-2 border-l-slate-300 bg-primary-100 hidden z-10
-        s3:block s3:w-[10%] s4:w-[30%] s5:w-[30%] ' >
+    <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-10
+        s3:block s3:w-[10%] s4:w-[30%] s5:w-[30%]
+        s4:px-5 ' >
 
         {/* Details */}
-        <div className='flex justify-start'>
+        <div className='s4:flex s4:justify-start'>
             
             {/* XP Progress Bar */}
-            <div className='mt-4 relative w-3/6'>
+            <div className='mt-4 relative w-3/6 hidden
+                            s4:block'>
 
                 {/* XP Flower */}
                 <div className='flex-center w-fit relative'>
@@ -46,43 +53,44 @@ function RightSidebar() {
                 {/* Filled Bar */}
                 <div className={`w-[${xpWidth}] h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
                     flex-center`}
-
                     >
                     <span className='pl-8 pr-3 font-semibold font-Montesserat tracking-wider text-primary-100  '>{xpAmount}</span>
                 </div>
 
             </div> 
 
-            <div className='ml-16 mt-5'>
+            <div className='s4:hidden mt-5 ml-2 flex-center mb-10'>
+                <LoginButtonSlide />
+            </div>        
+
+            <div className='mt-8 flex flex-col items-center justify-center mx-3 s4:hidden'> 
+                <Perk imgSrc={levelUp} altText='levelUp' text='3' />
+                <Perk imgSrc={XP} altText='XP' text='1400'/>
+            </div>
+
+            <div className='ml-16 mt-5 hidden
+                            s4:block'>
               <LoginButton />
             </div>
+           
 
         </div>
 
         {/* Perks Section */}
-        <div className='mt-8 flex items-center justify-between mx-5  '> 
+        <div className='mt-8 flex flex-col items-center justify-center mx-3
+                s4:flex-row s4:flex s4:items-center s4:justify-between s4:mx-5  '> 
 
-            <div className='flex-center gap-3'>
-                <img src={gem} alt='gem' />
-                <span className='font-Itim text-secondary text-lg'>15</span>
-            </div>
-
-            <div className='flex-center gap-3'>
-                <img src={trophy} alt='trophy' />
-                <span className='font-Itim text-secondary text-lg'>30</span>
-            </div>
-
-            <div className='flex-center gap-3'>
-                <img src={StreakIconHome} alt='streak' />
-                <span className='font-Itim text-secondary text-lg'>15</span>
-            </div>
-
+            <Perk imgSrc={gem} altText='gem' text='15' />
+            <Perk imgSrc={trophy} altText='trophy' text='30' />
+            <Perk imgSrc={StreakIconHome} altText='streak' text='12' />
         </div> 
 
-
+        <div className='s4:hidden mt-8'>
+            <Perk imgSrc={goldLeague} altText='streak' text='5' />
+        </div>
 
         {/* Div for Streak Leaderbaord */}
-        <div className='flex flex-col  text-secondary mt-10 border-2 border-slate-400 rounded-lg py-4 px-4'>
+        <div className='s4:flex flex-col hidden text-secondary mt-8 border-2 border-slate-400 rounded-lg py-4 px-4'>
 
             <div className='mb-5 flex'>
                 <h1 className='font-bold  tracking-widest font-Poppins w-4/6'>Streak LeaderBoard</h1>
@@ -101,7 +109,7 @@ function RightSidebar() {
         </div>
 
         {/* div for Xp leaderboard */}
-        <div className='flex flex-col text-secondary mt-5 border-2 border-slate-400 rounded-lg py-4 px-4'>
+        <div className='s4:flex flex-col hidden text-secondary mt-5 border-2 border-slate-400 rounded-lg pt-4 pb-2 min-[1220px]:pb-4  px-4'>
 
             <div className='mb-5 flex justify-start'>
                 <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>{leagueName}</h1>

@@ -34,9 +34,9 @@ function LeftSideBar() {
             <Link to='FlashCraft'>
              <NavOption imgSrc={flashCraftIcon} altText='FlashCraft Option' optionText='FLASHCRAFT' />
             </Link>
-            <Link>
+            {/* <Link>
              <NavOption imgSrc={taqraarIcon} altText='Taqraar Option' optionText='TAQRAAR' />
-            </Link>
+            </Link> */}
             <Link>
              <NavOption imgSrc={leaderboardIcon} altText='Leaderboard Option' optionText='LEADERBOARD' />
             </Link>

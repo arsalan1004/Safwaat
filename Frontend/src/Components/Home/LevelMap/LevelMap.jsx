@@ -78,35 +78,35 @@ function LevelMap() {
 
   const styling = [
     {
-      top: '8em',
+      top: '21%',
       left: '54%'
     },
     {
-      top: '6.5em',
-      left: '44%'
+      top: '17%',
+      left: '43%'
     },
     {
-      top: '7em',
+      top: '19%',
       left: '38%'
     },
     {
-      top: '4.6em',
+      top: '13%',
       left: '7.5%'
     },
     {
-      top: '4em',
+      top: '11%',
       left: '17%'
     },
     {
-      top: '4.5em',
+      top: '12%',
       left: '30%'
     },
     {
-      top: '4.7em',
+      top: '13%',
       left: '65%'
     },
     {
-      top: '-5.8em',
+      top: '-15%',
       left: '82.5%'
     }
 
@@ -127,15 +127,13 @@ function LevelMap() {
       <div className='relative w-full h-full flex flex-col box-border
                       s1:w-[85%] s2:w-[75%] s3:w-[65%] s4:w-[50%] s5:w-[45%] '>
       
-
           <img src={clouds} alt='clouds' className={classes.Cloud} />
           <img src={LevelMapImg} alt='LevelMapImg' className='w-full h-full block absolute' />
           <img src={dolphin} 
-          className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''}`}
+          className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''} `}
           onAnimationEnd={() => setDolphinAnimationActive(false)} 
           />
           <img src={seaShell} className='absolute top-[88%] left-[38.5%] z-20' />
-
           
           {
             styling.map(

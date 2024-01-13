@@ -6,7 +6,8 @@ import FlashCraft, {loader as setsLoader} from "../Components/FlashCraft/FlashCr
 import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/SetCreation";
 import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
 import Home from "../Components/Home/Home";
-
+import Login from "../Components/Login_Signup/login";
+import Signup from "../Components/Login_Signup/signup";
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,12 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true, 
-                element: <Home />,
+                element: <Login />,
+                
+            },
+            {
+                path:"signup",
+                element: <Signup />,
                 
             },
             {

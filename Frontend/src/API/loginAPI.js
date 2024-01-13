@@ -30,7 +30,7 @@ const handleSubmit = (e,u,p,dispatch) =>{
       }else{
         notifyerror("Invalid Credentials");
       }
-    }).catch((error)=>notifyerror("Invalid Credentials"));
+    }).catch((error)=>console.log(error));
     console.log("data sent",userData);
   };
 
@@ -52,7 +52,7 @@ const handleSubmit = (e,u,p,dispatch) =>{
     }else{
       notifyerror("Invalid Credentials");
     }
-    }).catch((error)=>notifyerror("Invalid Credentials"));
+    }).catch(()=>notifyerror("User is Required to Register First!"));
     console.log("data sent",userData);
   }
 

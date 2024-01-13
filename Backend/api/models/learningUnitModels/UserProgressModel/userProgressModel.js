@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const userProgressSchema = mongoose.Schema(
   {
     userId: String,
-    learningUnitId: String,
     unitNum: Number,
     starsEarned: Number,
   },

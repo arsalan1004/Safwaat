@@ -3,7 +3,6 @@ const { userModel } = require("../../../models/LoginSignup/userModel");
 
 const googleLoginController = async (req, res) => {
   try {
-    userModel;
     const jwtSecret = process.env.JWT_SECRET;
     const { email } = req.body;
     const foundUser = await userModel
@@ -25,7 +24,7 @@ const googleLoginController = async (req, res) => {
       });
     } else {
       console.log("User not found at register controller");
-      res.status(401).json("User not found");
+      res.status(401).json("User not registered");
     }
   } catch (error) {
     console.log(`Error encountered at login route: ${error}`);

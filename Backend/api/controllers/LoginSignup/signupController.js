@@ -59,7 +59,7 @@ const signupController = async (req, res) => {
     }
   } catch (error) {
     console.log(`Error encountered at register route: ${error}`);
-    res.status(409).json({ message: "Username | Email Already Exist" });
+    res.status(409).json({ message: "Invalid Credentials" });
   }
 };
 

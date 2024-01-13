@@ -30,7 +30,10 @@ const SignDialog = () => {
   };
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value ,list} = e.target;
+    if(list){
+      dispatch(setGender(value));
+    }
 
     switch (id) {
       case 'fname':
@@ -53,10 +56,6 @@ const SignDialog = () => {
         dispatch(setConfirmPassword(value));
         console.log(value);
         break;
-      case 'gender':
-        dispatch(setGender(value));
-        console.log(sign.gender);
-        break;
       case 'dob':
         dispatch(setDateOfBirth(value));
         console.log(sign.dateOfBirth);
@@ -78,7 +77,7 @@ const SignDialog = () => {
                 <InputWL label="Username"  id='username' type='text' placeholder='eg. abdullah_masood' onChange={handleChange}></InputWL>
                 <InputWL label="Password"  id='password' type='password' placeholder='Enter a strong password' onChange={handleChange}></InputWL>
                 <InputWL label="Confirm Password"  id='cpassword' type='password' placeholder='Re-enter your password' onChange={handleChange}></InputWL>
-                <InputWL label="Gender" id='gender' list="gender" placeholder='Choose your gender' onChange={handleChange}>
+                <InputWL label="Gender" list="gender" placeholder='Choose your gender' onChange={handleChange}>
                   <datalist id="gender">
                       <option value="Male"/>
                       <option value="Female"/>

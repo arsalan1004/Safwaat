@@ -21,7 +21,7 @@ function RightSidebar() {
     const leagueName = 'Gold League';
 
   return (
-    <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-10
+    <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-20
         s3:block s3:w-[10%] s4:w-[30%] s5:w-[30%]
         s4:px-5 ' >
 

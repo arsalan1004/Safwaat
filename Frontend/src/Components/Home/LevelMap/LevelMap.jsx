@@ -3,6 +3,7 @@ import classes from './LevelMap.module.css';
 import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import RightSidebar from '../RightSideBar/RightSidebar';
 import LevelMapImg from '../../../Assets/LevelMapMd.png';
+
 // import LessonUnitIcon from '../../../Assets/Ellipse.svg';
 // import LessonUnitIcon from '../../../Assets/Ellipse1.svg';
 import LevelUnit3S from '../../../Assets/LevelUnit3S.svg';
@@ -14,7 +15,8 @@ import LevelUnitLocked from '../../../Assets/LevelUnitLocked.svg';
 import clouds from '../../../Assets/cloud.png';
 import dolphin from '../../../Assets/Icons/dolphin.png';
 import seaShell from '../../../Assets/Icons/seaShell.png';
-
+import boat from '../../../Assets/boatR.png'
+import splash from '../../../Assets/Gifs/splash2.gif';
 
 
 function LevelMap() {
@@ -115,6 +117,8 @@ function LevelMap() {
   // Logic to manage Dolphin animation
 
   const [isDolphinAnimationActive, setDolphinAnimationActive] = useState(true);
+  const [isSplashActive, setSplashActive] = useState(false);
+
 
   const dolphinTriggerHandler = () => {
     console.log('function dolphinTriggerHandler');
@@ -124,17 +128,26 @@ function LevelMap() {
   //Return
 
   return (  
-      <div className='relative w-full h-full flex flex-col box-border
+      <div className='relative w-full h-full flex flex-col box-border perspective-1000
                       s1:w-[85%] s2:w-[75%] s3:w-[65%] s4:w-[50%] s5:w-[45%] '>
       
           <img src={clouds} alt='clouds' className={classes.Cloud} />
           <img src={LevelMapImg} alt='LevelMapImg' className='w-full h-full block absolute' />
+          <div className={classes.BoatWrapper} >
+            <img src={boat} className={classes.Boat} />
+            <span className={classes.First} >Level 7</span>
+            <span className={classes.Second}>Unlocked</span>
+          </div>
+          
           <img src={dolphin} 
           className={`${classes.Dolphin} ${isDolphinAnimationActive ? classes.DolphinActive : ''} `}
-          onAnimationEnd={() => setDolphinAnimationActive(false)} 
+          onAnimationEnd={() => (setDolphinAnimationActive(false), setSplashActive(true) )} 
           />
           <img src={seaShell} className='absolute top-[88%] left-[38.5%] z-20' />
-          
+          {/* <img src={splash} className={`absolute top-[88%] left-[28%] z-20 ${isSplashActive ? 'block' : 'hidden'}`}
+          onAnimationEnd={()=> setSplashActive(false)} /> */}
+
+
           {
             styling.map(
               (st, i) => (

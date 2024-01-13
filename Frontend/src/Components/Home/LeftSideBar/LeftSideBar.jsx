@@ -16,7 +16,7 @@ import profileIcon from '../../../Assets/Icons/profile.png';
 
 function LeftSideBar() {
   return (
-    <div className='px-5 border-r-2 border-r-slate-300 bg-primary-100 hidden z-10
+    <div className='px-5 border-r-2 border-r-slate-300 bg-primary-100 hidden z-20
     s1:block s1:w-[15%] s2:w-[25%] s3:w-[25%] s4:w-[20%] s5:w-[25%] '>
 
         {/* Header */}

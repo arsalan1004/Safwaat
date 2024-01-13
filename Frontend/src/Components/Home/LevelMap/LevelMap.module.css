@@ -10,11 +10,11 @@
 
 
 
-.Left, .Right{
+/* .Left, .Right{
     background-color: #EBF9FA;
     display: none;
     z-index: 10;
-}
+} */
 
 /* .Left{
     z-index: 10;
@@ -75,15 +75,69 @@
     top: 33em;
     left: 39%;
     position: absolute;
+    opacity: 0;
 }
 
 .DolphinActive {
     animation: dolphinSwimActive 2s linear;
   }
+
+
+.Boat{
+    position: absolute;
+    transform-style: preserve-3d;
+    -webkit-box-reflect: below -5px linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1));
+    ;
+}
+
+.BoatWrapper{
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 105%;
+    top: 22%;
+    height: 140px;
+    width: 140px;
+    animation: boatMove 10s cubic-bezier(.19,.6,.59,.57) 1;
+}
+
+.BoatWrapper>span{
+    position: absolute;
+    font-size:  12px;
+    font-weight: 600;
+    z-index: 1;
+    font-family: Itim;
+    color:rgb(10, 58, 112);
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.216);
+}
+
+.First{
+    top:40%;
+    left: 14%;
+}
+
+.Second{
+    top:51%;
+    left:27%;
+}
+
+
+@keyframes boatMove {
+    0%{
+        left: 130%;
+        opacity: 100;
+    }
+ 
+    100%{
+        left: -20%;
+    }
+
+}
   
 @keyframes dolphinSwimActive {
 0% {
     transform: translateY(0px);
+    opacity: 100;
 }
 
 50% {
@@ -162,7 +216,7 @@
         width: 50%;
     }
 
-    .Cloud{
+    .Cloud, .BoatWrapper{
         display: block;
     }
 }

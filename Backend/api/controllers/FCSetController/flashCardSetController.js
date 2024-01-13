@@ -58,8 +58,26 @@ const getSingleFlashCardSet = async (req, res) => {
   }
 };
 
+const deleteFlashCardSet = async (req, res) => {
+  try {
+    const fCSData = await fCModel.deleteOne({
+      flashCardSetId: req.body.flashCardSetId,
+      userId: req.body.userId,
+    });
+
+    if (fCSData) {
+      res.status(200).json({ message: "Set deletion successful" });
+    } else {
+      res.status(404).json({ message: "Set deletion failed" });
+    }
+  } catch (error) {
+    console.log(`Error occured at deleteFlashCardSet: ${error}`);
+  }
+};
+
 module.exports = {
   fCSPostController,
   fCSGetController,
   getSingleFlashCardSet,
+  deleteFlashCardSet,
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import {toast } from 'react-toastify';
 import { jwtDecode } from "jwt-decode";
+import { setId } from '../Store/loginSlice';
 
 const notifysucc = (msg) => {
     toast.success(`Successful login as ${msg}`, {
@@ -14,17 +15,18 @@ const notifysucc = (msg) => {
     });
   };
 
-const handleSubmit = (e,u,p) =>{
+const handleSubmit = (e,u,p,dispatch) =>{
     e.preventDefault();
     const userData = {
       username: u,
       password: p
     };
-    console.log(userData);
+    
     axios.post("http://localhost:8000/api/login", userData,{ withCredentials: true }).then((response) => {
       console.log(response);
       if(response.status==200){
         notifysucc(response.data.username);
+        dispatch(setId(response.data.id));
       }else{
         notifyerror("Invalid Credentials");
       }

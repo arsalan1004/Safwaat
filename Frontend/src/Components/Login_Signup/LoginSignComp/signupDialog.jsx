@@ -92,7 +92,7 @@ const SignDialog = () => {
             </div>
             
             <div className="button-section mx-[5vw] my-[2vh] flex flex-row items-center justify-between px-10">
-                <ButtonLog className='fillButton' onClick={function(e){ return handleSubmit(e,sign)}}>Create Account</ButtonLog>
+                <ButtonLog className='fillButton' onClick={function(e){ return handleSubmit(e,sign,dispatch)}}>Create Account</ButtonLog>
                 <GoogleLogin onSuccess={credentialResponse => {
                   handleCallbackResponse(credentialResponse);
                 }}

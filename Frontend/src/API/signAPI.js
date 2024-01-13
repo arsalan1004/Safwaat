@@ -3,6 +3,7 @@ import axios from 'axios';
 import {toast } from 'react-toastify';
 import { jwtDecode } from "jwt-decode";
 import { useSelector,useDispatch } from 'react-redux';
+import { setId } from '../Store/loginSlice';
 
 
 
@@ -42,7 +43,7 @@ function handleCallbackResponse(response){
 
 
 
-const handleSubmit = (e,sign)=>{
+const handleSubmit = (e,sign,dispatch)=>{
   e.preventDefault();
   console.log(`${sign.password} == ${sign.confirmPassword}`)
   if(sign.password==sign.confirmPassword){
@@ -60,6 +61,7 @@ const handleSubmit = (e,sign)=>{
       console.log(response);
       if(response.status==201){
         notifysucc(response.data.username);
+        dispatch(setId(response.data.userId));
       }else if(response.status==409){
         notifyerror(response.data.message);
       }

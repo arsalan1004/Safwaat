@@ -147,7 +147,6 @@ function LevelMap() {
           {/* <img src={splash} className={`absolute top-[88%] left-[28%] z-20 ${isSplashActive ? 'block' : 'hidden'}`}
           onAnimationEnd={()=> setSplashActive(false)} /> */}
 
-
           {
             styling.map(
               (st, i) => (
@@ -156,7 +155,7 @@ function LevelMap() {
                   key={i}
                   // className={`top-[${st.top}] left-[${st.left}]`}
                   style={styling[i]}
-                  className='cursor-pointer relative w-fit z-10'
+                  className={`cursor-pointer relative w-fit z-10 ${data[i].starsEarned == null ? 'pointer-events-none' : ''}`}
                   onClick={dolphinTriggerHandler}
                   >
                     <span className='absolute translate-x-[1.2em] translate-y-[1em] font-bold text-slate-600 '>{data[i].unitNumber}</span>

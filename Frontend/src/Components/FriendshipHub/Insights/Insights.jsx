@@ -4,7 +4,7 @@ import InsightsMain from './InsightsMain/InsightsMain'
 
 function Insights() {
   return (
-    <div className='flex bg-primary-100'>
+    <div className='flex bg-primary-100 h-screen w-screen'>
       <LeftSideBar />
       <InsightsMain />
     </div>

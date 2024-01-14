@@ -4,7 +4,7 @@ import FriendshipMain from './FriendshipMain/FriendshipMain'
 
 function FriendshipHub() {
   return (
-    <div className='flex bg-primary-100'>
+    <div className='flex bg-primary-100 h-screen w-screen'>
       <LeftSideBar />
       <FriendshipMain />
     </div>

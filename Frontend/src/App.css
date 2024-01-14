@@ -187,6 +187,13 @@
   font-size:13px ;
 }
 
+.fillButton {
+  background-color: #106c6f;
+  padding: 9px 16% 9px 16%;
+  font-weight: 400;
+  font-size:13px ;
+}
+
 .fillButton:hover,
 .googleOutline:hover,
 .fillButton:focus,

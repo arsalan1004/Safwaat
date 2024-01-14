@@ -2,7 +2,7 @@ import React from 'react'
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import { Leader } from '../Pages';
+import Leader from '../Components/LeaderBoard/leaderboad';
 
 const routes = createBrowserRouter([
     {

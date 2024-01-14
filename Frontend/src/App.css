@@ -1,75 +1,176 @@
-.contain{
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.wrapper{
-  background: url('./assets/login.jpg') no-repeat center center fixed; 
+.backface-visibility-visible {
+  backface-visibility: visible;
+}
+
+.backface-visibility-hidden {
+  backface-visibility: hidden;
+}
+
+.contain {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  place-items: center;
+}
+
+.wrapper {
+  background: url("./Assets/Arch1.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-@font-face {
-  font-family: 'Inter';
-  src: url('/Inter.ttf');
+.wrapperSign {
+  background: url("./Assets/Signup.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.b {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.chButton{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.b:hover {
+  border-color: #646cff;
+}
+
+.b:focus,
+.b:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/Poppins-Regular.ttf');
-  font-weight: bolder;
+  font-family: "Inter";
+  src: url("/Inter.ttf");
 }
 
 @font-face {
-  font-family: 'Barlow';
-  src: url('/Barlow-Bold.ttf');
+  font-family: "Poppins";
+  src: url("/Poppins-Regular.ttf");
 }
 
-.type-log{
-  font-family: 'Inter';
-  font-size: 3.5rem;
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/Barlow-Regular.ttf");
+}
+
+@font-face {
+  font-family: "BarlowBold";
+  src: url("/Barlow-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/Montserrat.ttf");
+}
+
+.type-log {
+  font-family: "Inter";
+  font-size: 3vw;
   color: white;
   font-weight: 500;
 }
 
-.type-logHead{
+.type-logHead {
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 4vw;
 }
 
-.dialog{
-  background: rgba( 255, 255, 255, 0.2 );
+#main::-webkit-scrollbar,#main2::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-  backdrop-filter: blur( 8px );
-  -webkit-backdrop-filter: blur( 8px );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
   border: 1px solid rgb(255, 255, 255);
 
-  font-family: 'Barlow';
+  font-family: "Barlow";
   color: white;
   font-size: 15px;
 }
 
-.dialog > .input-section{
-  font-family: 'Inter';
+.dialog > .input-section {
+  font-family: "Inter";
   display: flex;
   flex-direction: column;
 }
 
-#username, #password ,.inputWL{
-  background: rgba( 255, 255, 255, 0.2 );
+.dialogSign{
+  background: black,
+              rgba(255, 255, 255, 0.2);
+  background-blend-mode: darken;
+  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgb(255, 255, 255);
+
+  font-family: "Poppins";
+  color: white;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+#username,
+#password,
+.inputWL {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
   border: 1px solid rgb(255, 255, 255);
   padding: 0.5vw 1.5vh 0.5vw 1.5vh;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-#username:focus, #password:focus ,.inputWL:focus{
-  background: rgba( 255, 255, 255, 0.2 );
+.label{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+#username:focus,
+#password:focus,
+.inputWL:focus {
+  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
@@ -78,71 +179,66 @@
   outline: none;
 }
 
-
 @media only screen and (max-width: 600px) {
-  #username, #password,.inputWL{
-    background: rgba( 255, 255, 255, 0.2 );
+  #username,
+  #password,
+  .inputWL {
+    background: rgba(255, 255, 255, 0.2);
     /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-    backdrop-filter: blur( 2px );
-    -webkit-backdrop-filter: blur( 8px );
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 5px;
     border: 1px solid rgb(255, 255, 255);
     padding: 2vw 1.5vh 2vw 1.5vh;
   }
 }
 
-.fillButton{
+.fillButton {
   background-color: #106c6f;
-  padding: 9px 7vw 9px 7vw;
+  padding: 9px 16% 9px 16%;
+  font-weight: 400;
+  font-size:13px ;
 }
 
-.fillButton:hover , .googleOutline:hover,
-.fillButton:focus , .googleOutline:focus{
+.fillButton:hover,
+.googleOutline:hover,
+.fillButton:focus,
+.googleOutline:focus {
   border-color: white;
   outline: none;
 }
 
-.googlefill:focus,.googlefill:hover{
-  border-color:#106c6f;
+.googlefill:focus,
+.googlefill:hover {
+  border-color: #106c6f;
   outline: none;
-} 
+}
 
-
-.googleOutline{
+.googleOutline {
   border: 1.2px solid;
   border-color: #106c6f;
   background-color: transparent;
   padding: 0px 5vw 0px 5vw;
 }
 
-.Outline{
-  border: 1.2px solid;
-  border-color: #106c6f;
-  background-color: transparent;
-  padding: 0px 5px 0px 5px;
-}
-
-tbody{
-  overflow: scroll;
-}
-
-.tablemenu{
-  font-family: "Montserrat";
-}
-
-.googlefill{
+.googlefill {
   border: 1.2px solid;
   border-color: #ffffff;
   padding: 0px 4vw 0px 4vw;
-  color:#0A3F67;
+  color: #0a3f67;
 }
 
-.head{
+.head {
+  font-family: "Barlow";
   font-weight: 900;
 }
 
+.headSign {
+  font-family: "PoppinsBold";
+}
+
 .leaderboardWrapper{
-  background: url('./assets/leaderboardbg.jpg') no-repeat center center fixed; 
+  background: url('./Assets/leaderboardbg.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -157,7 +253,7 @@ tbody{
 }
 
 .ChallengeWrapper{
-  background: url('./assets/bg1.png') no-repeat center center fixed; 
+  background: url('./Assets/bg1.png') no-repeat center center fixed; 
   -webkit-background-size: contain;
   backdrop-filter: blur(12px);
   -moz-background-size: cover;
@@ -185,9 +281,22 @@ tbody{
   margin-right: 5vh;
 }
 
-.data{
-
+.boardLead{
+  background: rgba( 255, 255, 255, 0.2 );
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  border-radius: 50px;
+  font-family: 'Poppins';
+  border-radius: 300px;
+  height:90vh;
+  width: 70vw;
+  grid-area: 1 / 2 / 2 / 3;
+  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+  margin-top: 30px;
+  margin-right: 5vh;
 }
+
 
 .label{
   grid-area: 1 / 1 / 2 / 2;
@@ -199,6 +308,44 @@ tbody{
 
 table{
   font-family: 'Poppins';
+}
+
+
+.Outline{
+  border: 1.2px solid;
+  border-color: #0A3F67;
+  background-color: transparent;
+  padding: 0px 5px 0px 5px;
+  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+}
+
+.OutlineLead{
+  border: 2px solid;
+  border-color: #0A3F67;
+  background-color: transparent;
+  padding: 0x 5px 0px 5px;
+  margin-top:2%;
+  margin-bottom:2%;
+  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
+}
+
+tbody{
+  overflow: scroll;
+}
+
+.tablemenu{
+  font-family: "Montserrat";
+}
+
+.menu{
+  background: rgba( 255, 255, 255, 0.2 );
+  backdrop-filter: blur( 8px );
+  -webkit-backdrop-filter: blur( 8px );
+  border-radius: 5px;
+  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
+  backdrop-filter: blur(2px);
 }
 
 .content{

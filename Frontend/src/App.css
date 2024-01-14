@@ -83,14 +83,14 @@
 
 .type-log {
   font-family: "Inter";
-  font-size: 3vw;
+  font-size: 30px;
   color: white;
   font-weight: 500;
 }
 
 .type-logHead {
   font-weight: 600;
-  font-size: 4vw;
+  font-size: 34px;
 }
 
 #main::-webkit-scrollbar,#main2::-webkit-scrollbar {
@@ -98,7 +98,9 @@
 }
 
 .dialog {
-  background: rgba(255, 255, 255, 0.2);
+  background: black,
+              rgba(255, 255, 255, 0.2);
+  background-blend-mode: darken;
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -180,7 +182,7 @@
 
 .fillButton {
   background-color: #106c6f;
-  padding: 9px 16% 9px 16%;
+  padding: 9px 26% 9px 26%;
   font-weight: 400;
   font-size:13px ;
 }

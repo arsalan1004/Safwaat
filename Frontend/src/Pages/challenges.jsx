@@ -1,7 +1,7 @@
 import { useEffect, useState,useMemo } from 'react';
 import logo from '../assets/login.jpg';
 import leaderboard from '../assets/bronze.png';
-import streak from '../assets/challenges.png';
+import challengeimg from '../assets/challenges.png';
 import '../App.css';
 import task from '../assets/task-management.png';
 import achievement from '../assets/achievement.png';
@@ -45,7 +45,7 @@ function Challenges() {
           <div className="ChallengeWrapper">
             <div className="label">
               <div className="content">
-                {selectedChallenges=='dailytasks'? <img src={streak} alt="" className="w-[68%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
+                {selectedChallenges=='dailytasks'? <img src={challengeimg} alt="" className="w-[68%] h-[40%]" /> : <img src={challengeimg} alt="" className="w-[68%] h-[40%]" /> }
                 {selectedChallenges=='dailytasks'? <p className="text-white text-[32px] text-center  mt-4">
                 Daily Tasks 
                 </p> : <p className="text-white text-[32px] text-center  mt-4">
@@ -61,7 +61,7 @@ function Challenges() {
             <div className="board bg-opacity-10 bg-white shadow-lg backdrop-filter backdrop-blur-md border border-white rounded p-6 h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-5vh">
               <div className="menu flex justify-around flex-row">
                 <Button
-                  className={`w-[45%] h-[8vh] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] Outline ${
+                  className={`w-[45%] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] Outline ${
                     selectedChallenges === 'dailytasks' ? ' text-white' : ''
                   }`}
                   onClick={() => setselectedChallenges('dailytasks')}

@@ -117,7 +117,7 @@
 }
 
 .dialogSign{
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+  background: black,
               rgba(255, 255, 255, 0.2);
   background-blend-mode: darken;
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */

@@ -67,7 +67,7 @@ const SignDialog = () => {
 
 
   return (
-        <div className="dialogSign w-[70%] mx-[8vw] md:mx-[5vw] h-[100%] pb-7 max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
+        <div className="dialogSign w-[70%] mx-[8vw] md:mx-[5vw] h-[80%] mt-6 pb-7 max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
         <h1 className='headSign text-[35px] text-center mt-[3vh]'>Get Started</h1>
             <div className="grid grid-cols-2 gap-3 px-[12%] pt-10">
                 <InputWL label="First name" id="fname" type='text' placeholder='eg. Abdullah' onChange={handleChange}></InputWL>

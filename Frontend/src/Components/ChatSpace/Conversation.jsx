@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import userAcc from '../../Assets/Icons/userAcc.svg'
-const Conversation = ({conversation, currentUser, lastMessage, onSetChat}) => {
+const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciever}) => {
 
   // Here will be the id of reciever(2nd member of conv) of conversation
   const [user, setUser] = useState({
@@ -45,7 +45,7 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat}) => {
           />
       </div>
         <div className='flex flex-col justify-between w-[70%]'>
-          <h1 className='text-[17px] font-medium'>{user.username || "No User"}</h1>
+          <h1 className='text-[17px] font-medium'>{reciever || "No User"}</h1>
           <p className='font-thin text-[12px] text-slate-500'> 
             { 
               lastMessage?.text.length > lastMessageMaxLen ? 

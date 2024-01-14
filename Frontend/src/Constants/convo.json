@@ -1,13 +1,16 @@
 {
-  "convData": {
-    "2": {
+  "convData": [
+    {
+      "id": "2",
       "userName": "Irfan Khan"
     },
-    "3": {
+    {
+      "id": "3",
       "userName": "Rehan"
     },
-    "4": {
+    {
+      "id": "4",
       "userName": "Farhan"
     }
-  }
+  ]
 }

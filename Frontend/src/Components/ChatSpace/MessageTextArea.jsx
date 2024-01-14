@@ -15,9 +15,9 @@ const MessageTextArea = ({onMessageSubmit}) => {
     }
   }
 
-  const enterPressHandler = (e) => {
-    if(e.key == 'enter') {
-      sendMessageHandler()
+  const enterKeyPressedHandler = (e) => {
+    if(e.keyCode == 13) {
+      sendMessageHandler(e);
     }
   }
 
@@ -28,6 +28,7 @@ const MessageTextArea = ({onMessageSubmit}) => {
         className = {style['message-textarea']}
         onChange={(e) => setNewMessage(e.target.value)}
         value={newMessage}
+        onKeyUp={enterKeyPressedHandler}
       >
       </textarea>
       <button onClick={(e) => sendMessageHandler(e)}>

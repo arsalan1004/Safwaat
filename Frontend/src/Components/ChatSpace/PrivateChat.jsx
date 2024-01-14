@@ -268,7 +268,7 @@ const PrivateChat = () => {
 
   const [socket, setSocket] = useState(null);
   
-  axios.defaults.withCredentials = true;
+  // axios.defaults.withCredentials = true;
 
   // SET SOCKET USEEFFECT
   // useEffect(() => {

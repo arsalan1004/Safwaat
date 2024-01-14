@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import ChatModeButton from './ChatModeButton'
 import Conversation from './Conversation'
 import chatBubble from '../../Assets/Icons/chatBubble.svg';
@@ -8,6 +8,10 @@ import newChatBubble from '../../Assets/Icons/newChatBubble.svg'
 import style from './Conversation.module.css'
 import { Navigate, useNavigate } from 'react-router-dom';
 import SearchConversationBar from './SearchConversationBar';
+import { getFriendData } from '../../API/chatSpaceApi';
+import axios from 'axios';
+
+
 // Holds ChatModeButtons
 // Holds multiple conversation mapped from object received from chatSpace
 
@@ -21,13 +25,15 @@ import SearchConversationBar from './SearchConversationBar';
 
 
 
-const ConversationArea = ({conversations, user, setChatHandler}) => {
+const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   
   const [chatMode, setChatMode] = useState("Chat");
   const [freeHeight, setFreeHeight] = useState(0);
-  const [searchAppear, setSearchAppear] = useState(true);
+  const [searchAppear, setSearchAppear] = useState(false);
   const [search, setSearch] = useState("");
-
+  const [recievers, setRecievers] = useState([]);
+  const [newConversation, setNewConversations] = useState(() => []);
+  const [flag, setFlag] = useState(false);
   const offsetRef = useRef(null);
   const searchBarRef = useRef(null);
   const navigate = useNavigate();
@@ -55,11 +61,61 @@ const ConversationArea = ({conversations, user, setChatHandler}) => {
     setChatHandler(conversation)
   }
 
-  const setChatModeHandler = (mode) => {
-    setChatMode(mode);
+
+  const getFriendDataHandler = async (receiver) => {
+    const response  = await getFriendData(receiver)
+    return response;
   }
 
 
+  useEffect(() => {
+    let cancelTokens = [];
+    const promises = conversations.map((conversation) => {
+      const receiver = conversation.members.find((m) => m !== currentUser.userId);
+      // const cancelToken = axios.CancelToken.source();
+      // console.log(cancelToken)
+      // cancelTokens.push(cancelToken);
+
+      return getFriendDataHandler(receiver)
+      .then((response) => ({ 
+        recieverName: response.userName,
+        receiverId: receiver
+      }));
+    });
+
+    Promise.all(promises)
+      .then((friendData) => {
+        // This code executes when all API calls are finished
+        console.log("All API calls completed!");
+        console.log("Friend data:", friendData);
+    
+        const newConv = conversations?.map((conv, index) => 
+        ({...conv, recieverName: friendData[index]?.recieverName})
+        )
+        console.log(newConv)
+        setNewConversations(() => newConv);
+        return newConv;
+      })
+      .catch((error) => {
+        // Handle any errors that occur during API calls
+        console.error("Error fetching friend data:", error);
+      });
+  
+     
+      return () => {
+        // console.log(cancelTokens)
+        // cancelTokens.forEach((cancelToken) => cancelToken.cancel())
+      }
+
+  }, [conversations])
+  
+ 
+
+  useEffect(() => {
+    console.log(`In newConversations: ${newConversation}`)
+    console.log(newConversation)
+  
+  }, [newConversation])
   return (
     <section className='bg-primary-100 w-[30%] font-Roboto conversation-shadow-right' >
       <div >
@@ -101,6 +157,9 @@ const ConversationArea = ({conversations, user, setChatHandler}) => {
               <SearchConversationBar 
                 search={search}
                 setSearch={setSearch}
+                setSearchAppear = {setSearchAppear}
+                searchAppear = {searchAppear}
+          
               />
             </div>
         }
@@ -114,18 +173,40 @@ const ConversationArea = ({conversations, user, setChatHandler}) => {
             >
          
             {
-              (conversations.filter((conv) => 
-                ((conv.lastMessage.text).toLowerCase()).includes(search.toLowerCase())))
-                .map((conversation, index) =>
+              searchAppear ? 
+              (
+                <>
+                  {
+                  
+                    (newConversation.filter((conv) => 
+                      ((conv.recieverName).toLowerCase()).includes(search?.toLowerCase())))
+                      .map((conv, index) =>
+                        <Conversation 
+                          key = {index}
+                          conversation = {conv}
+                          currentUser = {currentUser}
+                          lastMessage = { conv.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
+                          onSetChat = {onSetChat}
+                          reciever={conv.recieverName}
+                          // reciever = {recievers && (recievers?.[index][`${conversation.members.find(m => m !== currentUser.userId)[0]}`])}
+                        />
+                      )
+                     
+                    
+                  
+                }
+              </>
+              )
+              : newConversation.map((conv, index) =>
                     <Conversation 
                       key = {index}
-                      conversation = {conversation}
-                      currentUser = {user}
-                      lastMessage = { conversation.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
+                      conversation = {conv}
+                      currentUser = {currentUser}
+                      lastMessage = { conv.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
                       onSetChat = {onSetChat}
+                      reciever={conv.recieverName}
                     />
-                  )
-              
+                )
             }
           </div>
         </div>
@@ -145,3 +226,18 @@ export default ConversationArea
             onSetChat = {onSetChat}
           />
         ) */}
+
+
+
+        {/* (conversations.filter((conv) => 
+                      ((conv.lastMessage.text).toLowerCase()).includes(search.toLowerCase())))
+                      .map((conversation, index) =>
+                        <Conversation 
+                          key = {index}
+                          conversation = {conversation}
+                          currentUser = {currentUser}
+                          lastMessage = { conversation.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
+                          onSetChat = {onSetChat}
+                          reciever = {recievers && (recievers?.[index][`${conversation.members.find(m => m !== currentUser.userId)}`])}
+                        />
+                      ) */}

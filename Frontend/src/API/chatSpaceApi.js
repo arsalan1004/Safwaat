@@ -70,12 +70,13 @@ const getMessagesData = async (currentChatId) => {
 
 const getFriendData = async (friendId) => {
   console.log("In getFriendData API")
-  const API_URL = "http://localhost:8000/api/users";
+  // const API_URL = "http://localhost:8000/api/users";
+  const API_URL = "http://localhost:3500/convData";
 
   try {
     const response = await axios.get(`${API_URL}/${friendId}`);
-    console.log("Response in getFriendData API");
-    console.log(response);
+    // console.log("Response in getFriendData API");
+    // console.log(response);
     return response.data;
   }
   catch (error) {

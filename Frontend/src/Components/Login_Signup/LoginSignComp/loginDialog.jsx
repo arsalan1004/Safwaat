@@ -57,7 +57,7 @@ const LoginDialog = () => {
             id='username'
             className=''
           />
-          <div className='mb-[17px'></div>
+          <div className='mb-[17px]'></div>
           <InputWL
             onChange={handlePasswordChange}
             label='Password'

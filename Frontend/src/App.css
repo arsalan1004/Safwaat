@@ -28,6 +28,14 @@
   background-size: cover;
 }
 
+.wrapperSign {
+  background: url("./Assets/Signup.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .b {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -48,14 +56,19 @@
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
-
 @font-face {
   font-family: "Inter";
   src: url("/Inter.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/Poppins-Bold.ttf");
 }
 
 @font-face {
@@ -103,6 +116,22 @@
   flex-direction: column;
 }
 
+.dialogSign{
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+              rgba(255, 255, 255, 0.2);
+  background-blend-mode: darken;
+  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgb(255, 255, 255);
+
+  font-family: "Poppins";
+  color: white;
+  font-size: 15px;
+  font-weight: 200;
+}
+
 #username,
 #password,
 .inputWL {
@@ -112,6 +141,15 @@
   border-radius: 5px;
   border: 1px solid rgb(255, 255, 255);
   padding: 0.5vw 1.5vh 0.5vw 1.5vh;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.label{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
 }
 
 #username:focus,
@@ -142,7 +180,9 @@
 
 .fillButton {
   background-color: #106c6f;
-  padding: 9px 7vw 9px 7vw;
+  padding: 9px 16% 9px 16%;
+  font-weight: 400;
+  font-size:13px ;
 }
 
 .fillButton:hover,
@@ -174,6 +214,10 @@
 }
 
 .head {
+  font-family: "Barlow";
   font-weight: 900;
-  font-family: "BarlowBold";
+}
+
+.headSign {
+  font-family: "PoppinsBold";
 }

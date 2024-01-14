@@ -4,8 +4,8 @@ const InputWL = ({label,list,htmlFor,className='inputWL',placeholder,type,id,sty
   return (
     <>
     <div className='flex flex-col'>
-        <label htmlFor={htmlFor}>{label}</label>
-        <input list={list} type={type} id={id} className={className} placeholder={placeholder} onChange={props.onChange} required />
+        <label className={`label`} htmlFor={htmlFor}>{label}</label>
+        <input list={list} type={type} id={id} className={`text-[13px] ${className}`} placeholder={placeholder} onChange={props.onChange} required />
         {children}
     </div>
 

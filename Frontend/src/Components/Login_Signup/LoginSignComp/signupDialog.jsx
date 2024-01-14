@@ -68,9 +68,9 @@ const SignDialog = () => {
 
   return (
     <>
-        <div className="dialog mx-[8vw] md:mx-[5vw] h-auto pb-7 md:w-[65vw] max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
-        <h1 className='head text-[35px] text-center mt-[3vh]'>Get Started</h1>
-            <div className="grid grid-cols-2 gap-4 px-10 pt-10">
+        <div className="dialogSign w-[70%] mx-[8vw] md:mx-[5vw] h-[100%] pb-7 max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
+        <h1 className='headSign text-[35px] text-center mt-[3vh]'>Get Started</h1>
+            <div className="grid grid-cols-2 gap-3 px-[12%] pt-10">
                 <InputWL label="First name" id="fname" type='text' placeholder='eg. Abdullah' onChange={handleChange}></InputWL>
                 <InputWL label="Last name"  id='lname' type='text' placeholder='eg. Masood' onChange={handleChange}></InputWL>
                 <InputWL label="Email" id='email'  type='email' placeholder='abc@gmail.com' onChange={handleChange}></InputWL>
@@ -84,13 +84,13 @@ const SignDialog = () => {
                   </datalist>
                 </InputWL>
                 <InputWL label="Date Of Birth" id='dob' type='date' onChange={handleChange}></InputWL>
-                <div>
-                  <Checkbox classNameInput='accent-[#106c6f]' label="Rememeber Me" classNameLabel='mx-[0.9rem]'></Checkbox>
+                <div className='text-[13px] px-[3%] mb-[4%]'>
+                  <Checkbox classNameInput='accent-[#106c6f]' label="Remember me" classNameLabel='mx-[0.9rem]'></Checkbox>
                   <Checkbox classNameInput='accent-[#106c6f]' classNameLabel='mx-[0.9rem]'>I agree to all the <span className='text-[#33babe]'>Terms</span> and <span className='text-[#33babe]'>Privacy policy</span></Checkbox>
                 </div>
             </div>
             
-            <div className="button-section mx-[5vw] my-[2vh] flex flex-row items-center justify-between px-10">
+            <div className="button-section px-[6%] mx-[5vw] my-[2vh] flex flex-row items-center justify-between">
                 <ButtonLog className='fillButton' onClick={function(e){ return handleSubmit(e,sign,dispatch)}}>Create Account</ButtonLog>
                 <GoogleLogin onSuccess={credentialResponse => {
                   handleCallbackResponse(credentialResponse);
@@ -102,7 +102,7 @@ const SignDialog = () => {
                 }} width='300' useOneTap/>
                 {/* <Button className='googlefill' onClick={()=><GoogleLogin/>}><img src={google} alt="" className='inline scale-50'/>Sign-in With Google</Button> */}
             </div>
-            <p className='text-center max-h-[80%] my-auto'>Already have an account? <Link to='/' className='text-[#33babe]'>Log In</Link></p>
+            <p className='text-center max-h-[80%] my-auto'>Already have an account? <Link to='/' className='text-[#33babe]'><u>Log In</u></Link></p>
         </div>
     </>
   )

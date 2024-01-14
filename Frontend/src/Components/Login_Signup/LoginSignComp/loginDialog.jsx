@@ -46,7 +46,7 @@ const LoginDialog = () => {
 
   return (
     <>
-      <div id='main' className="dialog max-[600px]:w-auto mx-[8vw] md:mx-[5vw] h-[85vh] lg:w-[35vw] max-[600px]:max-w-[95vw] max-w-[35vw]">
+      <div id='main' className="dialog max-[600px]:w-auto md:mr-[5vw] h-[85vh] lg:w-[35vw] max-[600px]:max-w-[95vw] max-w-[35vw]">
         <h1 className='head text-[35px] text-center my-[3vh]'>LOGIN</h1>
         <div className="input-section mx-[5vw]">
           <InputWL
@@ -55,8 +55,9 @@ const LoginDialog = () => {
             htmlFor='username'
             type='email'
             id='username'
-            className='mb-[5vh]'
+            className=''
           />
+          <div className='mb-[17px'></div>
           <InputWL
             onChange={handlePasswordChange}
             label='Password'

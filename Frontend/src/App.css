@@ -85,11 +85,11 @@
   font-family: "Inter";
   font-size: 30px;
   color: white;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .type-logHead {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 34px;
 }
 
@@ -98,14 +98,14 @@
 }
 
 .dialog {
-  background: black,
-              rgba(255, 255, 255, 0.2);
-  background-blend-mode: darken;
-  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px;
-  border: 1px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 2px solid #FFF;
+
+  background: rgba(0, 0, 0, 0.10);
+
+  box-shadow: -40.333px 40.333px 40.333px 0px rgba(255, 255, 255, 0.10) inset, 40.333px -40.333px 40.333px 0px rgba(0, 0, 0, 0.10) inset;
+  backdrop-filter: blur(40.33333206176758px);
+
 
   font-family: "Barlow";
   color: white;
@@ -119,15 +119,11 @@
 }
 
 .dialogSign{
-  background: black,
-              rgba(255, 255, 255, 0.2);
-  background-blend-mode: darken;
-  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgb(255, 255, 255);
-
+  border: 2px solid #FFF;
+  background: rgba(0, 0, 0, 0.10);
+  box-shadow: -40.333px 40.333px 40.333px 0px rgba(255, 255, 255, 0.10) inset, 40.333px -40.333px 40.333px 0px rgba(0, 0, 0, 0.10) inset;
+  backdrop-filter: blur(40.33333206176758px);
   font-family: "Poppins";
   color: white;
   font-size: 15px;

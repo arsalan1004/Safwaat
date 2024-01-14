@@ -9,8 +9,8 @@ const Signup = () => {
         <div className="box w-screen h-[80vh]">
             <div className="flex justify-center items-center">
                 <SignDialog/>
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
     </div>
   )

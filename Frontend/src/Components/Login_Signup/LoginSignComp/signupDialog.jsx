@@ -67,7 +67,6 @@ const SignDialog = () => {
 
 
   return (
-    <>
         <div className="dialogSign w-[70%] mx-[8vw] md:mx-[5vw] h-[100%] pb-7 max-[600px]:max-w-[75vw] max-[600px]:w-auto  max-[600px]:max-h-[70vh] overflow-scroll relative" id='main2'>
         <h1 className='headSign text-[35px] text-center mt-[3vh]'>Get Started</h1>
             <div className="grid grid-cols-2 gap-3 px-[12%] pt-10">
@@ -104,7 +103,6 @@ const SignDialog = () => {
             </div>
             <p className='text-center max-h-[80%] my-auto'>Already have an account? <Link to='/' className='text-[#33babe]'><u>Log In</u></Link></p>
         </div>
-    </>
   )
 }
 

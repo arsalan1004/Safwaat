@@ -6,7 +6,7 @@ async function fetchXpData(id,setXD,setUL) {
     }
     const res = await axios.post('http://localhost:8000/xpleaderboard/members',userData); 
     setXD(res.data.members);
-    console.log(xpData);
+    console.log(res.data.league);
     setUL([res.data.league,res.data.levelText]);
   }
 

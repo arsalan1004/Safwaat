@@ -18,8 +18,8 @@ function Leader() {
   const [xpData, setXpData] = useState([]);
   const [streakData, setStreakData] = useState([]);
   const [selectedLeaderboard, setSelectedLeaderboard] = useState('xp'); 
-  const [userLeagues, setUserLeagues] = useState([]);
-  const [userId,setuserId] = useState({Id:"65992b654e47f25a45ef8816"});
+  const [userLeagues, setUserLeagues] = useState(['Bronze',"Welcome to the Leaderboard!"]);
+  const [userId,setuserId] = useState({Id:"65a297b2b32acbfdbde8a217"});
 
   useEffect(() => {
       if (selectedLeaderboard === 'xp') {
@@ -31,16 +31,16 @@ function Leader() {
 
 
   function LeagueDecider(league) {
-    switch (league.toLowerCase()) {
-      case 'gold':
+    switch (league) {
+      case 'Gold':
         return gold;
-      case 'bronze':
+      case 'Novice':
         return bronze;
-      case 'silver':
+      case 'Silver':
         return silver;
-      case 'purple':
+      case 'Explorer':
         return purple;
-      case 'red':
+      case 'Bronze':
         return red;
       default:
         return bronze;
@@ -53,7 +53,7 @@ function Leader() {
           <div className="leaderboardWrapper">
             <div className="label">
               <div className="content">
-                {selectedLeaderboard=='xp'? <img src={leaderboard} alt="" className="w-[68%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
+                {selectedLeaderboard=='xp'? <img src={userLeagues[0]? LeagueDecider(userLeagues[0]):leaderboard} alt="" className="w-[68%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
                 {selectedLeaderboard=='xp'? <p className="text-white text-[32px] text-center  mt-4">
                 {userLeagues[0]} League 
                 </p> : <p className="text-white text-[32px] text-center  mt-4">
@@ -87,9 +87,9 @@ function Leader() {
               </div>
               <div className="w-[100%] h-[80%]">
                 {selectedLeaderboard === 'xp' ? (
-                  <LeaderboardTable userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP-Points"}} />
+                  <LeaderboardTable userId={userId.Id} userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP-Points"}} />
                 ) : (
-                  <LeaderboardTable board='streak' data={streakData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
+                  <LeaderboardTable userId={userId.Id} board='streak' data={streakData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
                 )}
               </div>
             </div>

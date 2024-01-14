@@ -4,7 +4,7 @@ import Streak from '../../Assets/fire.png'
 import One from '../../Assets/frame1.png'
 import BookWhite from '../../Assets/openbook2.png'
 
-const LeaderboardTable = ({data,label,board,userLeagues}) => {
+const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
   function highlight(index){
     if(index==0){
       return 'bg-[#FACC15] w-9 h-7 p-1 rounded-md text-center ml-12';
@@ -20,8 +20,9 @@ const LeaderboardTable = ({data,label,board,userLeagues}) => {
   }
 
   function userhighlight(id){
-    if(id=='65992c76e115cd669d169df6'){
-      return 'bg-blue-300 text-white rounded-3xl'
+    if(id==userId){
+      return ''
+      // 'bg-blue-300 text-white rounded-3xl'
     }
     console.log(id);
     return null

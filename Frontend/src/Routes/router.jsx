@@ -4,7 +4,10 @@ import {createBrowserRouter} from 'react-router-dom';
 import FlashCraft, {loader as setsLoader} from "../Components/FlashCraft/FlashCraft";
 import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/SetCreation";
 import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
+import FriendshipHub from "../Components/FriendshipHub/FriendshipHub";
+
 import Home from "../Components/Home/Home";
+import Insights from "../Components/FriendshipHub/Insights/Insights";
 
 
 const router = createBrowserRouter([
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
                         loader: cardsLoader
                     }
                 ]
+            },
+            {
+                path: 'FriendshipHub',
+                children: [
+                    {
+                        index: true,
+                        element: <FriendshipHub />
+                    },
+                    {
+                        path: 'Insights',
+                        element: <Insights />
+                    }
+                ]
+                
             }
         ]
     }

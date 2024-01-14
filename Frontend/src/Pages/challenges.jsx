@@ -15,7 +15,7 @@ function Challenges() {
   const [challengesData, setchallengesData] = useState([]);
   const [achieveData, setachieveData] = useState([]);
   const [selectedChallenges, setselectedChallenges] = useState('dailytasks'); 
-  const [userid, setuserid] = useState({id:"659bbc5dc84898a52ceed480"});
+  const [userid, setuserid] = useState({id:"659815525ce38b434230fbe0"});
 
   async function fetchachieveData() {
     let userData={
@@ -77,14 +77,7 @@ function Challenges() {
                   <img src={achievement} alt="" className="inline h-16" /> Achievements
                 </Button>
               </div>
-              {/* <div className="w-[100%] h-[90%]">
-                {selectedChallenges === 'dailytasks' ? (
-                  <CTable board='dailytasks' data={challengesData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP-Points"}} />
-                ) : (
-                  <CTable board='achievement' data={achieveData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
-                )}
-              </div> */}
-              {selectedChallenges=="dailytasks"? <CTable fetchData={fetchchallengesData} id={userid.id} board={selectedChallenges} data={challengesData}/> : <CTable fetchData={fetchachieveData} id={userid.id} board={selectedChallenges} data={achieveData}/>}
+               {selectedChallenges=="dailytasks"? <CTable fetchData={fetchchallengesData} id={userid.id} board={selectedChallenges} data={challengesData}/> : <CTable fetchData={fetchachieveData} id={userid.id} board={selectedChallenges} data={achieveData}/>}
             </div>
           </div>
         </div>

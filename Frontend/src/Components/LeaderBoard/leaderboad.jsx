@@ -12,36 +12,40 @@ import fire from '../../Assets/fire.png';
 import ButtonLog from './buttonlog';
 import LeaderboardTable from './leaderboardTable';
 import axios from 'axios';
+import { fetchStreakData,fetchXpData } from '../../API/LeaderBoardAPI';
 
 function Leader() {
   const [xpData, setXpData] = useState([]);
   const [streakData, setStreakData] = useState([]);
   const [selectedLeaderboard, setSelectedLeaderboard] = useState('xp'); 
   const [userLeagues, setUserLeagues] = useState([]);
-  const [userId,setuserId] = useState("65992b654e47f25a45ef8816");
+  const [userId,setuserId] = useState({Id:"65992b654e47f25a45ef8816"});
 
   useEffect(() => {
-    async function fetchXpData() {
-      let userData={
-        id: userId
-      }
-      const res = await axios.post('http://localhost:8000/xpleaderboard/members',userData); 
-      setXpData(res.data.members);
-      console.log(xpData);
-      setUserLeagues([res.data.league,res.data.levelText]);
-    }
-
-    async function fetchStreakData() {
-      const res = await axios.get('http://localhost:8000/streakLeaderboard/members'); 
-      setStreakData(res.data);
-    }
-
-    if (selectedLeaderboard === 'xp') {
-      fetchXpData();
+      if (selectedLeaderboard === 'xp') {
+      fetchXpData(userId.Id,setXpData,setUserLeagues);
     } else {
-      fetchStreakData();
+      fetchStreakData(setStreakData);
     }
   }, [selectedLeaderboard]);
+
+
+  function LeagueDecider(league) {
+    switch (league.toLowerCase()) {
+      case 'gold':
+        return gold;
+      case 'bronze':
+        return bronze;
+      case 'silver':
+        return silver;
+      case 'purple':
+        return purple;
+      case 'red':
+        return red;
+      default:
+        return bronze;
+    }
+  }
 
   return (
     <>

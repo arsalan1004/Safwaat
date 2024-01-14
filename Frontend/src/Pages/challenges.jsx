@@ -9,7 +9,7 @@ import { Button, CTable } from '../Components';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify';
-import CompTesting from './compTesting';
+
 
 function Challenges() {
   const [challengesData, setchallengesData] = useState([]);

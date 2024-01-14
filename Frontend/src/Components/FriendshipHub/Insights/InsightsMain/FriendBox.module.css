@@ -1,0 +1,60 @@
+.Button {
+    padding: 0.7em 1em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 150px;
+    text-transform: uppercase;
+    transition: all 1000ms;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid #2c9caf;
+    background-color: rgb(235, 241, 247);
+    margin-top:2%;
+}
+  
+.Button:hover {
+    color: white;
+    transform: scale(1.1);
+    outline: 2px solid #70bdca;
+    box-shadow: 4px 5px 17px -4px #268391;
+  }
+  
+.Button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #2c9caf;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: color 800ms, width 1000ms;
+}
+  
+.Button:hover::before {
+    width: 250%;
+}
+
+.Button {
+    color: #2c9caf;
+
+}
+
+.Button>a{
+    text-decoration: none;
+    width:100%;
+
+}
+
+.Button>a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.Button:hover a{
+    color:white;
+}

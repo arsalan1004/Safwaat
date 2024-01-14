@@ -8,10 +8,10 @@ const completeUnitController = async (req, res) => {
       const xpUpdated = await updateXp(req.body);
       xpUpdated
         ? res.status(201).json("User Progress and Xp updated")
-        : res.status(400).json("Progress updated but xp update failed");
+        : res.status(200).json("Progress updated but xp update failed");
     } else {
       console.log(`User Progress not updated at completeUnitController`);
-      res.status(400).json("Progress not updated");
+      res.status(200).json("Progress not updated");
     }
   } catch (error) {
     console.log(`Error occured at completeUnitController:${error}`);

@@ -17,12 +17,10 @@ const getAllSlides = async (req, res) => {
       if (slideData) {
         res.status(200).json(slideData);
       } else {
-        console.log(`Error in formatting slide data: ${error}`);
         res.status(400).json("no slide data found");
       }
     } else {
-      console.log(`Error occured at getAllSlides controller:${error}`);
-      res.status(400).json({ message: "no slides found" });
+      res.status(400).json({ message: "no learning Unit found" });
     }
   } catch (error) {
     console.log(`Error occured at getAllSlides controller:${error}`);

@@ -87,7 +87,7 @@ function Leader() {
               </div>
               <div className="w-[100%] h-[80%]">
                 {selectedLeaderboard === 'xp' ? (
-                  <LeaderboardTable userId={userId.Id} userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP-Points"}} />
+                  <LeaderboardTable userId={userId.Id} userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP Points"}} />
                 ) : (
                   <LeaderboardTable userId={userId.Id} board='streak' data={streakData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
                 )}

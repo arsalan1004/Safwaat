@@ -5,16 +5,19 @@ const {
 const addProgress = async (userProgress) => {
   try {
     const { userId, unitNum, starsEarned } = userProgress;
+    let unlockedLevelProgress;
     const newPorg = await userProgressModel.create({
       userId: userId,
       unitNum: unitNum,
       starsEarned: starsEarned,
     });
-    const unlockedLevelProgress = await userProgressModel.create({
-      userId: userId,
-      unitNum: unitNum + 1,
-      starsEarned: 0,
-    });
+    if (unitNum != 8) {
+      unlockedLevelProgress = await userProgressModel.create({
+        userId: userId,
+        unitNum: unitNum + 1,
+        starsEarned: 0,
+      });
+    }
     if (newPorg && unlockedLevelProgress) {
       return true;
     }

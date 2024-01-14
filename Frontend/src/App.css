@@ -88,6 +88,10 @@
   font-weight: 700;
 }
 
+input[type="date"]{
+  color-scheme: dark;
+}
+
 .type-logHead {
   font-weight: 700;
   font-size: 34px;

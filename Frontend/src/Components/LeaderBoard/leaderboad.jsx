@@ -53,7 +53,7 @@ function Leader() {
           <div className="leaderboardWrapper">
             <div className="label">
               <div className="content">
-                {selectedLeaderboard=='xp'? <img src={userLeagues[0]? LeagueDecider(userLeagues[0]):leaderboard} alt="" className="w-[68%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
+                {selectedLeaderboard=='xp'? <img src={userLeagues[0]? LeagueDecider(userLeagues[0]):leaderboard} alt="" className="w-[60%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
                 {selectedLeaderboard=='xp'? <p className="text-white text-[32px] text-center  mt-4">
                 {userLeagues[0]} League 
                 </p> : <p className="text-white text-[32px] text-center  mt-4">

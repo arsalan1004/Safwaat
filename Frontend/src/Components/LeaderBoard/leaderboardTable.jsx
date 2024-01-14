@@ -14,7 +14,7 @@ const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
       return 'bg-[#D97706] w-9 h-7 p-1 rounded-md text-center ml-12';
     }
     else if(index<data.length-3){
-      return 'w-9 h-7 p-1 rounded-md text-center ml-12'
+      return 'w-9 h-7 p-1 bg-[#0A3F67] rounded-md text-center ml-12'
     }
     return 'bg-[#F43F5E] w-9 h-7 p-1 rounded-md text-center ml-12';
   }
@@ -29,7 +29,7 @@ const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
   }
 
   return (
-    <div className="mx-auto mt-8 relative" style={{maxHeight: '90%',overflow: 'auto' }}>
+    <div className="mx-4 mt-8 relative" style={{maxHeight: '90%',overflow: 'auto' }}>
         <table className="w-full">
           <thead> 
             <tr className="tablemenu bg-[#0A3F67] w-[20%] rounded-full">

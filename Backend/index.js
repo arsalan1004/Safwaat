@@ -1,26 +1,46 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const http = require("http");
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const {
+  flashCardSetRouter,
+} = require("./api/routes/FCSetRoute/flashCardSetRoute");
+const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
 
-// const sysAchievementChallengeRoute = require('./api/routes/sysChallengesRoutes/sysAchievementChallengeRoute/sysAchievementChallengeRoute');
-// const sysDailyChallengeRoute = require('./api/routes/sysChallengesRoutes/sysDailyChallengeRoute/sysDailyChallengeRoute');
-// const userRoute = require('./api/routes/userRoute/userRoute');
-const userDailyChallengesRoute = require('./api/routes/userChallengesroutes/userDailyChallengesRoute/userDailyChallengeRoute');
-const userAchievementChallengesRoute = require('./api/routes/userChallengesroutes/userAchievementChallengesRoute/userAchievementChallenges');
+const userDailyChallengeRoute = require('./api/routes/userChallengesroutes/userDailyChallengesRoute/userDailyChallengeRoute');
+const userAchievementChallengeRoute = require('./api/routes/userChallengesroutes/userAchievementChallengesRoute/userAchievementChallenges');
 
+require("dotenv").config();
 
+// IMPORTING .ENV VARIABLE
+const port = process.env.PORT || 8000;
+
+// CONNECTING TO DATABASE
+require("./config/db");
+
+// CREATING APP
 const app = express();
-app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 app.use(bodyParser.json());
-require('./config/db');
-require('dotenv').config();
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
-// app.use("/sysAchievementChallenge", sysAchievementChallengeRoute);
-// app.use("/sysDailyChallenge", sysDailyChallengeRoute);
-// app.use("/user",userRoute);
-app.use("/userDailyChallenge", userDailyChallengesRoute);
-app.use("/userAchievementChallenge", userAchievementChallengesRoute);
+// REGISTERING ROUTES
+app.use("/api/FlashCraft", flashCardSetRouter);
+app.use("/api/flashcard", flashCardRouter);
+app.use("/userDailyChallenge", userDailyChallengeRoute);
+app.use("/userAchievementChallenge", userAchievementChallengeRoute);
+// CREATING SERVER
+const server = http.createServer(app);
 
-
-let port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`Server running on  http://localhost:${port}`));
+//LISTENING THE SERVER
+server.listen(port, () => console.log(`Server listening on port ${port}`));

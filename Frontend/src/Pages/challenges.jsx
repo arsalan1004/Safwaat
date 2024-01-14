@@ -15,18 +15,20 @@ function Challenges() {
   const [challengesData, setchallengesData] = useState([]);
   const [achieveData, setachieveData] = useState([]);
   const [selectedChallenges, setselectedChallenges] = useState('dailytasks'); 
-  const [userid, setuserid] = useState({id:"659815525ce38b434230fbe0"});
+  const [userid, setuserid] = useState({id:"65901f9ae137a46acf78c715"});
 
   async function fetchachieveData() {
     let userData={
       userId:userid.id
     }
     const res = await axios.put('http://localhost:8000/userAchievementChallenge/getChallengesData',userData); 
+    console.log(res.data);
     setachieveData(res.data);
   }
 
   async function fetchchallengesData() {
     const res = await axios.put('http://localhost:8000/userDailyChallenge/putUserChallenges',userid); 
+    console.log(res.data);
     setchallengesData(res.data);
   }
 

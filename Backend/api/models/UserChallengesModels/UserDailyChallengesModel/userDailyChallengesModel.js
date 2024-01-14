@@ -12,7 +12,7 @@ const userDailyChallengeSchema = new Schema({
     ]
 },{
     timestamps: true,
-    colllection: "UserDailyChallenges"
+    collection: "UserDailyChallenges"
 });
 
 const UserDailyChallenges = mongoose.model("UserDailyChallenges", userDailyChallengeSchema);

@@ -7,7 +7,7 @@ const userSchema = new Schema({
     email: String,
     streak: Number,
     isUpdated: Boolean,
-    xp: Number,
+    totalXp: Number,
     league: String,
     gem: Number,
     trophy: Number,

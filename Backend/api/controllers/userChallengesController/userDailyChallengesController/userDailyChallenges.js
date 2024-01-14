@@ -63,7 +63,7 @@ const patchClaimReward = async(req, res) => {
     
                         let user = await User.findById(userId);
                         if(sysDailyChallenge.xpReward){
-                            user.xp = user.xp + sysDailyChallenge.xpReward;
+                            user.totalXp = user.totalXp + sysDailyChallenge.xpReward;
                         } else{ //Gem Reward
                             user.gem = user.gem + sysDailyChallenge.gemReward;
                         }

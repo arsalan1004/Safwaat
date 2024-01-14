@@ -33,10 +33,10 @@ function LeftSideBar() {
             <Link to='/' >
                 <NavOption imgSrc={HomeIcon} altText='Home Option' optionText='LEVEL MAP' />
             </Link> 
-            <Link to='FlashCraft'>
+            <Link to='/FlashCraft'>
              <NavOption imgSrc={flashCraftIcon} altText='FlashCraft Option' optionText='FLASHCRAFT' />
             </Link>
-            <Link to='FriendshipHub'>
+            <Link to='/FriendshipHub'>
              <NavOption imgSrc={taqraarIcon} altText='FriendshipHub Option' optionText='FRIENDSHIP HUB' />
             </Link>
             <Link>

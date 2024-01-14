@@ -74,7 +74,7 @@ function Leader() {
                   }`} auto={true}
                   onClick={() => setSelectedLeaderboard('xp')}
                 >
-                  <img src={OpenBook} alt="" className="inline p-2" /> XP Leaderboard
+                  <img src={OpenBook} alt="" className="inline p-1" /> XP Leaderboard
                 </ButtonLog>
                 <ButtonLog
                   className={`w-[45%] chButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
@@ -82,7 +82,7 @@ function Leader() {
                   }`} auto={false}
                   onClick={() => setSelectedLeaderboard('streak')} 
                 >
-                  <img src={fire} alt="" className="inline p-2" /> Streak Leaderboard
+                  <img src={fire} alt="" className="inline p-1" /> Streak Leaderboard
                 </ButtonLog>
               </div>
               <div className="w-[100%] h-[80%]">

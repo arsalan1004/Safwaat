@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ButtonLog = ({className,children,id,type,...props}) => {
+const ButtonLog = ({className,children,id,type,auto,...props}) => {
   return (
-    <button id={id} onClick={props.onClick} className={`${className}`} type={type}>{children}</button>
+    <button id={id} onClick={props.onClick} className={`${className}`} autoFocus={auto} type={type}>{children}</button>
   )
 }
 

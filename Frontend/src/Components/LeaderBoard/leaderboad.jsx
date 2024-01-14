@@ -71,7 +71,7 @@ function Leader() {
                 <ButtonLog
                   className={`w-[45%] chButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
                     selectedLeaderboard === 'xp' ? ' text-white' : ''
-                  }`}
+                  }`} auto={true}
                   onClick={() => setSelectedLeaderboard('xp')}
                 >
                   <img src={OpenBook} alt="" className="inline p-3" /> XP Leaderboard
@@ -79,8 +79,8 @@ function Leader() {
                 <ButtonLog
                   className={`w-[45%] chButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
                     selectedLeaderboard === 'streak' ? 'bg-[#0A3F67] text-white' : ''
-                  }`}
-                  onClick={() => setSelectedLeaderboard('streak')}
+                  }`} auto={false}
+                  onClick={() => setSelectedLeaderboard('streak')} 
                 >
                   <img src={fire} alt="" className="inline p-3" /> Streak Leaderboard
                 </ButtonLog>

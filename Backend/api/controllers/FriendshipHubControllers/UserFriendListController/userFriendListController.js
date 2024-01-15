@@ -1,4 +1,4 @@
-const User = require('./../../../models/UserModel/userModel');
+const {userModel} = require('./../../../models/UserModel/userModel')
 const FriendList = require('./../../../models/FriendshipHubModels/UserFriendsModel/userFriendsModel');
 
 const getFriends = async(req, res) => {
@@ -8,7 +8,7 @@ const getFriends = async(req, res) => {
     });
     let response = [];
     for(i=0; i<Friends.friendList.length; i++){
-        let user = await User.findById(Friends.friendList[i].friendId);
+        let user = await userModel.findById(Friends.friendList[i].friendId);
         response.push({
             id: user._id,
             username: user.username,

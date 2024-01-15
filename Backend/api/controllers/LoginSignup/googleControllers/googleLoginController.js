@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { userModel } = require("../../../models/LoginSignup/userModel");
+const { userModel } = require("../../../models/UserModel/userModel");
 
 const googleLoginController = async (req, res) => {
   try {

@@ -1,7 +1,7 @@
 const { response } = require('express');
 const FriendRequests = require('./../../../models/FriendshipHubModels/FriendRequestsModel/friendRequestsModel');
 const FriendList = require('./../../../models/FriendshipHubModels/UserFriendsModel/userFriendsModel');
-const User = require('./../../../models/UserModel/userModel');
+const {userModel} = require('./../../../models/UserModel/userModel');
 
 const postAddFriendRequest = async(req, res) => {
     let {userId, receiverId} = req.body;
@@ -32,7 +32,7 @@ const postAddFriendRequest = async(req, res) => {
                 }
             }),
             FriendRequests.findOne({playerId: userId}),
-            User.findById(receiverId),
+            userModel.findById(receiverId),
             FriendRequests.findOne({playerId: receiverId})
         ]);
     
@@ -155,7 +155,7 @@ const getFriendData = async(req, res) => {
     try{
 
         let [user, userFriends, userRequets] = await Promise.all([
-            User.findById(userId),
+            userModel.findById(userId),
             FriendList.findOne({playerId: userId}),
             FriendRequests.findOne({playerId: userId})
         ]);
@@ -202,8 +202,8 @@ const patchAcceptFriendRequest = async(req, res) => {
         let [userFriendList, senderFriendList, user, sender] = await Promise.all([
            FriendList.findOne({playerId: userId}),
            FriendList.findOne({playerId: senderId}),
-           User.findById(userId),
-           User.findById(senderId),
+           userModel.findById(userId),
+           userModel.findById(senderId),
            FriendRequests.updateOne({playerId:userId},{$pull: {incoming: {senderId:senderId}}}),
            FriendRequests.updateOne({playerId:senderId},{$pull:{outgoing:{receiverId:userId}}})
         ]);
@@ -317,7 +317,7 @@ const patchRejectFriendRequest = async(req, res) => {
 const postSearchFriend = async(req, res) => {
     let {text, userId} = req.body;
     try{
-        let user = await User.find({
+        let user = await userModel.find({
             // $or: [
             //     {username:text},
             //     {firstName:text},

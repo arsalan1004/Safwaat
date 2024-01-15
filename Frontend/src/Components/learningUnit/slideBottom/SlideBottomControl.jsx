@@ -193,6 +193,7 @@ const SlideBottomControl = (props) => {
           console.log(`dndOptionIsCorrect: ${dndOptionIsCorrect}`)
           if(dndOptionIsCorrect == true) dispatchCorrect();
           else dispatchWrong();
+          
         }
         else if(slideType == "match") {
           console.log("Entered Correct/Wrong Dispatch FOR MATCBING")
@@ -247,18 +248,25 @@ const SlideBottomControl = (props) => {
       if (currentSlide  == (Math.ceil(totalSlides/2))) {
         console.log("Entered BottomControl Motivation @ 54")
         dispatch(slideControlActions.setIsMotivation(true));
+
         // // Setting isChecked true to avoid entering first condition
         // dispatch(slideControlActions.setIsChecked(true))
       }
       else if(currentSlide < totalSlides) {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
+        // if(slideType == 'dnd') {
+        //   dispatch(dndSlideActions.reset());
+        // }
         navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
         // dispatch(slideControlActions.incrementCurrentSlide())
         dispatch(slideControlActions.incrementProgressCounter());
+        // if(slideType == 'dnd') {
+        //   dispatch(dndSlideActions.reset());
+        // }
         // navigate('/result');
         setLessonComplete(true);
         
@@ -275,12 +283,14 @@ const SlideBottomControl = (props) => {
         dispatch(slideControlActions.incrementCurrentSlide()); 
         dispatch(slideControlActions.incrementProgressCounter());
         navigate(`/learningUnit/${unitNumber}/slides/${currentSlide + 1}`)
+       
       }
       else if (currentSlide == totalSlides) {
         dispatch(unitInfoActions.setNumberOfStars())
         // dispatch(slideControlActions.incrementCurrentSlide())
         dispatch(slideControlActions.incrementProgressCounter());
         // navigate('/result');
+       
         setLessonComplete(true);
         
       }

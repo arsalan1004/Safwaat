@@ -34,9 +34,11 @@ const dndSlideSlice = createSlice({
       state.originalOptions = action.payload.options,
       state.boxOneHeading = action.payload.boxOneHeading,
       state.boxTwoHeading = action.payload.boxTwoHeading,
-      state.correctAnswers = action.payload.correctAnswers
-      
-     
+      state.correctAnswers = action.payload.correctAnswers,
+      state.boxOneList = [],
+      state.boxTwoList = [],
+      state.styleDict = {},
+      state.dndIsCorrect = false
     },
     setBoxOneList(state, action) {
       state.boxOneList = action.payload;
@@ -94,6 +96,15 @@ const dndSlideSlice = createSlice({
       state.styleDict = tempStyleDict;
       state.dndIsCorrect = temp;
       console.log(`dndIsCorrect IN reducer : ${state.dndIsCorrect}`);
+    },
+    resetDnd(state) {
+      state.options = initialState.options,
+      state.originalOptions = initialState.options,
+      state.boxOneHeading = initialState.boxOneHeading,
+      state.boxTwoHeading = initialState.boxTwoHeading,
+      state.correctAnswers = initialState.correctAnswers,
+      state.styleDict = {},
+      state.dndIsCorrect = false
     }
   }
 })

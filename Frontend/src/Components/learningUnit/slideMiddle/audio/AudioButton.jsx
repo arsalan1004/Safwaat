@@ -14,6 +14,8 @@ const AudioButton = (props) => {
         audioRef.current.removeEventListener('ended', handleAudioEnded);
       }
     };
+ 
+    
   }, [audioRef]);
 
   const handleAudioEnded = () => {
@@ -22,8 +24,11 @@ const AudioButton = (props) => {
   };
 
   const playAudioHandler = () => {
+    console.log("onC;ick Called")
+    console.log(props.playing)
+
     if (!props.playing) {
-      audioRef.current.play();
+      audioRef.current?.play();
       props.setPlayingHandler(true);
     }
   }
@@ -31,9 +36,9 @@ const AudioButton = (props) => {
   return (
     <button 
   
-    onClick={() => playAudioHandler()} className='min-w-[230px]' disabled = {(isChecked == true ? true : false) || props.src == ""}>
+    onClick={() => playAudioHandler()} className='min-w-[230px]' disabled = {(isChecked == true ? true : false)}>
       {props.children}
-      {props.src && <audio ref={audioRef} src={props.src} />}
+      <audio ref={audioRef} src={props.src} />
     </button>
   )
 }

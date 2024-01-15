@@ -17,7 +17,12 @@ const AudioSlide = () => {
     console.log(`SetPlayingTrigger: ${value}`)
   }
 
-
+  useEffect(() => {
+    return () => {
+      console.log("CLEANUP RUN")
+      setPlaying(false);
+    }
+  }, [])
   return (
 
     <div className='flex flex-col gap-8  min-w-[550px]'>
@@ -27,7 +32,7 @@ const AudioSlide = () => {
         playing = {playing}
         setPlayingHandler = {setPlayingHandler}
       >
-        <div className='text-primary-100 bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-2 rounded-[10px]'>
+        <div className='text-primary-100 bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-2 rounded-[10px] font-Itim'>
           <img src={audioSpeaker} className='w-[32px] h-[32px]' alt='audio-speaker' />
           <h2>{audioQuestion}</h2>
           {/* <audio>

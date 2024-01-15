@@ -7,9 +7,15 @@ const {
   flashCardSetRouter,
 } = require("./api/routes/FCSetRoute/flashCardSetRoute");
 const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
-const { router } = require("./api/routes/ChatSpaceRoutes/convoRoute/conversationRoute");
-const { messageRouter } = require("./api/routes/ChatSpaceRoutes/messagesRoute/messagesRoute");
-const { getUserRouter } = require("./api/routes/ChatSpaceRoutes/userRoute/getUserRoute");
+const {
+  router,
+} = require("./api/routes/ChatSpaceRoutes/convoRoute/conversationRoute");
+const {
+  messageRouter,
+} = require("./api/routes/ChatSpaceRoutes/messagesRoute/messagesRoute");
+const {
+  getUserRouter,
+} = require("./api/routes/ChatSpaceRoutes/userRoute/getUserRoute");
 require("dotenv").config();
 
 // IMPORTING .ENV VARIABLE

@@ -1,6 +1,7 @@
 const {
   ConversationModel,
 } = require("../../../models/ChatSpaceModels/conversation");
+const { getLatestMsg } = require("./latestMessage/getLatestMsg");
 
 const addNewConvo = async (req, res) => {
   const conversation = new ConversationModel({
@@ -20,7 +21,19 @@ const getConvo = async (req, res) => {
     const conversation = await ConversationModel.find({
       members: { $in: [req.params.userId] },
     });
-    res.status(200).json(conversation);
+
+    const finalConvo = await Promise.all(
+      conversation.map(async (convo) => {
+        const latestMsg = await getLatestMsg(convo._id);
+        return {
+          _id: convo._id,
+          members: convo.members,
+          lastMessage: latestMsg[0],
+        };
+      })
+    );
+
+    res.status(200).json(finalConvo);
   } catch (error) {
     res.status(500).json({ error: error });
   }

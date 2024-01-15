@@ -19,7 +19,7 @@ function promotionLeague(promotion) {
             promotionLevel = 'Top 5 Members will promote to Gold League';
             break;
         case 0:
-            promotionLevel = 'Welcome to the Highest League';
+            promotionLevel = 'Top 3 members will be rewarded heavily';
             break;
         default:
             promotionLevel = 'Unknown Promotion Level';

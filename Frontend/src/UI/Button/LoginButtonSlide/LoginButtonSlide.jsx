@@ -1,10 +1,13 @@
 import React from 'react'
 import classes from './LoginButtonSlide.module.css';
 
-function LoginButtonSlide() {
+function LoginButtonSlide(props) {
+
   return (
-    <div>
-        <button className={classes.Btn}>
+  
+        <button className={classes.Btn}
+          onClick={props.clickHandler}
+        >
   
             <div className={classes.Sign}>
                 <svg viewBox="0 0 512 512">
@@ -16,9 +19,6 @@ function LoginButtonSlide() {
             <div className={classes.Text}>Login</div>
         </button>
 
-
-
-    </div>
   )
 }
 

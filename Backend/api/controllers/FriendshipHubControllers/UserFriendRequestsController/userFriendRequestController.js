@@ -194,85 +194,112 @@ const getUserFriendRequests = async(req, res) => {
 
 const patchAcceptFriendRequest = async(req, res) => {
     let {userId, senderId} = req.body;
+    try{
+        let [userFriendList, senderFriendList, user, sender] = await Promise.all([
+           FriendList.findOne({playerId: userId}),
+           FriendList.findOne({playerId: senderId}),
+           User.findById(userId),
+           User.findById(senderId),
+           FriendRequests.updateOne({playerId:userId},{$pull: {incoming: {senderId:senderId}}}),
+           FriendRequests.updateOne({playerId:senderId},{$pull:{outgoing:{receiverId:userId}}})
+        ]);
     
-    let [userFriendList, senderFriendList, user, sender] = await Promise.all([
-       FriendList.findOne({playerId: userId}),
-       FriendList.findOne({playerId: senderId}),
-       User.findById(userId),
-       User.findById(senderId),
-       FriendRequests.updateOne({playerId:userId},{$pull: {'incoming.senderId':senderId}}),
-       FriendRequests.updateOne({playerId:senderId},{$pull:{'outgoing.receiverId':userId}})
-    ]);
-
-    if(userFriendList){
-        userFriendList.friendList.push({
-            friendId: senderId,
-            username: sender.username
-        });
-        if(senderFriendList){
-            senderFriendList.friendList.push({
-                friendId: userId,
-                username: user.username
-            });
-            await Promise.all([
-                userFriendList.save(),
-                senderFriendList.save()
-            ]);
-
-        } else{
-            let senderFriendList1 = new FriendList({
-                playerId: senderId,
-                friendList: [
-                    {
-                        friendId: userId,
-                        username: user.username
-                    }
-                ]
-            });
-            await Promise.all([
-                userRequests.save(),
-                senderFriendList1.save()
-            ]);
-        }
-
-    } else{
-        let newUserFriendList = new FriendList({
-            playerId: userId,
-            friendList: [{
+        if(userFriendList){
+            userFriendList.friendList.push({
                 friendId: senderId,
                 username: sender.username
-            }]
-        });
-        if(senderFriendList){
-            senderFriendList.friendList.push([
-                {
+            });
+            if(senderFriendList){
+                senderFriendList.friendList.push({
                     friendId: userId,
                     username: user.username
-                }
-            ]);
-            await Promise.all([
-                newUserFriendList.save(),
-                senderFriendList.save()
-            ]);
-
-        }else{
-            let newSenderFriendList = new FriendList({
-                playerId: senderId,
-                friendList: [
+                });
+                await Promise.all([
+                    userFriendList.save(),
+                    senderFriendList.save()
+                ]);
+    
+            } else{
+                let senderFriendList1 = new FriendList({
+                    playerId: senderId,
+                    friendList: [
+                        {
+                            friendId: userId,
+                            username: user.username
+                        }
+                    ]
+                });
+                await Promise.all([
+                    userRequests.save(),
+                    senderFriendList1.save()
+                ]);
+            }
+    
+        } else{
+            let newUserFriendList = new FriendList({
+                playerId: userId,
+                friendList: [{
+                    friendId: senderId,
+                    username: sender.username
+                }]
+            });
+            if(senderFriendList){
+                senderFriendList.friendList.push([
                     {
                         friendId: userId,
                         username: user.username
                     }
-                ]
-            });
-            await Promise.all([
-                newUserFriendList.save(),
-                newSenderFriendList.save()
-            ])
-        }
+                ]);
+                await Promise.all([
+                    newUserFriendList.save(),
+                    senderFriendList.save()
+                ]);
+    
+            }else{
+                let newSenderFriendList = new FriendList({
+                    playerId: senderId,
+                    friendList: [
+                        {
+                            friendId: userId,
+                            username: user.username
+                        }
+                    ]
+                });
+                await Promise.all([
+                    newUserFriendList.save(),
+                    newSenderFriendList.save()
+                ])
+            }
+            res.status(200).json({
+                success: true,
+                message: "User successfully accepted."
+            })
+        };
 
-    };
-    res.send("DONE");
+    } catch(err){
+        res.status(500).json({
+            success: false, 
+            message: "Error when rejecting Friend Request",
+            Error: err
+        });
+    }
+};
+
+
+const patchRejectFriendRequest = async(req, res) => {
+    let {userId, senderId} = req.body;
+    await Promise.all([
+        FriendRequests.updateOne({playerId: userId},{$pull: {incoming: {senderId: senderId}}}),
+        FriendRequests.updateOne({playerId: senderId, outgoing: {$elemMatch: {receiverId: userId}}},
+             {$set: {'outgoing.$[elem].status': 'REJECTED'}},{arrayFilters: [{
+            'elem.receiverId':userId
+        }]}
+        )
+    ]);
+    res.status(200).json({
+        success: true,
+        message: "Requests rejected successfullly"
+    });
 };
 
 module.exports = {
@@ -281,5 +308,6 @@ module.exports = {
     getFriendData,
     getUserFriendRequests,
     patchAcceptFriendRequest,
+    patchRejectFriendRequest,
 
 };

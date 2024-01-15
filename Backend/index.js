@@ -6,8 +6,8 @@ const {
   flashCardSetRouter,
 } = require("./api/routes/FCSetRoute/flashCardSetRoute");
 const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
+const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute')
 require("dotenv").config();
-
 // IMPORTING .ENV VARIABLE
 const port = process.env.PORT || 8000;
 
@@ -33,6 +33,7 @@ app.use(
 // REGISTERING ROUTES
 app.use("/api/FlashCraft", flashCardSetRouter);
 app.use("/api/flashcard", flashCardRouter);
+app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 
 // CREATING SERVER
 const server = http.createServer(app);

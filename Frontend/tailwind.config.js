@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'abhaya': ['Abhaya Libre'],
-        'poppins': ['Poppins']
+        'Abhaya': ['Abhaya Libre'],
+        'Poppins': ['Poppins']
       }
     },
   },

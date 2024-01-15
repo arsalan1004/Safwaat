@@ -277,10 +277,10 @@ const StreakCalendar = () => {
           
           <div className='bg-[#EBF9FA] flex px-[60px] py-[30px] gap-24'> 
             <div className='w-[30%] flex flex-col justify-center items-center'>
-              <h3 className='text-[32px] font-semibold font-poppins tracking-wider text-[#2D867F] mb-12'>Streak Board</h3>
+              <h3 className='text-[32px] font-semibold font-Poppins tracking-wider text-[#2D867F] mb-12'>Streak Board</h3>
               <img className='w-[59px] mb-7' src={streakFire} alt='streak-fire' />
-              <p className='text-2xl font-medium font-poppins text-[#2D867F] mb-6'>Streak Count</p>
-              <div className='w-full border-solid border-[3px] border-[#2D867F] font-abhaya text-[#2D867F] text-3xl font-bold'>{streakCount}</div>
+              <p className='text-2xl font-medium font-Poppins text-[#2D867F] mb-6'>Streak Count</p>
+              <div className='w-full border-solid border-[3px] border-[#2D867F] font-Abhaya text-[#2D867F] text-3xl font-bold'>{streakCount}</div>
             </div>
             <div className='w-[70%] border-solid border-[3px] border-[#2D867F] rounded-[15px] shadow-[0_4px_4px_0px_rgba(0,0,0,0.25)] p-8'>
               <div className='flex justify-between items-center mb-3'>
@@ -296,7 +296,7 @@ const StreakCalendar = () => {
               <ul className='text-xl font-bold grid grid-cols-[repeat(7,40px)] gap-[30px] items-center justify-center list-none text-[rgba(0,0,0,0.4)] mb-5' >
                   {weekDays.map((weekDay,index) => <li key={index}>{weekDay}</li>)}
                 </ul>
-                <ul className='text-xl font-medium font-abhaya grid grid-cols-[repeat(7,70px)] grid-rows-[repeat(6,35px)]  items-center justify-center gap-y-4'>
+                <ul className='text-xl font-medium font-Abhaya grid grid-cols-[repeat(7,70px)] grid-rows-[repeat(6,35px)]  items-center justify-center gap-y-4'>
                   {isLoading ? <p>Loading</p> : calendarContents}
                 </ul>
               </div>

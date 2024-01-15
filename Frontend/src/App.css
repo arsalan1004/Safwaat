@@ -1,5 +1,5 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -12,3 +12,248 @@
   backface-visibility: hidden;
 }
 
+.contain {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  place-items: center;
+}
+
+.wrapper {
+  background: url("./Assets/Arch1.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.wrapperSign {
+  background: url("./Assets/Signup.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.b {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.b:hover {
+  border-color: #646cff;
+}
+
+.b:focus,
+.b:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/Inter.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("/Barlow-Regular.ttf");
+}
+
+@font-face {
+  font-family: "BarlowBold";
+  src: url("/Barlow-Bold.ttf");
+}
+
+.type-log {
+  font-family: "Inter";
+  font-size: 30px;
+  color: white;
+  font-weight: 700;
+}
+
+input[type="date"]{
+  color-scheme: dark;
+}
+
+.type-logHead {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#main::-webkit-scrollbar,#main2::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog {
+  border-radius: 20px;
+  border: 2px solid #FFF;
+
+  background: rgba(0, 0, 0, 0.10);
+
+  box-shadow: -40.333px 40.333px 40.333px 0px rgba(255, 255, 255, 0.10) inset, 40.333px -40.333px 40.333px 0px rgba(0, 0, 0, 0.10) inset;
+  backdrop-filter: blur(40.33333206176758px);
+
+
+  font-family: "Barlow";
+  color: white;
+  font-size: 15px;
+}
+
+.dialog > .input-section {
+  font-family: "Inter";
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogSign{
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: rgba(0, 0, 0, 0.10);
+  box-shadow: -40.333px 40.333px 40.333px 0px rgba(255, 255, 255, 0.10) inset, 40.333px -40.333px 40.333px 0px rgba(0, 0, 0, 0.10) inset;
+  backdrop-filter: blur(40.33333206176758px);
+  font-family: "Poppins";
+  color: white;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+#username,
+#password,
+.inputWL {
+  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
+  background: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+.signupInput{
+  background: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  outline: none;
+}
+
+.labelSignUp{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.label{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+#username:focus,
+#password:focus,
+.inputWL:focus {
+  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
+  background: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px 20px;
+  outline: none;
+}
+
+#password{
+  position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+  #username,
+  #password,
+  .inputWL {
+    background: rgba(255, 255, 255, 0.2);
+    /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 2vw 1.5vh 2vw 1.5vh;
+  }
+}
+
+.fillButton {
+  background-color: #106c6f;
+  padding: 9px 24% ;
+  font-weight: 400;
+  font-size:16px ;
+  font-family: Itim;
+  box-sizing: content-box;
+}
+
+
+.fillButtonSign {
+  background-color: #106c6f;
+  padding: 9px 16% 9px 16%;
+  font-weight: 400;
+  font-size:13px ;
+}
+
+.fillButton:hover,
+.googleOutline:hover,
+.fillButton:focus,
+.googleOutline:focus {
+  border: 2px solid #0eabad;
+  outline: none;
+}
+
+.googlefill:focus,
+.googlefill:hover {
+  border-color: #106c6f;
+  outline: none;
+}
+
+.googleOutline {
+  border: 1.2px solid;
+  border-color: #106c6f;
+  background-color: transparent;
+  padding: 0px 5vw 0px 5vw;
+}
+
+.googlefill {
+  border: 1.2px solid;
+  border-color: #ffffff;
+  padding: 0px 4vw 0px 4vw;
+  color: #0a3f67;
+}
+
+.head {
+  font-family: "Barlow";
+  font-weight: 900;
+}
+
+.headSign {
+  font-family: "PoppinsBold";
+}

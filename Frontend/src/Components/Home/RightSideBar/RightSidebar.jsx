@@ -13,12 +13,8 @@ import levelUp from '../../../Assets/Icons/levelUp.png'
 import StreakIconHome from '../../../Assets/Icons/StreakIconHome.png';
 import goldLeague from '../../../Assets/Icons/goldLeague.png';
 
-function RightSidebar() {
+function RightSidebar({data}) {
 
-    const xpWidth = '20%';
-    const level = 3;
-    const xpAmount = 1400;
-    const leagueName = 'Gold League';
 
   return (
     <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-20
@@ -36,7 +32,7 @@ function RightSidebar() {
                 <div className='flex-center w-fit relative'>
                     <img src={XPFlower} alt='XP Flower' className='z-10 h-12' />
                     <span className='absolute z-20 font-semibold font-Poppins text-primary-100 text-xl 
-                    '>{level}</span>
+                    '>{data.currentXPLevel}</span>
                 </div>
 
                 {/* XP Bar */}
@@ -51,10 +47,10 @@ function RightSidebar() {
                 </div>
                 
                 {/* Filled Bar */}
-                <div className={`w-[${xpWidth}] h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
+                <div className={`w-[${data.percentageCompletedForCurrentLevel}] h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
                     flex-center`}
                     >
-                    <span className='pl-8 pr-3 font-semibold font-Montesserat tracking-wider text-primary-100  '>{xpAmount}</span>
+                    <span className='pl-8 pr-3 font-semibold font-Montesserat tracking-wider text-primary-100  '>{data.XPAmount}</span>
                 </div>
 
             </div> 
@@ -80,13 +76,13 @@ function RightSidebar() {
         <div className='mt-8 flex flex-col items-center justify-center mx-3
                 s4:flex-row s4:flex s4:items-center s4:justify-between s4:mx-5  '> 
 
-            <Perk imgSrc={gem} altText='gem' text='15' />
-            <Perk imgSrc={trophy} altText='trophy' text='30' />
-            <Perk imgSrc={StreakIconHome} altText='streak' text='12' />
+            <Perk imgSrc={gem} altText='gem' text={data.gemNumber} />
+            <Perk imgSrc={trophy} altText='trophy' text={data.trophyNumber} />
+            <Perk imgSrc={StreakIconHome} altText='streak' text={data.currentStreak} />
         </div> 
 
         <div className='s4:hidden mt-8'>
-            <Perk imgSrc={goldLeague} altText='streak' text='5' />
+            <Perk imgSrc={goldLeague} altText='streak' text={data.leagueLeaderboardRanking} />
         </div>
 
         {/* Div for Streak Leaderbaord */}
@@ -99,7 +95,7 @@ function RightSidebar() {
 
             <div className='flex justify-center items-end'>
                 <img src={StreakIconHome} alt='Streak Icon' className='mr-4' />
-                <span className='font-medium italic'>World Ranking 15</span>
+                <span className='font-medium italic'>World Ranking {data.streakLeaderboardRanking}</span>
             </div>
 
             <div className='mt-4'>
@@ -112,17 +108,17 @@ function RightSidebar() {
         <div className='s4:flex flex-col hidden text-secondary mt-5 border-2 border-slate-400 rounded-lg pt-4 pb-2 min-[1220px]:pb-4  px-4'>
 
             <div className='mb-5 flex justify-start'>
-                <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>{leagueName}</h1>
+                <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>{data.currentLeague} League</h1>
                 <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 cursor-pointer text-right'>View League</span>
             </div>
 
             <div className='flex justify-center items-end'>
                 <img src={goldLeague} alt='Streak Icon' className='h-[32px] mr-4 ' />
-                <span className='font-medium italic'>Rank 5</span>
+                <span className='font-medium italic'>Rank {data.leagueLeaderboardRanking}</span>
             </div>
 
             <div className='mt-4'>
-            <p className='text-center text-sm font-Poppins text-slate-500'>Join the elite in the {leagueName} and let your XP speak for itself. <span className='font-medium italic'>Challenge accepted?</span></p>
+               <p className='text-center text-sm font-Poppins text-slate-500'>Join the elite in the {data.currentLeague} League and let your XP speak for itself. <span className='font-medium italic'>Challenge accepted?</span></p>
             </div>
 
         </div>

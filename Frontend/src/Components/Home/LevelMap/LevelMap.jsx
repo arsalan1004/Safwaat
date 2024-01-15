@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import classes from './LevelMap.module.css';
 import LeftSideBar from '../LeftSideBar/LeftSideBar';
 import RightSidebar from '../RightSideBar/RightSidebar';
@@ -21,60 +21,85 @@ import splash from '../../../Assets/Gifs/splash2.gif';
 
 function LevelMap() {
 
+  const [data, setData] = useState();
 
-  const data = [
-    {
-      learningUnitId: '23',
-      unitNumber: 1,
-      userId : '2323',
-      starsEarned: 3
-      
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 2,
-      userId : '2323',
-      starsEarned: 3
+  const userId = '65a297b3b32acbfdbde8a219';
 
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 3,
-      userId : '2323',
-      starsEarned: 2
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 4,
-      userId : '2323',
-      starsEarned: 1
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 5,
-      userId : '2323',
-      starsEarned: 1
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 6,
-      userId : '2323',
-      starsEarned: 2
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 7,
-      userId : '2323',
-      starsEarned: 0
-    },
-    {
-      learningUnitId: '23',
-      unitNumber: 8,
-      userId : '2323',
-      starsEarned: null
+  useEffect(() => {
+    async function loader() {
+      try {
+        const response = await fetch(`http://localhost:8000/api/homepage/${userId}`);
+        const responseData = await response.json();
+  
+        console.log('levelMap 2 response: ', response);
+        console.log('levelMap 2 response Data: ', responseData);
+  
+        setData(responseData);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     }
+  
+    loader();
+  }, [userId]); // Make sure to include userId as a dependency
 
-  ];
+
+  console.log(data);
+
+  // const data = [
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 1,
+  //     userId : '2323',
+  //     starsEarned: 3
+      
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 2,
+  //     userId : '2323',
+  //     starsEarned: 3
+
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 3,
+  //     userId : '2323',
+  //     starsEarned: 2
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 4,
+  //     userId : '2323',
+  //     starsEarned: 1
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 5,
+  //     userId : '2323',
+  //     starsEarned: 1
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 6,
+  //     userId : '2323',
+  //     starsEarned: 2
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 7,
+  //     userId : '2323',
+  //     starsEarned: 0
+  //   },
+  //   {
+  //     learningUnitId: '23',
+  //     unitNumber: 8,
+  //     userId : '2323',
+  //     starsEarned: null
+  //   }
+
+  // ];
 
   
 
@@ -147,7 +172,7 @@ function LevelMap() {
           {/* <img src={splash} className={`absolute top-[88%] left-[28%] z-20 ${isSplashActive ? 'block' : 'hidden'}`}
           onAnimationEnd={()=> setSplashActive(false)} /> */}
 
-          {
+          { data &&
             styling.map(
               (st, i) => (
                 

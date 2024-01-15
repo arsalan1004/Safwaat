@@ -33,6 +33,7 @@ const postLandingPageRightSideBarData = async(req, res) => {
     res.status(200).json({
         gemNumber: user.gem,
         currentXPLevel: user.xpLevel,
+        XPAmount: user.totalXP,
         trophyNumber: user.trophy,
         currentStreak: user.streak,
         currentLeague: user.league,

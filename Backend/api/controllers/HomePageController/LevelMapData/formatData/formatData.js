@@ -3,13 +3,13 @@ const formatData = (learningUnits, userProgress) => {
     const result = learningUnits.map((unit, index) => {
       if (userProgress[index]) {
         return {
-          _id: unit?._id,
+          learningUnitId: unit?._id,
           unitNumber: unit?.unitNumber,
           starsEarned: userProgress[index].starsEarned,
         };
       } else {
         return {
-          _id: unit?._id,
+          learningUnitId: unit?._id,
           unitNumber: unit?.unitNumber,
           starsEarned: null,
         };

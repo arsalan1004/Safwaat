@@ -5,20 +5,47 @@ import InvertedButton from '../../../UI/Button/InvertedButton';
 import FilledButton from '../../../UI/Button/FilledButton';
 import group from '../../../Assets/Gifs/group.gif';
 
-function FriendshipMain() {
+function FriendshipMain({data}) {
     
 const navigate = useNavigate();
 
 const [searchValue, setSearchValue] = useState("");
-const [searched, setSearched] = useState(false);
+const [searched, setSearched] = useState(false); //for dynamic handling of page portions before and after search 
+
+const [searchResults, setSearchResults] = useState([]);
 
 const navigateHandler = () => {
     navigate('Insights')
 }
 
 const onSearch = () => {
-    console.log(searchValue);
+    console.log("search value",searchValue.toLowerCase());
+    getSearchResultsHandler(searchValue.toLowerCase());
     setSearched(true);
+}
+
+async function getSearchResultsHandler (val) {
+    const userId = "65a297b2b32acbfdbde8a217";
+  
+    const response = await fetch(
+      "http://localhost:8000/api/friendshiphub/search",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          userId: userId,
+          text: val,
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+  
+    const responseData = await response.json();
+
+    console.log('response of getSearchResultsHandler: ', responseData);
+    setSearchResults(responseData);
+  
 }
 
 const searchDetail = [
@@ -129,15 +156,15 @@ const searchDetail = [
                     <div className='ml-5 mr-10 text-slate-500'>
                         <p className='mb-3 flex justify-between'>
                             <span className='font-bold'>Your Safwaat Friends</span>
-                            <span className=''>15</span>
+                            <span className=''>{data.noFriends}</span>
                         </p>
                         <p className='mb-3 flex justify-between'>
                             <span className='font-bold'>Pending Friend Requests</span>
-                            <span>10</span>
+                            <span>{data.noFriendReq}</span>
                         </p>
                         <p className='mb-3 flex justify-between'>
                             <span className='font-bold'>Your Sent Requests</span>
-                            <span>5</span>
+                            <span>{data.noSentReq}</span>
                         </p>
                     </div>
                     

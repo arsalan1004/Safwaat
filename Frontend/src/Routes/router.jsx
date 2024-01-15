@@ -7,7 +7,7 @@ import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/Flas
 import Home,{loader as HomeLoader} from "../Components/Home/Home";
 import Login from "../Components/Login_Signup/login";
 import Signup from "../Components/Login_Signup/signup";
-import FriendshipHub from "../Components/FriendshipHub/FriendshipHub";
+import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
 import Insights from "../Components/FriendshipHub/Insights/Insights";
 
 
@@ -58,7 +58,8 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <FriendshipHub />
+                        element: <FriendshipHub />,
+                        loader: friendshiphubLoader
                     },
                     {
                         path: 'Insights',

@@ -8,6 +8,7 @@ import modelSlideReducer from './modelSlideSlice'
 import dndSlideReducer from './dndSlideSlice'
 import matchingSlideReducer from './matchingSlideSlice';
 import informationSlideReducer from './informationSlideSlice';
+import teachAudioSlideReducer from "./teachAudioSlideSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -23,6 +24,7 @@ const store = configureStore({
     dndSlideSlice: dndSlideReducer,
     matchingSlideSlice: matchingSlideReducer,
     informationSlideSlice: informationSlideReducer,
+    teachAudioSlideSlice: teachAudioSlideReducer
   }
 });
 

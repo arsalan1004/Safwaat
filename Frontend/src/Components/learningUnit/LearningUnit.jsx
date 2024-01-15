@@ -13,6 +13,7 @@ import { modelSlideActions } from '../../Store/modelSlideSlice';
 import { dndSlideActions } from '../../Store/dndSlideSlice';
 import { matchingSlideAction } from '../../Store/matchingSlideSlice';
 import { informationSlideActions } from '../../Store/informationSlideSlice';
+import { teachAudioSlideActions } from '../../Store/teachAudioSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -74,6 +75,10 @@ const LearningUnit = (props) => {
           case "information":
               dispatch(slideControlActions.setSlideType("information"))
               dispatch(informationSlideActions.setInformationData(response.content))
+              break;
+          case "teachAudio":
+              dispatch(slideControlActions.setSlideType("teachAudio"))
+              dispatch(teachAudioSlideActions.setTeachAudioSlideData(response.content))
               break;
         default:
           break;

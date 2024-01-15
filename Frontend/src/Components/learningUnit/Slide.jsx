@@ -13,6 +13,7 @@ import SlideBottomControl from './slideBottom/SlideBottomControl';
 import DragAndDropSlide from './slideMiddle/dragAndDrop/DragAndDropSlide';
 import Match from './slideMiddle/matching/match';
 import TheorySlideInformation from './slideMiddle/theory/TheorySlideInformation';
+import TheorySlideTeachAudio from './slideMiddle/theory/teachAudio/TheorySlideTeachAudio';
 
 
 const Slide = (props) => {
@@ -45,6 +46,9 @@ const Slide = (props) => {
       case "information":
         slideContent = <TheorySlideInformation />
         break;
+      case "teachAudio":
+        slideContent = <TheorySlideTeachAudio />
+        break;
 
       default:
         break;
@@ -65,6 +69,7 @@ const Slide = (props) => {
           {!isMotivation && slideContent}
           {modalAppear && <ExitLessonModal exitModalHandler={setModalAppear} />}
           {/* <TheorySlideInformation /> */}
+          {/* <TheorySlideTeachAudio /> */}
         <SlideBottomControl slideType={props.slideType} />
       </div>
     </div>

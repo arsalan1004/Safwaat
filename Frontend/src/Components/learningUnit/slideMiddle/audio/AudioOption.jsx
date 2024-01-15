@@ -6,11 +6,11 @@ import AudioButton from './AudioButton';
 const AudioOption = (props) => {
   const dispatch = useDispatch();
   const audioStyles = {
-    defaultStyle: "text-secondary w-[60%] mx-auto text-center text-2xl px-6 py-4 border-[3px] border-secondary rounded-[10px] cursor-pointer",
-    selectedStyle: "text-secondary w-[60%] mx-auto text-center text-2xl px-6 py-4 border-[3px] border-accent rounded-[10px] cursor-pointer",
-    correctionStyle: "text-correct w-[60%] mx-auto text-center text-2xl px-6 py-4 border-[3px] border-correct rounded-[10px] cursor-pointer",
-    wrongStyle: "text-wrong w-[60%] mx-auto text-center text-2xl px-6 py-4 border-[3px] border-wrong rounded-[10px] cursor-pointer",
-    selectedWrong: "text-wrong w-[60%] mx-auto text-center text-2xl px-6 py-4 border-[3px] border-accent rounded-[10px] cursor-pointer"
+    defaultStyle: "text-secondary w-[55%] mx-auto text-center text-2xl px-4 py-4 border-[3px] border-secondary rounded-[10px] cursor-pointer",
+    selectedStyle: "text-secondary w-[55%] mx-auto text-center text-2xl px-4 py-4 border-[3px] border-accent rounded-[10px] cursor-pointer",
+    correctionStyle: "text-correct w-[55%] mx-auto text-center text-2xl px-4 py-4 border-[3px] border-correct rounded-[10px] cursor-pointer",
+    wrongStyle: "text-wrong w-[55%] mx-auto text-center text-2xl px-4 py-4 border-[3px] border-wrong rounded-[10px] cursor-pointer",
+    selectedWrong: "text-wrong w-[55%] mx-auto text-center text-2xl px-4 py-4 border-[3px] border-accent rounded-[10px] cursor-pointer"
   }
 
   const isChecked = useSelector(state => state.slideControl.isChecked);

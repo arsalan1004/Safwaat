@@ -23,12 +23,12 @@ const AudioSlide = () => {
     <div className='flex flex-col gap-8  min-w-[550px]'>
       <h1 className='flex text-[30px] justify-center items-center font-Itim text-secondary'>Select the wrong Pronunciation</h1>
       <AudioButton
-        src={""}
+        src={questionAudioUrl}
         playing = {playing}
         setPlayingHandler = {setPlayingHandler}
       >
-        <div className='text-primary-100 bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-1 rounded-[10px]'>
-          <img src={audioSpeaker} alt='audio-speaker'/>
+        <div className='text-primary-100 bg-secondary text-2xl w-[60%] mx-auto flex justify-between items-center px-8 py-2 rounded-[10px]'>
+          <img src={audioSpeaker} className='w-[32px] h-[32px]' alt='audio-speaker' />
           <h2>{audioQuestion}</h2>
           {/* <audio>
             <source src={questionAudioUrl || ""} />

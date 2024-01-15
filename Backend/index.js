@@ -13,6 +13,7 @@ const {
 } = require("./api/routes/FlashCraft/FCSetRoute/flashCardSetRoute");
 const { signupRouter } = require("./api/routes/LoginSignup/signupRoute");
 const { loginRouter } = require("./api/routes/LoginSignup/loginRoute");
+const { HomePageRouter } = require('./api/routes/HomePageRoute/homePageRoute');
 
 // CONNECTING TO DATABASE
 require("dotenv").config();
@@ -64,11 +65,9 @@ app.use("/api/FlashCraft", flashCardSetRouter);
 // login signup routes
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
- 
-//FriendshipHub Routes
+app.use("/api/homepage", HomePageRouter);
 app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 app.use("/api/fh", FriendshipHubFriendsRouter);
-
 // CREATING SERVER
 const server = http.createServer(app);
 

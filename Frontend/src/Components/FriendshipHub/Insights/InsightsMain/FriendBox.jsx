@@ -7,27 +7,33 @@ function FriendBox(props) {
     console.log('inside FriendBox Component')
     console.log(props.secNo);
 
-    let button1Texts = ['View Profile', 'Accept' , 'View Profile'];
-    let button2Texts = ['Message', 'Reject' , 'Cancel'];
+    const button1Texts = ['View Profile', 'Accept' , 'View Profile'];
+    const button2Texts = ['Message', 'Reject' , 'Cancel'];
 
-    let but1Text = button1Texts[props.secNo];
-    let but2Text = button2Texts[props.secNo];
+    let buttonTexts = [
+        button1Texts[props.secNo],
+        button2Texts[props.secNo]
+    ]
 
-    const buttonStyling1 = {
-        mainFriendBoxColor: `${props.secNo == 1 ? '#0ACF1E' : '#2c9caf'}`, //correct : blue
-        hoverFriendBoxColor: `${props.secNo == 1 ? '#41E251' : '#70bdca'}`, //somewhere middle
-        backgroundFriendBoxColor: `${props.secNo == 1 ? '#AAF491' : 'rgb(235, 241, 247)'}`, //light green
-        boxFriendBoxShadowColor: `${props.secNo == 1 ? '#9FFC7F' : '#268391'}`, //lil darker than light green
-        hoverFriendBoxText: `${props.secNo == 1 ? '#B9F6A4' : 'white'}`
-    }
+    const buttonStyling = [
+        //styling for button 1
+        {
+            mainFriendBoxColor: `${props.secNo == 1 ? '#0ACF1E' : '#2c9caf'}`, //correct : blue
+            hoverFriendBoxColor: `${props.secNo == 1 ? '#41E251' : '#70bdca'}`, //somewhere middle
+            backgroundFriendBoxColor: `${props.secNo == 1 ? '#AAF491' : 'rgb(235, 241, 247)'}`, //light green
+            boxFriendBoxShadowColor: `${props.secNo == 1 ? '#9FFC7F' : '#268391'}`, //lil darker than light green
+            hoverFriendBoxText: `${props.secNo == 1 ? '#B9F6A4' : 'white'}`
+        },
+        //styling for button 2
+        {
+            mainFriendBoxColor: `${props.secNo == 0 ? '#2c9caf' : '#E01111'}`, // blue : wrong 
+            hoverFriendBoxColor: `${props.secNo == 0 ? '#70bdca' : '#F33D3D'}`, //somewhere middle
+            backgroundFriendBoxColor: `${props.secNo == 0 ? 'rgb(235, 241, 247)' : '#F98C8C'}`, //light red
+            boxFriendBoxShadowColor: `${props.secNo == 0 ? '#268391' : '#F97777'}`, //lil darker than light red
+            hoverFriendBoxText: `${props.secNo == 0 ? 'white' : '#FFBEBE'}`
+        }
+    ]
 
-    const buttonStyling2 = {
-        mainFriendBoxColor: `${props.secNo == 0 ? '#2c9caf' : '#E01111'}`, // blue : wrong 
-        hoverFriendBoxColor: `${props.secNo == 0 ? '#70bdca' : '#F33D3D'}`, //somewhere middle
-        backgroundFriendBoxColor: `${props.secNo == 0 ? 'rgb(235, 241, 247)' : '#F98C8C'}`, //light red
-        boxFriendBoxShadowColor: `${props.secNo == 0 ? '#268391' : '#F97777'}`, //lil darker than light red
-        hoverFriendBoxText: `${props.secNo == 0 ? 'white' : '#FFBEBE'}`
-    }
 
     return (
     
@@ -54,6 +60,19 @@ function FriendBox(props) {
         
         {/* Level Detail */}
         <div className='flex-center w-1/6'>
+           
+            {/* <div className='flex items-start text-center mt-5 text-Poppins'>
+                    <div className='py-0 pr-4 border-r-slate-400 border-r-[1px]'>
+                        <h3 className='mb-1 text-slate-500 font-medium'>LEVEL</h3>
+                        <p className='text-sm text-slate-500'>10</p>
+                    </div>
+                    <div className='py-0 px-4'>
+                        <h3 className='mb-1 font-medium text-slate-500'>XP</h3>
+                        <p className='text-sm text-slate-500' >1255 </p>
+                    </div>
+                   
+                </div> */}
+    
             <div className='w-full'>
                 <p className='flex justify-between mb-1'>
                 <span className='font-medium'>LEVEL:</span>
@@ -68,35 +87,28 @@ function FriendBox(props) {
 
         {/* buttons */}
         <div className='flex flex-col justify-center items-end gap-2 w-2/6'>
-            <Link to=''>
-                <button className={classes.Button}
-                style={{
-                    '--main-FriendBox-color': buttonStyling1.mainFriendBoxColor, 
-                    '--hover-FriendBox-color': buttonStyling1.hoverFriendBoxColor, 
-                    '--background-FriendBox-color': buttonStyling1.backgroundFriendBoxColor, 
-                    '--box-FriendBox-shadow-color': buttonStyling1.boxFriendBoxShadowColor, 
-                    '--hover-FriendBox-text': buttonStyling1.hoverFriendBoxText
+            {
+                buttonStyling.map(
+                    (butStyle, i) => (
+                        <Link to=''>
+                            <button className={classes.Button}
+                            key={i}
+                            style={{
+                                '--main-FriendBox-color': butStyle.mainFriendBoxColor, 
+                                '--hover-FriendBox-color': butStyle.hoverFriendBoxColor, 
+                                '--background-FriendBox-color': butStyle.backgroundFriendBoxColor, 
+                                '--box-FriendBox-shadow-color': butStyle.boxFriendBoxShadowColor, 
+                                '--hover-FriendBox-text': butStyle.hoverFriendBoxText
+                            }}
+                            >
+                                {buttonTexts[i]}
 
-                }}
-                >
-                    {but1Text}
-
-                </button>
-            </Link>
-            <Link to=''>
-                <button className={classes.Button}
-                style={{
-                    '--main-FriendBox-color': buttonStyling2.mainFriendBoxColor, 
-                    '--hover-FriendBox-color': buttonStyling2.hoverFriendBoxColor, 
-                    '--background-FriendBox-color': buttonStyling2.backgroundFriendBoxColor,
-                    '--box-FriendBox-shadow-color': buttonStyling2.boxFriendBoxShadowColor, 
-                    '--hover-FriendBox-text': buttonStyling2.hoverFriendBoxText
-                }}
-                >
-                    {but2Text}
-                    
-                </button>
-            </Link>
+                            </button>
+                        </Link>
+                    )
+                )
+            }
+ 
         </div>
              
     </div>

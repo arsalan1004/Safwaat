@@ -4,7 +4,7 @@ const {
   fCSGetController,
   getSingleFlashCardSet,
   deleteFlashCardSet,
-} = require("../../controllers/FCSetController/flashCardSetController");
+} = require("../../../controllers/FlashCraft/FCSetController/flashCardSetController");
 
 flashCardSetRouter.post("/SetCreation", fCSPostController);
 flashCardSetRouter.post("/", fCSGetController);

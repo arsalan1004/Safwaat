@@ -1,11 +1,11 @@
-const User = require('./../../models/UserModel/userModel');
+const {userModel} = require('./../../models/UserModel/userModel');
 const XPLeaderboard = require('./../../models/XPLeaderboardModel/xpLeaderboardModel');
 
 const postLandingPageRightSideBarData = async(req, res) => {
     const {userId} = req.body;
     let [user, streakranking] = await Promise.all([
-        User.findById(userId),
-        User.find({}, {username: 1, streak:1}).sort({streak:-1, username: 1})
+        userModel.findById(userId),
+        userModel.find({}, {username: 1, streak:1}).sort({streak:-1, username: 1})
     ]);
     let leagueLeaderboard = await XPLeaderboard.findOne({league: user.league});
     let members = leagueLeaderboard.members.sort((a,b)=> {
@@ -33,13 +33,13 @@ const postLandingPageRightSideBarData = async(req, res) => {
     res.status(200).json({
         gemNumber: user.gem,
         currentXPLevel: user.xpLevel,
-        XPAmount: user.totalXP,
+        XPAmount: user.totalXp,
         trophyNumber: user.trophy,
         currentStreak: user.streak,
         currentLeague: user.league,
         streakLeaderboardRanking: userStreakPosition,
         leagueLeaderboardRanking: leagueLeaderboardPosition,
-        percentageCompletedForCurrentLevel: parseFloat(((user.totalXP/user.XPRequiredForNextLevel)*100).toFixed(2))
+        percentageCompletedForCurrentLevel: (parseFloat(((user.totalXp/user.XPRequiredForNextLevel)*100).toFixed(2))).toString()
     });
 };
 

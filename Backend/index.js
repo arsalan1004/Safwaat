@@ -6,6 +6,7 @@ const {
   flashCardSetRouter,
 } = require("./api/routes/FCSetRoute/flashCardSetRoute");
 const { flashCardRouter } = require("./api/routes/FCRoute/flashCardRoute");
+const { HomePageRouter } = require('./api/routes/HomePageRoute/homePageRoute');
 require("dotenv").config();
 
 // IMPORTING .ENV VARIABLE
@@ -33,6 +34,7 @@ app.use(
 // REGISTERING ROUTES
 app.use("/api/FlashCraft", flashCardSetRouter);
 app.use("/api/flashcard", flashCardRouter);
+app.use("/api/homepage", HomePageRouter);
 
 // CREATING SERVER
 const server = http.createServer(app);

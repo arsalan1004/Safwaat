@@ -107,7 +107,7 @@ const SignDialog = () => {
                 }} width='300' useOneTap/>
                 {/* <Button className='googlefill' onClick={()=><GoogleLogin/>}><img src={google} alt="" className='inline scale-50'/>Sign-in With Google</Button> */}
             </div>
-            <p className='text-center max-h-[80%] text-[13px] my-auto'>Already have an account? <Link to='/' className='text-[#33babe]'><u>Log In</u></Link></p>
+            <p className='text-center max-h-[80%] text-[13px] my-auto'>Already have an account? <Link to='/login' className='text-[#33babe]'><u>Log In</u></Link></p>
         </div>
   )
 }

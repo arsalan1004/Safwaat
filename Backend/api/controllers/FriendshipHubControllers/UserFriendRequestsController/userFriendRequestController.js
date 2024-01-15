@@ -159,13 +159,16 @@ const getFriendData = async(req, res) => {
             FriendList.findOne({playerId: userId}),
             FriendRequests.findOne({playerId: userId})
         ]);
+        // console.log(user)
+        let userJoined = user.createdAt.toString().slice(4,15);
+        // let modifiedJoinedDate = 
 
         res.status(200).json({
             username: user.username,
             fullName: user.firstName + " "+user.lastName,
             noFriends: (userFriends) ? userFriends.friendList.length : 0,
             noReq: (userRequets) ? userRequets.incoming.length : 0,
-            dateJoined: user.createdAt.toString().slice(4,15)
+            dateJoined: userJoined.slice(4,6) + "-" + userJoined.slice(0,3)+"-"+userJoined.slice(userJoined.length-4, userJoined.length)
         });
     } catch(err){
         res.status(500).json({

@@ -12,6 +12,8 @@ import ModelWindow from './slideMiddle/model/ModelWindow';
 import SlideBottomControl from './slideBottom/SlideBottomControl';
 import DragAndDropSlide from './slideMiddle/dragAndDrop/DragAndDropSlide';
 import Match from './slideMiddle/matching/match';
+import TheorySlideInformation from './slideMiddle/theory/TheorySlideInformation';
+
 
 const Slide = (props) => {
   const {isMotivation, slideType} = useSelector(state => state.slideControl);
@@ -40,6 +42,10 @@ const Slide = (props) => {
       case "match":
         slideContent = <Match />
         break;
+      case "information":
+        slideContent = <TheorySlideInformation />
+        break;
+
       default:
         break;
     }
@@ -58,7 +64,7 @@ const Slide = (props) => {
           {isMotivation && <Motivation />}
           {!isMotivation && slideContent}
           {modalAppear && <ExitLessonModal exitModalHandler={setModalAppear} />}
-          
+          {/* <TheorySlideInformation /> */}
         <SlideBottomControl slideType={props.slideType} />
       </div>
     </div>

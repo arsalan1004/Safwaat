@@ -7,6 +7,7 @@ import theoryComparativeSlideReducer from './theoryComparativeSlideSlice'
 import modelSlideReducer from './modelSlideSlice'
 import dndSlideReducer from './dndSlideSlice'
 import matchingSlideReducer from './matchingSlideSlice';
+import informationSlideReducer from './informationSlideSlice';
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -20,7 +21,8 @@ const store = configureStore({
     theoryComparativeSlideSlice: theoryComparativeSlideReducer,
     modelSlideSlice: modelSlideReducer,
     dndSlideSlice: dndSlideReducer,
-    matchingSlideSlice: matchingSlideReducer
+    matchingSlideSlice: matchingSlideReducer,
+    informationSlideSlice: informationSlideReducer,
   }
 });
 

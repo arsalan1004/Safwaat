@@ -29,9 +29,11 @@ const AudioButton = (props) => {
   }
 
   return (
-    <button onClick={() => playAudioHandler()} className='min-w-[230px]' disabled = {isChecked == true ? true : false}>
+    <button 
+  
+    onClick={() => playAudioHandler()} className='min-w-[230px]' disabled = {(isChecked == true ? true : false) || props.src == ""}>
       {props.children}
-      <audio ref={audioRef} src={props.src} />
+      {props.src && <audio ref={audioRef} src={props.src} />}
     </button>
   )
 }

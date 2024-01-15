@@ -12,6 +12,7 @@ import { theoryComparativeSlideActions } from '../../Store/theoryComparativeSlid
 import { modelSlideActions } from '../../Store/modelSlideSlice';
 import { dndSlideActions } from '../../Store/dndSlideSlice';
 import { matchingSlideAction } from '../../Store/matchingSlideSlice';
+import { informationSlideActions } from '../../Store/informationSlideSlice';
 
 const LearningUnit = (props) => {
 
@@ -70,6 +71,10 @@ const LearningUnit = (props) => {
              dispatch(slideControlActions.setSlideType("match"))
              dispatch(matchingSlideAction.setMatchingSlideData(response.content))
              break;
+          case "information":
+              dispatch(slideControlActions.setSlideType("information"))
+              dispatch(informationSlideActions.setInformationData(response.content))
+              break;
         default:
           break;
       }

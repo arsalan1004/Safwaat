@@ -130,7 +130,12 @@ const SlideBottomControl = (props) => {
   }
   const isTheorySlide = () => {
     console.log("Entered isThoerySlideFuntion")
-    if(slideType == 'theoryComparative' || slideType == 'theoryImage' || slideType == 'model' ) {
+    if( slideType == 'theoryComparative' || 
+        slideType == 'theoryImage' || 
+        slideType == 'model'  ||
+        slideType == 'information' ||
+        slideType == 'teachAudio'
+      ) {
       console.log("returned true")
       return true
     }

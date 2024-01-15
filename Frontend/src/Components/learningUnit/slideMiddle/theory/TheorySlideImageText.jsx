@@ -5,13 +5,15 @@ const TheorySlideImageText = () => {
   const {title, imageUrl, content} = useSelector(state => state.theoryImageSlideSlice); 
 
   return (
-    <div className='flex flex-col items-center w-[80%] mx-auto gap-10 mb-5'>
+    <div className='flex flex-col items-center w-[60%] mx-auto gap-10 mb-5'>
       <h1 className='text-secondary text-3xl font-Itim'>{title}</h1>
-      <div className='flex justify-between'>
-        <div className='w-2/5'>
-          <img src={rose} alt='image' className='rounded-[15px] w-full block'/>
+      <div className='flex flex-col justify-center items-center gap-y-6'>
+        <div className='w-2/5 mix-blend-multiply'>
+          <img src={imageUrl} alt='image' className='rounded-[15px] block mx-auto' 
+            width={250} height={250} 
+          />
         </div>
-        <div className='text-secondary font-Itim w-3/5 ml-10'>
+        <div className='text-secondary text-center font-Itim w-4/5 ml-10'>
           <p>{content}</p>
         </div>
       </div>

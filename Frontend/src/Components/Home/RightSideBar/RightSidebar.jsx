@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 import Perk from './Perk';
 
 import LoginButton from '../../../UI/Button/LoginButton'
@@ -15,6 +15,12 @@ import goldLeague from '../../../Assets/Icons/goldLeague.png';
 
 function RightSidebar({data}) {
 
+    const navigate = useNavigate();
+
+  function navigateHandler() {
+    console.log('handler');
+    navigate('/login');
+  }
 
   return (
     <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-20
@@ -47,7 +53,7 @@ function RightSidebar({data}) {
                 </div>
                 
                 {/* Filled Bar */}
-                <div className={`w-[${data.percentageCompletedForCurrentLevel}] h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
+                <div style={{width: `${data.percentageCompletedForCurrentLevel}%`}} className={`h-[1.6em] bg-[#1DBFF2] rounded-full absolute top-[0.75em] left-5 z-0 border-[1px] border-[#046E8F]
                     flex-center`}
                     >
                     <span className='pl-8 pr-3 font-semibold font-Montesserat tracking-wider text-primary-100  '>{data.XPAmount}</span>
@@ -56,8 +62,8 @@ function RightSidebar({data}) {
             </div> 
 
             <div className='s4:hidden mt-5 ml-2 flex-center mb-10'>
-                <LoginButtonSlide />
-            </div>        
+                <LoginButtonSlide clickHandler={navigateHandler} />
+            </div> 
 
             <div className='mt-8 flex flex-col items-center justify-center mx-3 s4:hidden'> 
                 <Perk imgSrc={levelUp} altText='levelUp' text='3' />
@@ -66,7 +72,7 @@ function RightSidebar({data}) {
 
             <div className='ml-16 mt-5 hidden
                             s4:block'>
-              <LoginButton />
+              <LoginButton clickHandler={navigateHandler} />
             </div>
            
 

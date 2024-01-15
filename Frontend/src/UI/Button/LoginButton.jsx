@@ -1,10 +1,12 @@
 import React from 'react';
 import './loginButton.css';
 
-function LoginButton() {
+function LoginButton(props) {
   return (
     <div className='w-full'>
-      <button className="c-button c-button--gooey rounded-xl"> LOGIN
+      <button className="c-button c-button--gooey rounded-xl"
+      onClick={props.clickHandler}
+      > LOGIN
         <div className="c-button__blobs">
           <div></div>
           <div></div>

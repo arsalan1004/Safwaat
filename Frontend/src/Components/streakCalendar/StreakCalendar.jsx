@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getStreakRange } from '../../API/streakApi';
   
-import streakFire from '../../assets/icons/streakFire.svg'
-import nextArrow from '../../assets/icons/nextArrow.svg';
-import previousArrow from '../../assets/icons/previousArrow.svg';
+import streakFire from '../../Assets/Icons/streakFire.svg'
+import nextArrow from '../../Assets/Icons/nextArrow.svg';
+import previousArrow from '../../Assets/Icons/previousArrow.svg';
+import style from './StreakCalendar.module.css';
+
 
 const StreakCalendar = () => {
 
@@ -269,10 +271,10 @@ const StreakCalendar = () => {
    
 
     return (
-      <> 
+      <div className={`${style['streak-calendar-container']}`}>
       {
         !calendarData ? <h3>Loading Calender..!</h3> : ( 
-  
+          
           <div className='bg-[#EBF9FA] flex px-[60px] py-[30px] gap-24'> 
             <div className='w-[30%] flex flex-col justify-center items-center'>
               <h3 className='text-[32px] font-semibold font-poppins tracking-wider text-[#2D867F] mb-12'>Streak Board</h3>
@@ -302,7 +304,7 @@ const StreakCalendar = () => {
           </div>
         )
       }
-    </>
+    </div>
     )
 }
  

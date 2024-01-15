@@ -313,52 +313,82 @@ const patchRejectFriendRequest = async(req, res) => {
 
 const postSearchFriend = async(req, res) => {
     let {text, userId} = req.body;
-
-    let user = await User.find({
-        $or: [
-            {username:text},
-            {firstName:text},
-            {lastName: text}
-        ]
-    });
-    if(user.length != 0){
-        let response = [];
-        console.log(user.length);
-        let Friends = await FriendList.findOne({
-            playerId: userId
+    try{
+        let user = await User.find({
+            // $or: [
+            //     {username:text},
+            //     {firstName:text},
+            //     {lastName: text}
+            // ]
+            $or: [
+                {username: {$regex: new RegExp(text, 'i')}},
+                {firstName: {$regex: new RegExp(text, 'i')}},
+                {lastName: {$regex: new RegExp(text, 'i')}}
+            ]
         });
-        console.log(Friends);
-        for(i=0; i<user.length; i++){
-            console.log(user[i]._id);
-            if(Friends){
-                if(Friends.friendList.some(f => f.friendId == user[i]._id)){
-    
+        if(user.length != 0){
+            let response = [];
+            console.log(user.length);
+            let Friends = await FriendList.findOne({
+                playerId: userId
+            });
+            console.log(Friends);
+            for(i=0; i<user.length; i++){
+                console.log(user[i]._id);
+                if(Friends){
+                    if(Friends.friendList.some(f => f.friendId == user[i]._id)){
+        
+                    } else{
+                        response.push({
+                            id: user[i]._id,
+                            username: user[i].username,
+                            fullName: user[i].firstName +" "+ user[i].lastName
+                        });
+                    }
                 } else{
                     response.push({
                         id: user[i]._id,
                         username: user[i].username,
                         fullName: user[i].firstName +" "+ user[i].lastName
                     });
-                }
-            } else{
-                response.push({
-                    id: user[i]._id,
-                    username: user[i].username,
-                    fullName: user[i].firstName +" "+ user[i].lastName
-                });
-            }        
-    }
-    res.status(200).json({
-        searchResults: response
-    });
-
-    } else{
+                }        
+        }
         res.status(200).json({
-            message: "No User Found"
-        })
+            searchResults: response
+        });
+    
+        } else{
+            res.status(200).json({
+                message: "No User Found"
+            })
+        }        
+    } catch{
+        res.status(500).json({
+            success: false,
+            message: "Internal Server Error, when cancelling User Friend Request."
+        });
     }
+
 
 }
+
+const postCancelRequest = async(req, res) => {
+    let {userId, receiverId} = req.body;
+    
+    await Promise.all([
+        FriendRequests.updateOne({playerId: userId}, {$pull : {outgoing: {receiverId: receiverId}}}),
+        FriendRequests.updateOne({playerId:receiverId},{$pull: {
+            incoming: {senderId: userId}
+        }})
+    ]);
+
+    res.status(200).json({
+        success: true,
+        message: "Successfully cancelled user's request"
+    });
+} 
+
+//One schedular function is remaining -> which at the end of each day, pull all rejected requests out from every document in Friend Requests Collection.
 
 module.exports = {
     postAddFriendRequest,
@@ -368,5 +398,6 @@ module.exports = {
     patchAcceptFriendRequest,
     patchRejectFriendRequest,
     postSearchFriend,
+    postCancelRequest,
 
 };

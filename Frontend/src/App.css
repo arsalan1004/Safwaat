@@ -94,7 +94,7 @@ input[type="date"]{
 
 .type-logHead {
   font-weight: 700;
-  font-size: 34px;
+  font-size: 32px;
 }
 
 #main::-webkit-scrollbar,#main2::-webkit-scrollbar {
@@ -137,33 +137,57 @@ input[type="date"]{
 #username,
 #password,
 .inputWL {
-  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
   border: 1px solid rgb(255, 255, 255);
-  padding: 0.5vw 1.5vh 0.5vw 1.5vh;
+  padding: 10px 20px;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+.signupInput{
+  background: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  outline: none;
+}
+
+.labelSignUp{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
 }
 
 .label{
   margin-left: 10px;
   margin-right: 10px;
-  font-size: 14px;
+  margin-bottom: 6px;
+  font-size: 16px;
 }
 
 #username:focus,
 #password:focus,
 .inputWL:focus {
-  background: rgba(255, 255, 255, 0.2);
   /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.767); */
   background: none;
   border-radius: 5px;
   border: 1px solid rgb(255, 255, 255);
-  padding: 0.5vw 1.5vh 0.5vw 1.5vh;
+  padding: 10px 20px;
   outline: none;
+}
+
+#password{
+  position: relative;
 }
 
 @media only screen and (max-width: 600px) {
@@ -182,10 +206,13 @@ input[type="date"]{
 
 .fillButton {
   background-color: #106c6f;
-  padding: 9px 26% 9px 26%;
+  padding: 9px 24% ;
   font-weight: 400;
-  font-size:13px ;
+  font-size:16px ;
+  font-family: Itim;
+  box-sizing: content-box;
 }
+
 
 .fillButtonSign {
   background-color: #106c6f;
@@ -198,7 +225,7 @@ input[type="date"]{
 .googleOutline:hover,
 .fillButton:focus,
 .googleOutline:focus {
-  border-color: white;
+  border: 2px solid #0eabad;
   outline: none;
 }
 

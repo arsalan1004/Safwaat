@@ -17,3 +17,22 @@ function Home() {
 }
 
 export default Home
+
+
+// export async function loader () {
+//   const userId = '65a297b3b32acbfdbde8a219';
+
+//   const response = await fetch(
+//     'http://localhost:8000/api/homepage/leftSideBar',
+//     {
+//       method: 'POST',
+//       body: JSON.stringify({userId}),
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     }
+//   );
+
+//   console.log('levelMap response:', response)
+
+// }

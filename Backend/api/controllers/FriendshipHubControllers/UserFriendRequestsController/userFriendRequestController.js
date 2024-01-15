@@ -1,3 +1,4 @@
+const { response } = require('express');
 const FriendRequests = require('./../../../models/FriendshipHubModels/FriendRequestsModel/friendRequestsModel');
 const FriendList = require('./../../../models/FriendshipHubModels/UserFriendsModel/userFriendsModel');
 const User = require('./../../../models/UserModel/userModel');
@@ -163,7 +164,7 @@ const getFriendData = async(req, res) => {
             username: user.username,
             fullName: user.firstName + " "+user.lastName,
             noFriends: (userFriends) ? userFriends.friendList.length : 0,
-            noReq: (userRequets) ? userRequets.incoming.length+userRequets.outgoing.length : 0,
+            noReq: (userRequets) ? userRequets.incoming.length : 0,
             dateJoined: user.createdAt.toString().slice(4,15)
         });
     } catch(err){
@@ -288,19 +289,76 @@ const patchAcceptFriendRequest = async(req, res) => {
 
 const patchRejectFriendRequest = async(req, res) => {
     let {userId, senderId} = req.body;
-    await Promise.all([
-        FriendRequests.updateOne({playerId: userId},{$pull: {incoming: {senderId: senderId}}}),
-        FriendRequests.updateOne({playerId: senderId, outgoing: {$elemMatch: {receiverId: userId}}},
-             {$set: {'outgoing.$[elem].status': 'REJECTED'}},{arrayFilters: [{
-            'elem.receiverId':userId
-        }]}
-        )
-    ]);
-    res.status(200).json({
-        success: true,
-        message: "Requests rejected successfullly"
-    });
+    try{
+        await Promise.all([
+            FriendRequests.updateOne({playerId: userId},{$pull: {incoming: {senderId: senderId}}}),
+            FriendRequests.updateOne({playerId: senderId, outgoing: {$elemMatch: {receiverId: userId}}},
+                 {$set: {'outgoing.$[elem].status': 'REJECTED'}},{arrayFilters: [{
+                'elem.receiverId':userId
+            }]}
+            )
+        ]);
+        res.status(200).json({
+            success: true,
+            message: "Requests rejected successfullly"
+        });        
+    } catch(err){
+        res.status(500).json({
+            success: false,
+            message: "Cannot reject user friend request"
+        });
+    }
 };
+
+
+const postSearchFriend = async(req, res) => {
+    let {text, userId} = req.body;
+
+    let user = await User.find({
+        $or: [
+            {username:text},
+            {firstName:text},
+            {lastName: text}
+        ]
+    });
+    if(user.length != 0){
+        let response = [];
+        console.log(user.length);
+        let Friends = await FriendList.findOne({
+            playerId: userId
+        });
+        console.log(Friends);
+        for(i=0; i<user.length; i++){
+            console.log(user[i]._id);
+            if(Friends){
+                if(Friends.friendList.some(f => f.friendId == user[i]._id)){
+    
+                } else{
+                    response.push({
+                        id: user[i]._id,
+                        username: user[i].username,
+                        fullName: user[i].firstName +" "+ user[i].lastName
+                    });
+                }
+            } else{
+                response.push({
+                    id: user[i]._id,
+                    username: user[i].username,
+                    fullName: user[i].firstName +" "+ user[i].lastName
+                });
+            }        
+    }
+    res.status(200).json({
+        searchResults: response
+    });
+
+    } else{
+        res.status(200).json({
+            message: "No User Found"
+        })
+    }
+
+}
 
 module.exports = {
     postAddFriendRequest,
@@ -309,5 +367,6 @@ module.exports = {
     getUserFriendRequests,
     patchAcceptFriendRequest,
     patchRejectFriendRequest,
+    postSearchFriend,
 
 };

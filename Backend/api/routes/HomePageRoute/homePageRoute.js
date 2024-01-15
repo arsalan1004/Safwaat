@@ -1,7 +1,12 @@
-const express = require('express');
+const express = require("express");
 const HomePageRouter = express.Router();
-const { postLandingPageRightSideBarData } = require('./../../controllers/HomePageController/homePageController');
+const {
+  postLandingPageRightSideBarData,
+} = require("./../../controllers/HomePageController/homePageController");
+const {
+  levelMapController,
+} = require("../../controllers/HomePageController/levelMapcontroller");
 
 HomePageRouter.post("/leftSideBar", postLandingPageRightSideBarData);
-
-module.exports = {HomePageRouter};
+HomePageRouter.get("/:userId", levelMapController);
+module.exports = { HomePageRouter };

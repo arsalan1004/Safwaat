@@ -3,7 +3,7 @@ import MessageAreaTop from './MessageAreaTop'
 import Message from './Message'
 import MessageTextArea from './MessageTextArea'
 import style from './MessageArea.module.css'
-import { getFriendData } from '../../API/chatSpaceApi'
+import { getFriendData } from '../../../API/chatSpaceApi'
 const MessageArea = ({messages, user, handleMessageSubmit, currentChat}) => {
   const [freeHeight, setFreeHeight] = useState(0);
   const [friendName, setFriendName] = useState("");
@@ -73,7 +73,7 @@ const MessageArea = ({messages, user, handleMessageSubmit, currentChat}) => {
                 key = {index}
                 message={message} 
                 own={message?.sender === user.userId}
-                type={'group'}
+                type={'private'}
               />
             )
           }

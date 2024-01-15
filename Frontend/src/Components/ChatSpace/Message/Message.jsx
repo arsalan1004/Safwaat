@@ -1,5 +1,5 @@
 import React from 'react'
-import userAcc from '../../Assets/Icons/userAcc.svg'
+import userAcc from '../../../Assets/Icons/userAcc.svg'
 
 const Message = ({message, own, user, type}) => {
   // message, own
@@ -18,7 +18,7 @@ const Message = ({message, own, user, type}) => {
   }
 
   return (
-    <div className={`flex flex-row justify-start gap-x-4 ${own == true ? 'flex-row-reverse' : ""}`}>
+    <div className={`flex flex-row justify-start gap-x-4 ${own == true ? 'flex-row-reverse' : ""} ${type == 'private' && 'mx-2'}`}>
       
       {type == 'group' ? 
       <div>

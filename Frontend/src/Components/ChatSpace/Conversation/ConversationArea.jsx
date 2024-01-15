@@ -1,14 +1,14 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import ChatModeButton from './ChatModeButton'
 import Conversation from './Conversation'
-import chatBubble from '../../Assets/Icons/chatBubble.svg';
-import group from '../../Assets/Icons/group.svg'
-import searchMagnifier from '../../Assets/Icons/searchMagnifier.svg'
-import newChatBubble from '../../Assets/Icons/newChatBubble.svg'
+import chatBubble from '../../../Assets/Icons/chatBubble.svg';
+import group from '../../../Assets/Icons/group.svg'
+import searchMagnifier from '../../../Assets/Icons/searchMagnifier.svg'
+import newChatBubble from '../../../Assets/Icons/newChatBubble.svg'
 import style from './Conversation.module.css'
 import { Navigate, useNavigate } from 'react-router-dom';
 import SearchConversationBar from './SearchConversationBar';
-import { getFriendData } from '../../API/chatSpaceApi';
+import { getFriendData } from '../../../API/chatSpaceApi';
 import axios from 'axios';
 
 
@@ -193,9 +193,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
                           // reciever = {recievers && (recievers?.[index][`${conversation.members.find(m => m !== currentUser.userId)[0]}`])}
                         />
                       )
-                     
                     
-                  
                 }
               </>
               )

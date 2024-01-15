@@ -1,7 +1,7 @@
 import React, {  useState, useEffect } from 'react'
-import ChatHeader from './ChatHeader'
-import ConversationArea from './ConversationArea'
-import MessageArea from './MessageArea'
+import ChatHeader from './ChatHeader/ChatHeader'
+import ConversationArea from './Conversation/ConversationArea'
+import MessageArea from './Message/MessageArea'
 import ChatInitialScreen from './ChatInitialScreen'
 import { getConversationData, getMessagesData, getUserData, postMessageData } from '../../API/chatSpaceApi'
 import axios from 'axios'
@@ -336,6 +336,8 @@ const PrivateChat = ({currentUser}) => {
   useEffect(() => {
     const getConversationDataHandler = async () => {
       const response = await getConversationData(user.userId)
+      console.log("IN GET CONVERSATION HANDLER");
+      console.log(response)
       setConversations(response || []);
     }
     getConversationDataHandler();
@@ -538,7 +540,7 @@ const PrivateChat = ({currentUser}) => {
 
   return (
     <section className='w-screen h-screen'>
-      <ChatHeader />
+      <ChatHeader user = {user}/>
       <div className='flex'>
         <ConversationArea 
           conversations = {conversations} 
@@ -553,7 +555,6 @@ const PrivateChat = ({currentUser}) => {
             user={user}
             handleMessageSubmit = {handleButtonSubmit}
             currentChat = {currentChat}
-            // handleMessageSubmit = {() => {}}
           />)
         }
       
@@ -566,16 +567,3 @@ const PrivateChat = ({currentUser}) => {
 export default PrivateChat
 
   
-
-
-          // { currentChat && 
-          //   <MessageArea 
-          //     messages={messages}
-          //     user={user}
-          //     handleMessageSubmit = {handleButtonSubmit}
-          //     currentChat = {currentChat}
-          //   /> 
-          // }
-          // {
-          //   !currentChat && <ChatInitialScreen /> 
-          // }

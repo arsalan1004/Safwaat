@@ -1,8 +1,8 @@
 import React from 'react'
-import safwaatLogoGreen from '../../Assets/Icons/safwaatLogoGreen.svg';
-import userAcc from '../../Assets/Icons/userAcc.svg';
+import safwaatLogoGreen from '../../../Assets/Icons/safwaatLogoGreen.svg';
+import userAcc from '../../../Assets/Icons/userAcc.svg';
 import { useNavigate } from 'react-router-dom';
-const ChatHeader = (props) => {
+const ChatHeader = ({user}) => {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
@@ -21,7 +21,7 @@ const ChatHeader = (props) => {
         </div>
         <div className='flex items-center gap-x-2'>
           <img src={userAcc} alt='user-profile-picture' width={40} height={40}/>
-          <p className='text-primary-100 font-Roboto text-sm tracking-wide'>{props.userName || "Fahad Saleem"}</p>
+          <p className='text-primary-100 font-Roboto text-sm tracking-wide'>{user?.username || "No User"}</p>
         </div>
       </div>
     </header>

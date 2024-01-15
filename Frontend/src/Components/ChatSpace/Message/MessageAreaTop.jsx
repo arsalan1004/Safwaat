@@ -1,5 +1,5 @@
 import React from 'react'
-import userAcc from '../../Assets/Icons/userAcc.svg';
+import userAcc from '../../../Assets/Icons/userAcc.svg';
 const MessageAreaTop = ({receiver, onlineStatus}) => {
   // Same logic as in conversation Component applied here to extract receiver's data
   return (

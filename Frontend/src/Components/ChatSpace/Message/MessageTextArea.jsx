@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import sendMessage from '../../Assets/Icons/sendMessage.svg'
+import sendMessage from '../../../Assets/Icons/sendMessage.svg'
 import style from './MessageTextArea.module.css'
 const MessageTextArea = ({onMessageSubmit}) => {
   const [newMessage, setNewMessage] = useState("");

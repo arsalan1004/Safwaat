@@ -51,16 +51,16 @@ function Challenges() {
             <div className="board bg-opacity-10 bg-white shadow-lg backdrop-filter backdrop-blur-md border border-white rounded p-6 h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-5vh">
               <div className="menu flex justify-around flex-row">
                 <ButtonLog
-                  className={`chButton w-[45%] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] Outline ${
+                  className={`chButton w-[45%] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] OutlineCh ${
                     selectedChallenges === 'dailytasks' ? ' text-white' : ''
                   }`}
-                  onClick={() => setselectedChallenges('dailytasks')}
+                  onClick={() => setselectedChallenges('dailytasks')} auto={true}
                 >
                   <img src={task} alt="" className="inline h-14" /> Daily Tasks
                 </ButtonLog>
                 <ButtonLog
-                  className={` chButton w-[45%] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] Outline ${
-                    selectedChallenges === 'achievement' ? 'bg-[#0A3F67] text-white' : ''
+                  className={` chButton w-[45%] text-white focus:bg-white focus:text-[#0A3F67] hover:text-[#1b9cff] OutlineCh ${
+                    selectedChallenges === 'achievement' ? 'text-white' : ''
                   }`}
                   onClick={() => setselectedChallenges('achievement')}
                 >

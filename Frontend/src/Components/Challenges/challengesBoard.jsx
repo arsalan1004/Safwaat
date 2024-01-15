@@ -44,7 +44,7 @@ const CTable = ({data,label,board,id,fetchData,set}) => {
 
   async function handleUpdateAchieveClaim(challengeId,id,index){
     updateachieveClaim(index);
-    axios.patch("http://localhost:8000/userAchievementChallenge/claim",{
+    await axios.patch("http://localhost:8000/userAchievementChallenge/claim",{
       challengeId:challengeId,
       userId:id
     }).then(()=>setChange(!changeOccur));

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:5000/streak/calendarData';
+const API_URL = 'http://localhost:8000/streak/calendarData';
 
 const getStreakRange = async (month, year) => {
   console.log("STREAK API CALLED")

@@ -7,6 +7,7 @@ import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/Set
 import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
 import Home from "../Components/Home/Home";
 import PrivateChat from "../Components/ChatSpace/PrivateChat";
+import Temp from "../Components/ChatSpace/temp";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: 'PrivateChat',
-                    element: <PrivateChat />
+                    // element: <PrivateChat />
+                    element: <Temp />
                   }
                 ]
             }

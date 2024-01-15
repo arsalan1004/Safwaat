@@ -10,7 +10,9 @@ const ChatModeButton = ({img, dimensions, altText, handler}) => {
   }
 
   return (
-    <button onClick={onClickHandler} disabled = {altText == 'group-chat' ? true : false}>  
+    <button onClick={onClickHandler} disabled = {altText == 'group-chat' ? true : false}
+      className='hover:scale-110 transition-all'
+    >  
       <img src={img} alt='' width={dimensions} height={dimensions} />
     </button>
   )

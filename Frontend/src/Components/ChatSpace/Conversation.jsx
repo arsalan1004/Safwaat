@@ -28,7 +28,7 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
 
   const setChatHandler = () => {
     console.log("chat set to: ", conversation);
-    onSetChat(conversation)
+    onSetChat(conversation || [])
   }
 
   return (
@@ -48,9 +48,8 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
           <h1 className='text-[17px] font-medium'>{reciever || "No User"}</h1>
           <p className='font-thin text-[12px] text-slate-500'> 
             { 
-              lastMessage?.text.length > lastMessageMaxLen ? 
-              lastMessage?.text.slice(0, lastMessageMaxLen) + "..."  :
-              lastMessage.text
+             
+              "No Message"
             }
           </p>
         </div>
@@ -65,4 +64,8 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
   )
 }
 
-export default Conversation
+export default Conversation;
+
+ {/* lastMessage?.text.length > lastMessageMaxLen ? 
+              lastMessage?.text.slice(0, lastMessageMaxLen) + "..."  :
+              lastMessage.text */}

@@ -12,7 +12,7 @@ const postMessageData = async (msg) => {
   const API_URL = "http://localhost:8000/api/messages/";
 
   try {
-    const response = await axios.get(`${API_URL}`, msg);
+    const response = await axios.post(`${API_URL}`, msg);
     console.log("Response in postMessageData API");
     console.log(response);
     return response.data;
@@ -70,13 +70,14 @@ const getMessagesData = async (currentChatId) => {
 
 const getFriendData = async (friendId) => {
   console.log("In getFriendData API")
-  // const API_URL = "http://localhost:8000/api/users";
-  const API_URL = "http://localhost:3500/convData";
+  const API_URL = "http://localhost:8000/api/users";
+  // const API_URL = "http://localhost:3500/convData";
+  console.log(`friendId: ${friendId}`)
 
   try {
     const response = await axios.get(`${API_URL}/${friendId}`);
     // console.log("Response in getFriendData API");
-    // console.log(response);
+    console.log(response);
     return response.data;
   }
   catch (error) {

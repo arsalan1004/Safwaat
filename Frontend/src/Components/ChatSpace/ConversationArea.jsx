@@ -33,7 +33,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   const [search, setSearch] = useState("");
   const [recievers, setRecievers] = useState([]);
   const [newConversation, setNewConversations] = useState(() => []);
-  const [flag, setFlag] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
   const offsetRef = useRef(null);
   const searchBarRef = useRef(null);
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   }, [searchAppear]); 
    
   const onSetChat = (conversation) => {
-    setChatHandler(conversation)
+    setChatHandler(conversation || [])
   }
 
 
@@ -69,7 +69,8 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
 
 
   useEffect(() => {
-    let cancelTokens = [];
+    // let cancelTokens = [];
+    setIsLoading(true)
     const promises = conversations.map((conversation) => {
       const receiver = conversation.members.find((m) => m !== currentUser.userId);
       // const cancelToken = axios.CancelToken.source();
@@ -78,7 +79,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
 
       return getFriendDataHandler(receiver)
       .then((response) => ({ 
-        recieverName: response.userName,
+        recieverName: response.username,
         receiverId: receiver
       }));
     });
@@ -94,7 +95,8 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
         )
         console.log(newConv)
         setNewConversations(() => newConv);
-        return newConv;
+
+        setIsLoading(false);
       })
       .catch((error) => {
         // Handle any errors that occur during API calls
@@ -117,7 +119,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   
   }, [newConversation])
   return (
-    <section className='bg-primary-100 w-[30%] font-Roboto conversation-shadow-right' >
+    <section className='bg-primary-100 w-[30%] font-Roboto conversation-shadow-right min-w-[220px]' >
       <div >
         <div className='flex justify-evenly items-center w-[99.8%]' id='scroll-offset' ref={offsetRef}
         style={{
@@ -173,7 +175,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
             >
          
             {
-              searchAppear ? 
+              !isloading ?  (searchAppear ? 
               (
                 <>
                   {
@@ -206,7 +208,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
                       onSetChat = {onSetChat}
                       reciever={conv.recieverName}
                     />
-                )
+                )) : <p>Loading your Conversations</p>
             }
           </div>
         </div>

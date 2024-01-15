@@ -3,13 +3,15 @@ import MessageAreaTop from './MessageAreaTop'
 import Message from './Message'
 import MessageTextArea from './MessageTextArea'
 import style from './MessageArea.module.css'
-const MessageArea = ({messages, user, handleMessageSubmit}) => {
+import { getFriendData } from '../../API/chatSpaceApi'
+const MessageArea = ({messages, user, handleMessageSubmit, currentChat}) => {
   const [freeHeight, setFreeHeight] = useState(0);
-
+  const [friendName, setFriendName] = useState("");
   const scrollRef = useRef(null);
   const offsetRef = useRef(null);
 
-  
+    console.log("CURRENT CHAT IN MessageArea");
+    console.log(currentChat)
   useLayoutEffect(() => {
     // run after the element is rendered
     // const offsetHeight = offsetRef.current.clientHeight; // get the element's height
@@ -32,16 +34,30 @@ const MessageArea = ({messages, user, handleMessageSubmit}) => {
   }, [messages]);
 
 
+
   const scrollToBottom = () => {
     scrollRef?.current.scrollIntoView({ behavior: "smooth"});
   }
   const messageSubmitHandler = (newMessage) => {
     handleMessageSubmit(newMessage);
   }
+  
+ 
 
+  useEffect(() => {
+
+    const getFriendDataHandler = async() => {
+      console.log(currentChat)
+      const friendId = currentChat.members.filter(m => m !== user.userId)[0];
+      console.log(`friendId: ${friendId}`)
+      const response =  await getFriendData(friendId)
+      setFriendName(response.username);
+    }
+    getFriendDataHandler()
+  },[currentChat])
   return (
-    <section className='w-[70%] bg-gradient-to-bl from-[#0D504A] via-[#4FA8A1] to-[#7AFAF0]'> 
-      <MessageAreaTop user = {user}/>
+    <section className='w-[70%] min-w-[460px] bg-gradient-to-bl from-[#0D504A] via-[#4FA8A1] to-[#7AFAF0]'> 
+      <MessageAreaTop receiver = {friendName}/>
       <div>
         <div 
         className={style['scroll-message']} 
@@ -56,7 +72,7 @@ const MessageArea = ({messages, user, handleMessageSubmit}) => {
               <Message 
                 key = {index}
                 message={message} 
-                own={message.senderId === user.userId}
+                own={message?.sender === user.userId}
                 type={'group'}
               />
             )

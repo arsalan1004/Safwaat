@@ -12,7 +12,7 @@ const ExitLessonModal = (props) => {
   }
 
   const exitLessonHandler = () => {
-  //  navigate('.')
+    navigate('/')
   }
 
   const Backdrop = () => {

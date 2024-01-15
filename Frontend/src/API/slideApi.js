@@ -25,7 +25,7 @@ const getNextSlideData = async (slideId) => {
 const getUnitData = async () => {
   // UnitId passed from component as param
   // const API_URL = "http://localhost:3600/learningUnitData";
-  let unitId = "658fdbe94f03360cefe237cc"
+  let unitId = "65a22f4aaa8381048ceaacf7"
   const API_URL = "http://localhost:8000/api/slides";
 
   try {

@@ -17,11 +17,11 @@ const getAllSlides = async (req, res) => {
       if (slideData) {
         res.status(200).json(slideData);
       } else {
-        console.log(`Error in formatting slide data: ${error}`);
+        console.log(`Error in formatting slide data`);
         res.status(400).json("no slide data found");
       }
     } else {
-      console.log(`Error occured at getAllSlides controller:${error}`);
+      console.log(`Error occured at getAllSlides controller`);
       res.status(400).json({ message: "no slides found" });
     }
   } catch (error) {

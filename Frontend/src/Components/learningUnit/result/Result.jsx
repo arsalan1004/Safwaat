@@ -45,8 +45,8 @@ const Result = () => {
       // // id: userId, // From Login Data stored in redux store
       // learningUnit Id from levelMap
       // unitNum from levelMap
-      userId: "659815525ce38b434230fbe0",
-      learningUnit: "658fdbe94f03360cefe237cc",
+      userId: "659008aa4f03360cefe237db",
+      learningUnit: "65a22f4aaa8381048ceaacf7",
       unitNum: 1,
       starsEarned: stars,
       xpCount: stars * perStarXp,

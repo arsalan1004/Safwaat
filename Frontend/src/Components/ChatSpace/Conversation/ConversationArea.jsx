@@ -152,6 +152,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
             dimensions = {25}
             altText={'private-chat'}
             handler={() => navigate("/Chat/PrivateChat")}
+
           />
           <ChatModeButton
             img={group}
@@ -162,7 +163,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
           <ChatModeButton
             img={newChatBubble}
             dimensions = {35}
-            altText={'new-chat'}
+            altText={'group-chat'}
             handler={() => modelAppearHandler(true)}
           />
           <ChatModeButton

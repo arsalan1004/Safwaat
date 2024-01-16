@@ -25,4 +25,8 @@ const getUserStats = async(req, res) => {
             message: "Internal Server Error, when getting profile data."
         });
     }
+};
+
+module.exports = {
+    getUserStats,
 }

@@ -2,8 +2,8 @@ import {React,useState,useEffect} from 'react'
 import '../../App.css'
 import Streak from '../../Assets/fire.png'
 import One from '../../Assets/frame1.png'
-import trophy from '../../Assets/trophy.png'
-import coin from '../../Assets/coin.png'
+import trophy from '../../Assets/Icons/trophyChallenges.png'
+import xp from '../../Assets/Icons/XPChallenges.png'
 import ButtonLog from './buttonlog';
 import ProgressBar from "@ramonak/react-progress-bar";
 import axios from 'axios'
@@ -54,19 +54,29 @@ const CTable = ({data,label,board,id,fetchData,set}) => {
   return (
     <>
     
-    <div className="onetwo flex flex-col gap-1 h-full ml-[7%]" style={{maxHeight: '90%',overflow: 'auto' }} >
+    <div className="onetwo flex flex-col gap-1 h-full pl-8 pt-5" style={{maxHeight: '90%',overflow: 'auto' }} >
     {board=='dailytasks' && data.map(({ isClaimed,title,content,maxCompleted,completed,reward,rewardType,_id }, index) => (
             <>
-            <div className="parent-achieve h-[60%] w-[90%] bg-white m-5 rounded-lg">
-              <div className="achieve-content pl-[5%] pt-[2%] "> <p className='text-[#5498BA] text-xl'>{title}<br/></p>
-              <p className='text-gray-900 italic pr-9' >{content} <br/> {completed} / {maxCompleted} </p>
-              <div className="mt-5 mr-3">
-              <ProgressBar isLabelVisible={false} bgColor='#5498BA' completed={completed} maxCompleted={maxCompleted} />
+            <div className="parent-achieve h-[35%] w-[95%] bg-primary-100 mt-2 rounded-lg hover:scale-105 transistion-ease-in-out transistion-duration-3000 ">
+              <div className="achieve-content pl-[5%]  pt-[2%] "> <p className='text-secondary font-Itim font-bold tracking-wider text-lg'>{title}<br/></p>
+              <p className='text-slate-600 font-Poppins text-[13px] italic pr-9' >{content} <br/> {completed} / {maxCompleted} </p>
+              <div className="my-4 mb-2 mr-3 ">
+               <ProgressBar isLabelVisible={false} bgColor='#0891b2'  baseBgColor='#BCE2E5' completed={completed} maxCompleted={maxCompleted} />
               </div>
               </div>
-              <div className="achieve-buttonarea flex flex-col items-center rounded-2xl  my-2 mr-2"><img src={coin} alt="" className='h-[80px] w-[80px]'/>
-              {isClaimed? null:`${reward} x XP`}
-              <ButtonLog disabled={(isClaimed || (dailyClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateDailyClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 chButton cursor-not-allowed w-[70%] h-[40%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] chButton w-[50%] pb-[10px] text-center text-white pt-1.5 hover:text-[#246c6d] hover:bg-white border-2 border-[#246c6d]`}>{(dailyClaim[index]  || isClaimed)? `${reward} XP rewarded`:`Claim` }</ButtonLog>
+              <div className="achieve-buttonarea flex flex-col items-center rounded-2xl py-2"><img src={xp} alt="" className='h-[50px] w-[45px] mb-1'/>
+              <span className='font-Itim text-sm mb-2'>{isClaimed? null:`${reward} x XP`}</span>
+              
+              <ButtonLog 
+                disabled={(isClaimed || (dailyClaim[index]) || maxCompleted!=completed)?true:false} 
+                onClick={()=>handleUpdateDailyClaim(_id,id,index)} 
+                className={(isClaimed || maxCompleted!=completed)? `bg-slate-500 chButton cursor-not-allowed w-[70%] 
+                      h-[42px] py-2 text-center border-2 border-slate-700 text-primary-100`:`bg-[#246c6d] chButton w-[70%] h-[42px] 
+                      text-center text-primary-100 hover:text-[#246c6d] hover:bg-white border-2
+                       border-[#133838]`}>
+                          {(dailyClaim[index]  || isClaimed)? `${reward} XP rewarded`:`Claim` }
+              </ButtonLog>
+
               </div>
             </div>
             </>
@@ -74,16 +84,19 @@ const CTable = ({data,label,board,id,fetchData,set}) => {
 
       {!(board=='dailytasks') && data.map(({ isClaimed,title,content,maxCompleted,completed,reward,rewardType,_id }, index) => (
             <>
-            <div className="parent-achieve h-[60%] w-[90%] bg-white m-5 rounded-lg">
-              <div className="achieve-content text-[#5498BA] pl-[5%] pt-[2%] text-xl">{title}
-              <p className='text-gray-900 italic pr-9' >{content} <br/> {completed} / {maxCompleted}</p>
-              <div className="mt-5 mr-3">
-              <ProgressBar isLabelVisible={false} bgColor='#5498BA' completed={completed} maxCompleted={maxCompleted} />
+            <div className="parent-achieve h-[35%] w-[95%] bg-primary-100 mt-2 rounded-lg hover:scale-105 transistion-ease-in-out transistion-duration-3000 ">
+            <div className="achieve-content pl-[5%]  pt-[2%] "> <p className='text-secondary font-Itim font-bold tracking-wider text-lg'>{title}<br/></p>
+              <p className='text-slate-600 font-Poppins text-[13px] italic pr-9' >{content} <br/> {completed} / {maxCompleted} </p>
+              <div className="my-4 mb-2 mr-3">
+                <ProgressBar isLabelVisible={false} bgColor='#0891b2' baseBgColor='#BCE2E5' completed={completed} maxCompleted={maxCompleted} />
               </div>
               </div>
-              <div className="achieve-buttonarea flex flex-col items-center rounded-2xl  my-2 mr-2"><img src={trophy} alt="" className='h-[80px] w-[80px]'/>
-              {isClaimed? null:`${reward} x Trophy`}
-              <ButtonLog disabled={(isClaimed || (achieveClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateAchieveClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-gray-400 chButton cursor-not-allowed w-[70%] h-[40%] pb-[10px] text-center text-white pt-1.5`:`bg-[#246c6d] chButton w-[50%] pb-[10px] text-center text-white pt-1.5 hover:text-[#246c6d] hover:bg-white border-2 border-[#246c6d]`}>{(achieveClaim[index]  || isClaimed)? `${rewardType} rewarded`:`Claim` }</ButtonLog>
+              <div className="achieve-buttonarea flex flex-col items-center rounded-2xl py-2"><img src={trophy} alt="" className='h-[50px] w-[45px] mb-1'/>
+              <span className='font-Itim text-sm mb-2'>{isClaimed? null:`${reward} x Trophy`}</span>
+              <ButtonLog disabled={(isClaimed || (achieveClaim[index]) || maxCompleted!=completed)?true:false} onClick={()=>handleUpdateAchieveClaim(_id,id,index)} className={(isClaimed || maxCompleted!=completed)? `bg-slate-500 chButton cursor-not-allowed w-[70%] 
+                     h-[42px] py-2 text-center border-2 border-slate-700 text-primary-100`:`bg-[#246c6d] chButton w-[70%] h-[42px] 
+                      text-center text-primary-100 hover:text-[#246c6d] hover:bg-white border-2
+                       border-[#133838]`}>{(achieveClaim[index]  || isClaimed)? `${rewardType} rewarded`:`Claim` }</ButtonLog>
               </div>
             </div>
             </>

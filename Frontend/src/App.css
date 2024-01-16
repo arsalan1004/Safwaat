@@ -13,17 +13,16 @@
 }
 
 .chButton{
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: 500;
-  font-family: inherit;
+  font-family: Itim;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
 .ChallengeWrapper{
-  background: url('./Assets/bg1.png') no-repeat center center fixed; 
+  background: url('./Assets/Icons/achievements.jpg') no-repeat center center fixed; 
   -webkit-background-size: contain;
   backdrop-filter: blur(12px);
   -moz-background-size: cover;
@@ -40,8 +39,7 @@
 
 .board{
   background: rgba( 255, 255, 255, 0.2 );
-  backdrop-filter: blur( 8px );
-  -webkit-backdrop-filter: blur( 8px );
+
   border-radius: 50px;
   border: 1px solid rgb(255, 255, 255);
   height:90vh;
@@ -66,13 +64,13 @@ table{
 
 
 .OutlineCh{
-  border: 1.2px solid;
-  border-color: #106c6f;
+  border: 2px solid #0A3F67;
   background-color: transparent;
-  padding: 0px 5px 0px 5px;
+  padding: 8px 5px;
   filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25));
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
   font-family: 'Poppins';
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0);
 }
 
 tbody{
@@ -103,19 +101,19 @@ tbody{
 
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  /* box-shadow: inset 0 0 5px grey;  */
   border-radius: 10px;
 }
  
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255); 
+  background: transparent; 
   border-radius: 10px;
 }
 
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2c2c2c; 
+  background: transparent; 
 }
 
 .parent-achieve {
@@ -125,6 +123,11 @@ tbody{
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   }
-  
+
+  .parent-achieve:hover{
+    box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.281);
+  }
+
+
   .achieve-content { grid-area: 1 / 1 / 2 / 2; }
   .achieve-buttonarea { grid-area: 1 / 2 / 2 / 3; }

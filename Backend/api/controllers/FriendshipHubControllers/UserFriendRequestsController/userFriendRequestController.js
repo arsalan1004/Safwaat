@@ -345,32 +345,82 @@ const postSearchFriend = async(req, res) => {
                 //     {lastName: {$regex: `/^${text}/`}}
                 // ]
             });
-            console.log('users: ', user)
+            // console.log('users: ', user)
             if(user.length != 0){
                 let response = [];
                 // console.log(user.length);
-                let Friends = await FriendList.findOne({
-                    playerId: userId
-                });
+                // let Friends = await FriendList.findOne({
+                //     playerId: userId
+                // });
+                let [Friends , Requests] = await Promise.all([
+                    FriendList.findOne({
+                        playerId: userId
+                    }),
+                    FriendRequests.findOne({playerId: userId})
+                ]);
+
                 // console.log(Friends);
                 for(i=0; i<user.length; i++){
-                    console.log(user[i]._id);
+                    console.log("Friends: ", Friends);
+                    console.log("Requests: ", Requests);
+
+                    // console.log(user[i]._id);
                     if(Friends){
                         if(Friends.friendList.some(f => f.friendId == user[i]._id)){
             
                         } else{
+                            if(Requests){
+                                if(Requests.incoming.some(inc => inc.senderId==user[i]._id) || Requests.outgoing.some(o => o.receiverId == user[i]._id)){
+    
+                                } else{
+                                    response.push({
+                                        id: user[i]._id,
+                                        username: user[i].username,
+                                        fullName: user[i].firstName +" "+ user[i].lastName
+                                    });
+    
+                                }
+
+                            } else{
+                                response.push({
+                                    id: user[i]._id,
+                                    username: user[i].username,
+                                    fullName: user[i].firstName +" "+ user[i].lastName
+                                }); 
+                            }
+                        }
+                    } else{
+                        console.log("Friends is NULL")
+                        // response.push({
+                        //     id: user[i]._id,
+                        //     username: user[i].username,
+                        //     fullName: user[i].firstName +" "+ user[i].lastName
+                        // });
+                        if(Requests){
+                            console.log("Requests hn")
+                            console.log(user[i].username, " : ", (Requests.incoming.some(inc => inc.senderId == user[i]._id) || Requests.outgoing.some(o => o.receiverId == user[i]._id)));
+
+                            if (Requests.incoming.some(inc => inc.senderId == user[i]._id) || Requests.outgoing.some(o => o.receiverId == user[i]._id)){
+                                console.log("Request is there, now what.");
+                            } else{
+                                console.log("Else mein aaye muamalat")
+                                response.push({
+                                    id: user[i]._id,
+                                    username: user[i].username,
+                                    fullName: user[i].firstName +" "+ user[i].lastName
+                                });
+
+                            }
+
+                        } else{
+                            console.log("ghalat hoguya")
                             response.push({
                                 id: user[i]._id,
                                 username: user[i].username,
                                 fullName: user[i].firstName +" "+ user[i].lastName
-                            });
+                            }); 
                         }
-                    } else{
-                        response.push({
-                            id: user[i]._id,
-                            username: user[i].username,
-                            fullName: user[i].firstName +" "+ user[i].lastName
-                        });
+
                     }        
             }
             res.status(200).json({

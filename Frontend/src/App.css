@@ -45,11 +45,11 @@
 .leadButton{
   border-radius: 8px;
 
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s;
 }
 
 .wrapper {

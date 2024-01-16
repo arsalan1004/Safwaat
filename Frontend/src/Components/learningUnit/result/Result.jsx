@@ -23,7 +23,7 @@ const Result = () => {
   const [wrongAnsCount, setWrongAnsCount] = useState(0);
   const [correctAnsCount, setCorrectAnsCount] = useState(0);
   const userId = useSelector(state => state.login.id)
-
+  console.log(`UserId: ${userId}`)
   let image;
   let subTitle = "";
   switch(stars) {

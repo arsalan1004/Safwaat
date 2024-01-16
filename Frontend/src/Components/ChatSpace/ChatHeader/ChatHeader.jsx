@@ -20,8 +20,11 @@ const ChatHeader = ({user}) => {
           <h1 className='font-Poppins font-bold text-primary-100 tracking-wide'>ChatSpace</h1>
         </div>
         <div className='flex items-center gap-x-2'>
-          <img src={userAcc} alt='user-profile-picture' width={40} height={40}/>
-          <p className='text-primary-100 font-Roboto text-sm tracking-wide'>{user?.username || "No User"}</p>
+          <img src={userAcc} className='w-[40px] h-[40px]' alt='user-profile-picture' />
+          <div className='flex flex-col'>
+            <p className='text-primary-100 font-Roboto text-sm tracking-wide'>{user?.fullName || "no fullname"}</p>
+            <p className='text-primary-100 font-Roboto text-[12px] font-regular tracking-wide'>@{user?.username || "no username"}</p>
+          </div>
         </div>
       </div>
     </header>

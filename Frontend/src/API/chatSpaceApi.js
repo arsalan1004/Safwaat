@@ -23,20 +23,20 @@ const postMessageData = async (msg) => {
 
 }
 
-const getUserData = async () => {
-  console.log("In getUserData API")
-  const API_URL = "http://localhost:8000/profile";
+// const getUserData = async () => {
+//   console.log("In getUserData API")
+//   const API_URL = "http://localhost:8000/profile";
 
-  try {
-    const response = await axios.get(API_URL);
-    console.log("Response in getUserData API")
-    console.log(response);
-    return response.data;
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
+//   try {
+//     const response = await axios.get(API_URL);
+//     console.log("Response in getUserData API")
+//     console.log(response);
+//     return response.data;
+//   }
+//   catch (error) {
+//     console.log(error);
+//   }
+// }
 
 const getConversationData = async (userId) => {
   console.log("In getConversationData API")
@@ -86,7 +86,7 @@ const getFriendData = async (friendId) => {
 }
 
 export{ 
-        getUserData, 
+        // getUserData, 
         getMessagesData, 
         getConversationData, 
         getFriendData, 

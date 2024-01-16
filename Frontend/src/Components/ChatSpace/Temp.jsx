@@ -45,8 +45,10 @@ const Temp = () => {
               <button
               onClick={() => submitHandler()}
               >Submit</button>
-            </div>) : <PrivateChat currentUser = {number == 1 ? {userId: "65901f9ae137a46acf78c715",
-          username: "Alex Johnson"}  : {userId: "659815525ce38b434230fbe0", username: "ahad122"}
+            </div>) : <PrivateChat 
+                        currentUser = {number == 1 ? {userId: "65901f9ae137a46acf78c715",username: "Alex Johnson"}  :
+                       {userId: "659815525ce38b434230fbe0", username: "ahad122"}
+
           } 
           />
         }

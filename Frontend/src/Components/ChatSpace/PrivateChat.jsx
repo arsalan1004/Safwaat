@@ -3,7 +3,7 @@ import ChatHeader from './ChatHeader/ChatHeader'
 import ConversationArea from './Conversation/ConversationArea'
 import MessageArea from './Message/MessageArea'
 import ChatInitialScreen from './ChatInitialScreen'
-import { getConversationData, getMessagesData, getUserData, postMessageData } from '../../API/chatSpaceApi'
+import { getConversationData, getFriendData, getMessagesData, postMessageData } from '../../API/chatSpaceApi'
 import axios from 'axios'
 import { io } from 'socket.io-client'
 const PrivateChat = ({currentUser}) => {
@@ -297,10 +297,10 @@ const PrivateChat = ({currentUser}) => {
 
   // Get and set the user data
   useEffect(() => {
-    const getUserDataHandler = async () => {
-      const response = await getUserData();
-      // setUser(response || {});
-    }
+    // const getUserDataHandler = async () => {
+    //   const response = await getUserData();
+    //   setUser(response || {});
+    // }
     // getUserDataHandler();
     // const getuserData = async () => {
     //   const response = await axios.get("http://localhost:8000/profile");
@@ -308,6 +308,13 @@ const PrivateChat = ({currentUser}) => {
     // };
 
     // getuserData();
+    const getFriendDataHandler = async () => {
+ 
+      const response = await getFriendData(currentUser.userId);
+      console.log({...response});
+      setUser({...response, userId: currentUser.userId})
+    }
+    getFriendDataHandler();
     // setUser({
     //   userId: "659815525ce38b434230fbe0",
     //   username: "ahad122"
@@ -316,7 +323,7 @@ const PrivateChat = ({currentUser}) => {
     //   userId: "65901f9ae137a46acf78c715",
     //   username: "Alex Johnson"
     // })
-    setUser(currentUser)
+    // setUser(currentUser)
   }, []);
 
   // listen to initial socket event

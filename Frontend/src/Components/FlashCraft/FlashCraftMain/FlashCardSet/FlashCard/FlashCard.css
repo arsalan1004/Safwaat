@@ -27,8 +27,8 @@
 
   .card{
     overflow: hidden;
-    transform: translateZ(calc(-20px * var(--i))) translateY(calc(-10px * var(--i))) rotate(calc(-3deg * var(--i)));
-    filter: drop-shadow(2px 2px 20px rgba(0,0,0,0.5));
+    transform: translateZ(calc(-1px * var(--i))) translateY(calc(-0.5px * var(--i))) rotate(calc(-0.5deg * var(--i)));
+    filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.5));
     cursor: pointer;
     user-select: none;
 }

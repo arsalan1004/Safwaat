@@ -4,10 +4,14 @@ import FilledButton from "../../../../../UI/Button/FilledButton";
 import OutlineButton from "../../../../../UI/Button/OutlineButton";
 import thumbsUp from "../../../../../Assets/Icons/thumbsUp.png";
 import FlashCardSet from "../FlashCardSet";
+import './Summary.css';
 
 function Summary(props) {
   const navigate = useNavigate();
 
+
+  const progress=(props.noLearnt/(props.noLearnt+props.noStillLearning))*100;
+  console.log('PROGRESS: ' , progress );
   function navigateHomeHandler() {
     navigate("/");
   }
@@ -32,22 +36,8 @@ function Summary(props) {
         <div className="flex-center row-start-3 row-span-3">
           <div className="mr-16">
             {props.status == "still" ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="70"
-                height="70"
-                viewBox="0 0 60 60"
-                fill="none"
-              >
-                <path
-                  d="M30 0C13.4315 0 0 13.4315 0 30C0 35.2591 1.35327 40.2022 3.73059 44.5L9.03705 41.5C7.16129 38.088 6.09431 34.1686 6.09431 30C6.09431 16.7973 16.7973 6.09431 30 6.09431V0Z"
-                  fill="#E01111"
-                />
-                <path
-                  d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0V6.09431C43.2028 6.09431 53.9057 16.7973 53.9057 30C53.9057 43.2028 43.2028 53.9057 30 53.9057C20.9659 53.9057 13.1022 48.8944 9.03705 41.5L3.73059 44.5C8.84284 53.742 18.6906 60 30 60Z"
-                  fill="#0ACF1E"
-                />
-              </svg>
+              <div role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100" style={{ '--value': `${progress}` }}>
+                </div>
             ) : (
               <img src={thumbsUp} />
             )}

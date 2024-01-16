@@ -108,14 +108,14 @@ const dismiss = (direction) => {
   return (
     // ${blurred ? 'blurred' : ''}
     <div
-      className={`card absolute w-full h-full rounded-[40px] mb-10 cursor-pointer ${flipped ? 'flipped' : ''} `  }
+      className={`card absolute w-full h-[96%] rounded-[40px] mt-3 mb-10 cursor-pointer ${flipped ? 'flipped' : ''} `  }
       data-number={props.number} 
       style={{ zIndex: props.zIndex }}
       onMouseDown={mousedown} 
       onDragStart={(e) => e.preventDefault()}
       onClick={flip}
     >
-      <div className="h-full w-full text-center relative" id="innerCard">
+      <div className="h-full w-full text-center relative " id="innerCard">
         <FlashCardFace content={props.front} ids="front" number={props.number}/>
         <FlashCardFace content={props.back} ids="back" number={props.number} color="bg-primary-200" />
       </div>

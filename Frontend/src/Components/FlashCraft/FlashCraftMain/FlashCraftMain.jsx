@@ -18,24 +18,11 @@ function FlashCraftMain({setsData}) {
   const data = setsData;
 
 
-  // const data = [
-  //   {
-  //     id: 1,
-  //     title: 'Makharij Exploration',
-  //     category: 'Basics',
-  //     cardsQty: 3
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Makharij Exploration 2',
-  //     category: 'Basics',
-  //     cardsQty: 6
-  //   }
-  // ] 
 
   const [value, setValue] = useState('');
   const [filteredItems, setFilteredItems] = useState([...data]);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
 
   const onChange = (e) => {
     setValue(e.target.value);
@@ -100,7 +87,7 @@ function FlashCraftMain({setsData}) {
               </div>
         
               {/* Search Button */}
-              <div className="bg-secondary text-white ml-5 py-3 px-5 font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+              <div className="bg-secondary text-white ml-5 shadow-3xl py-3 px-5 font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
                 <button 
                   className='w-full h-full'
                   onClick={() => onSearch(value) }
@@ -109,7 +96,7 @@ function FlashCraftMain({setsData}) {
           
             </div>
             {/* Dropdown */}
-            <div className='bg-white w-2/4 z-100 flex-column border border-gray-100 empty:border-none '>
+            <div className='bg-white w-2/4 z-100 flex-column empty:border-none pt-2 '>
               {showSuggestions && data.filter(item => {
                 const searchTerm = value.toLowerCase();
                 const title = item.title.toLowerCase();
@@ -121,7 +108,7 @@ function FlashCraftMain({setsData}) {
               .map( (item) => (
                   <div 
                       onClick={() => show(item.title)} 
-                      className='cursor-pointer text-start my-1'
+                      className='w-full text-center cursor-pointer font-Itim  mt-1 pb-1 border-b-2 border-b-slate-200 '
                       key={item.flashCardSetId}
                       >
                       {item.title}
@@ -137,7 +124,11 @@ function FlashCraftMain({setsData}) {
           <div className='w-full h-full mt-9 grid grid-cols-2 gap-4'>
             {
               filteredItems.map( (obj) => {
-                return <FlashSetBox key={obj.flashCardSetId} obj={obj} />
+                return <FlashSetBox 
+                            key={obj.flashCardSetId} 
+                            obj={obj}
+                            recallHandler={()=> setIsChanged(prev=> !prev)} 
+                      />
               } )
             }
             

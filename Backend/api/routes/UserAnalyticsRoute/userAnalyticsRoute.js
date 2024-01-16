@@ -9,6 +9,6 @@ const {
 } = require('./../../controllers/UserAnalyticsController/userAnalyticsController');
 
 Router.get("/get/:userId",getUserAnalytics);
-Router.post("/assignAll", AnalyticsForAll);
+// Router.post("/assignAll", AnalyticsForAll);
 
 module.exports = Router;

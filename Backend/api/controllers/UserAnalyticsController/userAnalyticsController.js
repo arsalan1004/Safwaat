@@ -8,9 +8,9 @@ const getUserAnalytics = async(req, res) => {
         let analytics = await Analytics.findOne({
             playerId: userId
         });
-        res.status(200).json({
-            analytics: analytics
-        });
+        res.status(200).json(
+            analytics
+        );
 
     } catch{
         res.status(500).json({

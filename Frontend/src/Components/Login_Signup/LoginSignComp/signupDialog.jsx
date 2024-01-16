@@ -75,6 +75,15 @@ const SignDialog = () => {
     }
   };
 
+  const [agreeToTerms, setAgree] = useState(false);
+
+  const handleCheckboxChange = () => {
+    const updatedAgreeToTerms = !agreeToTerms;
+    setAgree(updatedAgreeToTerms);
+    dispatch(setAgreeToTerms(updatedAgreeToTerms));
+  };
+
+
   const eyeIcon = (show, onClick, classname) => { return show? (
     <svg
       className={classname}
@@ -119,7 +128,7 @@ const SignDialog = () => {
                 <InputWL labelClass={'labelSignUp'} classes='signupInput' label="Date of Birth" id='dob' type='date' onChange={handleChange}></InputWL>
                 <div className='text-[13px] px-[3%] mb-[4%]'>
                   <Checkbox classNameInput='accent-[#106c6f] cursor-pointer' label="Remember me" classNameLabel='mx-[0.9rem]'></Checkbox>
-                  <Checkbox classNameInput='accent-[#106c6f] cursor-pointer' classNameLabel='mx-[0.9rem]'>I agree to all the <span className='text-[#33babe]'>Terms</span> and <span className='text-[#33babe]'>Privacy policy</span></Checkbox>
+                  <Checkbox classNameInput='accent-[#106c6f] cursor-pointer' classNameLabel='mx-[0.9rem]' onChange={handleCheckboxChange}>I agree to all the <span className='text-[#33babe]'>Terms</span> and <span className='text-[#33babe]'>Privacy policy</span></Checkbox>
                 </div>
             </div>
             

@@ -45,7 +45,10 @@ function handleCallbackResponse(response){
 
 const handleSubmit = (e,sign,dispatch)=>{
   e.preventDefault();
-  console.log(`${sign.password} == ${sign.confirmPassword}`)
+  console.log(sign.agreeToTerms);
+  if(sign.agreeToTerms==false){
+    notifyerror("Terms and Policies Agreement Required!");
+  }else{
   if(sign.password==sign.confirmPassword){
     const userData = {
       username: sign.username,
@@ -73,7 +76,7 @@ const handleSubmit = (e,sign,dispatch)=>{
   }else{
     notifyerror("Re-Enter Password/Confirm Password!");
   }
-  
+}
 };
 
 export {handleCallbackResponse,handleSubmit};

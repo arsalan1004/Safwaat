@@ -8,12 +8,12 @@ function InsightsMain({data}) {
 
 
 
-  const [insightsData, setInsightsData] = useState([]); 
+  const [friends, setFriends] = useState(data.friendList); 
   const [sectionNo, setSectionNo] = useState(0);
 
   const tabsText = ['Safwaat Friends', 'Pending Requests', 'Sent Requests'];
 
-  const friends = data.friendList;
+  
 
 
 const moveNext = (no) => {
@@ -28,30 +28,89 @@ const moveNext = (no) => {
     currentSection.style.borderStyle = 'solid';
     currentSection.style.borderBottomColor = '#2D867F';
     currentSection.style.borderBottomWidth = '3px';
-    // getResultsHandler();
+    
+    
+    getResultsHandler(no);
 }
 
-// async function getResultsHandler () {
-//   const userId = "655ba0b013679c0e8c33e9cd";
+async function getResultsHandler (no) {
+  const userId = "65a297b2b32acbfdbde8a217";
+  let response;
+  let responseData;
 
-//   const response = await fetch(
-//     "http://localhost:8000/api/FriendshipHub/Insights",
-//     {
-//       method: "POST",
-//       body: JSON.stringify({
-//         userId: userId,
-//         name: 'PendingRequests',
-//       }),
-//       headers: {
-//         "Content-Type": "application/json"
-//       }
-//     }
-//   );
+  switch(no){
+    case 0:
+      console.log('entered case 0');
+      response = await fetch(
+      'http://localhost:8000/api/friendshiphub/viewInsights',
+      
+        {
+          method: 'POST',
+          body: JSON.stringify({userId}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      
+      );
 
-//   console.log('response of getResultsHandler: ', response);
-//   setInsightsData(response.data);
+      responseData = await response.json();
+  
+      console.log('response Friend list: ' , responseData.friendList);
+      setFriends(responseData.friendList);
 
-// }
+      break;
+
+    case 1:
+
+      console.log('entered case 1');
+      response = await fetch(
+      "http://localhost:8000/api/FriendshipHub/getFriendRequests",
+      {
+        method: "POST",
+        body: JSON.stringify({userId}),
+        headers: {
+          "Content-Type": "application/json"
+        }
+        }
+      );
+  
+      responseData = await response.json();
+  
+      console.log('response case 1: ' , responseData);
+
+      console.log('response incoming : ' , responseData.incoming);
+      setFriends(responseData.incoming);
+
+      break;
+
+    case 2:
+      console.log('entered case 2');
+      response = await fetch(
+        "http://localhost:8000/api/FriendshipHub/getFriendRequests",
+        {
+          method: "POST",
+          body: JSON.stringify({userId}),
+          headers: {
+            "Content-Type": "application/json"
+          }
+          }
+        );
+    
+        responseData = await response.json();
+    
+        console.log('response case 2: ' , responseData);
+  
+        console.log('response outgoing : ' , responseData.outgoing);
+        setFriends(responseData.outgoing);
+  
+        break;
+
+
+  }
+ 
+
+}
 
   return (
     <div className='h-screen w-3/4 pt-5  text-secondary overflow-y-auto '>

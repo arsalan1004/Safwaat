@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from '../../Assets/login.jpg';
 import leaderboard from '../../Assets/bronze.png';
+import bronze from '../../Assets/bronze.png';
 import purple from '../../Assets/purple.png'
 import gold from '../../Assets/gold.png'
 import red from '../../Assets/red.png'

@@ -1,0 +1,66 @@
+/* :root {
+    --main-FriendBox-color: #2c9caf; //outline and text
+    --hover-FriendBox-color: #70bdca; //outline at hover
+    --background-FriendBox-color: rgb(235, 241, 247); //bg
+    --box-FriendBox-shadow-color: #268391;
+} */
+
+.Button {
+    padding: 0.7em 1em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 150px;
+    text-transform: uppercase;
+    transition: all 1000ms;
+    font-size: 12px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid var(--main-FriendBox-color); 
+    background-color: var(--background-FriendBox-color);
+    margin-top:2%;
+    color: var(--main-FriendBox-color);
+
+}
+  
+.Button:hover {
+    color: var(--hover-FriendBox-text);
+    transform: scale(1.1);
+    outline: 2px solid var(--hover-FriendBox-color);
+    box-shadow: 4px 5px 17px -4px var(--box-FriendBox-shadow-color);
+  }
+  
+.Button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--main-FriendBox-color);
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: color 800ms, width 1000ms;
+}
+  
+.Button:hover::before {
+    width: 250%;
+}
+
+
+
+.Button>a{
+    text-decoration: none;
+    width:100%;
+
+}
+
+.Button>a:hover{
+    text-decoration: none;
+    color: var(--hover-FriendBox-text);
+}
+
+.Button:hover a{
+    color:var(--hover-FriendBox-text);
+}

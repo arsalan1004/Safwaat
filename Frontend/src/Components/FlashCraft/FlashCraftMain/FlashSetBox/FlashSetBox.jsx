@@ -12,20 +12,20 @@ function FlashSetBox({ obj }) {
     navigate(`/FlashCraft/${obj.flashCardSetId}`);
   }
 
-  async function deleteHandler() {
-    const userId = "655ba0b013679c0e8c33e9cd";
-    const response = await fetch(
-      "http://localhost:8000/api/FlashCraft/delete",
-      {
-        method: "DELETE",
-        body: JSON.stringify({
-          userId: userId,
-          flashCardSetId: obj.flashCardSetId,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+
+  async function deleteHandler () {
+    const userId = '655ba0b013679c0e8c33e9cd';
+    const response = await fetch('http://localhost:8000/api/FlashCraft/delete', 
+    {
+      method: 'DELETE',
+      body: JSON.stringify({
+        "userId": userId,
+        "flashCardSetId": obj.flashCardSetId
+    }),
+      headers: {
+        'Content-Type' : 'application/json'
       }
+    }
     );
     console.log("response: ", response);
     return response;

@@ -2,6 +2,7 @@ const { response } = require('express');
 const FriendRequests = require('./../../../models/FriendshipHubModels/FriendRequestsModel/friendRequestsModel');
 const FriendList = require('./../../../models/FriendshipHubModels/UserFriendsModel/userFriendsModel');
 const {userModel} = require('./../../../models/UserModel/userModel');
+const {getFriendList} = require('./../UserFriendListController/userFriendListController')
 
 const postAddFriendRequest = async(req, res) => {
     let {userId, receiverId} = req.body;
@@ -157,7 +158,7 @@ const getFriendshipHubPageData = async(req, res) => {
 }
 
 //date format change krdo
-const getFriendData = async(req, res) => {
+const getFriendData = async(req, res) => { //user data
     let {userId} = req.body;
     try{
 
@@ -169,14 +170,21 @@ const getFriendData = async(req, res) => {
         // console.log(user)
         let userJoined = user.createdAt.toString().slice(4,15);
         // let modifiedJoinedDate = 
+        let friendsData = await getFriendList(userId);
+        console.log('FRIENDS DATA: ', friendsData);
+        res.status(200).json(
+            {
+                userData: {
+                    username: user.username,
+                    fullName: user.firstName + " "+user.lastName,
+                    noFriends: (userFriends) ? userFriends.friendList.length : 0,
+                    noReq: (userRequets) ? userRequets.incoming.length : 0,
+                    dateJoined: userJoined.slice(4,6) + "-" + userJoined.slice(0,3)+"-"+userJoined.slice(userJoined.length-4, userJoined.length)
+                },
 
-        res.status(200).json({
-            username: user.username,
-            fullName: user.firstName + " "+user.lastName,
-            noFriends: (userFriends) ? userFriends.friendList.length : 0,
-            noReq: (userRequets) ? userRequets.incoming.length : 0,
-            dateJoined: userJoined.slice(4,6) + "-" + userJoined.slice(0,3)+"-"+userJoined.slice(userJoined.length-4, userJoined.length)
-        });
+                friendList: friendsData
+            }
+        );
     } catch(err){
         res.status(500).json({
             success: false,

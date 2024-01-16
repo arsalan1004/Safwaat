@@ -1,7 +1,6 @@
 import React from "react";
 import {createBrowserRouter} from 'react-router-dom';
 
-
 import FlashCraft, {loader as setsLoader} from "../Components/FlashCraft/FlashCraft";
 import SetCreation from "../Components/FlashCraft/FlashCraftMain/SetCreation/SetCreation";
 import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/FlashCraftMain/FlashCardSet/FlashCardSet";
@@ -10,6 +9,10 @@ import Login from "../Components/Login_Signup/login";
 import Signup from "../Components/Login_Signup/signup";
 import LearningUnit from "../Components/learningUnit/LearningUnit";
 import Result from "../Components/learningUnit/result/Result";
+import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
+import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
+import Profile from "../Components/Profile/Profile";
+
 
 const router = createBrowserRouter([
     {
@@ -32,6 +35,10 @@ const router = createBrowserRouter([
                 path:"signup",
                 element: <Signup />,
                 
+            },
+            {
+                path:'profile',
+                element: <Profile />
             },
             {
                 path: 'FlashCraft',
@@ -64,6 +71,23 @@ const router = createBrowserRouter([
                     element: <Result />
                   }
                 ]
+            },
+            
+            {
+                path: 'FriendshipHub',
+                children: [
+                    {
+                        index: true,
+                        element: <FriendshipHub />,
+                        loader: friendshiphubLoader
+                    },
+                    {
+                        path: 'Insights',
+                        element: <Insights />,
+                        loader: InsightsLoader
+                    }
+                ]
+                
             }
         ]
      }

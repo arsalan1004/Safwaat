@@ -23,6 +23,8 @@ const {
 
 // CONNECTING TO DATABASE
 require("dotenv").config();
+const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
+const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
 
 // IMPORTING .ENV VARIABLE
 const port = process.env.PORT || 8000;
@@ -70,10 +72,10 @@ app.use("/api/FlashCraft", flashCardSetRouter);
 app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/homepage", HomePageRouter);
-
-// Learning unit routes
 app.use("/api/slides", slideRoute);
 app.use("/api/completeUnit", completeUnitRoute);
+app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
+app.use("/api/fh", FriendshipHubFriendsRouter);
 
 // CREATING SERVER
 const server = http.createServer(app);

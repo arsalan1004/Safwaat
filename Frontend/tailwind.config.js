@@ -35,6 +35,7 @@ export default {
       },
       backgroundImage: {
         flashcraftBg: "url(./src/Assets/Background/flashcraftBg.jpg)",
+        profileBg: "url(./src/Assets/Background/profileBg.jpg)"
       },
       backfaceVisibility: {
         visible: "visible",

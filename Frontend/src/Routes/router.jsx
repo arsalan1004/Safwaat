@@ -12,6 +12,7 @@ import Result from "../Components/learningUnit/result/Result";
 import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
 import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
 import Profile from "../Components/Profile/Profile";
+import Leader from "../Components/LeaderBoard/leaderboad";
 
 
 const router = createBrowserRouter([
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
                     }
                 ]
                 
+            },
+            {
+                path:'Leaderboard',
+                element: <Leader />
             }
         ]
      }

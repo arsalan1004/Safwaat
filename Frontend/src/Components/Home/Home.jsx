@@ -44,19 +44,3 @@ export async function loader () {
 }
 
 
-// export async function loader({ params }) {
-
-//   const response = await fetch(
-
-//   "http://localhost:5000/Doctor" +
-//     "/" +
-//     params.leftItem +
-//     "/" +
-//     params.rightItem +
-//     "/" +
-//     params.cityName
-// );
-
-// console.log(response);
-// return response;
-// }

@@ -1,0 +1,243 @@
+.Main{
+    display: flex;
+    overflow: hidden;
+    width: 100vw;
+    height:100vh;
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* .Left, .Right{
+    background-color: #EBF9FA;
+    display: none;
+    z-index: 10;
+} */
+
+/* .Left{
+    z-index: 10;
+    box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.Right{
+    z-index: 10;
+    box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.6);
+} */
+
+ 
+
+/* .Center{
+    position: relative;
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    
+} */
+
+/* .Center>div{
+    z-index:10;
+    position: relative;
+    width:fit-content;
+}
+
+
+.Center>div>img{
+    cursor: pointer;
+} */
+
+/* .LevelMapImg{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+} */
+
+
+.Cloud{
+    height: 70px;
+    animation: clouds 17s linear infinite ;
+    animation-delay: 4000;
+    position: absolute;
+    top:1px;
+    left:0;
+    z-index: 5;
+    display: none;
+}
+
+.Dolphin{
+    z-index: 10;
+    height: 50px;
+    width: 50px;
+    top: 33em;
+    left: 39%;
+    position: absolute;
+    opacity: 0;
+}
+
+.DolphinActive {
+    animation: dolphinSwimActive 2s linear;
+  }
+
+
+.Boat{
+    position: absolute;
+    transform-style: preserve-3d;
+    -webkit-box-reflect: below -5px linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1));
+    ;
+}
+
+.BoatWrapper{
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 105%;
+    top: 22%;
+    height: 140px;
+    width: 140px;
+    animation: boatMove 10s cubic-bezier(.19,.6,.59,.57) 1;
+}
+
+.BoatWrapper>span{
+    position: absolute;
+    font-size:  12px;
+    font-weight: 600;
+    z-index: 1;
+    font-family: Itim;
+    color:rgb(10, 58, 112);
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.216);
+}
+
+.First{
+    top:40%;
+    left: 14%;
+}
+
+.Second{
+    top:51%;
+    left:27%;
+}
+
+
+@keyframes boatMove {
+    0%{
+        left: 130%;
+        opacity: 100;
+    }
+ 
+    100%{
+        left: -20%;
+    }
+
+}
+  
+@keyframes dolphinSwimActive {
+0% {
+    transform: translateY(0px);
+    opacity: 100;
+}
+
+50% {
+    transform: translateY(-45px) translateX(-35px) rotate(-40deg);
+}
+
+100% {
+    transform: translateY(0px) translateX(-70px) rotate(-65deg);
+    opacity: 100;
+    }
+}
+
+
+
+@keyframes clouds{
+    0%{
+        transform: translateX(0);
+    }
+
+    100%{
+        transform: translateX(69vw);
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .Left{
+        width: 15%;
+        display: block;
+    }
+    
+    .Center{
+        width: 85%;
+    }
+}
+
+
+@media screen and (min-width: 780px) {
+    .Left{
+        width: 25%;
+    }
+    
+    .Center{
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 880px) {
+    .Left{
+        width: 25%;
+    }
+
+    .Right{
+        display: block;
+        width: 10%;
+    }
+    
+    .Center{
+        width: 65%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .Left{
+        width: 20%;
+    }
+
+    .Right{
+        width:30%;
+        background-color: #EBF9FA;
+        display: block;
+
+    }
+    
+    .Center{
+        background-color: aquamarine;
+        width: 50%;
+    }
+
+    .Cloud, .BoatWrapper{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .Left{
+        width: 25%;
+    }
+
+    .Right{
+        width:30%;
+        background-color: #EBF9FA;
+        display: block;
+
+    }
+    
+    .Center{
+        background-color: aquamarine;
+        width: 45%;
+    }
+
+ 
+
+}

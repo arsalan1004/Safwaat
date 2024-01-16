@@ -2,6 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      's1': '680px',
+      's2': '780px',
+      's3': '880px',
+      's4': '1100px',
+      's5': '1300px',
+    },
+
     fontFamily: {
       Montserrat: ["Montserrat"],
       Itim: ["Itim"],
@@ -24,9 +32,11 @@ export default {
         accent: "#2D867F",
         correct: "#0ACF1E",
         wrong: "#E01111",
+        disabled : "#D2D6D9"
       },
       backgroundImage: {
         flashcraftBg: "url(./src/Assets/Background/flashcraftBg.jpg)",
+        profileBg: "url(./src/Assets/Background/profileBg.jpg)"
       },
       backfaceVisibility: {
         visible: "visible",

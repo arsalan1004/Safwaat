@@ -8,11 +8,11 @@ import fireWhite from '../../Assets/fireWhite.png'
 const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
   function highlight(index){
     if(index==0){
-      return 'bg-[#FACC15] w-11 h-8 p-1 rounded-md text-center ml-12';
+      return 'bg-[#CDA920] w-11 h-8 p-1 rounded-md text-center ml-12';
     }else if(index==1){
-      return 'bg-[#94A3B8] w-11 h-8 p-1 rounded-md text-center ml-12';
+      return 'bg-[#6A7179] w-11 h-8 p-1 rounded-md text-center ml-12';
     }else if(index==2){
-      return 'bg-[#D97706] w-11 h-8 p-1 rounded-md text-center ml-12';
+      return 'bg-[#995338] w-11 h-8 p-1 rounded-md text-center ml-12';
     }
     else if(index<data.length-3){
       return 'w-11 h-8 p-1 bg-[#0A3F67] rounded-md text-center ml-12'

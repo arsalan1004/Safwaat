@@ -1,9 +1,9 @@
 const {
   practiceSlideModel,
-} = require("../../../../models/learningUnitModels/SlidesModel/practiceSlideModel");
+} = require("../../../../models/SlidesModel/practiceSlideModel");
 const {
   teachingSlideModel,
-} = require("../../../../models/learningUnitModels/SlidesModel/teachingSlideModel");
+} = require("../../../../models/SlidesModel/teachingSlideModel");
 
 const getSlide = async (req, res) => {
   try {

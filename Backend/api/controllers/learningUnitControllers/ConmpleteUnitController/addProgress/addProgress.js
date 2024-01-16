@@ -1,6 +1,6 @@
 const {
   userProgressModel,
-} = require("../../../../models/learningUnitModels/UserProgressModel/userProgressModel");
+} = require("../../../../models/UserProgressModel/userProgressModel");
 
 const addProgress = async (userProgress) => {
   try {

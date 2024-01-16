@@ -1,6 +1,4 @@
-const {
-  userModel,
-} = require("../../../../models/learningUnitModels/UserModel/userModel");
+const { userModel } = require("../../../../models/UserModel/userModel");
 
 const updateXp = async (userProgress) => {
   try {

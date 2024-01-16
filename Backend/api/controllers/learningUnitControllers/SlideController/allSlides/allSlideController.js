@@ -1,6 +1,4 @@
-const {
-  learningUnitModel,
-} = require("../../../../models/learningUnitModels/lUModel/lUModel");
+const { learningUnitModel } = require("../../../../models/lUModel/lUModel");
 const { formatData } = require("./formatData");
 
 const getAllSlides = async (req, res) => {

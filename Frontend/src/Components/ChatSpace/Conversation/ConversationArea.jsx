@@ -6,10 +6,10 @@ import group from '../../../Assets/Icons/group.svg'
 import searchMagnifier from '../../../Assets/Icons/searchMagnifier.svg'
 import newChatBubble from '../../../Assets/Icons/newChatBubble.svg'
 import style from './Conversation.module.css'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SearchConversationBar from './SearchConversationBar';
 import { getFriendData } from '../../../API/chatSpaceApi';
-import axios from 'axios';
+import AddConversationModel from '../AddConversationModel/AddConversationModel';
 
 
 // Holds ChatModeButtons
@@ -27,15 +27,18 @@ import axios from 'axios';
 
 const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   
-  const [chatMode, setChatMode] = useState("Chat");
   const [freeHeight, setFreeHeight] = useState(0);
   const [searchAppear, setSearchAppear] = useState(false);
+  const [modelAppear,setModelAppear] = useState(false);
   const [search, setSearch] = useState("");
-  const [recievers, setRecievers] = useState([]);
+
   const [newConversation, setNewConversations] = useState(() => []);
   const [isloading, setIsLoading] = useState(false);
+  
+
   const offsetRef = useRef(null);
   const searchBarRef = useRef(null);
+  
   const navigate = useNavigate();
   useLayoutEffect(() => {
     // run after the element is rendered
@@ -118,8 +121,24 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
     console.log(newConversation)
   
   }, [newConversation])
+
+
+  const modelAppearHandler = (value) => {
+    setModelAppear(value);
+  }
+  
+
+
+
   return (
     <section className='bg-primary-100 w-[30%] font-Roboto conversation-shadow-right min-w-[220px]' >
+      {
+        modelAppear && 
+          <AddConversationModel 
+            onModelClose = {() => modelAppearHandler(false)}
+            user = {currentUser}
+          />
+      }
       <div >
         <div className='flex justify-evenly items-center w-[99.8%] h-[57px]' 
           id='scroll-offset' 
@@ -144,7 +163,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
             img={newChatBubble}
             dimensions = {35}
             altText={'new-chat'}
-            handler={() => {}}
+            handler={() => modelAppearHandler(true)}
           />
           <ChatModeButton
             img={searchMagnifier}

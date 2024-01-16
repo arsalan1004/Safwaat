@@ -85,10 +85,56 @@ const getFriendData = async (friendId) => {
   }
 }
 
+const getStartNewConversationsData = async (IdObject) => {
+  console.log()
+  // senderId: loggedIn user Id
+  // recieverId: friend OF sender
+  console.log("In getStartNewConversationsData API", IdObject)
+  const API_URL = "http://localhost:8000/api/conversation";
+  // const API_URL = "http://localhost:3500/convData";
+
+
+  try {
+    const response = await axios.post(API_URL, IdObject);
+    // console.log("Response in getStartNewConversationsData API");
+    console.log(response);
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+const getFriendList = async (userId) => {
+  // senderId: loggedIn user Id
+  // recieverId: friend OF sender
+  console.log("In getFriendList API", {
+    userId: userId
+  })
+  const API_URL = "http://localhost:8000/api/fh/friendsList";
+  // const API_URL = "http://localhost:3500/convData";
+
+
+  try {
+    const response = await axios.post(API_URL, {
+      userId: userId
+    });
+    // console.log("Response in getStartNewConversationsData API");
+    console.log(response);
+    return response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+
 export{ 
         // getUserData, 
         getMessagesData, 
         getConversationData, 
         getFriendData, 
-        postMessageData
+        postMessageData,
+        getStartNewConversationsData,
+        getFriendList
       }

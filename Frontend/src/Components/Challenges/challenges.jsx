@@ -9,6 +9,8 @@ import CTable from './challengesBoard';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast} from 'react-toastify';
+import achievementsMain from '../../Assets/Icons/achievementsMain.png';
+
 import { fetchachieveData,fetchchallengesData } from '../../API/challengesAPI';
 
 
@@ -38,16 +40,16 @@ function Challenges() {
           <div className="ChallengeWrapper">
             <div className="label">
               <div className="content">
-                {selectedChallenges=='dailytasks'? <img src={challenges} alt="" className="w-[50%] h-[30%]" /> : <img src={challenges} alt="" className="w-[50%] h-[30%]" /> }
+                {selectedChallenges=='dailytasks'? <img src={challenges} alt="" className="w-[50%] h-[30%]" /> : <img src={achievementsMain} alt="" className="w-[50%] h-[30%]" /> }
                 {selectedChallenges=='dailytasks'? <p className="text-primary-100 text-[32px] text-center  mt-4 font-Montesserat font-bold">
                 Daily Tasks 
-                </p> : <p className="text-white text-[32px] text-center  mt-4">
+                </p> : <p className="text-primary-100 text-[32px] text-center  mt-4 font-Montesserat font-bold">
                 Achievements
                 </p> }
                 {selectedChallenges=='dailytasks'? <p className="text-[#5498BA] text-[16px] text-center  mt-4">
                 Complete Various Tasks Daily in Order to Gain XP
                 </p> : <p className="text-[#5498BA] text-[16px] text-center  mt-4">
-                Complete Achievements
+                Unlock your potential, achieve greatness! Complete your achievement goals and let success be your story!
                 </p> }
               </div>
             </div>

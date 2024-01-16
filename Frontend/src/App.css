@@ -71,6 +71,7 @@ table{
   backdrop-filter: blur(10px);
   font-family: 'Poppins';
   text-shadow: 2px 3px 4px rgba(0, 0, 0, 0);
+  outline: none;
 }
 
 tbody{

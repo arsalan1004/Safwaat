@@ -21,7 +21,7 @@ const getUserAnalytics = async(req, res) => {
 };
 
 const AnalyticsForAll = async(req, res) => {
-    let users = userModel.find({});
+    let users = await userModel.find({});
     for(let i=0; i<users.length; i++){
         let newAnalytics = new Analytics({
             playerId: users[i]._id,

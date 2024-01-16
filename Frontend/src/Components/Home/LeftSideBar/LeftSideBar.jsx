@@ -51,7 +51,7 @@ function LeftSideBar() {
             <Link>
               <NavOption imgSrc={chatSpaceIcon} altText='chatSpace Option' optionText='CHAT SPACE' />
             </Link>
-            <Link>
+            <Link to='/profile'>
               <NavOption imgSrc={profileIcon} altText='profile Option' optionText='PROFILE' />
             </Link>
 

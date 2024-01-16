@@ -1,11 +1,12 @@
 import React from 'react'
-import ProfileHeader from './ProfileHeader/ProfileHeader'
+import LeftSideBar from '../Home/LeftSideBar/LeftSideBar'
+import ProfileMain from './ProfileMain/ProfileMain'
 
 function Profile() {
   return (
-    <div>
-        Profile
-        <ProfileHeader />
+    <div className='flex bg-primary-100 h-screen w-screen overflow-hidden' >
+        <LeftSideBar />
+        <ProfileMain />
     </div>
   )
 }

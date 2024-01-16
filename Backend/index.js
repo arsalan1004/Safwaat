@@ -79,7 +79,7 @@ app.use("/api/completeUnit", completeUnitRoute);
 app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 app.use("/api/fh", FriendshipHubFriendsRouter);
 app.use("/api/analytics", AnalyticsRoute);
-app.use("/userStats", UserStatsRoute);
+app.use("/api/userStats", UserStatsRoute);
 
 // CREATING SERVER
 const server = http.createServer(app);

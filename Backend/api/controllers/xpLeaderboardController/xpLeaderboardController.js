@@ -1,4 +1,4 @@
-const User = require('./../../models/UserModel/userModel');
+const {userModel} = require('./../../models/UserModel/userModel');
 const XPLeaderboard = require('./../../models/XPLeaderboardModel/xpLeaderboardModel');
 const leagueData = require("./../../../jsonData/leaguesData/LeagueJSON")
 
@@ -32,7 +32,7 @@ function promotionLeague(promotion) {
 const getLeaderboardLeagueData = async(req, res) => {
     let id = req.body.id;
     try{
-        let user = await User.findById(id);
+        let user = await userModel.findById(id);
         let league = user.league;
         let leagueInfo = leagueData.filter((l)=> l.leagueName==league);
         let promotion = leagueInfo[0].membersToBePromoted;

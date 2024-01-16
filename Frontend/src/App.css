@@ -42,6 +42,16 @@
   place-items: center;
 }
 
+.leadButton{
+  border-radius: 8px;
+
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
 .wrapper {
   background: url("./Assets/Arch1.png") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -440,3 +450,4 @@ tbody{
   
   .achieve-content { grid-area: 1 / 1 / 2 / 2; }
   .achieve-buttonarea { grid-area: 1 / 2 / 2 / 3; }
+

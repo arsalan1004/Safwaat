@@ -7,19 +7,26 @@ const getFriends = async(req, res) => {
         playerId: userId
     });
     let response = [];
-    for(i=0; i<Friends.friendList.length; i++){
-        let user = await userModel.findById(Friends.friendList[i].friendId);
-        response.push({
-            id: user._id,
-            username: user.username,
-            fullName: user.firstName+" "+user.lastName,
-            level: user.xpLevel,
-            xp:user.totalXp
+    if(Friends){
+        for(i=0; i<Friends.friendList.length; i++){
+            let user = await userModel.findById(Friends.friendList[i].friendId);
+            response.push({
+                id: user._id,
+                username: user.username,
+                fullName: user.firstName+" "+user.lastName,
+                level: user.xpLevel,
+                xp:user.totalXp
+            })
+        }
+        res.status(200).json({
+            friends: (response.length == 0) ? "Looks like you're starting fresh! Why not connect with others to build your friend list?" : response
+        })
+
+    } else {
+        res.status(200).json({
+            friends: []
         })
     }
-    res.status(200).json({
-        friends: (response.length == 0) ? "Looks like you're starting fresh! Why not connect with others to build your friend list?" : response
-    })
 }
 
 
@@ -34,8 +41,10 @@ const getFriendList = async(userId) => {
                 console.log(Friends);
                 let response = [];
                 if(Friends){
+                    console.log("User ko yeh null nhi le rha")
                     for(let i=0; i<Friends.friendList.length; i++){
                         let user = await userModel.findById(Friends.friendList[i].friendId);
+                        console.log(user);
                         response.push({
                             id: user._id,
                             username: user.username,

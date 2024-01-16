@@ -167,6 +167,7 @@ const getFriendData = async(req, res) => { //user data
             FriendList.findOne({playerId: userId}),
             FriendRequests.findOne({playerId: userId})
         ]);
+        console.log(user)
         // console.log(user)
         let userJoined = user.createdAt.toString().slice(4,15);
         // let modifiedJoinedDate = 

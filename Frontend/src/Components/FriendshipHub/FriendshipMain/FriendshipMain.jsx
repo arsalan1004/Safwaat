@@ -4,8 +4,9 @@ import UserResultBox from './userResultBox';
 import InvertedButton from '../../../UI/Button/InvertedButton';
 import FilledButton from '../../../UI/Button/FilledButton';
 import group from '../../../Assets/Gifs/group.gif';
+import noResult from '../../../Assets/Gifs/noResult.gif';
 
-function FriendshipMain({data}) {
+function FriendshipMain({data, showModalHandler}) {
     
 const navigate = useNavigate();
 
@@ -128,15 +129,17 @@ const searchDetail = [
                     { searchResults.length != 0 ?
                        ( searchResults.map(
                             (val, i) => (
-                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} searchHandler={() => getSearchResultsHandler(searchValue.toLowerCase())} />
+                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} showModalHandler={showModalHandler} searchHandler={()=>getSearchResultsHandler(searchValue.toLowerCase())} />
                             )
                         )
 
                        )
                        
                        :
-
-                       <h1>No Results Found!</h1>
+                        (<div className='flex flex-col items-center w-full'>
+                            <h1 className='font-bold italic mt-10 mx-auto text-lg'>No Results Found!</h1>
+                            <img src={noResult} className='h-56 w-56' />
+                        </div> )   
                     }
                 
                 </div>

@@ -1,19 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useLoaderData } from 'react-router-dom'
 import LeftSideBar from '../Home/LeftSideBar/LeftSideBar'
 import FriendshipMain from './FriendshipMain/FriendshipMain'
+import Modal from '../../UI/Modal/Modal'
 
 function FriendshipHub() {
 
   const data = useLoaderData();
   console.log('friendship hub data: ', data);
 
+  const [showModal, setShowModal] = useState(false);
 
+  const modalShow = () => {
+    console.log('inside modaltogler')
+    setShowModal(true)
+  }
+
+  const modalClosed = () => {
+    setShowModal(false);
+  }
 
   return (
     <div className='flex bg-primary-100 h-screen w-screen'>
+      {showModal && <Modal show={showModal} modalClosed={modalClosed} >Friend Request Sent Successfully</Modal>}
       <LeftSideBar />
-      <FriendshipMain data={data} />
+      <FriendshipMain data={data} showModalHandler={modalShow} />
     </div>
     
   )

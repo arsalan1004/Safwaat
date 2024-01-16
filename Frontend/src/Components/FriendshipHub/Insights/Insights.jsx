@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import LeftSideBar from '../../Home/LeftSideBar/LeftSideBar'
 import InsightsMain from './InsightsMain/InsightsMain'
+import Modal from '../../../UI/Modal/Modal';
 
 import { useLoaderData } from 'react-router-dom';
 
 
 function Insights() {
+
+// const [showModal, setShowModal] = useState(false);
+
+
+// const modalToggler = () => {
+//   setShowModal(true)
+// }
 
   const data = useLoaderData();
   console.log('insights main data: ', data);
@@ -25,7 +33,7 @@ export async function loader () {
 
   const userId = '65a2b4ef46552610c0d4bbbf' 
   const response = fetch(
-    'http://localhost:8000/api/fh/friendsList',
+    'http://localhost:8000/api/friendshiphub/viewInsights',
     
       {
         method: 'POST',

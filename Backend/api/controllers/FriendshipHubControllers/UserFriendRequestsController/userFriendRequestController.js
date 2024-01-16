@@ -199,15 +199,42 @@ const getUserFriendRequests = async(req, res) => {
     let {userId} = req.body;
 
     let userRequests = await FriendRequests.findOne({playerId: userId});
+    let incoming = [];
+    let outgoing = [];
+
     if(userRequests){
+        for(let i=0; i<userRequests.incoming.length; i++){
+            let user = await userModel.findById(userRequests.incoming[i].senderId);
+            console.log(userRequests.incoming[i].senderId," : ",user);
+            incoming.push({
+                senderId: user._id,
+                username: user.username,
+                fullName: user.firstName+" "+user.lastName,
+                xp: user.totalXp,
+                level: user.xpLevel
+            });
+        };
+        for (let j=0;j<userRequests.outgoing.length; j++){
+            let user = await userModel.findById(userRequests.outgoing[j].receiverId);
+            console.log(userRequests.outgoing[j].receiverId," : ",user);
+
+            outgoing.push({
+                senderId: user._id,
+                username: user.username,
+                fullName: user.firstName+" "+user.lastName,
+                xp: user.totalXp,
+                level: user.xpLevel
+            });
+        };
         res.status(200).json({
-            incoming: (userRequests.incoming.length != 0) ? userRequests.incoming : "You're all caught up, and there are no pending friend requests.",
-            outgoing: (userRequests.outgoing.length != 0) ? userRequests.outgoing : "No pending friend requests to review right now."
+            incoming: (incoming.length != 0) ? incoming : [],
+            outgoing: (outgoing.length != 0) ? outgoing : []
         });
+
     }else{
         res.status(200).json({
-            incoming: "You're all caught up, and there are no pending friend requests.",
-            outgoing: "No pending friend requests to review right now."
+            incoming:[],
+            outgoing: []
         });
     }
 }
@@ -250,13 +277,13 @@ const patchAcceptFriendRequest = async(req, res) => {
                     ]
                 });
                 await Promise.all([
-                    userRequests.save(),
+                    userFriendList.save(), //  Change userRequests to userFriendList
                     senderFriendList1.save()
                 ]);
             }
     
         } else{
-            let newUserFriendList = new FriendList({
+            let newUserFriendList1 = new FriendList({
                 playerId: userId,
                 friendList: [{
                     friendId: senderId,
@@ -271,12 +298,12 @@ const patchAcceptFriendRequest = async(req, res) => {
                     }
                 ]);
                 await Promise.all([
-                    newUserFriendList.save(),
+                    newUserFriendList1.save(),
                     senderFriendList.save()
                 ]);
     
             }else{
-                let newSenderFriendList = new FriendList({
+                let newSenderFriendList2 = new FriendList({
                     playerId: senderId,
                     friendList: [
                         {
@@ -286,15 +313,15 @@ const patchAcceptFriendRequest = async(req, res) => {
                     ]
                 });
                 await Promise.all([
-                    newUserFriendList.save(),
-                    newSenderFriendList.save()
+                    newUserFriendList1.save(),
+                    newSenderFriendList2.save()
                 ])
             }
-            res.status(200).json({
-                success: true,
-                message: "User successfully accepted."
-            })
         };
+        res.status(200).json({
+            success: true,
+            message: "User successfully accepted."
+        })
 
     } catch(err){
         res.status(500).json({
@@ -304,7 +331,6 @@ const patchAcceptFriendRequest = async(req, res) => {
         });
     }
 };
-
 
 const patchRejectFriendRequest = async(req, res) => {
     let {userId, senderId} = req.body;
@@ -473,6 +499,38 @@ const postCancelRequest = async(req, res) => {
 
 //One schedular function is remaining -> which at the end of each day, pull all rejected requests out from every document in Friend Requests Collection.
 
+const getProfileHeader = async(req, res) => { //user data
+    // let {userId} = req.body;
+    let userId = req.params.userId;
+    console.log("USERID: ", userId);
+    try{
+
+        let [user, userFriends, userRequets] = await Promise.all([
+            userModel.findById(userId),
+            FriendList.findOne({playerId: userId}),
+            FriendRequests.findOne({playerId: userId})
+        ]);
+        console.log(user)
+        let userJoined = user.createdAt.toString().slice(4,15);
+        
+        res.status(200).json(
+            {       username: user.username,
+                    fullName: user.firstName + " "+user.lastName,
+                    noFriends: (userFriends) ? userFriends.friendList.length : 0,
+                    noReq: (userRequets) ? userRequets.incoming.length : 0,
+                    dateJoined: userJoined.slice(4,6) + "-" + userJoined.slice(0,3)+"-"+userJoined.slice(userJoined.length-4, userJoined.length)
+            }
+        );
+    } catch(err){
+        res.status(500).json({
+            success: false,
+            message: "Internal Server Error, when getting insights of User",
+            Error: err
+        });
+    }
+};
+
+
 module.exports = {
     postAddFriendRequest,
     getFriendshipHubPageData,
@@ -482,5 +540,6 @@ module.exports = {
     patchRejectFriendRequest,
     postSearchFriend,
     postCancelRequest,
+    getProfileHeader
 
 };

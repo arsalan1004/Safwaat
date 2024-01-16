@@ -1,0 +1,113 @@
+{
+  "learningUnit": [
+    {
+      "id": "507f1f77zjr86cd799439011",
+      "slideType": "match",
+      "content": {
+        "columnOne": [
+          "Middle of the throat", 
+          "End of the Tongue and the soft palate", 
+          "Middle of the tongue and roof of the mouth", 
+          "End of the tongue and the hard palate"
+      ],
+        "columnTwo": ["ق", "ج", "ك", "غ"],
+        "answers": {
+            "Middle of the throat": "ق",
+            "End of the Tongue and the soft palate": "ج",
+            "Middle of the tongue and roof of the mouth": "ك",
+            "End of the tongue and the hard palate": "غ"
+        }
+      }
+    },
+    {
+      "id": "507f1f77lkj86cd799439011",
+      "slideType": "dnd",
+      "content": {
+        "boxOneHeading": "Hams",
+        "boxTwoHeading": "Jahr",
+        "options": ["ق", "ث", "ض", "ش", "ح", "ع", "ف", "م", "ط", "ب", "ر", "ى"],
+        "correctAnswers": {
+          "ع": "box1", "ى": "box1",
+          "ر": "box1", "م": "box1",
+          "ب": "box1", "ض": "box1",
+          "ط": "box2", "ق": "box2",
+          "ث": "box2", "ف": "box2",
+          "ش": "box2", "ح": "box2"
+        }
+      }
+    },
+    {
+      "id": "507f1f77htf86cd799439011",
+      "slideType": "model",
+      "content": {
+        "heading": "Articulation Point of Harf Jeem ج",
+        "audioUrl": "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/model%2Fjeem.mp3?alt=media&token=a94ef2e6-0072-4474-b16f-08b6ce29f264"
+      }
+    },
+    {
+      "id": "507f1f77bls86cd799439011",
+      "slideType": "theoryComparative",
+      "content": {
+        "heading": "حمس vs جهر",
+        "columnOne": ["When letters with the characteristic of Jahr are pronounced, the flow of breath stops at the articulation point that strengthens the reliance of the letter at its articulation point.", "It includes 19 words. Other than those in Hams."],
+        "columnTwo": ["When letters with the characteristic of Hams are pronounced, there is a flow of breath that weakens the reliance of the letter at its articulation point.", "It includes 10 words.These are grouped as فحثه شخس سقط"]
+      }
+    },
+    {
+      "id": "507f1f77bcf86cd799439011",
+      "slideType": "audio",
+      "content": {
+        "audioQuestion": "اعؤذ بالله من الشيطان الرجيم",
+        "questionAudioUrl": "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FUnit1%2FQ1%2FQ1.mp3?alt=media&token=1b9bfd94-981f-451b-bd1e-71d3b1affe26",
+        "audioOptions": ["اعؤذ", "بالله", "الشيطان", "الرجيم"],
+        "optionAudioUrl": [
+          "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FUnit1%2FQ1%2FQ1c1.mp3?alt=media&token=db02acd6-e44a-4438-8a5b-2b4d5be382bc",
+          "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FUnit1%2FQ1%2FQ1c2.mp3?alt=media&token=c7455543-7eb1-484e-bf60-5a06fce8f310", 
+          "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FUnit1%2FQ1%2FQ1c3.mp3?alt=media&token=9611848b-104d-433f-a07e-e9dc66342c06", 
+          "https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FUnit1%2FQ1%2FQ1c4.mp3?alt=media&token=26a38d87-a157-4888-84e7-04bf98e0112c"],
+        "correctAnswer": 2,
+        "selectedOption": -1
+      }
+    },
+    {
+      "id": "507f1f77gef86cd799439011",
+      "slideType": "mcq",
+      "content": {
+        "mcqOptions": ["ع", "ب", "ل", "ح"],
+        "mcqQuestion": "Which one has the صفت of Hams??",
+        "correctAnswer": 3,
+        "selectedOption": -1
+      }
+    },
+    {
+      "id": "507f1f77dqe86cd799439011",
+      "slideType": "mcq",
+      "content": {
+        "mcqOptions": ["E", "F", "G", "H"],
+        "mcqQuestion": "Which one is used to pronounce HELP?",
+        "correctAnswer": 3,
+        "selectedOption": -1
+      }
+    },
+    {
+      "id": "507f1f77fed86cd799439011",
+      "slideType": "theoryImage",
+      "content": {
+        "title": "ABC Theory",
+        "imageUrl": "",
+        "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat perspiciatis a iure expedita minima quae, odio omnis fuga, quisquam eum exercitationem nihil facilis, quo quas. Hic molestiae odio at aperiam, cumque, non repellendus consequuntur enim quos eaque, voluptatum tenetur incidunt officia porro repudiandae veniam nisi pariatur eum architecto aspernatur dolorem!"
+      }
+    },
+    {
+      "id": "507f1f77mer86cd799439011",
+      "slideType": "mcq",
+      "content": {
+        "mcqOptions": ["I", "J", "K", "L"],
+        "mcqQuestion": "Which one is used to pronounce Indonesia?",
+        "correctAnswer": 0,
+        "selectedOption": -1
+      }
+    }
+    
+  ]
+}

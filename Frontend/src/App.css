@@ -3,6 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* canvas {
+  width: 100%;
+  height: 100vh;
+} */
+
+.loop-rotation {
+  animation: loopRotation 2.5s linear infinite;
+}
+
+@keyframes loopRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .backface-visibility-visible {
   backface-visibility: visible;
@@ -10,6 +27,11 @@
 
 .backface-visibility-hidden {
   backface-visibility: hidden;
+}
+#modelCanvas {
+  width: 80%;
+  margin: 0 auto;
+  height: 60%;
 }
 
 .contain {

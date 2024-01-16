@@ -31,6 +31,7 @@ export default {
         accent: "#2D867F",
         correct: "#0ACF1E",
         wrong: "#E01111",
+        disabled : "#D2D6D9"
       },
       backgroundImage: {
         flashcraftBg: "url(./src/Assets/Background/flashcraftBg.jpg)",

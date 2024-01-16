@@ -7,10 +7,11 @@ import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/Flas
 import Home,{loader as HomeLoader} from "../Components/Home/Home";
 import Login from "../Components/Login_Signup/login";
 import Signup from "../Components/Login_Signup/signup";
+import LearningUnit from "../Components/learningUnit/LearningUnit";
+import Result from "../Components/learningUnit/result/Result";
 import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
 import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
 import Profile from "../Components/Profile/Profile";
-
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,20 @@ const router = createBrowserRouter([
                 ]
             },
             {
+                path: 'learningUnit/:id',
+                children: [
+                  {
+                    path: 'slides/:slideId',
+                    element: <LearningUnit />
+                  },
+                  {
+                    path: 'result',
+                    element: <Result />
+                  }
+                ]
+            },
+            
+            {
                 path: 'FriendshipHub',
                 children: [
                     {
@@ -75,7 +90,7 @@ const router = createBrowserRouter([
                 
             }
         ]
-    }
+     }
 ]);
 
 

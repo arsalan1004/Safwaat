@@ -16,7 +16,7 @@ const ExitLessonModal = (props) => {
   }
 
   const Backdrop = () => {
-    return  <div className='fixed top-0 left-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.25)]' />
+    return  <div className='fixed top-0 left-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.25)] z-[25]' />
   }
 
   const ModalOverlay = (props) => {

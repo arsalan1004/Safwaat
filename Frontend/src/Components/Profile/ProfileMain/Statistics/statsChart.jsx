@@ -44,15 +44,15 @@ const Statschart = () => {
   return (
     <>
       <div className='mx-[5%] w-[95%] h-[75%]'>
-        <div className='font-Itim text-[20px] font-bold my-[3%]'>Statistics</div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className='font-Itim text-[20px] font-bold my-[3%]'>Track Impressive User Stats.</div>
+        <div className="grid grid-cols-3 gap-4">
 
         <div className="col-span-1">
-          <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+          <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
           <div className="mr-4">
             <img src={xp} className='max-w-[40px] h-[40px]'/>
           </div>
-          <div className="text-white">
+          <div className="text-cyan-700">
             <p className="text-xl"><b>{totalXP}</b></p>
             <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total XP</p>
           </div>
@@ -60,11 +60,11 @@ const Statschart = () => {
       </div>
 
       <div className="col-span-1">
-        <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+        <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
           <div className="mr-4">
             <img src={streak} className='max-w-[40px] h-[40px]'/>
           </div>
-          <div className="text-white">
+          <div className="text-cyan-700">
             <p className="text-xl"><b>{highestStreak}</b></p>
             <p className="text-lg font-bold font-Itim text-[#0A3F67]">Highest Streak</p>
           </div>
@@ -72,11 +72,11 @@ const Statschart = () => {
       </div>
 
       <div className="col-span-1">
-      <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+      <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
         <div className="mr-4">
           <img src={gem} className='max-w-[40px] h-[40px]'/>
         </div>
-        <div className="text-white">
+        <div className="text-cyan-700">
           <p className="text-xl"><b>{totalGems}</b></p>
           <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total Gems</p>
         </div>
@@ -84,11 +84,11 @@ const Statschart = () => {
       </div>
 
       <div className="col-span-1">
-      <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+      <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
         <div className="mr-4">
           <img src={getRankImage(currentLeague)} className='max-w-[40px] h-[40px]'/>
         </div>
-        <div className="text-white">
+        <div className="text-cyan-700">
           <p className="text-xl"><b>{currentLeague}</b></p>
           <p className="text-lg font-bold font-Itim text-[#0A3F67]">Current League</p>
         </div>
@@ -97,22 +97,22 @@ const Statschart = () => {
 
       
       <div className="col-span-1">
-      <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+      <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
         <div className="mr-4">
           <img src={trophy} className='max-w-[40px] h-[40px]'/>
         </div>
-        <div className="text-white">
+        <div className="text-cyan-700">
           <p className="text-xl"><b>{totalTrophies}</b></p>
           <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total Throphies</p>
         </div>
       </div>
       </div>
       <div className="col-span-1">
-      <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
+      <div className="flex items-center hover:drop-box-shadow-3D bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
         <div className="mr-4">
           <img src={flashcard} className='max-w-[40px] h-[40px]'/>
         </div>
-        <div className="text-white">
+        <div className="text-cyan-700">
           <p className="text-xl"><b>{totalFlashCards}</b></p>
           <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total FlashCraft Sets</p>
         </div>

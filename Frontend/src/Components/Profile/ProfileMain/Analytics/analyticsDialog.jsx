@@ -117,10 +117,10 @@ const AnalyticsDialog = () => {
             </div>
             <div className="w-[80%] h-auto ml-[10%] mt-9">
             <Carousel beforeChange={(currentSlide)=>{setCurrent([currentSlide])}} responsive={responsive}>
-                <div className='text-center font-Poppins font-bold'>Monthly Challenges Completed</div>
-                <div className='text-center font-Poppins font-bold'>Weekly Lesson Completed</div>
-                <div className='text-center font-Poppins font-bold'>Monthly Rewards Obtained</div>
-                <div className='text-center font-Poppins font-bold'>Weekly Flashcard Revisited</div>
+                <div className='text-center font-Poppins font-medium italic'>Monthly Challenges Completed</div>
+                <div className='text-center font-Poppins font-medium italic'>Weekly Lesson Completed</div>
+                <div className='text-center font-Poppins font-medium italic'>Monthly Rewards Obtained</div>
+                <div className='text-center font-Poppins font-medium italic'>Weekly Flashcard Revisited</div>
             </Carousel>
             </div>
         </div>

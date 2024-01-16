@@ -15,6 +15,7 @@ export default {
       Itim: ["Itim"],
       Poppins: ["Poppins"],
       Inter: ["Inter"],
+      Roboto: ["Roboto"]
     },
     extend: {
       boxShadow: {

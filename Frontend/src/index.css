@@ -5,47 +5,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.flex-center{
+  @apply flex justify-center items-center
 }
 
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.flex-column {
+  @apply flex flex-col items-center
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Compound Tailwind Classes here */
+@layer components { 
+  .mcq-shadow-outer {
+    
+    @apply shadow-[4px_5px_4px_rgba(2,46,79,0.2)] ;
   }
-  button {
-    background-color: #f9f9f9;
+  .mcq-shadow-inner {
+    @apply shadow-[inset_4px_5px_4px_rgba(2,20,33,0.5)] ;
   }
-} */
+  .drop-box-shadow {
+    @apply shadow-[8px_8px_8px_2px_rgba(2,20,33,0.2)] ;
+  }
+  .drop-option-shadow {
+    @apply shadow-[2px_4px_3px_0px_rgba(2,20,33,0.2)] ;
+  }
+  .match-shadow-outer {
+    @apply shadow-[2px_4px_3px_0px_rgba(2,20,33,0.2)] ;
+  }
+  .match-shadow-inner {
+    @apply shadow-[inset_2px_4px_3px_0px_rgba(2,20,33,0.2)] ;
+  }
+  .button_drop_shadow {
+    @apply shadow-[5px_4px_8px_rgba(2,20,33,0.25)] ;
+  }
+  .chatheader-shadow-bottom {
+    @apply shadow-[0px_6px_6px_rgb(217,217,217)] z-[2]
+  }
+  .conversation-shadow-right {
+    @apply shadow-[6px_0px_8px_rgb(51,140,133)] z-[1]
+  }
+}

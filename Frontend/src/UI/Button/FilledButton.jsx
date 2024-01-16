@@ -2,9 +2,10 @@ import React from 'react'
 
 function FilledButton(props) {
   return (
-    <button className='w-full cursor-pointer justify-center rounded-full bg-accent flex-center md:first-letter:px-3 md:py-4 px-2 py-3 hover:scale-110 transistion-transform duration-150 hover:drop-shadow-xl'
+    <button className='w-full cursor-pointer justify-center rounded-full bg-accent flex-center md:px-3 md:py-4 py-3 hover:scale-105
+     transistion-transform duration-150 hover:drop-shadow-xl active:shadow-inset'
     onClick={props.clickHandler} >
-                        <p className='text-primary-100 text-itim text-xl'>{props.children} </p>
+                        <p className='text-primary-100 text-Itim text-base'>{props.children} </p>
     </button>
   )
 }

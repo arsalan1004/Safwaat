@@ -88,7 +88,7 @@ const Statschart = () => {
         </div>
         <div className="text-primary-100">
           <p className="text-xl"><b>{totalFlashCards}</b></p>
-          <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total FlashCards</p>
+          <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total FlashCraft Sets</p>
         </div>
       </div>
       </div>

@@ -6,18 +6,34 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BarChart from './lineChart';
 import './color.css'
+import { getAnalytics } from '../../../../API/analyticsAPI';
+import axios from 'axios';
 
 const AnalyticsDialog = () => {
+    
+    const [monthlyChallengeAnalytics,setmonthlyChallengeAnalytics]=useState([]);
+    const [monthlyRewardAnalytics,setmonthlyRewardAnalytics]=useState([]);
+    const [weeklyLessonAnalytics,setweeklyLessonAnalytics]=useState([]);
+    const [weeklyFlashcardRevisitAnalytics,setweeklyFlashcardRevisitAnalytics]=useState([]);
     const [current, setCurrent] = useState(-1);
-    const [achievementData,setData]= useState({
+
+
+    
+    useEffect(() => {
+      
+      getAnalytics(setmonthlyChallengeAnalytics,setmonthlyRewardAnalytics,setweeklyLessonAnalytics,setweeklyFlashcardRevisitAnalytics);
+    }, []);
+    
+
+    const achievementData={
         labels: ['DailyChallenges', 'Achievements'],
         datasets: [
           {
             label: 'Monthly Completed Challenges',
-            data: [12, 3],
+            data: monthlyChallengeAnalytics,
             backgroundColor: [
-              'rgba(173, 216, 230, 0.2)',
-              'rgba(255, 165, 0, 0.2)',
+              'rgba(173, 216, 230, 0.3)',
+              'rgba(255, 165, 0, 0.3)',
              ],
             borderColor: [
               'rgba(173, 216, 230, 1)',
@@ -26,17 +42,17 @@ const AnalyticsDialog = () => {
             borderWidth: 1,
           },
         ],
-      });
+      };
 
-      const [RewardData,setRewardData]= useState({
+      const RewardData={
         labels: ['Xp Obtained', 'Gems/Trophy Obtained'],
         datasets: [
           {
             label: 'Monthly Rewards Obtained',
-            data: [55, 3],
+            data: monthlyRewardAnalytics,
             backgroundColor: [
-              'rgba(173, 216, 230, 0.2)',
-              'rgba(255, 165, 0, 0.2)',
+              'rgba(173, 216, 230, 0.3)',
+              'rgba(255, 165, 0, 0.3)',
              ],
             borderColor: [
               'rgba(173, 216, 230, 1)',
@@ -45,7 +61,7 @@ const AnalyticsDialog = () => {
             borderWidth: 1,
           },
         ],
-      });
+      };
 
 
       const labels = ["Day 01", "Day 02", "Day 03", "Day 04", "Day 05", "Day 06", "Day 07"];
@@ -56,7 +72,7 @@ const AnalyticsDialog = () => {
             datasets: [
             {
                 label: "Lesson Completed Weekly",
-                data: [2,0,0,4,0,0,1],
+                data: weeklyLessonAnalytics,
                 backgroundColor: "rgba(29, 209, 161,1.0)"
             }
             ]
@@ -67,28 +83,13 @@ const AnalyticsDialog = () => {
             datasets: [
             {
                 label: "Weekly Flashcard Revisited",
-                data: [2,0,0,3,1,1,1],
+                data: weeklyFlashcardRevisitAnalytics,
                 backgroundColor: "rgba(29, 209, 161,1.0)"
             }
             ]
         }
 
-        const poly = {
-          labels: ["Thing 1", "Thing 2", "Thing 3", "Thing 4", "Thing 5", "Thing 6"],
-          datasets: [
-            {
-              label: "# of Votes",
-              data: [2, 9, 3, 5, 2, 3],
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-              borderColor: "rgba(255, 99, 132, 1)",
-              borderWidth: 1
-            }
-          ]
-        } 
-
-      
-
-      function displayChart(current){
+        function displayChart(current){
         if(current==1){
             return <BarChart data={LessonData}/>
         }else if(current==2){

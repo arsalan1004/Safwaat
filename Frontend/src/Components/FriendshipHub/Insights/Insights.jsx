@@ -8,13 +8,6 @@ import { useLoaderData } from 'react-router-dom';
 
 function Insights() {
 
-// const [showModal, setShowModal] = useState(false);
-
-
-// const modalToggler = () => {
-//   setShowModal(true)
-// }
-
   const data = useLoaderData();
   console.log('insights main data: ', data);
 

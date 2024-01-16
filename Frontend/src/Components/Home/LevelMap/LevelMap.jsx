@@ -46,61 +46,6 @@ function LevelMap() {
 
 
   console.log(data);
-
-  // const data = [
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 1,
-  //     userId : '2323',
-  //     starsEarned: 3
-      
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 2,
-  //     userId : '2323',
-  //     starsEarned: 3
-
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 3,
-  //     userId : '2323',
-  //     starsEarned: 2
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 4,
-  //     userId : '2323',
-  //     starsEarned: 1
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 5,
-  //     userId : '2323',
-  //     starsEarned: 1
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 6,
-  //     userId : '2323',
-  //     starsEarned: 2
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 7,
-  //     userId : '2323',
-  //     starsEarned: 0
-  //   },
-  //   {
-  //     learningUnitId: '23',
-  //     unitNumber: 8,
-  //     userId : '2323',
-  //     starsEarned: null
-  //   }
-
-  // ];
-
   
 
   const styling = [

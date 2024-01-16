@@ -1,9 +1,12 @@
 import React from 'react'
 import boy2 from '../../../../Assets/Images/boy2.png';
 import classes from './FriendBox.module.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function FriendBox(props) {
+
+    const navigate= useNavigate();
+
     console.log('inside FriendBox Component')
     console.log(props.secNo);
 
@@ -34,6 +37,97 @@ function FriendBox(props) {
         }
     ]
 
+    const  buttonHandler = async (id, secNum, butText) => {
+            console.log('BUTTON HANDLER!');
+            console.log(id, secNum, butText);
+            const userId = "65a297b2b32acbfdbde8a217";
+            let response;
+
+            if(secNum==0 && butText=='View Profile'){
+                
+                navigate('/profile');
+
+            }else if(secNum==0 && butText=='Message'){
+
+                //handle later
+
+            }else if(secNum==1 && butText=='Accept'){
+                
+                response = await fetch(
+                    "http://localhost:8000/api/friendshiphub/accept",
+                    {
+                    method: "POST",
+                    body: JSON.stringify({
+                        userId: userId,
+                        senderId: id,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                    }
+                );
+                
+                const responseData = await response.json();
+            
+                console.log('response of AcceptHandler: ', responseData);
+                
+                props.fetchSectionDataHandler(secNum);
+
+            }
+            else if(secNum==1 && butText=='Reject'){
+
+                response = await fetch(
+                    "http://localhost:8000/api/friendshiphub/reject",
+                    {
+                    method: "POST",
+                    body: JSON.stringify({
+                        userId: userId,
+                        senderId: id,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                    }
+                );
+                
+                const responseData = await response.json();
+            
+                console.log('response of Reject Handler: ', responseData);
+                
+                props.fetchSectionDataHandler(secNum);
+
+            }else if(secNum==2 && butText=='View Profile'){
+                
+                navigate('/profile');
+
+            }else if(secNum==2 && butText=='Cancel'){ 
+
+                response = await fetch(
+                    "http://localhost:8000/api/friendshiphub/cancel",
+                    {
+                    method: "POST",
+                    body: JSON.stringify({
+                        userId: userId,
+                        receiverId: id,
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                    }
+                );
+                
+                const responseData = await response.json();
+            
+                console.log('response of CancelHandler: ', responseData);
+                
+                props.fetchSectionDataHandler(secNum);
+
+            }
+            else{
+                console.log('WRONG OPTION!!!');
+            }
+
+    }
 
     return (
     
@@ -44,7 +138,7 @@ function FriendBox(props) {
         {/* 2 Inner divs so that flex between can be applied */}
         
         {/* User Image and Private Detail */}
-        <div className='flex items-center w-3/6'>
+        <div className='flex items-center w-[40%]'>
             {/* Image */}
             <div>
                 <img src={boy2} alt='userImage' className='relative z-10 bg-[#6BB4C5] rounded-full
@@ -59,21 +153,21 @@ function FriendBox(props) {
         </div>
         
         {/* Level Detail */}
-        <div className='flex-center w-1/6'>
+        <div className='flex-center w-[25%]'>
            
-            {/* <div className='flex items-start text-center mt-5 text-Poppins'>
-                    <div className='py-0 pr-4 border-r-slate-400 border-r-[1px]'>
+            <div className='flex items-start text-center mt-0 text-Poppins'>
+                    <div className='py-0 pr-6 border-r-slate-400 border-r-[1px]'>
                         <h3 className='mb-1 text-slate-500 font-medium'>LEVEL</h3>
-                        <p className='text-sm text-slate-500'>10</p>
+                        <p className='text-sm text-slate-500'>{props.level}</p>
                     </div>
-                    <div className='py-0 px-4'>
+                    <div className='py-0 px-6'>
                         <h3 className='mb-1 font-medium text-slate-500'>XP</h3>
-                        <p className='text-sm text-slate-500' >1255 </p>
+                        <p className='text-sm text-slate-500' >{props.xp} </p>
                     </div>
                    
-                </div> */}
+                </div>
     
-            <div className='w-full'>
+            {/* <div className='w-full'>
                 <p className='flex justify-between mb-1'>
                 <span className='font-medium'>LEVEL:</span>
                 <span>{props.level}</span>
@@ -82,16 +176,16 @@ function FriendBox(props) {
                 <span className='font-medium'>XP:</span>
                 <span>{props.xp}</span>
                 </p>
-            </div>
+            </div> */}
         </div>
 
         {/* buttons */}
-        <div className='flex flex-col justify-center items-end gap-2 w-2/6'>
+        <div className='flex flex-col justify-center items-end gap-2 w-[35%]'>
             {
                 buttonStyling.map(
                     (butStyle, i) => (
-                        <Link to=''>
                             <button className={classes.Button}
+                            onClick={()=> buttonHandler(props.id, props.secNo, buttonTexts[i]) }
                             key={i}
                             style={{
                                 '--main-FriendBox-color': butStyle.mainFriendBoxColor, 
@@ -104,7 +198,6 @@ function FriendBox(props) {
                                 {buttonTexts[i]}
 
                             </button>
-                        </Link>
                     )
                 )
             }

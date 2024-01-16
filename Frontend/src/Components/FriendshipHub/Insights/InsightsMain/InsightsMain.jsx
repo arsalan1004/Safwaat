@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import boy from '../../../../Assets/Images/boy.png';
 import FriendBox from './FriendBox';
 import ProfileHeader from '../../../Profile/ProfileHeader/ProfileHeader';
-
+import noResult from '../../../../Assets/Gifs/noResult.gif';
 
 function InsightsMain({data}) {
 
@@ -37,6 +37,7 @@ async function getResultsHandler (no) {
   const userId = "65a297b2b32acbfdbde8a217";
   let response;
   let responseData;
+  console.log('inside getResultsHandler');
 
   switch(no){
     case 0:
@@ -138,24 +139,46 @@ async function getResultsHandler (no) {
       </div>
 
       {/* Friend Box Section */}
-      <div className='mt-8 pl-10'>
-       <div className='rounded-xl w-3/4 bg-primary-200 p-1'>
-        {/* FriendBox */}
+      <div className='mt-8 flex-center mb-4'>
         {
-          friends.map(
-            (val,i) => (
-              <FriendBox
-                key={i} 
-                name={val.fullName}
-                userName={val.username}  
-                level={val.level}
-                xp={val.xp}
-                secNo = {sectionNo}
-              />
-            )
+          friends.length != 0 ?
+          (
+            <div className='rounded-xl w-[80%] bg-primary-200 p-1'>
+            {/* FriendBox */}
+            {
+              friends.map(
+                (val,i) => (
+                  <FriendBox
+                    key={i} 
+                    name={val.fullName}
+                    userName={val.username}  
+                    level={val.level}
+                    xp={val.xp}
+                    id={(val.id) ? val.id : (val.senderId) ? val.senderId : (val.receiverId) }
+                    secNo = {sectionNo}
+                    fetchSectionDataHandler={getResultsHandler}
+                  />
+                )
+              )
+            }
+           </div>
           )
-        }
-       </div>
+        
+
+        :
+
+        (<div className='flex flex-col items-center w-full'>
+            <h1 className='font-bold italic mt-10 mx-auto text-lg text-slate-500'>{
+              sectionNo == 0 ? 'Explore more profiles and send friend requests to grow your connections.' :
+              sectionNo == 1 ? "You're all caught up, no incoming friend requests at the moment." :
+              "You're all caught up, no incoming friend requests at the moment."
+            }</h1>
+            <img src={noResult} className='h-56 w-56' />
+        </div> 
+                        
+        ) 
+        
+      }
         
       </div>
 

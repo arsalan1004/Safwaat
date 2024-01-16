@@ -48,26 +48,6 @@ async function getSearchResultsHandler (val) {
     setSearchResults(responseData.searchResults);
   
 }
-
-const searchDetail = [
-    {
-        name: 'Muhammad Amir',
-        userName: '@muhammadAmir',
-    },
-    {
-        name: 'Fahad Umer',
-        userName: '@fahad_umer',
-    },
-    {
-        name: 'Malik Shaz',
-        userName: '@shaz.123',
-    },
-    {
-        name: 'Khalid Zain',
-        userName: '@khalidX',
-    }
-
-]
   
     return (
     
@@ -136,7 +116,7 @@ const searchDetail = [
                        )
                        
                        :
-                        (<div className='flex flex-col items-center w-full'>
+                        (<div className='flex flex-col items-center w-full text-slate-500'>
                             <h1 className='font-bold italic mt-10 mx-auto text-lg'>No Results Found!</h1>
                             <img src={noResult} className='h-56 w-56' />
                         </div> )   

@@ -1,12 +1,34 @@
-import {React,useState} from 'react'
+import {React,useEffect,useState} from 'react'
 import xp from '../../../../Assets/Icons/XP.png'
 import streak from '../../../../Assets/Icons/StreakIconHome.png'
 import gem from '../../../../Assets/Icons/gem.png'
 import flashcard from '../../../../Assets/Icons/flashCraft.png'
 import trophy from '../../../../Assets/Icons/trophy.png'
 import bronze from '../../../../Assets/bronze.png'
+import gold from '../../../../Assets/gold.png'
+import silver from '../../../../Assets/silver.png'
+import master from '../../../../Assets/red.png'
+import diamond from '../../../../Assets/purple.png'
+import { getStats } from '../../../../API/getStatsAPI'
 
 const Statschart = () => {
+
+  const getRankImage = (rank) => {
+    switch (rank) {
+      case 'Bronze':
+        return bronze;
+      case 'Silver':
+        return silver;
+      case 'Gold':
+        return gold;
+      case 'Master':
+        return master;
+      case 'Diamond':
+        return diamond;
+      default:
+        return bronze;
+    }
+  };
 
   const [totalXP, setTotalXP] = useState(44);
   const [highestStreak, setHighestStreak] = useState(10);
@@ -14,6 +36,10 @@ const Statschart = () => {
   const [currentLeague, setCurrentLeague] = useState("Bronze");
   const [totalTrophies, setTotalTrophies] = useState(2);
   const [totalFlashCards, setTotalFlashCards] = useState(7);
+
+  useEffect(()=>{
+    getStats(setTotalXP,setHighestStreak,setTotalGems,setCurrentLeague,setTotalTrophies,setTotalFlashCards);
+  },[])
 
   return (
     <>
@@ -60,7 +86,7 @@ const Statschart = () => {
       <div className="col-span-1">
       <div className="flex items-center bg-primary-200 rounded-[11px] p-4 w-[85%] h-[95%] border-2 border-slate-500">
         <div className="mr-4">
-          <img src={bronze} className='max-w-[40px] h-[40px]'/>
+          <img src={getRankImage(currentLeague)} className='max-w-[40px] h-[40px]'/>
         </div>
         <div className="text-white">
           <p className="text-xl"><b>{currentLeague}</b></p>

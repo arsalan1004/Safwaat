@@ -7,8 +7,9 @@ const postAddFriendRequest = async(req, res) => {
     let {userId, receiverId} = req.body;
 
     try{
+        console.log("USER ID AND RECEIVER ID",userId, receiverId);
         let [Sender ,Friends,/*friendRequests,*/ RequestsIn, RequestsOut, userRequests, Receiver, ReceiverFriendRequest] = await Promise.all([
-            User.findById(userId),
+            userModel.findById(userId),
             FriendList.findOne({playerId: userId, userFriends: {
                 $elemMatch: {
                     friendId: receiverId
@@ -37,7 +38,10 @@ const postAddFriendRequest = async(req, res) => {
         ]);
     
         if(Friends || RequestsIn || RequestsOut){
-            res.send('Request already sent, so cannot sent again');
+            res.status(200).json({
+                success: true,
+                messsage: "Request already sent, so cannot sent again" 
+            })
         } else{
     
             if(userRequests){ //Sender Requests present.
@@ -113,7 +117,10 @@ const postAddFriendRequest = async(req, res) => {
                     ]);
                 };
             }
-            res.send("DONE");
+            res.status(200).json({
+                success: true,
+                messsage: "Successfully sent Request" 
+            })
             
         }
     
@@ -317,54 +324,69 @@ const patchRejectFriendRequest = async(req, res) => {
 const postSearchFriend = async(req, res) => {
     let {text, userId} = req.body;
     try{
-        let user = await userModel.find({
-            // $or: [
-            //     {username:text},
-            //     {firstName:text},
-            //     {lastName: text}
-            // ]
-            $or: [
-                {username: {$regex: new RegExp(text, 'i')}},
-                {firstName: {$regex: new RegExp(text, 'i')}},
-                {lastName: {$regex: new RegExp(text, 'i')}}
-            ]
-        });
-        if(user.length != 0){
-            let response = [];
-            console.log(user.length);
-            let Friends = await FriendList.findOne({
-                playerId: userId
+        console.log('search text: ', text);
+        if(text!=''){
+            let user = await userModel.find({
+                // $or: [
+                //     {username:text},
+                //     {firstName:text},
+                //     {lastName: text}
+                // ]
+                $or: [
+                    {username: {$regex: new RegExp(text, 'i')}},
+                    {firstName: {$regex: new RegExp(text, 'i')}},
+                    {lastName: {$regex: new RegExp(text, 'i')}}
+                ]
+                
+                
+                // $or: [
+                //     {username: {$regex: `/^${text}/` }},
+                //     {firstName: {$regex: `/^${text}/`}},
+                //     {lastName: {$regex: `/^${text}/`}}
+                // ]
             });
-            console.log(Friends);
-            for(i=0; i<user.length; i++){
-                console.log(user[i]._id);
-                if(Friends){
-                    if(Friends.friendList.some(f => f.friendId == user[i]._id)){
-        
+            console.log('users: ', user)
+            if(user.length != 0){
+                let response = [];
+                // console.log(user.length);
+                let Friends = await FriendList.findOne({
+                    playerId: userId
+                });
+                // console.log(Friends);
+                for(i=0; i<user.length; i++){
+                    console.log(user[i]._id);
+                    if(Friends){
+                        if(Friends.friendList.some(f => f.friendId == user[i]._id)){
+            
+                        } else{
+                            response.push({
+                                id: user[i]._id,
+                                username: user[i].username,
+                                fullName: user[i].firstName +" "+ user[i].lastName
+                            });
+                        }
                     } else{
                         response.push({
                             id: user[i]._id,
                             username: user[i].username,
                             fullName: user[i].firstName +" "+ user[i].lastName
                         });
-                    }
-                } else{
-                    response.push({
-                        id: user[i]._id,
-                        username: user[i].username,
-                        fullName: user[i].firstName +" "+ user[i].lastName
-                    });
-                }        
-        }
-        res.status(200).json({
-            searchResults: response
-        });
-    
-        } else{
+                    }        
+            }
             res.status(200).json({
-                message: "No User Found"
+                searchResults: response
+            });
+        
+            } else{
+                res.status(200).json({
+                    message: "No User Found", searchResults: []
+                })
+            }  
+        }else{
+            res.status(200).json({
+                message: "No User Found", searchResults: []
             })
-        }        
+        }      
     } catch{
         res.status(500).json({
             success: false,

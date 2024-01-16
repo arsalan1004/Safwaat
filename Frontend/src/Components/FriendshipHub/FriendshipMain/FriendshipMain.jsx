@@ -44,7 +44,7 @@ async function getSearchResultsHandler (val) {
     const responseData = await response.json();
 
     console.log('response of getSearchResultsHandler: ', responseData);
-    setSearchResults(responseData);
+    setSearchResults(responseData.searchResults);
   
 }
 
@@ -125,12 +125,18 @@ const searchDetail = [
             <div className='w-3/5 border-r-[2px] border-slate-300 pr-4'>
                 <h1 className='font-bold text-secondary text-xl mb-4'>Search Results</h1>
                 <div className='w-full grid grid-cols-2 gap-2'>
-                    {
-                        searchDetail.map(
+                    { searchResults.length != 0 ?
+                       ( searchResults.map(
                             (val, i) => (
-                                <UserResultBox key={i} name={val.name} userName={val.userName}  />
+                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} />
                             )
                         )
+
+                       )
+                       
+                       :
+
+                       <h1>No Results Found!</h1>
                     }
                 
                 </div>

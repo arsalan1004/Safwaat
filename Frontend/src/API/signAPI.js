@@ -68,7 +68,7 @@ const handleSubmit = (e,sign,dispatch)=>{
       else{
         notifyerror("Account Creation Failed");
       }
-    }).catch((error)=>notifyerror(error.response.data.message));
+    }).catch((error)=>notifyerror("Account Creation Failed"));
     console.log("data sent",userData);
   }else{
     notifyerror("Password Doesnot Match!");

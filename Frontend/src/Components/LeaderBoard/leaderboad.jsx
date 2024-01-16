@@ -14,17 +14,19 @@ import ButtonLog from './buttonlog';
 import LeaderboardTable from './leaderboardTable';
 import axios from 'axios';
 import { fetchStreakData,fetchXpData } from '../../API/LeaderBoardAPI';
+import { useSelector } from 'react-redux';
 
 function Leader() {
   const [xpData, setXpData] = useState([]);
   const [streakData, setStreakData] = useState([]);
   const [selectedLeaderboard, setSelectedLeaderboard] = useState('xp'); 
   const [userLeagues, setUserLeagues] = useState(['Bronze',"Welcome to the Leaderboard!"]);
-  const [userId,setuserId] = useState({Id:"65a297b2b32acbfdbde8a217"});
-
+  //const [userId,setuserId] = useState({Id:"65a297b2b32acbfdbde8a217"});
+  const {id: userId} = useSelector(state => state.login)
+  //const userId = "65a297b2b32acbfdbde8a217";
   useEffect(() => {
       if (selectedLeaderboard === 'xp') {
-      fetchXpData(userId.Id,setXpData,setUserLeagues);
+      fetchXpData(userId,setXpData,setUserLeagues);
     } else {
       fetchStreakData(setStreakData);
     }
@@ -88,9 +90,9 @@ function Leader() {
               </div>
               <div className="w-[100%] h-[80%]">
                 {selectedLeaderboard === 'xp' ? (
-                  <LeaderboardTable userId={userId.Id} userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP Points"}} />
+                  <LeaderboardTable userId={userId} userLeagues={userLeagues} board='xp' data={xpData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"XP Points"}} />
                 ) : (
-                  <LeaderboardTable userId={userId.Id} board='streak' data={streakData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
+                  <LeaderboardTable userId={userId} board='streak' data={streakData} label={{firstCol:"Ranking",secCol:"Name",thirdCol:"Streak"}}/>
                 )}
               </div>
             </div>

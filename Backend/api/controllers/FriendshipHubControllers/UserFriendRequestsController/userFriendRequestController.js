@@ -328,7 +328,6 @@ const patchRejectFriendRequest = async(req, res) => {
     }
 };
 
-
 const postSearchFriend = async(req, res) => {
     let {text, userId} = req.body;
     try{

@@ -184,7 +184,7 @@ const PrivateChat = ({currentUser}) => {
   const [currentChat, setCurrentChat] = useState([]);
   const [messages, setMessages] = useState([]);
   const [showInitial, setShowInitial] = useState(true);
-
+  const [onlineUsers, setOnlineUsers]  = useState([]);
   // const [currentChat, setCurrentChat] = useState({
   //   conversationId : "conv1",
   //   profileUrl: "firbase",
@@ -366,12 +366,22 @@ const PrivateChat = ({currentUser}) => {
         // get users from socket backend
         socket?.on("getUser", (users) => {
           console.log(users);
+          setOnlineUsers(users || []);
+          console.log("ONLINE USERS UPDATED");
         });
       }
     } catch (error) {
       console.log(`error in sending userId useffect in socket ${error}`);
     }
   }, [user]);
+
+  useEffect(() => {
+    console.log("ONLINE USERS UPDATED IN USE_EFFECT");
+    console.log(onlineUsers);
+  }, [onlineUsers])
+
+
+
 
   // GET THE MESSAGES AND SET THE MESSAGE STATE
   useEffect(() => {
@@ -555,6 +565,8 @@ const PrivateChat = ({currentUser}) => {
             user={user}
             handleMessageSubmit = {handleButtonSubmit}
             currentChat = {currentChat}
+            onlineUsers = {onlineUsers}
+          
           />)
         }
       

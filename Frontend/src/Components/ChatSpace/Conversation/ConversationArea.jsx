@@ -121,32 +121,34 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   return (
     <section className='bg-primary-100 w-[30%] font-Roboto conversation-shadow-right min-w-[220px]' >
       <div >
-        <div className='flex justify-evenly items-center w-[99.8%]' id='scroll-offset' ref={offsetRef}
-        style={{
-          outline: "#D3D3D3 solid 1px"
-        }}
+        <div className='flex justify-evenly items-center w-[99.8%] h-[57px]' 
+          id='scroll-offset' 
+          ref={offsetRef}
+          style={{
+            outline: "#D3D3D3 solid 1px"
+          }}
         >
           <ChatModeButton
             img={chatBubble}
-            dimensions = {30}
+            dimensions = {25}
             altText={'private-chat'}
             handler={() => navigate("/Chat/PrivateChat")}
           />
           <ChatModeButton
             img={group}
-            dimensions = {40}
+            dimensions = {35}
             altText={'group-chat'}
             handler={() => navigate("/Chat/GroupChat")}
           />
           <ChatModeButton
             img={newChatBubble}
-            dimensions = {40}
+            dimensions = {35}
             altText={'new-chat'}
             handler={() => {}}
           />
           <ChatModeButton
             img={searchMagnifier}
-            dimensions = {30}
+            dimensions = {25}
             altText={'search-icon'}
             handler={() => setSearchAppear((sA) => !sA)}
           />

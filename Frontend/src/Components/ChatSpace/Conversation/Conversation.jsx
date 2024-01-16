@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import userAcc from '../../../Assets/Icons/userAcc.svg'
+import boy from '../../../Assets/Images/boy.png'
 const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciever}) => {
 
   // Here will be the id of reciever(2nd member of conv) of conversation
@@ -90,25 +91,51 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
       <div className='flex px-2 gap-x-3 '>
       <div className='w-[15%]'>
           <img 
-            src={userAcc}
+              src={boy} 
+              alt='friend-profile-pic' 
+              className='z-[10] bg-[#6BB4C5] rounded-full'
+              width={45} height={45}
+            /> 
+          {/* <img 
+            src={boy}
             alt='friend-profile-image' 
             width={45} height={45} 
             className='min-w-[35px] min-h-[35px]' 
-          />
+          /> */}
       </div>
-        <div className='flex flex-col justify-between w-[70%]'>
-          <h1 className='text-[17px] font-medium'>{reciever || "No User"}</h1>
-          <p className='font-thin text-[12px] text-slate-500'> 
-            {
+        <div className='w-[70%]'>
+        {
+          lastMessage?.text &&
+          <div className='flex flex-col justify-center'>
+            <h1 className='text-[17px] font-medium'>{reciever || "No User"}</h1>
+            <p className='font-thin text-[12px] text-slate-500'> 
+              {
 
-              lastMessage?.text?.length > lastMessageMaxLen ? 
-              lastMessage?.text.slice(0, lastMessageMaxLen) + "..."  :
-              lastMessage.text
-            }
-            
-          </p>
+                lastMessage?.text?.length > lastMessageMaxLen ? 
+                lastMessage?.text.slice(0, lastMessageMaxLen) + "..."  :
+                lastMessage.text
+              }
+              
+            </p>
+          </div>
+        }
+        {
+          !lastMessage?.text &&
+       
+          <div className='flex items-center h-[100%]'>
+            <h1 className='text-[17px] font-medium'>{reciever || "No User"}</h1>
+            <p className='font-thin text-[12px] text-slate-500'> 
+              {
+
+                lastMessage?.text?.length > lastMessageMaxLen ? 
+                lastMessage?.text.slice(0, lastMessageMaxLen) + "..."  :
+                lastMessage.text
+              }
+              
+            </p>
+          </div>
+        }
         </div>
-        
           <div className='w-[10%] font-thin text-[12px] text-slate-500 leading-[20px]'>
             <time className='flex flex-col'>{timeAgo}</time>
           </div>  

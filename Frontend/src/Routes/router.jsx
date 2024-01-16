@@ -8,7 +8,8 @@ import Home,{loader as HomeLoader} from "../Components/Home/Home";
 import Login from "../Components/Login_Signup/login";
 import Signup from "../Components/Login_Signup/signup";
 import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
-import Insights from "../Components/FriendshipHub/Insights/Insights";
+import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
+import Profile from "../Components/Profile/Profile";
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path:"signup",
                 element: <Signup />,
                 
+            },
+            {
+                path:'profile',
+                element: <Profile />
             },
             {
                 path: 'FlashCraft',
@@ -63,7 +68,8 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'Insights',
-                        element: <Insights />
+                        element: <Insights />,
+                        loader: InsightsLoader
                     }
                 ]
                 

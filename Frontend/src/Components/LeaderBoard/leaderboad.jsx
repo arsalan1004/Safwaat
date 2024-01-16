@@ -34,13 +34,13 @@ function Leader() {
     switch (league) {
       case 'Gold':
         return gold;
-      case 'Novice':
+      case 'Bronze':
         return bronze;
       case 'Silver':
         return silver;
-      case 'Explorer':
+      case 'Diamonds':
         return purple;
-      case 'Bronze':
+      case 'Master':
         return red;
       default:
         return bronze;
@@ -69,7 +69,7 @@ function Leader() {
             <div className="boardLead shadow-lg backdrop-filter backdrop-blur-md rounded-xl h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-5vh">
               <div className="menu w-[100%] h-[17%] px-6 pb-6 flex justify-around">
                 <ButtonLog
-                  className={`w-[45%] chButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
+                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
                     selectedLeaderboard === 'xp' ? ' text-white' : ''
                   }`} auto={true}
                   onClick={() => setSelectedLeaderboard('xp')}
@@ -77,7 +77,7 @@ function Leader() {
                   <img src={OpenBook} alt="" className="inline p-1" /> XP Leaderboard
                 </ButtonLog>
                 <ButtonLog
-                  className={`w-[45%] chButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
+                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
                     selectedLeaderboard === 'streak' ? 'bg-[#0A3F67] text-white' : ''
                   }`} auto={false}
                   onClick={() => setSelectedLeaderboard('streak')} 

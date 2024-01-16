@@ -34,9 +34,9 @@ const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
         <table className="w-full">
           <thead> 
             <tr className="tablemenu bg-[#0A3F67] w-[20%] rounded-full">
-              <th className="w-1/6 text-[17px] p-2  text-white ">{label.firstCol}</th>
-              <th className="w-4/6 text-[17px] px-8 py-2 text-start  text-white">{label.secCol}</th>
-              <th className="w-1/6 text-[16px] p-2  text-white "><span className='text-white flex gap-4'><img src={board!="streak"? BookWhite:fireWhite}  alt="" />{label.thirdCol}</span></th>
+              <th className="w-1/6 text-[20px] p-2 font-normal  text-white ">{label.firstCol}</th>
+              <th className="w-4/6 text-[20px] px-8 py-2 font-normal text-start  text-white">{label.secCol}</th>
+              <th className="w-1/6 text-[20px] p-2 font-normal text-white "><span className='text-white flex gap-4'><img src={board!="streak"? BookWhite:fireWhite}  alt="" />{label.thirdCol}</span></th>
             </tr>
           </thead>
           <tbody>

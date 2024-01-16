@@ -9,6 +9,8 @@ import dndSlideReducer from './dndSlideSlice'
 import matchingSlideReducer from './matchingSlideSlice';
 import informationSlideReducer from './informationSlideSlice';
 import teachAudioSlideReducer from "./teachAudioSlideSlice";
+import loginReducer from "./loginSlice.jsx";
+import signReducer from "./signSlice.jsx";
 import { configureStore } from "@reduxjs/toolkit";
 
 
@@ -24,7 +26,9 @@ const store = configureStore({
     dndSlideSlice: dndSlideReducer,
     matchingSlideSlice: matchingSlideReducer,
     informationSlideSlice: informationSlideReducer,
-    teachAudioSlideSlice: teachAudioSlideReducer
+    teachAudioSlideSlice: teachAudioSlideReducer,
+    login: loginReducer,
+    sign: signReducer
   }
 });
 

@@ -27,6 +27,7 @@ async function connectHandler (id) {
 
     console.log('response of ConnectHandler: ', responseData);
     alert('Friend Request Sent');
+    props.searchHandler();
 }
 
 

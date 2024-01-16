@@ -128,7 +128,7 @@ const searchDetail = [
                     { searchResults.length != 0 ?
                        ( searchResults.map(
                             (val, i) => (
-                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} />
+                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} searchHandler={() => getSearchResultsHandler(searchValue.toLowerCase())} />
                             )
                         )
 

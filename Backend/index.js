@@ -26,6 +26,8 @@ require("dotenv").config();
 const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
 const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
 const AnalyticsRoute = require('./api/routes/UserAnalyticsRoute/userAnalyticsRoute');
+const UserStatsRoute = require('./api/routes/UserStatsRoute/userStats');
+
 // IMPORTING .ENV VARIABLE
 const port = process.env.PORT || 8000;
 const jwtsecret = process.env.JWT_SECRET;
@@ -77,6 +79,8 @@ app.use("/api/completeUnit", completeUnitRoute);
 app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 app.use("/api/fh", FriendshipHubFriendsRouter);
 app.use("/api/analytics", AnalyticsRoute);
+app.use("/userStats", UserStatsRoute);
+
 // CREATING SERVER
 const server = http.createServer(app);
 

@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 
-try {
-  mongoose.connect(process.env.DATABASE).then(() => {
-    console.log("Database connected");
+mongoose
+  .connect(process.env.DATABASE)
+  .then(() => console.log("Database connected..."))
+  .catch((err) => {
+    console.log(`Error occured at database connection:${err}`);
   });
-} catch (error) {
-  console.log(`Error encountered at mongodb connection: ${error}`);
-}

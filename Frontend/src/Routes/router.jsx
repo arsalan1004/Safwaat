@@ -8,6 +8,8 @@ import FlashCardSet, {loader as cardsLoader} from "../Components/FlashCraft/Flas
 import Home,{loader as HomeLoader} from "../Components/Home/Home";
 import Login from "../Components/Login_Signup/login";
 import Signup from "../Components/Login_Signup/signup";
+import LearningUnit from "../Components/learningUnit/LearningUnit";
+import Result from "../Components/learningUnit/result/Result";
 
 const router = createBrowserRouter([
     {
@@ -49,9 +51,22 @@ const router = createBrowserRouter([
                         loader: cardsLoader
                     }
                 ]
+            },
+            {
+                path: 'learningUnit/:id',
+                children: [
+                  {
+                    path: 'slides/:slideId',
+                    element: <LearningUnit />
+                  },
+                  {
+                    path: 'result',
+                    element: <Result />
+                  }
+                ]
             }
         ]
-    }
+     }
 ]);
 
 

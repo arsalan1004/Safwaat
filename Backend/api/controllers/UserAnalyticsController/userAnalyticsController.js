@@ -1,7 +1,5 @@
 const Analytics = require('./../../models/userAnalyticsModel/userAnalyticsModel');
-const Analytics = require('./../../models/userAnalyticsModel/userAnalyticsModel');
-const Analytics = require('./../../models/userAnalyticsModel/userAnalyticsModel');
-const Analytics = require('./../../models/userAnalyticsModel/userAnalyticsModel');
+
 const {userModel} = require('./../../models/UserModel/userModel');
 
 const getUserAnalytics = async(req, res) => {
@@ -144,7 +142,7 @@ const schedularDailyTaskForAnalytics = async() => {
                 await Analytics[i].save();
             };
             resolve();
-            
+
         } catch{
             reject();
         }

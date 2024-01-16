@@ -1,3 +1,4 @@
+
 const http = require("http");
 const express = require("express");
 const session = require("express-session");
@@ -32,6 +33,8 @@ const {
 
 
 // CONNECTING TO DATABASE
+const streakLeaderboardRoute = require('./api/routes/streakLeaderboardRoute/streakLeaderboard');
+const xpLeaderboardRoute = require('./api/routes/xpLeaderboardRoute/xpLeaderboardRoute');
 require("dotenv").config();
 const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
 const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
@@ -99,6 +102,8 @@ app.use("/api/fh", FriendshipHubFriendsRouter);
 app.use("/api/conversation", router);
 app.use("/api/messages", messageRouter);
 app.use("/api/users", getUserRouter);
+app.use("/xpleaderboard", xpLeaderboardRoute);
+app.use("/streakLeaderboard", streakLeaderboardRoute);
 
 // CREATING SERVER
 const server = http.createServer(app);

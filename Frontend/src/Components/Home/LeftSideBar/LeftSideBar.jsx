@@ -39,7 +39,7 @@ function LeftSideBar() {
             <Link to='/FriendshipHub'>
              <NavOption imgSrc={taqraarIcon} altText='FriendshipHub Option' optionText='FRIENDSHIP HUB' />
             </Link>
-            <Link>
+            <Link to='/Leaderboard'>
              <NavOption imgSrc={leaderboardIcon} altText='Leaderboard Option' optionText='LEADERBOARD' />
             </Link>
             <Link>

@@ -1,11 +1,10 @@
-const User = require('./../../../models/UserModel/userModel');
+const {userModel} = require('./../../../models/UserModel/userModel');
 const UserDailyChallenges = require('./../../../models/UserChallengesModels/UserDailyChallengesModel/userDailyChallengesModel');
 const sysDailyChallenges = require('./../../../models/SystemChallengesModels/SystemDailyChallengesModel/systemDailyChallengesModel');
 
 
 
-// const trackChallenge = async(userId, add, context){}
-
+// const trackChallenge = async(userId, add, context){
 // const trackChallenge = async(userId) => {};
 
 const putGetUserDailyChallengesData = async(req, res) => {
@@ -61,7 +60,7 @@ const patchClaimReward = async(req, res) => {
                         challenge.isClaimed = true;
                         await userDailyChallenges.save();
     
-                        let user = await User.findById(userId);
+                        let user = await userModel.findById(userId);
                         if(sysDailyChallenge.xpReward){
                             user.totalXp = user.totalXp + sysDailyChallenge.xpReward;
                         } else{ //Gem Reward

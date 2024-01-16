@@ -1,4 +1,4 @@
-const User = require('./../../../models/UserModel/userModel');
+const {userModel} = require('./../../../models/UserModel/userModel');
 const SysAchievementChallenges = require('./../../../models/SystemChallengesModels/SystemAchievementChallengesModel/systemAchievementChallengesModel');
 const UserAchievementChallenges = require('./../../../models/UserChallengesModels/UserAchievementChallengesModel/userAchievementChallengesModel');
 const UserAchievements = require('./../../../models/UserAchievementsModel/userAchievementsModel');
@@ -66,7 +66,7 @@ const patchClaimReward = async(req, res) => {
                         challenge.isClaimed = true;
                         await userAchievementChallenges.save();
     
-                        let user = await User.findById(userId);
+                        let user = await userModel.findById(userId);
                         user.trophy = user.trophy + sysAchievementChallenge.numberOfTrophiesReward;
                         await user.save();
 

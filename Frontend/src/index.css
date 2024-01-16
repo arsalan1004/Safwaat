@@ -16,7 +16,6 @@
   @apply flex flex-col items-center
 }
 
-
 /* Compound Tailwind Classes here */
 @layer components { 
   .mcq-shadow-outer {
@@ -40,5 +39,11 @@
   }
   .button_drop_shadow {
     @apply shadow-[5px_4px_8px_rgba(2,20,33,0.25)] ;
+  }
+  .chatheader-shadow-bottom {
+    @apply shadow-[0px_6px_6px_rgb(217,217,217)] z-[2]
+  }
+  .conversation-shadow-right {
+    @apply shadow-[6px_0px_8px_rgb(51,140,133)] z-[1]
   }
 }

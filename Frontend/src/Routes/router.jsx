@@ -14,6 +14,8 @@ import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Ins
 import Profile from "../Components/Profile/Profile";
 
 
+import Temp from "../Components/ChatSpace/temp";
+import PrivateChat from "../Components/ChatSpace/PrivateChat";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -88,6 +90,16 @@ const router = createBrowserRouter([
                     }
                 ]
                 
+            },
+            {
+              path: 'Chat',
+              children: [
+                {
+                  path: 'PrivateChat',
+                  //element: <PrivateChat />
+                  element: <Temp />
+                }
+              ]
             }
         ]
      }

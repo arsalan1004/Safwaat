@@ -21,7 +21,7 @@ function Insights() {
   return (
     <div className='flex bg-primary-100 w-screen overflow-x-hidden overflow-y-hidden'>
       <LeftSideBar />
-      <InsightsMain />
+      <InsightsMain data={data} />
     </div>
   )
 }
@@ -31,7 +31,7 @@ export default Insights
 
 export async function loader () {
 
-  const userId = '65a2b4ef46552610c0d4bbbf' 
+  const userId = '65a297b2b32acbfdbde8a217' 
   const response = fetch(
     'http://localhost:8000/api/friendshiphub/viewInsights',
     

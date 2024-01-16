@@ -4,7 +4,7 @@ import FriendBox from './FriendBox';
 import ProfileHeader from '../../../Profile/ProfileHeader/ProfileHeader';
 
 
-function InsightsMain(props) {
+function InsightsMain({data}) {
 
 
 
@@ -13,25 +13,7 @@ function InsightsMain(props) {
 
   const tabsText = ['Safwaat Friends', 'Pending Requests', 'Sent Requests'];
 
-  const friends = [
-    {
-        name: 'Muhammad Amir',
-        userName: '@muhammadAmir',
-    },
-    {
-        name: 'Fahad Umer',
-        userName: '@fahad_umer',
-    },
-    {
-        name: 'Malik Shaz',
-        userName: '@shaz.123',
-    },
-    {
-        name: 'Khalid Zain',
-        userName: '@khalidX',
-    }
-
-]
+  const friends = data.friendList;
 
 
 const moveNext = (no) => {
@@ -75,7 +57,7 @@ const moveNext = (no) => {
     <div className='h-screen w-3/4 pt-5  text-secondary overflow-y-auto '>
       
       {/* User Profile */}
-      <ProfileHeader />
+      <ProfileHeader data={data.userData} />
 
   
     {/* Tabs Section */}
@@ -105,8 +87,10 @@ const moveNext = (no) => {
             (val,i) => (
               <FriendBox
                 key={i} 
-                name={val.name}
-                userName={val.userName}  
+                name={val.fullName}
+                userName={val.username}  
+                level={val.level}
+                xp={val.xp}
                 secNo = {sectionNo}
               />
             )

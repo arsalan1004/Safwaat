@@ -76,11 +76,11 @@ function FriendBox(props) {
             <div className='w-full'>
                 <p className='flex justify-between mb-1'>
                 <span className='font-medium'>LEVEL:</span>
-                <span>4</span>
+                <span>{props.level}</span>
                 </p>
                 <p className='flex justify-between'>
                 <span className='font-medium'>XP:</span>
-                <span>1300</span>
+                <span>{props.xp}</span>
                 </p>
             </div>
         </div>

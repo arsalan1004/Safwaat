@@ -54,7 +54,7 @@ function Leader() {
           <div className="leaderboardWrapper">
             <div className="label">
               <div className="content">
-                {selectedLeaderboard=='xp'? <img src={userLeagues[0]? LeagueDecider(userLeagues[0]):leaderboard} alt="" className="w-[60%] h-[40%]" /> : <img src={streak} alt="" className="w-[68%] h-[40%]" /> }
+                {selectedLeaderboard=='xp'? <img src={userLeagues[0]? LeagueDecider(userLeagues[0]):leaderboard} alt="" className="w-[50%] h-[30%]" /> : <img src={streak} alt="" className="w-[50%] h-[30%]" /> }
                 {selectedLeaderboard=='xp'? <p className="text-white text-[32px] text-center  mt-4">
                 {userLeagues[0]} League 
                 </p> : <p className="text-white text-[32px] text-center  mt-4">
@@ -67,23 +67,23 @@ function Leader() {
                 </p> }
               </div>
             </div>
-            <div className="boardLead shadow-lg backdrop-filter backdrop-blur-md rounded-xl h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-5vh">
+            <div className="boardLead shadow-lg backdrop-filter backdrop-blur rounded-xl h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-14">
               <div className="menu w-[100%] h-[17%] px-3 pb-6 flex justify-between">
                 <ButtonLog
-                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
-                    selectedLeaderboard === 'xp' ? ' text-white' : ''
+                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-primary-100 focus:text-[#0A3F67] OutlineLead ${
+                    selectedLeaderboard === 'xp' ? ' text-primary-100' : ''
                   }`} auto={true}
                   onClick={() => setSelectedLeaderboard('xp')}
                 >
-                  <img src={OpenBook} alt="" className="inline p-1" /> XP Leaderboard
+                  <img src={OpenBook} alt="" className="inline p-1 mr-2 h-[50px] w-[50px]" /> XP Leaderboard
                 </ButtonLog>
                 <ButtonLog
-                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
-                    selectedLeaderboard === 'streak' ? 'bg-[#0A3F67] text-white' : ''
+                  className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-primary-100 focus:text-[#0A3F67] OutlineLead ${
+                    selectedLeaderboard === 'streak' ? 'bg-[#0A3F67] text-primary-100' : ''
                   }`} auto={false}
                   onClick={() => setSelectedLeaderboard('streak')} 
                 >
-                  <img src={fire} alt="" className="inline p-1" /> Streak Leaderboard
+                  <img src={fire} alt="" className="inline p-1 mr-2 h-[50px] w-[50px]" /> Streak Leaderboard
                 </ButtonLog>
               </div>
               <div className="w-[100%] h-[80%]">

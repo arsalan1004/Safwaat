@@ -22,8 +22,8 @@ const LeaderboardTable = ({data,label,board,userLeagues,userId}) => {
 
   function userhighlight(id){
     if(id==userId){
-      return ''
-      // 'bg-blue-300 text-white rounded-3xl'
+      return 'border-t-[3px] border-b-[3px] border-cyan-600 rounded-3xl';
+  
     }
     console.log(id);
     return null

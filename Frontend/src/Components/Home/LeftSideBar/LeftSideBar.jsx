@@ -37,7 +37,7 @@ function LeftSideBar() {
              <NavOption imgSrc={flashCraftIcon} altText='FlashCraft Option' optionText='FLASHCRAFT' />
             </Link>
             <Link to='/FriendshipHub'>
-             <NavOption imgSrc={taqraarIcon} altText='FriendshipHub Option' optionText='FRIENDSHIP HUB' />
+             <NavOption imgSrc={lobbyIcon} altText='FriendshipHub Option' optionText='FRIENDSHIP HUB' />
             </Link>
             <Link to='/Leaderboard'>
              <NavOption imgSrc={leaderboardIcon} altText='Leaderboard Option' optionText='LEADERBOARD' />
@@ -45,10 +45,10 @@ function LeftSideBar() {
             <Link>
              <NavOption imgSrc={questArenaIcon} altText='QuestArena Option' optionText='QUEST ARENA' />
             </Link>
-            <Link>
+            {/* <Link>
               <NavOption imgSrc={lobbyIcon} altText='Lobby Option' optionText='LOBBY' />
-            </Link>
-            <Link>
+            </Link> */}
+            <Link to = "/chat/privateChat">
               <NavOption imgSrc={chatSpaceIcon} altText='chatSpace Option' optionText='CHAT SPACE' />
             </Link>
             <Link>

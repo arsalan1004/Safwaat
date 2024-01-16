@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import {toast } from 'react-toastify';
 import { jwtDecode } from "jwt-decode";
-import { setId } from '../Store/loginSlice';
+import { authenticate, setId } from '../Store/loginSlice';
 
 const notifysucc = (msg) => {
     toast.success(`Successful login as ${msg}`, {
@@ -15,7 +15,7 @@ const notifysucc = (msg) => {
     });
   };
 
-const handleSubmit = (e,u,p,dispatch) =>{
+const handleSubmit = (e,u,p,dispatch, navigate) =>{
     e.preventDefault();
     const userData = {
       username: u,
@@ -25,8 +25,11 @@ const handleSubmit = (e,u,p,dispatch) =>{
     axios.post("http://localhost:8000/api/login", userData,{ withCredentials: true }).then((response) => {
       console.log(response);
       if(response.status==200){
+        console.log("dispatched REDUX_STORE")
         notifysucc(response.data.username);
+        dispatch(authenticate())
         dispatch(setId(response.data.id));
+        navigate('/');
       }else{
         notifyerror("Invalid Credentials");
       }

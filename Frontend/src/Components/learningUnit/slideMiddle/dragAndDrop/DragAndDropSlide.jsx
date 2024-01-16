@@ -55,6 +55,13 @@ const DragAndDropSlide = () => {
   }, [options])
 
 
+  useEffect(() =>{
+    // return () => {
+    //   dispatch(dndSlideActions.resetDnd())
+    // }
+  }, [])
+
+
   const handleBox2List = (item, target, isFull) => {
     console.log(`selectedSource: ${selectedSource}`)
     if(isFull == true) return;

@@ -117,7 +117,7 @@ const LoginDialog = () => {
 
         </div>
         <div className="button-section mx-[5vw] my-[3vw] flex flex-col items-center">
-          <ButtonLog className='fillButton' onClick={(e)=>handleSubmit(e,username,password,dispatch)}>Login</ButtonLog>
+          <ButtonLog className='fillButton' onClick={(e)=>handleSubmit(e,username,password,dispatch,navigate)}>Login</ButtonLog>
           <div className='flex'>
             <hr className='w-[4vw] m-5 inline' />
             <span className='my-2'>OR</span>

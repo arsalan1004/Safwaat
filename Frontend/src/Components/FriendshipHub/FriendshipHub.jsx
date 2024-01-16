@@ -21,7 +21,7 @@ function FriendshipHub() {
   }
 
   return (
-    <div className='flex bg-primary-100 h-screen w-screen'>
+    <div className='flex bg-primary-100 h-screen w-screen overflow-hidden'>
       {showModal && <Modal show={showModal} modalClosed={modalClosed} >Friend Request Sent Successfully</Modal>}
       <LeftSideBar />
       <FriendshipMain data={data} showModalHandler={modalShow} />

@@ -143,7 +143,7 @@ async function getResultsHandler (no) {
         {
           friends.length != 0 ?
           (
-            <div className='rounded-xl w-[80%] bg-primary-200 p-1'>
+            <div className='rounded-xl w-[96%] s4:w-[80%] bg-primary-200 p-1'>
             {/* FriendBox */}
             {
               friends.map(

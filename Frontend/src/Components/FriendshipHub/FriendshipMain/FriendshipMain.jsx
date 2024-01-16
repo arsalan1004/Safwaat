@@ -51,7 +51,7 @@ async function getSearchResultsHandler (val) {
   
     return (
     
-    <div className='h-screen w-3/4 pt-8 ml-10 '>
+    <div className='h-screen w-3/4 pt-8 px-5 pb-6 s4:px-10 overflow-y-auto'>
         
         {/* First Section */}
         <div>
@@ -105,7 +105,7 @@ async function getSearchResultsHandler (val) {
             (
             <div className='w-3/5 border-r-[2px] border-slate-300 pr-4'>
                 <h1 className='font-bold text-secondary text-xl mb-4'>Search Results</h1>
-                <div className='w-full grid grid-cols-2 gap-2'>
+                <div className='w-full grid grid-col-1 s3:grid-cols-2 gap-2'>
                     { searchResults.length != 0 ?
                        ( searchResults.map(
                             (val, i) => (
@@ -138,7 +138,7 @@ async function getSearchResultsHandler (val) {
             {/* Summary Section */}
             <div className='w-2/5 text-secondary flex justify-center' >
                 {/* Main Div */}
-                <div className='w-11/12 h-min-[90%] border-[2px] border-cyan-500 rounded-xl'>
+                <div className='w-11/12 h-fit border-[2px] border-cyan-500 rounded-xl'>
                     <h1 className='font-bold text-lg text-center mt-4 mb-5 '>Your Friendship Hub Insights</h1>
                     <p className='text-slate-500 text-sm mx-4 text-center mb-5 font-Inter'>Building Brilliance Together: Inspiring connections, invitations sent, 
                         and friendships in the making. Your knowledge network is thriving!</p>

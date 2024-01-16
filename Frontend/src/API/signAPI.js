@@ -71,7 +71,7 @@ const handleSubmit = (e,sign,dispatch)=>{
     }).catch((error)=>notifyerror("Account Creation Failed"));
     console.log("data sent",userData);
   }else{
-    notifyerror("Password Doesnot Match!");
+    notifyerror("Re-Enter Password/Confirm Password!");
   }
   
 };

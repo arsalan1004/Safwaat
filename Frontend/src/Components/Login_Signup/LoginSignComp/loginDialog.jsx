@@ -75,7 +75,7 @@ const LoginDialog = () => {
 
   return (
     <>
-      <div id='main' className="dialog max-[600px]:w-auto md:mr-[5vw] h-[85vh] lg:w-[35vw] max-[600px]:max-w-[95vw] max-w-[35vw]">
+      <div id='main' className="dialog max-[600px]:w-auto md:mr-[5vw] h-[85vh] w-[35%] ">
         <h1 className='head text-[32px] text-center my-[3vh] font-extrabold'>LOGIN</h1>
         <div className="input-section mx-[5vw]">
           <InputWL

@@ -68,7 +68,7 @@ function Leader() {
               </div>
             </div>
             <div className="boardLead shadow-lg backdrop-filter backdrop-blur-md rounded-xl h-90vh w-70vw grid-area[1/2/2/3] mt-30px mr-5vh">
-              <div className="menu w-[100%] h-[17%] px-6 pb-6 flex justify-around">
+              <div className="menu w-[100%] h-[17%] px-3 pb-6 flex justify-between">
                 <ButtonLog
                   className={`w-[45%] leadButton min-h-[91%] bg-transparent text-[#0A3F67] focus:bg-white focus:text-[#0A3F67] OutlineLead ${
                     selectedLeaderboard === 'xp' ? ' text-white' : ''

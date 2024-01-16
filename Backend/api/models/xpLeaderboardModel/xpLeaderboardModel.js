@@ -15,6 +15,6 @@ const xpLeaderboardSchema = new Schema({
     collection: "XPLeaderboard"
 });
 
-const XPLeaderboard = mongoose.model('XPLeaderboards', xpLeaderboardSchema);
+const XPLeaderboard = mongoose.model('XPLeaderboard', xpLeaderboardSchema);
 
 module.exports = XPLeaderboard;

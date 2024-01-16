@@ -4,7 +4,7 @@ import FriendBox from './FriendBox';
 import ProfileHeader from '../../../Profile/ProfileHeader/ProfileHeader';
 
 
-function InsightsMain() {
+function InsightsMain(props) {
 
 
 

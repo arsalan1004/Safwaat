@@ -112,7 +112,7 @@ const Statschart = () => {
         <div className="mr-4">
           <img src={flashcard} className='max-w-[40px] h-[40px]'/>
         </div>
-        <div className="text-primary-100">
+        <div className="text-white">
           <p className="text-xl"><b>{totalFlashCards}</b></p>
           <p className="text-lg font-bold font-Itim text-[#0A3F67]">Total FlashCraft Sets</p>
         </div>

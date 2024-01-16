@@ -30,7 +30,7 @@ const handleSubmit = (e,u,p,dispatch) =>{
       }else{
         notifyerror("Invalid Credentials");
       }
-    }).catch((error)=>console.log(error));
+    }).catch((error)=>notifyerror("Invalid Credentials"));
     console.log("data sent",userData);
   };
 

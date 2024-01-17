@@ -7,7 +7,8 @@ export default {
       Itim: ["Itim"],
       Poppins: ["Poppins"],
       Inter: ["Inter"],
-      Roboto: ["Roboto"]
+      Roboto: ["Roboto"],
+      Abhaya: ['Abhaya Libre']
     },
     extend: {
       boxShadow: {

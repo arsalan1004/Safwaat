@@ -18,6 +18,8 @@ import ErrorPage from "../UI/ErrorPage/ErrorPage";
 import Temp from "../Components/ChatSpace/temp";
 import PrivateChat from "../Components/ChatSpace/PrivateChat";
 import Challenges from "../Components/Challenges/challenges";
+import StreakCalendar from "../Components/StreakCalendar/StreakCalendar";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -111,6 +113,10 @@ const router = createBrowserRouter([
             {
                 path:'Leaderboard',
                 element: <Leader />
+            },
+            {
+              path: 'streakCalendar',
+              element: <StreakCalendar />,
             }
         ]
      }

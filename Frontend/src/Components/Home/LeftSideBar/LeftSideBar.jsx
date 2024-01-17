@@ -67,12 +67,12 @@ function LeftSideBar() {
             isSelected={selectedLink === '/Leaderboard'}
           />
         </Link>
-        <Link to="/QuestArena" onClick={() => handleLinkClick('/QuestArena')}>
+        <Link to="/Challenges" onClick={() => handleLinkClick('/Challenges')}>
           <NavOption
             imgSrc={questArenaIcon}
             altText="QuestArena Option"
             optionText="QUEST ARENA"
-            isSelected={selectedLink === '/QuestArena'}
+            isSelected={selectedLink === '/Challenges'}
           />
         </Link>
        

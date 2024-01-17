@@ -12,16 +12,22 @@ import levelUp from '../../../Assets/Icons/levelUp.png'
 
 import StreakIconHome from '../../../Assets/Icons/StreakIconHome.png';
 import goldLeague from '../../../Assets/Icons/goldLeague.png';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../Store/loginSlice.jsx';
 
 function RightSidebar({data}) {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
   function navigateHandler() {
     console.log('handler');
+    dispatch(logout())
     navigate('/login');
   }
 
+  console.log("Progress Percentage");
+  console.log(data.percentageCompletedForCurrentLevel);
   return (
     <div className=' border-r-2 border-l-slate-300 bg-primary-100 hidden z-20
         s3:block s3:w-[10%] s4:w-[30%] s5:w-[30%]

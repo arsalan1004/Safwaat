@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import boy from '../../../../Assets/Images/boy.png';
+import { useSelector } from 'react-redux';
 
 function ProfileHeader() {
 
-  const userId = '65a297b2b32acbfdbde8a217';
+  //const userId = '65a297b2b32acbfdbde8a217';
+  const {id: userId} = useSelector(state => state.login)
   const [profileHeaderData, setProfileHeaderData] = useState();
 
  

@@ -6,7 +6,7 @@ function LoginButton(props) {
     <div className='w-full'>
       <button className="c-button c-button--gooey rounded-xl"
       onClick={props.clickHandler}
-      > LOGIN
+      > LOGOUT
         <div className="c-button__blobs">
           <div></div>
           <div></div>

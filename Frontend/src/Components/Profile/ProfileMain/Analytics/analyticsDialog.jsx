@@ -8,6 +8,7 @@ import BarChart from './lineChart';
 import './color.css'
 import { getAnalytics } from '../../../../API/analyticsAPI';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const AnalyticsDialog = () => {
     
@@ -16,11 +17,13 @@ const AnalyticsDialog = () => {
     const [weeklyLessonAnalytics,setweeklyLessonAnalytics]=useState([]);
     const [weeklyFlashcardRevisitAnalytics,setweeklyFlashcardRevisitAnalytics]=useState([]);
     const [current, setCurrent] = useState(-1);
+    const {id: userId} = useSelector(state => state.login)
 
 
     
     useEffect(() => {
-      let userId = '659815525ce38b434230fbe0';
+      // let userId = '659815525ce38b434230fbe0';
+
       getAnalytics(userId,setmonthlyChallengeAnalytics,setmonthlyRewardAnalytics,setweeklyLessonAnalytics,setweeklyFlashcardRevisitAnalytics);
     }, []);
     

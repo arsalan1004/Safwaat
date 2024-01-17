@@ -10,9 +10,10 @@ import silver from '../../../../Assets/silver.png'
 import master from '../../../../Assets/red.png'
 import diamond from '../../../../Assets/purple.png'
 import { getStats } from '../../../../API/getStatsAPI'
+import { useSelector } from 'react-redux'
 
 const Statschart = () => {
-
+  const {id: userId} = useSelector(state => state.login)
   const getRankImage = (rank) => {
     switch (rank) {
       case 'Bronze':
@@ -38,7 +39,8 @@ const Statschart = () => {
   const [totalFlashCards, setTotalFlashCards] = useState(7);
 
   useEffect(()=>{
-    let userId = '65a297b2b32acbfdbde8a217';
+    // let userId = '65a297b2b32acbfdbde8a217';
+
     getStats(setTotalXP,userId,setHighestStreak,setTotalGems,setCurrentLeague,setTotalTrophies,setTotalFlashCards);
   },[])
 

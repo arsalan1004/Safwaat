@@ -55,14 +55,14 @@ const Slide = (props) => {
     }
 
   const slideBgStyles = {
-    primaryStyle: 'h-screen bg-primary-100 transition-colors',
-    secondaryStyle: 'h-screen bg-[#051A22] transition-colors'
+    primaryStyle: 'h-screen bg-primary-100 transition-colors w-screen',
+    secondaryStyle: 'h-screen bg-[#051A22] transition-colors w-screen'
   }
 
 
   return (
     <div className={slideType == "model" ? slideBgStyles.secondaryStyle : slideBgStyles.primaryStyle}>
-      <div className='pt-5 flex flex-col justify-between h-[100%]'>
+      <div className='pt-5 flex flex-col justify-between h-full'>
         <ProgressBar exitModalHandler={setModalAppear}/>
   
           {isMotivation && <Motivation />}

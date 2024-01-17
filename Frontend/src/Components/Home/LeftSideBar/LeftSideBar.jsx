@@ -1,7 +1,7 @@
 // LeftSideBar.jsx
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import NavOption from '../../../UI/Navigation/NavOption';
 
@@ -18,6 +18,11 @@ import profileIcon from '../../../Assets/Icons/profile.png';
 
 function LeftSideBar() {
   const [selectedLink, setSelectedLink] = useState('/');
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelectedLink(location.pathname);
+  }, [location.pathname]);
 
   const handleLinkClick = (to) => {
     setSelectedLink(to);

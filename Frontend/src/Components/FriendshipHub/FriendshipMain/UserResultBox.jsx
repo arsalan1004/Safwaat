@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 import boy from '../../../Assets/Images/boy.png';
 import addUser from '../../../Assets/Icons/addUser.png'
+import store from '../../../Store/store';
 
 function UserResultBox(props) {
 

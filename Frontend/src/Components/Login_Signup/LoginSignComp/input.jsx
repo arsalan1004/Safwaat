@@ -7,7 +7,7 @@ const InputWL = ({label,labelClass,list,htmlFor,classes,placeholder,type,id,styl
         <label className={labelClass} htmlFor={htmlFor}>{label}</label>
         <input list={list} type={type} id={id} className={classes} placeholder={placeholder} onChange={props.onChange} required 
         />
-        {children}
+          {children}
     </div>
 
     </>

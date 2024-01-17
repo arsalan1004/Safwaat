@@ -47,12 +47,12 @@ function FriendBox(props) {
             let response;
 
             if(secNum==0 && butText=='View Profile'){
-                
-                navigate('/profile', {userId: id});
+                console.log('USER ID: ', id);
+                navigate('/profile', { state: { userId: id } });
 
             }else if(secNum==0 && butText=='Message'){
 
-                //handle later
+                navigate('/chat/privatechat')
 
             }else if(secNum==1 && butText=='Accept'){
                 

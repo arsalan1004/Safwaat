@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AnalyticsDialog from './Analytics/analyticsDialog';
 import Statschart from './statistics/statsChart';
 
-function ProfileSections() {
+function ProfileSections({frId}) {
   const tabsText = ['Statistics', 'Analytics'];
   const [currentSection, setCurrentSection] = useState(0);
 
@@ -30,7 +30,7 @@ function ProfileSections() {
         </div>
       ))}
     </div>
-    {currentSection? <AnalyticsDialog/> : <Statschart/> }
+      {currentSection? <AnalyticsDialog frId={frId} /> : <Statschart frId={frId} /> }
     </>
   );
 }

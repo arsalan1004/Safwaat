@@ -12,7 +12,7 @@ const Login = () => {
                 <LoginDialog/>
             </div>
         </div>
-    </div>
+       </div>
     </div>
   )
 }

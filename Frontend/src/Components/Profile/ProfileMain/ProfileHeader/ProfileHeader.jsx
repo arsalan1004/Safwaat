@@ -2,17 +2,25 @@ import React, {useEffect, useState} from 'react'
 import boy from '../../../../Assets/Images/boy.png';
 import { useSelector } from 'react-redux';
 
-function ProfileHeader() {
+function ProfileHeader({frId}) {
 
   //const userId = '65a297b2b32acbfdbde8a217';
-  const {id: userId} = useSelector(state => state.login)
+  
+  
+  let {id: userId} = useSelector(state => state.login)
   const [profileHeaderData, setProfileHeaderData] = useState();
 
+  console.log('in profile header: ', frId);
  
   useEffect(() => {
     async function loader() {
       try {
+        
+        if(frId){
+          userId = frId
+        }
         console.log(userId);
+
         const response = await fetch(`http://localhost:8000/api/friendshiphub/profileHeader/${userId}`);
         const responseData = await response.json();
   

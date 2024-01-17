@@ -6,12 +6,12 @@ import { useLocation } from 'react-router-dom';
 
 function Profile() {
   const location = useLocation();
-  const userId = location.state && location.state.userId;
-  console.log("FRIEND ID:" , userId);
+  const userId = location.state && location.state.userId
+  console.log("Friend ID:", userId);
   return (
     <div className='flex bg-primary-100 h-screen w-screen overflow-hidden' >
         <LeftSideBar />
-        <ProfileMain />
+        <ProfileMain frId={userId} />
     </div>
   )
 }

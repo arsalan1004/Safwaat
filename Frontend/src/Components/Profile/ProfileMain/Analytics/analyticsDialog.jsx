@@ -10,20 +10,20 @@ import { getAnalytics } from '../../../../API/analyticsAPI';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-const AnalyticsDialog = () => {
+const AnalyticsDialog = ({frId}) => {
     
     const [monthlyChallengeAnalytics,setmonthlyChallengeAnalytics]=useState([]);
     const [monthlyRewardAnalytics,setmonthlyRewardAnalytics]=useState([]);
     const [weeklyLessonAnalytics,setweeklyLessonAnalytics]=useState([]);
     const [weeklyFlashcardRevisitAnalytics,setweeklyFlashcardRevisitAnalytics]=useState([]);
     const [current, setCurrent] = useState(-1);
-    const {id: userId} = useSelector(state => state.login)
+    let {id: userId} = useSelector(state => state.login)
 
 
     
     useEffect(() => {
       // let userId = '659815525ce38b434230fbe0';
-
+      frId != null ? userId = frId : userId = userId;
       getAnalytics(userId,setmonthlyChallengeAnalytics,setmonthlyRewardAnalytics,setweeklyLessonAnalytics,setweeklyFlashcardRevisitAnalytics);
     }, []);
     

@@ -12,8 +12,8 @@ import diamond from '../../../../Assets/purple.png'
 import { getStats } from '../../../../API/getStatsAPI'
 import { useSelector } from 'react-redux'
 
-const Statschart = () => {
-  const {id: userId} = useSelector(state => state.login)
+const Statschart = ({frId}) => {
+  let {id: userId} = useSelector(state => state.login)
   const getRankImage = (rank) => {
     switch (rank) {
       case 'Bronze':
@@ -40,6 +40,7 @@ const Statschart = () => {
 
   useEffect(()=>{
     // let userId = '65a297b2b32acbfdbde8a217';
+    frId != null ? userId = frId : userId = userId;
 
     getStats(setTotalXP,userId,setHighestStreak,setTotalGems,setCurrentLeague,setTotalTrophies,setTotalFlashCards);
   },[])

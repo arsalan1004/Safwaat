@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Perk from './Perk';
 
 import LoginButton from '../../../UI/Button/LoginButton'
@@ -100,10 +100,12 @@ function RightSidebar({data}) {
         {/* Div for Streak Leaderbaord */}
         <div className='s4:flex flex-col hidden text-secondary mt-8 border-2 border-slate-400 rounded-lg py-4 px-4'>
 
+        <Link to='/Leaderboard' >
             <div className='mb-5 flex'>
                 <h1 className='font-bold  tracking-widest font-Poppins w-4/6'>Streak LeaderBoard</h1>
-                <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 cursor-pointer text-right'>View Board</span>
+                    <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 cursor-pointer text-right'>View Board</span>
             </div>
+        </Link>
 
             <div className='flex justify-center items-end'>
                 <img src={StreakIconHome} alt='Streak Icon' className='mr-4' />
@@ -111,7 +113,7 @@ function RightSidebar({data}) {
             </div>
 
             <div className='mt-4'>
-            <p className='text-center text-sm font-Poppins text-slate-500'>Embark on a journey to become the reigning streak champion worldwide. <span className='font-medium italic'>Your streak, your legacy!</span></p>
+              <p className='text-center text-sm font-Poppins text-slate-500'>Embark on a journey to become the reigning streak champion worldwide. <span className='font-medium italic'>Your streak, your legacy!</span></p>
             </div>
 
         </div>
@@ -119,10 +121,12 @@ function RightSidebar({data}) {
         {/* div for Xp leaderboard */}
         <div className='s4:flex flex-col hidden text-secondary mt-5 border-2 border-slate-400 rounded-lg pt-4 pb-2 min-[1220px]:pb-4  px-4'>
 
+        <Link to='/Leaderboard' >
             <div className='mb-5 flex justify-start'>
                 <h1 className='font-bold tracking-widest font-Poppins w-4/6 '>{data.currentLeague} League</h1>
                 <span className='font-Inter font-bold text-[#24B6FB] block w-2/6 cursor-pointer text-right'>View League</span>
             </div>
+        </Link>
 
             <div className='flex justify-center items-end'>
                 <img src={goldLeague} alt='Streak Icon' className='h-[32px] mr-4 ' />

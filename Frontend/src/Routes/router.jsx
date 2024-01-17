@@ -17,6 +17,7 @@ import Leader from "../Components/LeaderBoard/leaderboad";
 
 import Temp from "../Components/ChatSpace/temp";
 import PrivateChat from "../Components/ChatSpace/PrivateChat";
+import Challenges from "../Components/Challenges/challenges";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
                     }
                 ]
                 
+            },
+            {
+                path: 'Challenges',
+                element: <Challenges />
             },
             {
               path: 'Chat',

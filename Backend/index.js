@@ -35,6 +35,10 @@ const {
 // CONNECTING TO DATABASE
 const streakLeaderboardRoute = require('./api/routes/streakLeaderboardRoute/streakLeaderboard');
 const xpLeaderboardRoute = require('./api/routes/xpLeaderboardRoute/xpLeaderboardRoute');
+
+const userDailyChallengeRoute = require('./api/routes/userChallengesroutes/userDailyChallengesRoute/userDailyChallengeRoute');
+const userAchievementChallengeRoute = require('./api/routes/userChallengesroutes/userAchievementChallengesRoute/userAchievementChallenges');
+
 require("dotenv").config();
 const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
 const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
@@ -108,6 +112,8 @@ app.use("/api/messages", messageRouter);
 app.use("/api/users", getUserRouter);
 app.use("/xpleaderboard", xpLeaderboardRoute);
 app.use("/streakLeaderboard", streakLeaderboardRoute);
+app.use("/userDailyChallenge", userDailyChallengeRoute);
+app.use("/userAchievementChallenge", userAchievementChallengeRoute);
 // CREATING SERVER
 const server = http.createServer(app);
 

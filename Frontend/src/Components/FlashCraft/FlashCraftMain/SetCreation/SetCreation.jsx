@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import FilledSec from "../../../../UI/Button/FilledSec";
 import CardDetail from "./CardDetail";
 
+import store from "../../../../Store/store";
+
 const SetCreation = () => {
+ 
   const navigate = useNavigate();
 
   function navigateHandler() {
@@ -50,7 +53,10 @@ const SetCreation = () => {
   }, [cardDetails]);
 
   async function addSetHandler() {
-    const userId = "655ba0b013679c0e8c33e9cd";
+    // const userId = "655ba0b013679c0e8c33e9cd";
+    const { login } = store.getState();
+    const userId = login.id;
+    // console.log(userId);
     const response = await fetch(
       "http://localhost:8000/api/FlashCraft/SetCreation",
       {

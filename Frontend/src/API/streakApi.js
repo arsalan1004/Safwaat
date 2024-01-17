@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const getStreakRange = async (month, year) => {
+const getStreakRange = async (month, year, id) => {
   console.log("STREAK API CALLED")
   const API_URL = 'http://localhost:8000/streak/calendarData';
+  console.log(`userId in StreakCalendar: ${id}`);
   if(month == undefined) {
     console.log("month Undefined: RETURNED")
     return;
@@ -13,7 +14,7 @@ const getStreakRange = async (month, year) => {
   
   try {
     let response = await axios.post(API_URL, {
-      id: "659815525ce38b434230fbe0",
+      id: id,
       month: month,
       year: year
     });

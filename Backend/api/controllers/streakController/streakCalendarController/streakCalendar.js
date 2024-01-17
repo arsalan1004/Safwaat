@@ -1,5 +1,5 @@
 const streakRecord = require('./../../../models/StreakRecordModel/streakRecordModel');
-const User = require('./../../../models/UserModel/userModel');
+const { userModel } = require('./../../../models/UserModel/userModel');
 
 
 // const splitDate = (date) => {
@@ -29,7 +29,7 @@ const getStreakCalendarData = async(req, res) => {
     // console.log(`The request is : month: ${req.body.month}, and year: ${req.body.year} and id : ${req.body.id}`);
     // console.log(userId, "   ", month, "    ", year);
     try{
-        let user = await User.findOne({_id: userId});
+        let user = await userModel.findOne({_id: userId});
         // console.log(`User: ${user}`);
         let responseData = {
             start: null,

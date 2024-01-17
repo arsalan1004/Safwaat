@@ -84,6 +84,14 @@ function LeftSideBar() {
             isSelected={selectedLink === "/chat/privateChat"}
           />
         </Link>
+        <Link to="/streakCalendar" onClick={() => handleLinkClick('/streakCalendar')}>
+          <NavOption
+            imgSrc={profileIcon}
+            altText="profile Option"
+            optionText="STREAK CALENDAR"
+            isSelected={selectedLink === '/streakCalendar'}
+          />
+        </Link>
         <Link to="/profile" onClick={() => handleLinkClick('/profile')}>
           <NavOption
             imgSrc={profileIcon}

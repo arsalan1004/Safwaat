@@ -5,15 +5,20 @@ import streakFire from '../../Assets/Icons/streakFire.svg'
 import nextArrow from '../../Assets/Icons/nextArrow.svg';
 import previousArrow from '../../Assets/Icons/previousArrow.svg';
 import style from './StreakCalendar.module.css';
+import { useSelector } from 'react-redux';
 
 
 const StreakCalendar = () => {
-
+    const {id} = useSelector(state => state.login);
     const [calendarData, setCalendarData] = useState(() => ({}))
     const [calendarContents, setCalendarContents] = useState([])
     const [range, setRange] = useState({start: null, end: null})
     const [streakCount, setStreakCount] = useState(2)
-    const [currentDate, setCurrentDate] = useState(() => ({day: "", month: "", year: ""}));
+    const [currentDate, setCurrentDate] = useState(() => {
+      const date = new Date();
+     
+      return ({day: date.getDate() - 1, month: date.getMonth(), year: date.getFullYear()})
+    });
     const [isLoading, setIsLoading] = useState(false);
     const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   
@@ -37,7 +42,7 @@ const StreakCalendar = () => {
       // console.log("getStreakRangeHandler")
       // console.log(month)
       // console.log(year)
-      const data = await getStreakRange(month, year);
+      const data = await getStreakRange(month, year, id);
       let start = data.start;
       let end = data.end;
       let streakCount = data.streakCount;
@@ -49,8 +54,8 @@ const StreakCalendar = () => {
     }
     const calendaDataConstructor = async (monthIndex, year, onCurrentDay) => {
       setIsLoading(true);
-      await getStreakRangeHandler(monthIndex, year);
-      setIsLoading(false);
+      await getStreakRangeHandler(monthIndex, year, id);
+      
 
       // console.log("inc calendarData");
       // console.log(monthIndex, year)
@@ -72,6 +77,7 @@ const StreakCalendar = () => {
   
         year: year,
       }))
+      setIsLoading(false);
     }
   
   

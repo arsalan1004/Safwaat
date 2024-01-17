@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { getStreakRange } from '../../API/streakApi';
-  
+import { Link } from 'react-router-dom';
 import streakFire from '../../Assets/Icons/streakFire.svg'
 import nextArrow from '../../Assets/Icons/nextArrow.svg';
 import previousArrow from '../../Assets/Icons/previousArrow.svg';
 import style from './StreakCalendar.module.css';
 import { useSelector } from 'react-redux';
-
+import logo from '../../assets/Logo.png';
 
 const StreakCalendar = () => {
     const {id} = useSelector(state => state.login);
@@ -278,6 +278,7 @@ const StreakCalendar = () => {
           
           <div className='flex px-[60px] py-[30px] gap-24 bg-primary-100'> 
             <div className='w-[30%] flex flex-col justify-center items-center'>
+              <Link to='/'><img src={logo} alt='logo'  className='mb-10 mix-blend-multiply '/></Link>
               <h3 className='text-[32px] font-semibold font-Poppins tracking-wider text-accent mb-12'>Streak Board</h3>
               <img className='w-[59px] mb-7' src={streakFire} alt='streak-fire' />
               <p className='text-2xl font-medium font-Poppins text-accent mb-6'>Streak Count</p>

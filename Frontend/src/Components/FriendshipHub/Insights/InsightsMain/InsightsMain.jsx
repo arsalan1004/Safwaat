@@ -143,7 +143,7 @@ async function getResultsHandler (no) {
 
       {/* Friend Box Section */}
       <div className='mt-8 flex-center mb-4'>
-        {
+        { 
           friends.length != 0 ?
           (
             <div className='rounded-xl w-[96%] s4:w-[80%] bg-primary-200 p-1'>

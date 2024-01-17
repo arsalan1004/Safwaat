@@ -38,7 +38,8 @@ function LevelMap() {
     setSelectedUnit((prevUnit) => (prevUnit === unitNumber ? null : unitNumber));
   };
 
-
+  const lessonNames = ["Tajweed Intro", "Makharij of Tongue", "Makharij of Tongue", "Revision Unit"
+                        , "Makharij of Lips", "Sifaat Intro", "Intrinsic Sifaat", "Circumstantial Sifaat"];
 
 
   useEffect(() => {
@@ -156,7 +157,7 @@ function LevelMap() {
                   style={styling[i]}
                   className={`cursor-pointer relative w-fit ${data[i].starsEarned == null ? 'pointer-events-none' : ''}`}
                   onClick={() => {
-                    dolphinTriggerHandler;
+                    dolphinTriggerHandler();
                     toggleDetails(data[i].unitNumber);
                     }
                   }
@@ -171,10 +172,10 @@ function LevelMap() {
                           } />
                     <div  className={`${
                             selectedUnit === data[i].unitNumber ? 'visible' : 'invisible'
-                          } rounded-xl w-[250%] z-20 drop-box-shadow h-[80px] px-3 pt-2 flex-column bg-primary-100 absolute top-[110%] left-[-25%]`}
+                          } rounded-xl w-[250%] z-20 drop-box-shadow h-fit pt-2 px-2 text-center flex-column bg-primary-100 absolute top-[110%] left-[-25%]`}
                          >
-                          <h1 className='text-secondary font-bold text-Itim text-sm mb-3'>Makhraj</h1>
-                          <button className='text-xs bg-accent px-2 py-2 rounded-lg text-primary-100'
+                          <h1 className='text-secondary font-bold text-Itim text-sm mb-3'>{lessonNames[i]}</h1>
+                          <button className='text-xs bg-accent px-2 mb-2 py-2 rounded-lg text-primary-100'
                             onClick={() => navigateToLearningUnit(data[i]) }
                             
                             disabled = {!isAuthenticated}

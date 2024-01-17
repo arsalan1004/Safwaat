@@ -3,6 +3,7 @@ const FriendRequests = require('./../../../models/FriendshipHubModels/FriendRequ
 const FriendList = require('./../../../models/FriendshipHubModels/UserFriendsModel/userFriendsModel');
 const {userModel} = require('./../../../models/UserModel/userModel');
 const {getFriendList} = require('./../UserFriendListController/userFriendListController')
+const {sendEmail} = require('./../../emailSendingController/emailSendingController');
 
 const postAddFriendRequest = async(req, res) => {
     let {userId, receiverId} = req.body;
@@ -58,7 +59,9 @@ const postAddFriendRequest = async(req, res) => {
                         senderId: userId,
                         username: Sender.username,
                         status: "PENDING"
+
                     });
+                    sendEmail(Receiver.email, 'New Friend Request Notification', `You have a new Incoming Friend Request from ${Sender.username}, respond to it as soon as possible.`);
                     await Promise.all([
                         await userRequests.save(),
                         await ReceiverFriendRequest.save()   
@@ -75,6 +78,8 @@ const postAddFriendRequest = async(req, res) => {
                         outgoing: []
                     });
                     // await newFriendRequest1.save();
+                    sendEmail(Receiver.email, 'New Friend Request Notification', `You have a new Incoming Friend Request from ${Sender.username}, respond to it as soon as possible.`)
+
                     await Promise.all([
                         await userRequests.save(),
                         await newFriendRequest2.save()   
@@ -97,6 +102,8 @@ const postAddFriendRequest = async(req, res) => {
                         username: Sender.username,
                         status: "PENDING"
                     })
+                    sendEmail(Receiver.email, 'New Friend Request Notification', `You have a new Incoming Friend Request from ${Sender.username}, respond to it as soon as possible.`)
+
                     await Promise.all([
                         await newFriendRequest.save(),
                         await ReceiverFriendRequest.save()   
@@ -112,6 +119,8 @@ const postAddFriendRequest = async(req, res) => {
                         }],
                         outgoing: []
                     });
+                    sendEmail(Receiver.email, 'New Friend Request Notification', `You have a new Incoming Friend Request from ${Sender.username}, respond to it as soon as possible.`)
+
                     await Promise.all([
                         await newFriendRequest.save(),
                         await newFriendRequest1.save()   

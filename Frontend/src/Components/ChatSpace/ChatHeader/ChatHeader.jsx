@@ -2,6 +2,9 @@ import React from 'react'
 import safwaatLogoGreen from '../../../Assets/Icons/safwaatLogoGreen.svg';
 import userAcc from '../../../Assets/Icons/userAcc.svg';
 import { useNavigate } from 'react-router-dom';
+import whiteLogo from '../../../assets/whiteLogo.png';
+
+
 const ChatHeader = ({user}) => {
   const navigate = useNavigate();
 
@@ -15,7 +18,7 @@ const ChatHeader = ({user}) => {
       <div className='chatheader-shadow-bottom flex justify-between items-center py-1 px-6 border-b-2 border-b-primary-100'>
         <div className='flex items-center gap-x-4'>
           <div className="hover:scale-110 transition-all cursor-pointer" onClick={navigateToHome}>
-            <img src={safwaatLogoGreen} alt='safwaat-logo' width={50} height={50}/>
+            <img src={whiteLogo} alt='safwaat-logo' width={50} height={50}/>
           </div>
           <h1 className='font-Poppins font-bold text-primary-100 tracking-wide'>ChatSpace</h1>
         </div>

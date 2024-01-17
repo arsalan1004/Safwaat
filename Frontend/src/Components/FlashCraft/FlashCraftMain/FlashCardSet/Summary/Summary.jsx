@@ -13,7 +13,7 @@ function Summary(props) {
   const progress=(props.noLearnt/(props.noLearnt+props.noStillLearning))*100;
   console.log('PROGRESS: ' , progress );
   function navigateHomeHandler() {
-    navigate("/");
+    navigate("/FlashCraft");
   }
 
   const reviewHandler = () => {
@@ -98,7 +98,7 @@ function Summary(props) {
           <div className="w-4/6 md:w-3/5 lg:2/5 xl:2/5">
             <FilledButton
               clickHandler={
-                props.status == "still" ? reviewHandler : navigateHomeHandler
+                navigateHomeHandler
               }
             >
               {props.buttonText}

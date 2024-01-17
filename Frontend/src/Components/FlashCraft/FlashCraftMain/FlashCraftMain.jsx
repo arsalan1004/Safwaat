@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 
 import FlashCardSet from './FlashCardSet/FlashCardSet'
 import FlashSetBox from './FlashSetBox/FlashSetBox'
 import SlidingIconButton from '../../../UI/Button/SlidingIconButton'
 import SetCreation from './SetCreation/SetCreation'
 import { useSelector } from 'react-redux';
-
+import whiteLogo from '../../../assets/whiteLogo.png';
 
 function FlashCraftMain({setsData}) {
 
@@ -58,10 +58,15 @@ function FlashCraftMain({setsData}) {
     <div className='w-screen min-h-screen flex-column bg-primary-100'>
    
                {/* header */}
-               <div className='h-16 w-full bg-gradient-to-b from-[#1E5054] to-[#56A8AE] flex items-center justify-between'>
+            <div className='h-16 w-full bg-gradient-to-b from-[#1E5054] to-[#56A8AE] flex items-center justify-between'>
+            
+              <div className='flex items-center pl-5'>
+            <Link to='/'><img src={whiteLogo} className='h-[60px] w-[60px] mr-2' /></Link> 
             <h1 className='font-Poppins text-2xl font-bold tracking-wide text-primary-100 text-center ml-6'>
               FlashCraft
             </h1>
+
+            </div>
             <SlidingIconButton clickHandler={navigateHandler}>
                 Create New Set
             </SlidingIconButton>

@@ -51,7 +51,7 @@ const FlashCardSet = () => {
             text2={"Keep focusing on the tough terms."}
             noLearnt={LearntCards.length}
             noStillLearning={stillLearningCards.length}
-            buttonText={"Keep Reviewing"}
+            buttonText={"Home Page"}
             status={"still"}
             stillLearning={data.filter((_, index) =>
               stillLearningCards.includes(index)

@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 
 // REQUIRING ROUTES
 

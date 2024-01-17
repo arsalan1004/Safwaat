@@ -3,6 +3,7 @@ import boy from '../../../../Assets/Images/boy.png';
 import FriendBox from './FriendBox';
 import ProfileHeader from '../../../Profile/ProfileMain/ProfileHeader/ProfileHeader';
 import noResult from '../../../../Assets/Gifs/noResult.gif';
+import store from '../../../../Store/store';
 
 function InsightsMain({data}) {
 
@@ -34,7 +35,9 @@ const moveNext = (no) => {
 }
 
 async function getResultsHandler (no) {
-  const userId = "65a297b2b32acbfdbde8a217";
+  //const userId = "65a297b2b32acbfdbde8a217";
+  const { login } = store.getState();
+  const userId = login.id;
   let response;
   let responseData;
   console.log('inside getResultsHandler');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import threeStars from '../../../Assets/Icons/threeStars.png';
 import twoStars from '../../../Assets/Icons/twoStars.png';
 import oneStar from '../../../Assets/Icons/oneStar.png';
@@ -10,15 +10,20 @@ import { useNavigate } from 'react-router-dom';
 import { postUnitData } from '../../../API/slideApi';
 import ShareButton from '../shareButton/ShareButton';
 import style from './Result.module.css'
+import { slideControlActions } from '../../../Store/slideControl';
+import { unitInfoActions } from '../../../Store/unitInfo';
 
 // SVG'S for two,one,zero stars Required (Not in figma)
 
 const Result = () => {
   const navigate = useNavigate();
-  const {stars, perStarXp, numberOfCorrectAnswers, numberofWrongAnswers, unitNumber} = useSelector(state => state.unitInfoSlice);
+  const dispatch = useDispatch();
+  // const userId = useSelector(state => state.login.id)
+  const {stars, perStarXp, numberOfCorrectAnswers, numberofWrongAnswers, unitNumber, unitId} = useSelector(state => state.unitInfoSlice);
   const [wrongAnsCount, setWrongAnsCount] = useState(0);
   const [correctAnsCount, setCorrectAnsCount] = useState(0);
-  
+  const userId = useSelector(state => state.login.id)
+  console.log(`UserId: ${userId}`)
   let image;
   let subTitle = "";
   switch(stars) {
@@ -45,13 +50,15 @@ const Result = () => {
       // // id: userId, // From Login Data stored in redux store
       // learningUnit Id from levelMap
       // unitNum from levelMap
-      userId: "6599339b5d9d4ce539e21069",
-      learningUnit: "65a22f4aaa8381048ceaacf7",
-      unitNum: 1,
+      //userId: "6599339b5d9d4ce539e21069",
+      userId: userId,
+      unitNum: unitNumber,
       starsEarned: stars,
       xpCount: stars * perStarXp,
     }
     await postUnitData(completetionData);
+   // dispatch(slideControlActions.resetSlideControl());
+    dispatch(unitInfoActions.resetUnitInfo());
   }
   const lessonCompleteHandler = async () => {
    

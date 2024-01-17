@@ -15,17 +15,24 @@ import { matchingSlideAction } from '../../Store/matchingSlideSlice';
 import { informationSlideActions } from '../../Store/informationSlideSlice';
 import { teachAudioSlideActions } from '../../Store/teachAudioSlideSlice';
 
+
+
 const LearningUnit = (props) => {
 
   // const [slideType, setSlideType] = useState("mcq");
+
+  
+  console.log("Data from useLocation: ")
+  console.log(location);
   const [isLoading, setIsLoading] = useState(true)
   const dispatch = useDispatch();
   const currentSlide = useSelector(state => state.slideControl.currentSlide);
   const slideIdArray = useSelector(state => state.unitInfoSlice.slideIdArray);
+  const learningUnitId = useSelector(state => state.unitInfoSlice.unitId)
 
   const getUnitDataHandler = async () => {
     setIsLoading(true)
-    const response = await getUnitData();
+    const response = await getUnitData(learningUnitId);
     // console.log(response.slideIdArray)
     console.log(response.slides)
     dispatch(unitInfoActions.setPerStarXp(response.perStarXp))
@@ -88,11 +95,14 @@ const LearningUnit = (props) => {
 
   // Uncomment This only
   useEffect(() => {
-    setTimeout(() => getUnitDataHandler(), 1000);
+    getUnitDataHandler();
+    console.log("get unit Data Handler Run")
   }, [])
 
 
+  useEffect(() => {
 
+  }, [])
   // useEffect(() => {
   //   slideChangeHandler();
   //   console.log("SlideIDARray useEfffect");

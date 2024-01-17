@@ -97,8 +97,8 @@ const router = createBrowserRouter([
               children: [
                 {
                   path: 'PrivateChat',
-                  //element: <PrivateChat />
-                  element: <Temp />
+                  element: <PrivateChat />
+
                 }
               ]
             },

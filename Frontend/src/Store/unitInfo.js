@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   unitNumber: 1,
+  unitId: "",
   slideIdArray: [],
   numberOfCorrectAnswers: 0,
   numberofWrongAnswers: 0,
@@ -15,6 +16,12 @@ const unitInfoSlice = createSlice({
   name: 'unitInfoSlice',
   initialState: initialState,
   reducers: {
+    setUnitId(state, action) {
+      state.unitId = action.payload.learningUnitId
+    },
+    setUnitNumber(state, action) {
+      state.unitNumber = action.payload.unitNumber
+    },
     incrementCorrectAnswer(state) {
       state.numberOfCorrectAnswers = state.numberOfCorrectAnswers + 1;
     },
@@ -41,6 +48,16 @@ const unitInfoSlice = createSlice({
       else state.stars = 3;
 
     },
+    resetUnitInfo(state) {
+      state.unitNumber = 1,
+      state.unitId = "",
+      state.slideIdArray = [],
+      state.numberOfCorrectAnswers = 0,
+      state.numberofWrongAnswers = 0,
+      state.totalNumberOfQuestions = 0,
+      state.perStarXp = 0,
+      state.stars = 0
+    }
   }
 });
 

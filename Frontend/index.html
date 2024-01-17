@@ -7,11 +7,48 @@
     <title>Vite + React</title>
     <meta name="google-signin-client_id" content="52551738587-b110babjbsnsqtse9u807kv1n5p6jrek.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta property="og:title" content="SAFWAAT">
+<meta property="og:description" content="An Arabic Learning Platform">
+<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/audiostorage-46fa0.appspot.com/o/LearningUnit%2FSummaryPage.png?alt=media&token=8195e204-d8c6-4f08-971a-c88dc4e7d75b">
   </head>
   <body>
     <div id="backdrop-root"></div>
     <div id="overlay-root"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+      !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + "://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, "script", "twitter-wjs");
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+    <!-- Scripts for FB -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=293349500320525"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '293349500320525',
+          xfbml      : true,
+          version    : 'v12.0'
+        });
+      };
+    
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
   </body>
+  
 </html>

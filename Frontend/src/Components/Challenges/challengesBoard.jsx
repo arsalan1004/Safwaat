@@ -1,5 +1,6 @@
 import {React,useState,useEffect} from 'react'
 import '../../App.css'
+import './challenges.css';
 import Streak from '../../Assets/fire.png'
 import One from '../../Assets/frame1.png'
 import trophy from '../../Assets/Icons/trophyChallenges.png'

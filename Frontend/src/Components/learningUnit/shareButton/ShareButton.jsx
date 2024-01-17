@@ -15,16 +15,49 @@ const ShareButton = () => {
   }
 
   const shareOnWhatsApp = () => {
+    const whatsappMessage = encodeURIComponent("🎓 Sharpening my Tajweed skills on Safwaat! Just aced another lesson - feeling accomplished! 🌟 Join me in the quest for better Quranic recitation. Let's learn and grow together! #TajweedMastery #QuranLearning 📖"
+    );
+
+    // window.location.href = `https://wa.me/?text=${whatsappMessage}`;
+    window.open(`https://wa.me/?text=${whatsappMessage}`, '_blank');
     console.log(`shareOnWhatsApp called`)
   }
   const shareOnX = () => {
+    const preGeneratedText = "🎓 Sharpening my Tajweed skills on Safwaat! Just aced another lesson - feeling accomplished! 🌟 Join me in the quest for better Quranic recitation. Let's learn and grow together! #TajweedMastery #QuranLearning 📖";
+
+    // window.location.href = `https://twitter.com/intent/tweet?text=${preGeneratedText}`;
+    window.open(`https://twitter.com/intent/tweet?text=${preGeneratedText}`, '_blank');
+
+
   console.log(`shareOnX called`)
   }
   const shareOnFacebook = () => {
+    const shareURL = ' https://960a-203-81-203-153.ngrok-free.app'; // Replace with the URL you want to share
+  const quote = 'I just wanted to check my component.';
+
+  const handleShare = () => {
+    FB.ui({
+      method: 'feed',
+      name: "SAFWAAT",
+      caption: "Safwaat.com",
+      // href: shareURL,
+    //   href: shareURL,
+    link: shareURL,
+    // picture: shareURL,
+    //   title: 'Sharing Via FB',
+    //   message: 'Checked sending , it is working.',
+      caption: 'Reference Documentation',
+      description: 'Checkout Safwaat and Improved your learning',
+      message: "Checkout Safwaat and Improved your learning"
+      
+    //   quote: quote,
+      
+    }, function(response){});
+    handleShare();
   console.log(`shareOnFacebook called`)
   }
   
-
+  }
 
 
   let shareIconstyle = `w-[20px] h-[20px] ${style['share-btn']} ${isExpanded ? style['expanded'] :""}`
@@ -51,6 +84,7 @@ const ShareButton = () => {
               content={facebook}
               handler={shareOnFacebook}
             />
+            
             <Button 
               contentType={"icon"}
               color={"correct"}

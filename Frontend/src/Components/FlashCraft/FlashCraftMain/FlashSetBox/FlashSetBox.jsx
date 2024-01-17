@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import OutlineButton from "../../../../UI/Button/OutlineButton";
 import DeleteButton from "../../../../UI/Button/DeleteButton";
 import InvertedButton from "../../../../UI/Button/InvertedButton";
+import { toast } from "react-toastify";
 
 function FlashSetBox({ obj, recallHandler }) {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ function FlashSetBox({ obj, recallHandler }) {
       }
     }
     );
-    console.log("response: ", response);
+    
+    toast('FlashCard Set Deleted');
 
     recallHandler();
 

@@ -1,5 +1,5 @@
 import { useEffect, useState,useMemo } from 'react';
-import logo from '../../Assets/login.jpg';
+// import logo from '../../Assets/login.jpg';
 import leaderboard from '../../Assets/bronze.png';
 import '../../App.css';
 import task from '../../Assets/Icons/dailytasks.png';

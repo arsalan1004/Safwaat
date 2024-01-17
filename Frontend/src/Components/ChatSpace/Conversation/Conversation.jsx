@@ -1,7 +1,14 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import userAcc from '../../../Assets/Icons/userAcc.svg'
-import boy from '../../../Assets/Images/boy.png'
-const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciever}) => {
+import boy from '../../../assets/Images/boy.png';
+import boy2 from '../../../assets/Images/boy2.png';
+import boy3 from '../../../assets/Images/boy3.png';
+import boy4 from '../../../assets/Images/boy4.png';
+import boy5 from '../../../assets/Images/boy5.png';
+import boy6 from '../../../assets/Images/boy6.png';
+
+
+const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciever, userNo}) => {
 
   // Here will be the id of reciever(2nd member of conv) of conversation
   const [user, setUser] = useState({
@@ -13,7 +20,8 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
   const lastMessageMaxLen = 30;
   // const [lastMessageMaxLen, setLastMessageMaxLen] = useState(33);
 
- 
+  const userImgs = [boy,boy2,boy3, boy4, boy5, boy6];
+
 
 
   // useEffect(() => {
@@ -73,15 +81,6 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
   }, [lastMessage])
 
 
-
-
-
-
-
-
-
-
-
   return (
     <div 
       onClick={setChatHandler} 
@@ -91,7 +90,7 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
       <div className='flex px-2 gap-x-3 '>
       <div className='w-[15%]'>
           <img 
-              src={boy} 
+              src={userNo == 0 ? boy : userNo == 1 ? boy2 : userNo==2 ? boy3 : userNo==3 ? boy4 : boy5 } 
               alt='friend-profile-pic' 
               className='z-[10] bg-[#6BB4C5] rounded-full'
               width={45} height={45}

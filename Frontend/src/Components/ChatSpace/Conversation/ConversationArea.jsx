@@ -12,6 +12,8 @@ import { getFriendData } from '../../../API/chatSpaceApi';
 import AddConversationModel from '../AddConversationModel/AddConversationModel';
 
 
+
+
 // Holds ChatModeButtons
 // Holds multiple conversation mapped from object received from chatSpace
 
@@ -27,6 +29,8 @@ import AddConversationModel from '../AddConversationModel/AddConversationModel';
 
 const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
   
+
+
   const [freeHeight, setFreeHeight] = useState(0);
   const [searchAppear, setSearchAppear] = useState(false);
   const [modelAppear,setModelAppear] = useState(false);
@@ -212,6 +216,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
                           lastMessage = { conv.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
                           onSetChat = {onSetChat}
                           reciever={conv.recieverName}
+                          userNo={index}
                           // reciever = {recievers && (recievers?.[index][`${conversation.members.find(m => m !== currentUser.userId)[0]}`])}
                         />
                       )

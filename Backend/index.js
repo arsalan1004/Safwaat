@@ -32,6 +32,7 @@ const {
   getUserRouter,
 } = require("./api/routes/ChatSpaceRoutes/userRoute/getUserRoute");
 
+const streakCalendarRoute = require('./api/routes/streakRoutes/streakCalendarRoute/streakCalendar');
 
 // CONNECTING TO DATABASE
 const streakLeaderboardRoute = require('./api/routes/streakLeaderboardRoute/streakLeaderboard');
@@ -115,6 +116,7 @@ app.use("/xpleaderboard", xpLeaderboardRoute);
 app.use("/streakLeaderboard", streakLeaderboardRoute);
 app.use("/userDailyChallenge", userDailyChallengeRoute);
 app.use("/userAchievementChallenge", userAchievementChallengeRoute);
+app.use("/streak",streakCalendarRoute);
 // CREATING SERVER
 const server = http.createServer(app);
 

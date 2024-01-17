@@ -2,6 +2,7 @@ import React from 'react'
 import boy2 from '../../../../Assets/Images/boy2.png';
 import classes from './FriendBox.module.css';
 import { useNavigate } from 'react-router-dom';
+import store from '../../../../Store/store';
 
 function FriendBox(props) {
 
@@ -40,7 +41,9 @@ function FriendBox(props) {
     const  buttonHandler = async (id, secNum, butText) => {
             console.log('BUTTON HANDLER!');
             console.log(id, secNum, butText);
-            const userId = "65a297b2b32acbfdbde8a217";
+           //  const userId = "65a297b2b32acbfdbde8a217";
+           const { login } = store.getState();
+           const userId = login.id;
             let response;
 
             if(secNum==0 && butText=='View Profile'){

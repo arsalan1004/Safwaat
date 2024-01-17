@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom'
 import LeftSideBar from '../Home/LeftSideBar/LeftSideBar'
 import FriendshipMain from './FriendshipMain/FriendshipMain'
 import Modal from '../../UI/Modal/Modal'
+import store from '../../Store/store'
 
 function FriendshipHub() {
 
@@ -34,8 +35,9 @@ export default FriendshipHub
 
 
 export async function loader () {
-
-  const userId = '65a297b2b32acbfdbde8a217' 
+  const { login } = store.getState();
+  const userId = login.id;
+ // const userId = '65a297b2b32acbfdbde8a217' 
   const response = fetch(
     'http://localhost:8000/api/friendshiphub/page',
     

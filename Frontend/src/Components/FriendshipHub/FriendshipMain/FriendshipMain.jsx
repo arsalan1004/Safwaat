@@ -5,6 +5,7 @@ import InvertedButton from '../../../UI/Button/InvertedButton';
 import FilledButton from '../../../UI/Button/FilledButton';
 import group from '../../../Assets/Gifs/group.gif';
 import noResult from '../../../Assets/Gifs/noResult.gif';
+import store from '../../../Store/store';
 
 function FriendshipMain({data, showModalHandler}) {
     
@@ -26,8 +27,9 @@ const onSearch = () => {
 }
 
 async function getSearchResultsHandler (val) {
-    const userId = "65a297b2b32acbfdbde8a217";
-  
+    // const userId = "65a297b2b32acbfdbde8a217";
+    const { login } = store.getState();
+    const userId = login.id;
     const response = await fetch(
       "http://localhost:8000/api/friendshiphub/search",
       {

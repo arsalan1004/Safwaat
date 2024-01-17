@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import '../../../App.css'
-import google from '../../../Assets/google.png';
 import InputWL from './input.jsx';
 import ButtonLog from './buttonlog';
 import Checkbox from './checkbox';

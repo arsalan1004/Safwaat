@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import boy from '../../../../Assets/Images/boy.png';
 import FriendBox from './FriendBox';
-import ProfileHeader from '../../../Profile/ProfileHeader/ProfileHeader';
+import ProfileHeader from '../../../Profile/ProfileMain/ProfileHeader/ProfileHeader';
 import noResult from '../../../../Assets/Gifs/noResult.gif';
 import store from '../../../../Store/store';
 

@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import boy from '../../../Assets/Images/boy.png';
-import store from '../../../Store/store';
+import boy from '../../../../Assets/Images/boy.png';
 
 function ProfileHeader() {
-  const { login } = store.getState();
-  const userId = login.id;
-  // const userId = '65a297b2b32acbfdbde8a217';
+
+  const userId = '65a297b2b32acbfdbde8a217';
   const [profileHeaderData, setProfileHeaderData] = useState();
 
  

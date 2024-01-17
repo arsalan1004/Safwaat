@@ -32,6 +32,15 @@ function LevelMap() {
   // const userId = '65a297b3b32acbfdbde8a219';
   const {id, isAuthenticated} = useSelector(state => state.login)
 
+  const [selectedUnit, setSelectedUnit] = useState(null);
+
+  const toggleDetails = (unitNumber) => {
+    setSelectedUnit((prevUnit) => (prevUnit === unitNumber ? null : unitNumber));
+  };
+
+
+
+
   useEffect(() => {
     async function loader() {
       try {
@@ -122,11 +131,11 @@ function LevelMap() {
                       s1:w-[85%] s2:w-[75%] s3:w-[65%] s4:w-[50%] s5:w-[45%] '>
       
           <img src={clouds} alt='clouds' className={classes.Cloud} />
-          <img src={LevelMapImg} alt='LevelMapImg' className='w-full h-full block absolute' />
+          <img  onClick={() => setSelectedUnit(null)} src={LevelMapImg} alt='LevelMapImg' className='w-full h-full block absolute' />
           <div className={classes.BoatWrapper} >
             <img src={boat} className={classes.Boat} />
-            <span className={classes.First} >Level 7</span>
-            <span className={classes.Second}>Unlocked</span>
+            <span className={classes.First} >Time for </span>
+            <span className={classes.Second}>New Lesson</span>
           </div>
           
           <img src={dolphin} 
@@ -145,8 +154,12 @@ function LevelMap() {
                   key={i}
                   // className={`top-[${st.top}] left-[${st.left}]`}
                   style={styling[i]}
-                  className={`cursor-pointer relative w-fit z-10 ${data[i].starsEarned == null ? 'pointer-events-none' : ''}`}
-                  onClick={dolphinTriggerHandler}
+                  className={`cursor-pointer relative w-fit ${data[i].starsEarned == null ? 'pointer-events-none' : ''}`}
+                  onClick={() => {
+                    dolphinTriggerHandler;
+                    toggleDetails(data[i].unitNumber);
+                    }
+                  }
                   >
                     <span className='absolute translate-x-[1.2em] translate-y-[1em] font-bold text-slate-600 '>{data[i].unitNumber}</span>
                     <img src={
@@ -155,12 +168,15 @@ function LevelMap() {
                                   data[i].starsEarned == 2 ? LevelUnit2S : 
                                     data[i].starsEarned == 1 ? LevelUnit1S : LevelUnit0S 
                               : LevelUnitLocked
-
                           } />
-                    <div className='w-[80px] h-[80px] bg-primary-100 flex-center absolute'>
-                          <h1>Makhraj</h1>
-                          <button
-                            onClick={() => navigateToLearningUnit(data[i])}
+                    <div  className={`${
+                            selectedUnit === data[i].unitNumber ? 'visible' : 'invisible'
+                          } rounded-xl w-[250%] z-20 drop-box-shadow h-[80px] px-3 pt-2 flex-column bg-primary-100 absolute top-[110%] left-[-25%]`}
+                         >
+                          <h1 className='text-secondary font-bold text-Itim text-sm mb-3'>Makhraj</h1>
+                          <button className='text-xs bg-accent px-2 py-2 rounded-lg text-primary-100'
+                            onClick={() => navigateToLearningUnit(data[i]) }
+                            
                             disabled = {!isAuthenticated}
                           >
                             Start Lesson

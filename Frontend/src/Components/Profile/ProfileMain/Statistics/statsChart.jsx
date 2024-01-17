@@ -38,7 +38,8 @@ const Statschart = () => {
   const [totalFlashCards, setTotalFlashCards] = useState(7);
 
   useEffect(()=>{
-    getStats(setTotalXP,setHighestStreak,setTotalGems,setCurrentLeague,setTotalTrophies,setTotalFlashCards);
+    let userId = '65a297b2b32acbfdbde8a217';
+    getStats(setTotalXP,userId,setHighestStreak,setTotalGems,setCurrentLeague,setTotalTrophies,setTotalFlashCards);
   },[])
 
   return (

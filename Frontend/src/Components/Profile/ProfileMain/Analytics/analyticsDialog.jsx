@@ -20,8 +20,8 @@ const AnalyticsDialog = () => {
 
     
     useEffect(() => {
-      
-      getAnalytics(setmonthlyChallengeAnalytics,setmonthlyRewardAnalytics,setweeklyLessonAnalytics,setweeklyFlashcardRevisitAnalytics);
+      let userId = '659815525ce38b434230fbe0';
+      getAnalytics(userId,setmonthlyChallengeAnalytics,setmonthlyRewardAnalytics,setweeklyLessonAnalytics,setweeklyFlashcardRevisitAnalytics);
     }, []);
     
 

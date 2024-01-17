@@ -1,8 +1,8 @@
 import axios from "axios"
 
-const getAnalytics  = async (ca,ra,la,fa) => {
+const getAnalytics  = async (userId,ca,ra,la,fa) => {
     try {
-      const response = await axios.get("http://localhost:8000/api/analytics/get/659815525ce38b434230fbe0");
+      const response = await axios.get(`http://localhost:8000/api/analytics/get/${userId}`);
       ca([
         response.data.monthlyChallengeAnalytics.dailyCompleted,
         response.data.monthlyChallengeAnalytics.achievementCompleted

@@ -45,7 +45,7 @@ function FriendBox(props) {
 
             if(secNum==0 && butText=='View Profile'){
                 
-                navigate('/profile');
+                navigate('/profile', {userId: id});
 
             }else if(secNum==0 && butText=='Message'){
 

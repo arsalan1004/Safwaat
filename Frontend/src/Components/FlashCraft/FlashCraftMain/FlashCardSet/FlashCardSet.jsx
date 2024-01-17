@@ -16,21 +16,6 @@ const FlashCardSet = () => {
 
   console.log("cardsData: ", data);
 
-  // const data = [
-  //   {
-  //     front: 'How to apply Tafkheem ?',
-  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate',
-  //   },
-  //   {
-  //     front: 'How to apply Tafkheem 2 ?',
-  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate2',
-  //   },
-  //   {
-  //     front: 'How to apply Tafkheem 3?',
-  //     back: 'Elevate the posterior tongue to the roof of the upper soft palate3',
-  //   },
-
-  // ];
 
   const [LearntCards, setLearntCards] = useState([]);
   const [stillLearningCards, setStillLearningCards] = useState([]);
@@ -75,7 +60,7 @@ const FlashCardSet = () => {
           />
         )
       ) : (
-        <div className="h-screen w-screen bg-flashcraftBg bg-no-repeat bg-cover bg-center pt-[1%] overflow-hidden">
+        <div className="mainFlashCardSet h-screen w-screen pt-[1%] overflow-hidden">
           <div
             className="relative w-3/5 h-[87%] mx-auto my-0 rounded-[40px] perspective-1000"
             id="swiper"

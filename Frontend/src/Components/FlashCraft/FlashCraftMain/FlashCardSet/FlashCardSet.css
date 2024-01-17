@@ -2,3 +2,10 @@
     perspective-origin: center 50%;
     transform-style: preserve-3d;
 }
+
+.mainFlashCardSet{
+    background-image: url('../../../../assets/Background/flashcraftBg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

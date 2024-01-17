@@ -13,7 +13,7 @@ import FriendshipHub, {loader as friendshiphubLoader} from "../Components/Friend
 import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
 import Profile from "../Components/Profile/Profile";
 import Leader from "../Components/LeaderBoard/leaderboad";
-
+import ErrorPage from "../UI/ErrorPage/ErrorPage";
 
 import Temp from "../Components/ChatSpace/temp";
 import PrivateChat from "../Components/ChatSpace/PrivateChat";
@@ -21,6 +21,7 @@ import Challenges from "../Components/Challenges/challenges";
 const router = createBrowserRouter([
     {
         path: '/',
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true, 

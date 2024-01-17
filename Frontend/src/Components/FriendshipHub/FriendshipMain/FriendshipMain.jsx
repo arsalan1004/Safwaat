@@ -108,10 +108,11 @@ async function getSearchResultsHandler (val) {
             <div className='w-3/5 border-r-[2px] border-slate-300 pr-4'>
                 <h1 className='font-bold text-secondary text-xl mb-4'>Search Results</h1>
                 <div className='w-full grid grid-col-1 s3:grid-cols-2 gap-2'>
-                    { searchResults.length != 0 ?
+                    { searchResults.length != 0 ? 
                        ( searchResults.map(
                             (val, i) => (
-                                <UserResultBox key={i} name={val.fullName} userName={val.username} id={val.id} showModalHandler={showModalHandler} searchHandler={()=>getSearchResultsHandler(searchValue.toLowerCase())} />
+
+                                <UserResultBox key={i} userNo={i} name={val.fullName} userName={val.username} id={val.id} showModalHandler={showModalHandler} searchHandler={()=>getSearchResultsHandler(searchValue.toLowerCase())} />
                             )
                         )
 

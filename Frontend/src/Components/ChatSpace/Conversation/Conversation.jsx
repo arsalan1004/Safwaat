@@ -20,7 +20,6 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
   const lastMessageMaxLen = 30;
   // const [lastMessageMaxLen, setLastMessageMaxLen] = useState(33);
 
-  const userImgs = [boy,boy2,boy3, boy4, boy5, boy6];
 
 
 
@@ -90,7 +89,7 @@ const Conversation = ({conversation, currentUser, lastMessage, onSetChat, reciev
       <div className='flex px-2 gap-x-3 '>
       <div className='w-[15%]'>
           <img 
-              src={userNo == 0 ? boy : userNo == 1 ? boy2 : userNo==2 ? boy3 : userNo==3 ? boy4 : boy5 } 
+              src={userNo == 0 ? boy2 : userNo == 1 ? boy3 : userNo == 2 ? boy4 : boy5  } 
               alt='friend-profile-pic' 
               className='z-[10] bg-[#6BB4C5] rounded-full'
               width={45} height={45}

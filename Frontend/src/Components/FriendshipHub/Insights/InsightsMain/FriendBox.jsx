@@ -1,8 +1,17 @@
 import React from 'react'
 import boy2 from '../../../../Assets/Images/boy2.png';
+import boy3 from '../../../../Assets/Images/boy3.png';
+import boy4 from '../../../../Assets/Images/boy4.png';
+import boy5 from '../../../../Assets/Images/boy5.png';
+import boy6 from '../../../../Assets/Images/boy6.png';
+
+
 import classes from './FriendBox.module.css';
 import { useNavigate } from 'react-router-dom';
 import store from '../../../../Store/store';
+import { toast } from 'react-toastify';
+
+
 
 function FriendBox(props) {
 
@@ -76,6 +85,8 @@ function FriendBox(props) {
                 
                 props.fetchSectionDataHandler(secNum);
 
+                toast('You have Accepted the Friend Request');
+
             }
             else if(secNum==1 && butText=='Reject'){
 
@@ -98,6 +109,8 @@ function FriendBox(props) {
                 console.log('response of Reject Handler: ', responseData);
                 
                 props.fetchSectionDataHandler(secNum);
+
+                toast('Friend Request Declined')
 
             }else if(secNum==2 && butText=='View Profile'){
                 
@@ -124,6 +137,7 @@ function FriendBox(props) {
                 console.log('response of CancelHandler: ', responseData);
                 
                 props.fetchSectionDataHandler(secNum);
+                toast('Friend Request Cancelled');
 
             }
             else{
@@ -144,7 +158,7 @@ function FriendBox(props) {
         <div className='flex items-center w-[40%]'>
             {/* Image */}
             <div>
-                <img src={boy2} alt='userImage' className='relative z-10 bg-[#6BB4C5] rounded-full
+                <img src={props.userNo == 0 ? boy2 : props.userNo == 1 ? boy3 : props.userNo == 2 ? boy4 : props.userNo == 3 ? boy5 : boy6 } alt='userImage' className='relative z-10 bg-[#6BB4C5] rounded-full
                             w-[70px] h-[70px] mt-3'
                 />
             </div> 

@@ -232,6 +232,7 @@ const ConversationArea = ({conversations, currentUser, setChatHandler}) => {
                       lastMessage = { conv.lastMessage ||"No Usersssssssssssssssssssssssssssssssssss"}
                       onSetChat = {onSetChat}
                       reciever={conv.recieverName}
+                      userNo={index}
                     />
                 )) : <p>Loading your Conversations</p>
             }

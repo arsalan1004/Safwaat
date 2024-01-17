@@ -160,6 +160,7 @@ async function getResultsHandler (no) {
                     id={(val.id) ? val.id : (val.senderId) ? val.senderId : (val.receiverId) }
                     secNo = {sectionNo}
                     fetchSectionDataHandler={getResultsHandler}
+                    userNo={i}
                   />
                 )
               )

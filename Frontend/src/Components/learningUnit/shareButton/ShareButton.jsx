@@ -46,7 +46,7 @@ const ShareButton = () => {
     // picture: shareURL,
     //   title: 'Sharing Via FB',
     //   message: 'Checked sending , it is working.',
-      caption: 'Reference Documentation',
+      // caption: 'Reference Documentation',
       description: 'Checkout Safwaat and Improved your learning',
       message: "Checkout Safwaat and Improved your learning"
       

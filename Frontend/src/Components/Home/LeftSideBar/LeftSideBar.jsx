@@ -15,6 +15,7 @@ import questArenaIcon from '../../../Assets/Icons/quest.png';
 import lobbyIcon from '../../../Assets/Icons/lobby.png';
 import chatSpaceIcon from '../../../Assets/Icons/chatSpace.png';
 import profileIcon from '../../../Assets/Icons/profile.png';
+import streakCalender from '../../../Assets/Icons/streakCalender.png';
 
 function LeftSideBar() {
   const [selectedLink, setSelectedLink] = useState('/');
@@ -91,7 +92,7 @@ function LeftSideBar() {
         </Link>
         <Link to="/streakCalendar" onClick={() => handleLinkClick('/streakCalendar')}>
           <NavOption
-            imgSrc={profileIcon}
+            imgSrc={streakCalender}
             altText="profile Option"
             optionText="STREAK CALENDAR"
             isSelected={selectedLink === '/streakCalendar'}

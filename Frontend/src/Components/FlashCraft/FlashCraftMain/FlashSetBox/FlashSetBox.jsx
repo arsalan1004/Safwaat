@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import OutlineButton from "../../../../UI/Button/OutlineButton";
 import DeleteButton from "../../../../UI/Button/DeleteButton";
 import InvertedButton from "../../../../UI/Button/InvertedButton";
 
-function FlashSetBox({ obj }) {
+function FlashSetBox({ obj, recallHandler }) {
   const navigate = useNavigate();
 
   function navigateHandler() {
@@ -13,7 +13,9 @@ function FlashSetBox({ obj }) {
   }
 
 
+
   async function deleteHandler () {
+    console.log('Deleted');
     const userId = '655ba0b013679c0e8c33e9cd';
     const response = await fetch('http://localhost:8000/api/FlashCraft/delete', 
     {
@@ -28,8 +30,14 @@ function FlashSetBox({ obj }) {
     }
     );
     console.log("response: ", response);
+
+    recallHandler();
+
     return response;
+
   }
+
+
   return (
     <div className="flex-center">
       <div className="w-5/6 min-h-15 bg-white rounded-3xl px-7 py-5 border-2 border-solid border-gray-200">

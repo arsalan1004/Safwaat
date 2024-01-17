@@ -6,7 +6,13 @@ import ChatInitialScreen from './ChatInitialScreen'
 import { getConversationData, getFriendData, getMessagesData, postMessageData } from '../../API/chatSpaceApi'
 import axios from 'axios'
 import { io } from 'socket.io-client'
-const PrivateChat = ({currentUser}) => {
+import { useSelector } from 'react-redux'
+const PrivateChat = () => {
+  const {id, username}  = useSelector(state => state.login)
+  const currentUser = {
+    userId: id,
+    username: username
+  }
   console.log("currentUser", currentUser)
   // TODO:
   ///// FRONTEND

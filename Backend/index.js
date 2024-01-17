@@ -1,3 +1,4 @@
+
 const http = require("http");
 const express = require("express");
 const session = require("express-session");
@@ -32,6 +33,8 @@ const {
 
 
 // CONNECTING TO DATABASE
+const streakLeaderboardRoute = require('./api/routes/streakLeaderboardRoute/streakLeaderboard');
+const xpLeaderboardRoute = require('./api/routes/xpLeaderboardRoute/xpLeaderboardRoute');
 
 const userDailyChallengeRoute = require('./api/routes/userChallengesroutes/userDailyChallengesRoute/userDailyChallengeRoute');
 const userAchievementChallengeRoute = require('./api/routes/userChallengesroutes/userAchievementChallengesRoute/userAchievementChallenges');
@@ -39,6 +42,8 @@ const userAchievementChallengeRoute = require('./api/routes/userChallengesroutes
 require("dotenv").config();
 const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
 const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
+const AnalyticsRoute = require('./api/routes/UserAnalyticsRoute/userAnalyticsRoute');
+const UserStatsRoute = require('./api/routes/UserStatsRoute/userStats');
 
 // IMPORTING .ENV VARIABLE
 const port = process.env.PORT || 8000;
@@ -100,9 +105,13 @@ app.use("/api/slides", slideRoute);
 app.use("/api/completeUnit", completeUnitRoute);
 app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 app.use("/api/fh", FriendshipHubFriendsRouter);
+app.use("/api/analytics", AnalyticsRoute);
+app.use("/api/userStats", UserStatsRoute);
 app.use("/api/conversation", router);
 app.use("/api/messages", messageRouter);
 app.use("/api/users", getUserRouter);
+app.use("/xpleaderboard", xpLeaderboardRoute);
+app.use("/streakLeaderboard", streakLeaderboardRoute);
 app.use("/userDailyChallenge", userDailyChallengeRoute);
 app.use("/userAchievementChallenge", userAchievementChallengeRoute);
 // CREATING SERVER

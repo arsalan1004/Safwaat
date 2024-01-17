@@ -26,6 +26,9 @@
   .drop-box-shadow {
     @apply shadow-[8px_8px_8px_2px_rgba(2,20,33,0.2)] ;
   }
+  .drop-box-shadow-3D {
+    @apply shadow-[5px_5px_6px_rgba(0,0,0,0.3)] ;
+  }
   .drop-option-shadow {
     @apply shadow-[2px_4px_3px_0px_rgba(2,20,33,0.2)] ;
   }

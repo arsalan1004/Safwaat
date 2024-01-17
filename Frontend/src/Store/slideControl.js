@@ -42,6 +42,15 @@ const slideControlSlice = createSlice({
     },
     setTotalSlides(state, action) {
       state.totalSlides = action.payload;
+    },
+    resetSlideControl(state) {
+      state.slideType =  "",
+      state.isChecked =  false,
+      state.isCorrect =  true,
+      state.isMotivation =  false,
+      state.totalSlides =  0,
+      state.currentSlide =  1,
+      state.progressCounter =  1
     }
   }
 });

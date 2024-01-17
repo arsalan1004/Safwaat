@@ -17,8 +17,9 @@ const showModal = (id) => {
 }
 
 async function connectHandler (id) {
-    const userId = "65a297b2b32acbfdbde8a217";
-    
+    // const userId = "65a297b2b32acbfdbde8a217";
+    const { login } = store.getState();
+    const userId = login.id;
     const response = await fetch(
         "http://localhost:8000/api/friendshiphub/send",
         {

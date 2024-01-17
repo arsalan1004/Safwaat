@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import boy from '../../../Assets/Images/boy.png';
+import boy from '../../../../Assets/Images/boy.png';
 
 function ProfileHeader() {
 

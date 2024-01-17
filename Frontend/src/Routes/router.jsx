@@ -12,6 +12,7 @@ import Result from "../Components/learningUnit/result/Result";
 import FriendshipHub, {loader as friendshiphubLoader} from "../Components/FriendshipHub/FriendshipHub";
 import Insights,{loader as InsightsLoader} from "../Components/FriendshipHub/Insights/Insights";
 import Profile from "../Components/Profile/Profile";
+import Leader from "../Components/LeaderBoard/leaderboad";
 
 
 import Temp from "../Components/ChatSpace/temp";
@@ -101,10 +102,14 @@ const router = createBrowserRouter([
               children: [
                 {
                   path: 'PrivateChat',
-                  //element: <PrivateChat />
-                  element: <Temp />
+                  element: <PrivateChat />
+
                 }
               ]
+            },
+            {
+                path:'Leaderboard',
+                element: <Leader />
             }
         ]
      }

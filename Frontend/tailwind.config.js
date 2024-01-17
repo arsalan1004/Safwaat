@@ -2,15 +2,7 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    screens: {
-      's1': '680px',
-      's2': '780px',
-      's3': '880px',
-      's4': '1100px',
-      's5': '1300px',
-    },
-
-    fontFamily: {
+      fontFamily: {
       Montserrat: ["Montserrat"],
       Itim: ["Itim"],
       Poppins: ["Poppins"],
@@ -23,6 +15,14 @@ export default {
         "3d": "2px 3px 5px rgba(0, 0, 0, 0.5)",
       },
 
+      screens: {
+        's1': '680px',
+        's2': '780px',
+        's3': '880px',
+        's4': '1100px',
+        's5': '1300px',
+      },
+
       colors: {
         primary: {
           100: "#EBF9FA",
@@ -30,7 +30,7 @@ export default {
         },
         secondary: "#0A3F67",
         accent: "#2D867F",
-        correct: "#0ACF1E",
+    correct: "#0ACF1E",
         wrong: "#E01111",
         disabled : "#D2D6D9"
       },

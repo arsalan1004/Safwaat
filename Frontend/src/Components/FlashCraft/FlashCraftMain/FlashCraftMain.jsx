@@ -5,6 +5,7 @@ import FlashCardSet from './FlashCardSet/FlashCardSet'
 import FlashSetBox from './FlashSetBox/FlashSetBox'
 import SlidingIconButton from '../../../UI/Button/SlidingIconButton'
 import SetCreation from './SetCreation/SetCreation'
+import { useSelector } from 'react-redux';
 
 
 function FlashCraftMain({setsData}) {
@@ -12,6 +13,7 @@ function FlashCraftMain({setsData}) {
   const navigate = useNavigate();
 
   function navigateHandler () {
+
     navigate('SetCreation')
   }
 

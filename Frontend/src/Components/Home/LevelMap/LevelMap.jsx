@@ -17,18 +17,25 @@ import dolphin from '../../../Assets/Icons/dolphin.png';
 import seaShell from '../../../Assets/Icons/seaShell.png';
 import boat from '../../../Assets/boatR.png'
 import splash from '../../../Assets/Gifs/splash2.gif';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { unitInfoActions } from '../../../Store/unitInfo';
+import { slideControlActions } from '../../../Store/slideControl';
 
 
 function LevelMap() {
 
   const [data, setData] = useState();
-
-  const userId = '65a297b3b32acbfdbde8a219';
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // const userId = useSelector(state => state.login.id)
+  // const userId = '65a297b3b32acbfdbde8a219';
+  const {id, isAuthenticated} = useSelector(state => state.login)
 
   useEffect(() => {
     async function loader() {
       try {
-        const response = await fetch(`http://localhost:8000/api/homepage/${userId}`);
+        const response = await fetch(`http://localhost:8000/api/homepage/${id}`);
         const responseData = await response.json();
   
         console.log('levelMap 2 response: ', response);
@@ -42,8 +49,12 @@ function LevelMap() {
     }
   
     loader();
-  }, [userId]); // Make sure to include userId as a dependency
+  }, [id]); // Make sure to include userId as a dependency
 
+
+  useEffect(() => {
+    dispatch(slideControlActions.resetSlideControl());
+  }, [])
 
   console.log(data);
   
@@ -97,6 +108,15 @@ function LevelMap() {
 
   //Return
 
+
+  const navigateToLearningUnit = (learningUnitData) => {
+    dispatch(unitInfoActions.setUnitId({learningUnitId: learningUnitData.learningUnitId}))
+    dispatch(unitInfoActions.setUnitNumber({unitNumber: learningUnitData.unitNumber}))
+    navigate(`/learningUnit/${learningUnitData.unitNumber}/slides/1`)
+    
+  } 
+
+
   return (  
       <div className='relative w-full h-full flex flex-col box-border perspective-1000
                       s1:w-[85%] s2:w-[75%] s3:w-[65%] s4:w-[50%] s5:w-[45%] '>
@@ -137,6 +157,15 @@ function LevelMap() {
                               : LevelUnitLocked
 
                           } />
+                    <div className='w-[80px] h-[80px] bg-primary-100 flex-center absolute'>
+                          <h1>Makhraj</h1>
+                          <button
+                            onClick={() => navigateToLearningUnit(data[i])}
+                            disabled = {!isAuthenticated}
+                          >
+                            Start Lesson
+                          </button>
+                    </div>
                 </div>
               )
             )

@@ -38,6 +38,8 @@ const xpLeaderboardRoute = require('./api/routes/xpLeaderboardRoute/xpLeaderboar
 require("dotenv").config();
 const FriendshipHubRequestsRouter = require('./api/routes/FriendshipHubRoutes/FriendRequestsRoute/friendRequestsRoute');
 const FriendshipHubFriendsRouter = require('./api/routes/FriendshipHubRoutes/UserFriendsRoute/userFriendsRoute');
+const AnalyticsRoute = require('./api/routes/UserAnalyticsRoute/userAnalyticsRoute');
+const UserStatsRoute = require('./api/routes/UserStatsRoute/userStats');
 
 // IMPORTING .ENV VARIABLE
 const port = process.env.PORT || 8000;
@@ -99,12 +101,13 @@ app.use("/api/slides", slideRoute);
 app.use("/api/completeUnit", completeUnitRoute);
 app.use("/api/friendshiphub", FriendshipHubRequestsRouter);
 app.use("/api/fh", FriendshipHubFriendsRouter);
+app.use("/api/analytics", AnalyticsRoute);
+app.use("/api/userStats", UserStatsRoute);
 app.use("/api/conversation", router);
 app.use("/api/messages", messageRouter);
 app.use("/api/users", getUserRouter);
 app.use("/xpleaderboard", xpLeaderboardRoute);
 app.use("/streakLeaderboard", streakLeaderboardRoute);
-
 // CREATING SERVER
 const server = http.createServer(app);
 

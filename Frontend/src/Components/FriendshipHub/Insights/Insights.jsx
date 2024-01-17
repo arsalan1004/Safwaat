@@ -4,6 +4,7 @@ import InsightsMain from './InsightsMain/InsightsMain'
 import Modal from '../../../UI/Modal/Modal';
 
 import { useLoaderData } from 'react-router-dom';
+import store from '../../../Store/store';
 
 
 function Insights() {
@@ -24,7 +25,9 @@ export default Insights
 
 export async function loader () {
 
-  const userId = '65a297b2b32acbfdbde8a217' 
+  // const userId = '65a297b2b32acbfdbde8a217' 
+  const { login } = store.getState();
+  const userId = login.id;
   const response = fetch(
     'http://localhost:8000/api/friendshiphub/viewInsights',
     

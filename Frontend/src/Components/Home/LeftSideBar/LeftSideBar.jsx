@@ -53,7 +53,7 @@ function LeftSideBar() {
         </Link>
         <Link to="/FriendshipHub" onClick={() => handleLinkClick('/FriendshipHub')}>
           <NavOption
-            imgSrc={taqraarIcon}
+            imgSrc={lobbyIcon}
             altText="FriendshipHub Option"
             optionText="FRIENDSHIP HUB"
             isSelected={selectedLink === '/FriendshipHub'}
@@ -75,28 +75,21 @@ function LeftSideBar() {
             isSelected={selectedLink === '/QuestArena'}
           />
         </Link>
-        <Link to="/Lobby" onClick={() => handleLinkClick('/Lobby')}>
-          <NavOption
-            imgSrc={lobbyIcon}
-            altText="Lobby Option"
-            optionText="LOBBY"
-            isSelected={selectedLink === '/Lobby'}
-          />
-        </Link>
-        <Link to="/ChatSpace" onClick={() => handleLinkClick('/ChatSpace')}>
+       
+        <Link to="/chat/privateChat" onClick={() => handleLinkClick("/chat/privateChat")}>
           <NavOption
             imgSrc={chatSpaceIcon}
             altText="chatSpace Option"
             optionText="CHAT SPACE"
-            isSelected={selectedLink === '/ChatSpace'}
+            isSelected={selectedLink === "/chat/privateChat"}
           />
         </Link>
-        <Link to="/Profile" onClick={() => handleLinkClick('/Profile')}>
+        <Link to="/profile" onClick={() => handleLinkClick('/profile')}>
           <NavOption
             imgSrc={profileIcon}
             altText="profile Option"
             optionText="PROFILE"
-            isSelected={selectedLink === '/Profile'}
+            isSelected={selectedLink === '/profile'}
           />
         </Link>
       </div>
